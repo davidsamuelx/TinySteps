@@ -1,13 +1,9 @@
 package com.aa.local
 
-import androidx.room.Database
-import com.aa.repository.entities.TestDatabaseDto
+import androidx.room.RoomDatabase
 
-@Database(
-    entities = [TestDatabaseDto::class],
-    version = 1,
-    exportSchema = false
-)
-abstract class DatabaseTest {
+
+
+abstract class DatabaseTest : RoomDatabase() {
 
 }

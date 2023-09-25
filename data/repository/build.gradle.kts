@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -30,14 +29,14 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
 dependencies {
 
     implementation(project(":domain:usecase"))
-    implementation ("com.google.dagger:dagger:2.44")
+    implementation ("com.google.dagger:dagger:2.48")
     implementation("androidx.room:room-common:2.5.2")
     kapt("com.google.dagger:dagger-compiler:2.44")
     //room
