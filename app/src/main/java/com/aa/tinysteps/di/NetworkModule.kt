@@ -16,7 +16,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 internal object NetworkModule {
 
-    private const val BASE_URL="https://tiny-steps.help/api/user/"
+    private const val BASE_URL="https://tiny-steps.help/api/"
 
     @Provides
     fun provideTinyStepsService(
