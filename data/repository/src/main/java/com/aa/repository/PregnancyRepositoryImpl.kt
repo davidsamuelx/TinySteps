@@ -11,6 +11,6 @@ class PregnancyRepositoryImpl @Inject constructor(
 ): PregnancyRepository {
     override suspend fun allFoodAdvice(): List<AllFoodAdviceEntity> {
         return remoteDataSource.getFoodAdvices().foodBabies
-            ?.map { it!!.toEntity() } ?: emptyList()
+            ?.mapNotNull { it?.toEntity() } ?: emptyList()
     }
 }
