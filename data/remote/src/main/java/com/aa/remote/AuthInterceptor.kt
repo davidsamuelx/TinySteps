@@ -25,7 +25,7 @@ class AuthInterceptor @Inject constructor() : Interceptor {
 
 
     private companion object {
-        const val TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Rpbnktc3RlcHMuaGVscC9hcGkvYXV0aC91c2VyL2xvZ2luIiwiaWF0IjoxNjk1ODc2NTkwLCJleHAiOjE2OTU4ODAxOTAsIm5iZiI6MTY5NTg3NjU5MCwianRpIjoiSXJ3YVl2aDBzWkFZdmZLYyIsInN1YiI6IjYiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.UrcfRd52pfPbwBlf-T5e49bEgNJhNJlEVB6CQMEK6L8"
+        const val TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Rpbnktc3RlcHMuaGVscC9hcGkvYXV0aC91c2VyL2xvZ2luIiwiaWF0IjoxNjk1ODg0NTk2LCJleHAiOjE2OTU4ODgxOTYsIm5iZiI6MTY5NTg4NDU5NiwianRpIjoiVno1RW1JZTNsenk0NFJSNyIsInN1YiI6IjYiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.bDaFy1WNI6l95wxRAEqhc9qcVQFIzLifsyHBYVqvPfI"
     }
 
 }

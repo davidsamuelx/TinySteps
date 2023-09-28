@@ -3,6 +3,8 @@ package com.aa.remote
 import com.aa.remote.utils.NetworkException
 import com.aa.repository.datasources.RemoteDataSource
 import com.aa.repository.resources.AllFoodAdviceResource
+import com.aa.repository.resources.LoginResource
+import com.aa.repository.resources.LoginResponseResource
 import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject
@@ -11,9 +13,16 @@ class RemoteDataSourceImpl @Inject constructor(
     private val tinyStepsService: TinyStepsService,
 ) : RemoteDataSource {
     override suspend fun getFoodAdvices(): AllFoodAdviceResource {
-       return tryToExecute { tinyStepsService.getFoodAdvices() }
+        return tryToExecute { tinyStepsService.getFoodAdvices() }
     }
 
+    override suspend fun loginRequest(loginResource: LoginResource): LoginResponseResource {
+        return tryToExecute {
+            tinyStepsService.loginRequest(
+                loginResource
+            )
+        }
+    }
 
 
     private suspend fun <T> tryToExecute(func: suspend () -> Response<T>): T {
