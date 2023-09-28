@@ -36,6 +36,7 @@ android {
 dependencies {
 
     implementation(project(":domain:usecase"))
+    implementation(project(":domain:models"))
     implementation ("com.google.dagger:dagger:2.48")
     implementation("androidx.room:room-common:2.5.2")
     kapt("com.google.dagger:dagger-compiler:2.44")
