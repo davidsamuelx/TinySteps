@@ -1,5 +1,6 @@
 package com.aa.remote
 
+import android.content.SharedPreferences
 import okhttp3.CacheControl
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -8,12 +9,15 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AuthInterceptor @Inject constructor() : Interceptor {
+class AuthInterceptor @Inject constructor(
+    private val sharedPreferences: SharedPreferences
+) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
+        val userToken = sharedPreferences.getString("token",null)
         val request = chain.request()
             .newBuilder()
             .cacheControl(cacheControl)
-            .header("Authorization", "bearer $TOKEN")
+            .header("Authorization", "bearer $userToken")
             .build()
         return chain.proceed(request)
     }
@@ -24,8 +28,5 @@ class AuthInterceptor @Inject constructor() : Interceptor {
         .build()
 
 
-    private companion object {
-        const val TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Rpbnktc3RlcHMuaGVscC9hcGkvYXV0aC91c2VyL2xvZ2luIiwiaWF0IjoxNjk1ODg0NTk2LCJleHAiOjE2OTU4ODgxOTYsIm5iZiI6MTY5NTg4NDU5NiwianRpIjoiVno1RW1JZTNsenk0NFJSNyIsInN1YiI6IjYiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.bDaFy1WNI6l95wxRAEqhc9qcVQFIzLifsyHBYVqvPfI"
-    }
 
 }
