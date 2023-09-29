@@ -3,7 +3,7 @@ package com.aa.repository.resources
 
 import com.google.gson.annotations.SerializedName
 
-data class Video(
+data class VideoResource(
     @SerializedName("created_at")
     val createdAt: String? = null,
     @SerializedName("id")

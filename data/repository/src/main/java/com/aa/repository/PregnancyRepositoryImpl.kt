@@ -2,6 +2,7 @@ package com.aa.repository
 
 import com.aa.models.AllFoodAdviceEntity
 import com.aa.models.BabyGenderEntity
+import com.aa.models.MusicEntity
 import com.aa.models.StoreBabyGenderEntity
 import com.aa.models.VideosEntity
 import com.aa.repositories.PregnancyRepository
@@ -34,7 +35,7 @@ class PregnancyRepositoryImpl @Inject constructor(
     }
 
     override suspend fun allVideos(): List<VideosEntity> {
-        return remoteDataSource.getAllVideos().videoList
+        return remoteDataSource.getAllVideos().videoResourceLists
             ?.mapNotNull { it?.toEntity() } ?: emptyList()
     }
 
@@ -43,7 +44,21 @@ class PregnancyRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getVideoByName(name: String): List<VideosEntity> {
-        return remoteDataSource.getVideosByName(name).videoList
+        return remoteDataSource.getVideosByName(name).videoResourceLists
+            ?.mapNotNull { it?.toEntity() } ?: emptyList()
+    }
+
+    override suspend fun getAllMusics(): List<MusicEntity> {
+        return remoteDataSource.getAllMusics().musicResourceList
+            ?.mapNotNull { it?.toEntity() } ?: emptyList()
+    }
+
+    override suspend fun getMusicById(id: Int): MusicEntity {
+        return remoteDataSource.getMusicById(id).toEntity()
+    }
+
+    override suspend fun getMusicByType(musicType: String): List<MusicEntity> {
+        return remoteDataSource.getMusicByType(musicType).musicResourceList
             ?.mapNotNull { it?.toEntity() } ?: emptyList()
     }
 }

@@ -1,12 +1,14 @@
 package com.aa.remote
 
 import com.aa.repository.resources.AllFoodAdviceResource
+import com.aa.repository.resources.AllMusicResource
 import com.aa.repository.resources.AllVideosResource
 import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
-import com.aa.repository.resources.Video
+import com.aa.repository.resources.MusicResource
+import com.aa.repository.resources.VideoResource
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -25,10 +27,19 @@ interface TinyStepsService {
     suspend fun getAllVideos():Response<AllVideosResource>
 
     @GET("user/Pregnancy/exercises/getVideo/{id}")
-    suspend fun getVideoById(@Path("id") videoId: Int): Response<Video>
+    suspend fun getVideoById(@Path("id") videoId: Int): Response<VideoResource>
 
     @GET("user/Pregnancy/exercises/SearchVideo/{searchName}")
     suspend fun searchVideoByName(@Path("searchName") searchName: String): Response<AllVideosResource>
+
+    @GET("user/Pregnancy/exercises/getAllMusics")
+    suspend fun getAllMusics():Response<AllMusicResource>
+
+    @GET("user/Pregnancy/exercises/getMusic/{id}")
+    suspend fun getMusicById(@Path("id") musicId: Int): Response<MusicResource>
+
+    @GET("user/Pregnancy/exercises/SearchMusic/{musicType}")
+    suspend fun searchMusicByType(@Path("musicType") musicType: String): Response<AllMusicResource>
 
     @POST("auth/user/login")
     suspend fun loginRequest(
