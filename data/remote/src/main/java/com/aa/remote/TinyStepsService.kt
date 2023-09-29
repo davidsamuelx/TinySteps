@@ -1,6 +1,7 @@
 package com.aa.remote
 
 import com.aa.repository.resources.AllFoodAdviceResource
+import com.aa.repository.resources.AllVideosResource
 import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.LoginResource
@@ -18,6 +19,9 @@ import retrofit2.http.Path
 interface TinyStepsService {
     @GET("user/getData/Phase01/all-food")
     suspend fun getFoodAdvices():Response<AllFoodAdviceResource>
+
+    @GET("user/Pregnancy/exercises/getAllVideos")
+    suspend fun getAllVideos():Response<AllVideosResource>
 
     @POST("auth/user/login")
     suspend fun loginRequest(

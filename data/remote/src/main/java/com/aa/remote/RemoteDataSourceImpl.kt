@@ -3,6 +3,7 @@ package com.aa.remote
 import com.aa.remote.utils.NetworkException
 import com.aa.repository.datasources.RemoteDataSource
 import com.aa.repository.resources.AllFoodAdviceResource
+import com.aa.repository.resources.AllVideosResource
 import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
@@ -47,6 +48,10 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute {
             tinyStepsService.updateBabyGender(babyId = id, babyGender = babyGender)
         }
+    }
+
+    override suspend fun getAllVideos(): AllVideosResource {
+        return tryToExecute { tinyStepsService.getAllVideos() }
     }
 
 

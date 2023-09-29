@@ -3,6 +3,7 @@ package com.aa.repositories
 import com.aa.models.AllFoodAdviceEntity
 import com.aa.models.BabyGenderEntity
 import com.aa.models.StoreBabyGenderEntity
+import com.aa.models.VideosEntity
 
 interface PregnancyRepository {
 
@@ -14,4 +15,5 @@ interface PregnancyRepository {
 
     suspend fun updateBabyGender( babyId: String, babyGender: String)
 
+    suspend fun allVideos():List<VideosEntity>
 }

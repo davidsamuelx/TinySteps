@@ -1,6 +1,7 @@
 package com.aa.repository.datasources
 
 import com.aa.repository.resources.AllFoodAdviceResource
+import com.aa.repository.resources.AllVideosResource
 import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.LoginResource
@@ -20,4 +21,6 @@ interface RemoteDataSource {
     suspend fun deleteBabyGender(id: String)
 
     suspend fun updateBabyGender(id: String, babyGender: String)
+
+    suspend fun getAllVideos(): AllVideosResource
 }
