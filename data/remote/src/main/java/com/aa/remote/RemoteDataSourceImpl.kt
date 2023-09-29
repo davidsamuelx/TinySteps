@@ -3,8 +3,10 @@ package com.aa.remote
 import com.aa.remote.utils.NetworkException
 import com.aa.repository.datasources.RemoteDataSource
 import com.aa.repository.resources.AllFoodAdviceResource
+import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
+import com.aa.repository.resources.StoreBabyGenderResource
 import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject
@@ -20,6 +22,14 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute {
             tinyStepsService.loginRequest(
                 loginResource
+            )
+        }
+    }
+
+    override suspend fun storeBabyGender(storeBabyGenderResource: StoreBabyGenderResource): BabyGenderResource {
+        return tryToExecute {
+            tinyStepsService.storeBabyGender(
+                storeBabyGenderResource
             )
         }
     }

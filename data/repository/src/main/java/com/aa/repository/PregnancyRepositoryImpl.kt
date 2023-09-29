@@ -1,9 +1,12 @@
 package com.aa.repository
 
 import com.aa.models.AllFoodAdviceEntity
+import com.aa.models.BabyGenderEntity
+import com.aa.models.StoreBabyGenderEntity
 import com.aa.repositories.PregnancyRepository
 import com.aa.repository.datasources.RemoteDataSource
 import com.aa.repository.mappers.toEntity
+import com.aa.repository.mappers.toResource
 import javax.inject.Inject
 
 class PregnancyRepositoryImpl @Inject constructor(
@@ -12,5 +15,9 @@ class PregnancyRepositoryImpl @Inject constructor(
     override suspend fun allFoodAdvice(): List<AllFoodAdviceEntity> {
         return remoteDataSource.getFoodAdvices().foodBabies
             ?.mapNotNull { it?.toEntity() } ?: emptyList()
+    }
+
+    override suspend fun storeBabyGender(storeBabyGenderEntity: StoreBabyGenderEntity): BabyGenderEntity {
+        return remoteDataSource.storeBabyGender(storeBabyGenderEntity.toResource()).toEntity()
     }
 }

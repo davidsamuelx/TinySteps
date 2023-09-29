@@ -1,6 +1,8 @@
 package com.aa.remote
 
 import com.aa.repository.resources.AllFoodAdviceResource
+import com.aa.repository.resources.BabyGenderResource
+import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
 import retrofit2.Response
@@ -16,5 +18,8 @@ interface TinyStepsService {
     suspend fun loginRequest(
         @Body loginResource: LoginResource
     ):Response<LoginResponseResource>
+
+    @POST("user/Pregnancy/BabyKind/store")
+    suspend fun storeBabyGender(@Body babyGender: StoreBabyGenderResource): Response<BabyGenderResource>
 
 }
