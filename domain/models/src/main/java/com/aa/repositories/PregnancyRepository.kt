@@ -10,4 +10,8 @@ interface PregnancyRepository {
 
     suspend fun storeBabyGender(storeBabyGenderEntity: StoreBabyGenderEntity):BabyGenderEntity
 
+    suspend fun deleteBabyGender(id: String)
+
+    suspend fun updateBabyGender( babyId: String, babyGender: String)
+
 }

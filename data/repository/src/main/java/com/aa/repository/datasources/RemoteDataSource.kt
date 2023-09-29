@@ -16,4 +16,8 @@ interface RemoteDataSource {
     suspend fun storeBabyGender(
         storeBabyGenderResource: StoreBabyGenderResource
     ): BabyGenderResource
+
+    suspend fun deleteBabyGender(id: String)
+
+    suspend fun updateBabyGender(id: String, babyGender: String)
 }

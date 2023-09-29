@@ -20,4 +20,15 @@ class PregnancyRepositoryImpl @Inject constructor(
     override suspend fun storeBabyGender(storeBabyGenderEntity: StoreBabyGenderEntity): BabyGenderEntity {
         return remoteDataSource.storeBabyGender(storeBabyGenderEntity.toResource()).toEntity()
     }
+
+    override suspend fun deleteBabyGender(id: String) {
+        return remoteDataSource.deleteBabyGender(id)
+    }
+
+    override suspend fun updateBabyGender( babyId: String, babyGender: String) {
+        return remoteDataSource.updateBabyGender(
+            id = babyId,
+            babyGender = babyGender
+        )
+    }
 }

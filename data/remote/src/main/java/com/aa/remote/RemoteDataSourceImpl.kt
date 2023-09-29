@@ -34,6 +34,21 @@ class RemoteDataSourceImpl @Inject constructor(
         }
     }
 
+    override suspend fun deleteBabyGender(id: String) {
+        return tryToExecute {
+            tinyStepsService.deleteBabyGender(id)
+        }
+    }
+
+    override suspend fun updateBabyGender(
+        id: String,
+        babyGender: String
+    ) {
+        return tryToExecute {
+            tinyStepsService.updateBabyGender(babyId = id, babyGender = babyGender)
+        }
+    }
+
 
     private suspend fun <T> tryToExecute(func: suspend () -> Response<T>): T {
         val response = func()
