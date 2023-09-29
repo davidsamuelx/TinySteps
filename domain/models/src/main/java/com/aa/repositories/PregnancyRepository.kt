@@ -16,4 +16,8 @@ interface PregnancyRepository {
     suspend fun updateBabyGender( babyId: String, babyGender: String)
 
     suspend fun allVideos():List<VideosEntity>
+
+    suspend fun getVideoById(id: Int): VideosEntity
+
+    suspend fun getVideoByName(name: String): List<VideosEntity>
 }

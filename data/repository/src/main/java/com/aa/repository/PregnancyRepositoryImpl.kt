@@ -37,4 +37,13 @@ class PregnancyRepositoryImpl @Inject constructor(
         return remoteDataSource.getAllVideos().videoList
             ?.mapNotNull { it?.toEntity() } ?: emptyList()
     }
+
+    override suspend fun getVideoById(id: Int): VideosEntity {
+        return remoteDataSource.getVideoById(id).toEntity()
+    }
+
+    override suspend fun getVideoByName(name: String): List<VideosEntity> {
+        return remoteDataSource.getVideosByName(name).videoList
+            ?.mapNotNull { it?.toEntity() } ?: emptyList()
+    }
 }

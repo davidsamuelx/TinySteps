@@ -8,6 +8,7 @@ import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
 import com.aa.repository.resources.StoreBabyGenderResource
+import com.aa.repository.resources.Video
 import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject
@@ -52,6 +53,14 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun getAllVideos(): AllVideosResource {
         return tryToExecute { tinyStepsService.getAllVideos() }
+    }
+
+    override suspend fun getVideoById(id: Int): Video {
+        return tryToExecute { tinyStepsService.getVideoById(id) }
+    }
+
+    override suspend fun getVideosByName(name: String): AllVideosResource {
+        return tryToExecute { tinyStepsService.searchVideoByName(name) }
     }
 
 

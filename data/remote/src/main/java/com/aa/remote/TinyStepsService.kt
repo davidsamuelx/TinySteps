@@ -6,6 +6,7 @@ import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
+import com.aa.repository.resources.Video
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -22,6 +23,12 @@ interface TinyStepsService {
 
     @GET("user/Pregnancy/exercises/getAllVideos")
     suspend fun getAllVideos():Response<AllVideosResource>
+
+    @GET("user/Pregnancy/exercises/getVideo/{id}")
+    suspend fun getVideoById(@Path("id") videoId: Int): Response<Video>
+
+    @GET("user/Pregnancy/exercises/SearchVideo/{searchName}")
+    suspend fun searchVideoByName(@Path("searchName") searchName: String): Response<AllVideosResource>
 
     @POST("auth/user/login")
     suspend fun loginRequest(

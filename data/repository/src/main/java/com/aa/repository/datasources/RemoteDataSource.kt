@@ -6,6 +6,7 @@ import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
+import com.aa.repository.resources.Video
 
 interface RemoteDataSource {
 
@@ -23,4 +24,8 @@ interface RemoteDataSource {
     suspend fun updateBabyGender(id: String, babyGender: String)
 
     suspend fun getAllVideos(): AllVideosResource
+
+    suspend fun getVideoById(id: Int): Video
+
+    suspend fun getVideosByName(name: String): AllVideosResource
 }
