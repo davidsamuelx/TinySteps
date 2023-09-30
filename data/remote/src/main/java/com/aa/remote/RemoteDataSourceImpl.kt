@@ -12,6 +12,8 @@ import com.aa.repository.resources.Infants.AllInfantsExcersiceSearchResource
 import com.aa.repository.resources.Infants.AllInfantsExcersiceSelectByIdResource
 import com.aa.repository.resources.Infants.AllInfantsFoodByIdResource
 import com.aa.repository.resources.Infants.AllInfantsFoodResource
+import com.aa.repository.resources.Infants.AllInfantsProductsResource
+import com.aa.repository.resources.Infants.AllInfantsProductsSelectResource
 import com.aa.repository.resources.Infants.AllInfantsRelationByIdResource
 import com.aa.repository.resources.Infants.AllInfantsRelationResource
 import com.aa.repository.resources.Infants.AllInfantsSleepSelectResource
@@ -78,8 +80,8 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute { tinyStepsService.getInfantsRelationById(id = id) }
     }
 
-    override suspend fun searchInfantsRelation(id: String): AllInfantsRelationResource {
-        return tryToExecute { tinyStepsService.searchInfantsRelation(id) }
+    override suspend fun searchInfantsRelation(searchId:String): AllInfantsRelationResource {
+        return tryToExecute { tinyStepsService.searchInfantsRelation(searchId) }
     }
 
     override suspend fun getInfantsBadHabits(): AllInfantsBadHabitsResource {
@@ -118,6 +120,18 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun searchInfantsSpecialCase(specialSearch: String): AllInfantsSpecialCaseResource {
         return tryToExecute { tinyStepsService.searchInfantsSpecialCase(specialSearch) }
+    }
+
+    override suspend fun getInfantsProducts(): AllInfantsProductsResource {
+        return tryToExecute { tinyStepsService.getInfantsProducts() }
+    }
+
+    override suspend fun selectInfantsProducts(id: String): AllInfantsProductsSelectResource {
+        return tryToExecute { tinyStepsService.selectInfantsProducts(id) }
+    }
+
+    override suspend fun searchInfantsProducts(product: String): AllInfantsProductsResource {
+        return tryToExecute { tinyStepsService.searchInfantsProducts(product) }
     }
 
 

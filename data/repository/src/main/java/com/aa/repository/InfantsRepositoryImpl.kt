@@ -4,6 +4,7 @@ import com.aa.models.GuidanceInstructionEntity
 import com.aa.models.InfantsBadHabitsEntity
 import com.aa.models.InfantsExcersiceEntity
 import com.aa.models.InfantsFoodEntity
+import com.aa.models.InfantsProductsEntity
 import com.aa.models.InfantsRelationEntity
 import com.aa.models.InfantsSleepEntity
 import com.aa.models.InfantsSpecialCaseEntity
@@ -180,6 +181,29 @@ class InfantsRepositoryImpl @Inject constructor(
 
     override suspend fun searchInfantsSpecialCase(specialSearch: String): List<InfantsSpecialCaseEntity> {
         return remoteDataSource.searchInfantsSpecialCase(specialSearch).specialCases
+            ?.mapNotNull { it?.toEntity() }?: emptyList()
+    }
+
+    override suspend fun getInfantsProducts(): List<InfantsProductsEntity> {
+        return remoteDataSource.getInfantsProducts().sleepBabies
+            ?.mapNotNull { it?.toEntity() }?: emptyList()
+    }
+
+    override suspend fun selectInfantsProducts(id: String): InfantsProductsEntity {
+        return remoteDataSource.selectInfantsProducts(id).product?.toEntity()
+            ?: InfantsProductsEntity(
+                "",
+                0,
+                "",
+                "",
+                0,
+                "",
+                ""
+            )
+    }
+
+    override suspend fun searchInfantsProducts(products: String): List<InfantsProductsEntity> {
+        return remoteDataSource.searchInfantsProducts(products).sleepBabies
             ?.mapNotNull { it?.toEntity() }?: emptyList()
     }
 

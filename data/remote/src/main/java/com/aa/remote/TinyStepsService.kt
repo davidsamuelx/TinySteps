@@ -10,6 +10,8 @@ import com.aa.repository.resources.Infants.AllInfantsExcersiceSearchResource
 import com.aa.repository.resources.Infants.AllInfantsExcersiceSelectByIdResource
 import com.aa.repository.resources.Infants.AllInfantsFoodByIdResource
 import com.aa.repository.resources.Infants.AllInfantsFoodResource
+import com.aa.repository.resources.Infants.AllInfantsProductsResource
+import com.aa.repository.resources.Infants.AllInfantsProductsSelectResource
 import com.aa.repository.resources.Infants.AllInfantsRelationByIdResource
 import com.aa.repository.resources.Infants.AllInfantsRelationResource
 import com.aa.repository.resources.Infants.AllInfantsSleepSelectResource
@@ -93,6 +95,15 @@ interface TinyStepsService {
 
     @GET("user/getData/special-cases/phase02/search/{special_search}")
     suspend fun searchInfantsSpecialCase(@Path("special_search")specialSearch:String):Response<AllInfantsSpecialCaseResource>
+
+    @GET("user/phase2/products/AllProducts")
+    suspend fun getInfantsProducts():Response<AllInfantsProductsResource>
+
+    @GET("user/phase2/products/select")
+    suspend fun selectInfantsProducts(@Query("id")id:String):Response<AllInfantsProductsSelectResource>
+
+    @GET("user/phase2/products/search/{product}")
+    suspend fun searchInfantsProducts(@Path("product")product:String):Response<AllInfantsProductsResource>
 
     @POST("auth/user/login")
     suspend fun loginRequest(

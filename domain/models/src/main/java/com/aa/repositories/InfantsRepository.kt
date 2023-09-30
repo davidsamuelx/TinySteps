@@ -4,6 +4,7 @@ import com.aa.models.GuidanceInstructionEntity
 import com.aa.models.InfantsBadHabitsEntity
 import com.aa.models.InfantsExcersiceEntity
 import com.aa.models.InfantsFoodEntity
+import com.aa.models.InfantsProductsEntity
 import com.aa.models.InfantsRelationEntity
 import com.aa.models.InfantsSleepEntity
 import com.aa.models.InfantsSpecialCaseEntity
@@ -51,4 +52,10 @@ interface InfantsRepository {
     suspend fun infantsSpecialCaseById(id:Int):InfantsSpecialCaseEntity
 
     suspend fun searchInfantsSpecialCase(specialSearch:String):List<InfantsSpecialCaseEntity>
+
+    suspend fun getInfantsProducts():List<InfantsProductsEntity>
+
+    suspend fun selectInfantsProducts(id: String):InfantsProductsEntity
+
+    suspend fun searchInfantsProducts(products:String):List<InfantsProductsEntity>
 }
