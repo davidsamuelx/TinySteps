@@ -1,10 +1,22 @@
 package com.aa.repository.datasources
 
+import com.aa.repository.resources.AllENSupportMessagesResource
 import com.aa.repository.resources.AllFoodAdviceResource
 import com.aa.repository.resources.BabyGenderResource
+import com.aa.repository.resources.ENImageResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
+import com.aa.repository.resources.NoteResource
+import com.aa.repository.resources.NoteResponceResource
+import com.aa.repository.resources.PregnancyResource
+import com.aa.repository.resources.PregnancyResponseResource
+import com.aa.repository.resources.PregnancyStoreResource
+import com.aa.repository.resources.SearchedENSupportMessageResource
+import com.aa.repository.resources.SelectedSupportMessageTypeResource
+import com.aa.repository.resources.SupportMessageEnglishResource
+import com.aa.repository.resources.TodayENSupportMessageResource
+import com.aa.repository.resources.UpdatePregnancyResource
 
 interface RemoteDataSource {
 
@@ -20,4 +32,40 @@ interface RemoteDataSource {
     suspend fun deleteBabyGender(id: String)
 
     suspend fun updateBabyGender(id: String, babyGender: String)
+
+    suspend fun addENSupportMessage(
+        selectedSupportMessageTypeResource: SelectedSupportMessageTypeResource
+    ): SupportMessageEnglishResource
+
+    suspend fun getAllENSupportMessages(): AllENSupportMessagesResource
+
+    suspend fun getENSupportMessageById(id: Int): SearchedENSupportMessageResource
+
+    suspend fun deleteENSupportMessage(id: Int)
+
+    suspend fun updateENSupportMessage(id: Int, messageType: String)
+
+    suspend fun getImage(): ENImageResource
+
+    suspend fun getTodaySupportMessage(): TodayENSupportMessageResource
+
+    suspend fun addNote(noteResource: NoteResource): NoteResponceResource
+
+    suspend fun getPregnancyData():PregnancyResource
+
+    suspend fun addPregnancy(
+        pregnancyStoreResource: PregnancyStoreResource
+    ): PregnancyResponseResource
+
+    suspend fun updatePregnancy(
+        id: Int,
+        startTime: String
+    ):UpdatePregnancyResource
+
+    suspend fun deletePregnancy(id: Int)
+
+    suspend fun getAllBadHabit()
+
+    suspend fun getAllSpecialCases()
+
 }
