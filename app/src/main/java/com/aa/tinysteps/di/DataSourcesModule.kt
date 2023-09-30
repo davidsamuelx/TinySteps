@@ -2,8 +2,10 @@ package com.aa.tinysteps.di
 
 import com.aa.remote.RemoteDataSourceImpl
 import com.aa.repositories.AuthenticationRepository
+import com.aa.repositories.InfantsRepository
 import com.aa.repositories.PregnancyRepository
 import com.aa.repository.AuthenticationRepositoryImpl
+import com.aa.repository.InfantsRepositoryImpl
 import com.aa.repository.PregnancyRepositoryImpl
 import com.aa.repository.datasources.RemoteDataSource
 import dagger.Binds
@@ -23,6 +25,11 @@ abstract class DataSourcesModule {
     @Binds
     @Singleton
     abstract fun bindPregnancyRepo(pregnancyRepositoryImpl: PregnancyRepositoryImpl): PregnancyRepository
+
+    @Binds
+    @Singleton
+    abstract  fun  bindInfantsRepo(infantsRepositoryImpl: InfantsRepositoryImpl):InfantsRepository
+
 
     @Binds
     @Singleton

@@ -39,6 +39,8 @@ dependencies {
     implementation(project(":domain:models"))
     implementation ("com.google.dagger:dagger:2.48")
     implementation("androidx.room:room-common:2.5.2")
+    implementation(project(mapOf("path" to ":domain:models")))
+    implementation(project(mapOf("path" to ":domain:models")))
     kapt("com.google.dagger:dagger-compiler:2.44")
     //room
     val room_version = "2.5.2"
