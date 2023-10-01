@@ -4,12 +4,15 @@ import com.aa.models.AddNoteEntity
 import com.aa.models.AllFoodAdviceEntity
 import com.aa.models.AllSupportMessagesEntity
 import com.aa.models.BabyGenderEntity
+import com.aa.models.BadHabitEntity
 import com.aa.models.ImageEntity
 import com.aa.models.NoteEntity
 import com.aa.models.PregnancyEntity
 import com.aa.models.PregnancyResponseEntity
 import com.aa.models.PregnancyStoreEntity
+import com.aa.models.SearchFoodEntity
 import com.aa.models.SelectedSupportMessageEntity
+import com.aa.models.SpecialCaseEntity
 import com.aa.models.StoreBabyGenderEntity
 import com.aa.models.SupportMessageEntity
 import com.aa.models.TodayENSupportMessageEntity
@@ -100,12 +103,54 @@ class PregnancyRepositoryImpl @Inject constructor(
         return remoteDataSource.deletePregnancy(id)
     }
 
-    override suspend fun getAllBadHabit() {
-        return remoteDataSource.getAllBadHabit()
+    override suspend fun getAllBadHabit(): List<BadHabitEntity> {
+        return remoteDataSource.getAllBadHabit().badhabits
+            ?.mapNotNull { it?.toEntity() } ?: emptyList()
     }
 
-    override suspend fun getAllSpecialCases() {
-        return remoteDataSource.getAllSpecialCases()
+    override suspend fun getAllSpecialCases(): List<SpecialCaseEntity> {
+        return remoteDataSource.getAllSpecialCases().specialCase
+            ?.map { it.toEntity() } ?: emptyList()
+    }
+
+    override suspend fun getFoodById(id: Int): SearchFoodEntity {
+        return remoteDataSource.getFoodById(id).foodBaby?.toEntity()
+            ?: SearchFoodEntity(
+                detailsOfFood= "",
+                id = 0,
+                imgFood= "",
+                nameFood= "",
+                adviceId = 0,
+                doctorName = "",
+                phoneDoctor = "",
+                profileDoctor = "",
+                nameProblem = "",
+                solveProblem = ""
+            )
+    }
+
+    override suspend fun searchFood(foodSearch: String): List<SearchFoodEntity> {
+        return remoteDataSource.searchFood(foodSearch).foodBabies
+            ?.map { it.toEntity() } ?: emptyList()
+    }
+
+    override suspend fun getAllBadHabitById(id: Int): BadHabitEntity {
+        return remoteDataSource.getAllBadHabitById(id).badhabit?.toEntity()
+            ?: BadHabitEntity(
+                details = "",
+                iD = 0,
+                nameBadHabit = "",
+                pathImg = "",
+                adviceId = 0,
+                doctorName = "",
+                phoneDoctor = "",
+                profileDoctor = "",
+                solveProblem = ""
+            )
+    }
+
+    override suspend fun searchBadHabit(badHabit: String): List<BadHabitEntity> {
+        return remoteDataSource.searchBadHabit(badHabit).mapNotNull { it.toEntity() }
     }
 
 }

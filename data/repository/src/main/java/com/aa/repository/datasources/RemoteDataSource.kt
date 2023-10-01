@@ -1,9 +1,13 @@
 package com.aa.repository.datasources
 
+import com.aa.repository.resources.AllBadHabitsResource
 import com.aa.repository.resources.AllENSupportMessagesResource
 import com.aa.repository.resources.AllFoodAdviceResource
+import com.aa.repository.resources.AllSpecialCaseResource
 import com.aa.repository.resources.BabyGenderResource
+import com.aa.repository.resources.BadHabitByIdResource
 import com.aa.repository.resources.ENImageResource
+import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
@@ -12,6 +16,8 @@ import com.aa.repository.resources.NoteResponceResource
 import com.aa.repository.resources.PregnancyResource
 import com.aa.repository.resources.PregnancyResponseResource
 import com.aa.repository.resources.PregnancyStoreResource
+import com.aa.repository.resources.SearchBadHabitResource
+import com.aa.repository.resources.SearchFoodResource
 import com.aa.repository.resources.SearchedENSupportMessageResource
 import com.aa.repository.resources.SelectedSupportMessageTypeResource
 import com.aa.repository.resources.SupportMessageEnglishResource
@@ -64,8 +70,16 @@ interface RemoteDataSource {
 
     suspend fun deletePregnancy(id: Int)
 
-    suspend fun getAllBadHabit()
+    suspend fun getAllBadHabit(): AllBadHabitsResource
 
-    suspend fun getAllSpecialCases()
+    suspend fun getAllSpecialCases(): AllSpecialCaseResource
+
+    suspend fun getFoodById(id:Int): FoodByIdResource
+
+    suspend fun searchFood(foodSearch:String): SearchFoodResource
+
+    suspend fun getAllBadHabitById(id:Int): BadHabitByIdResource
+
+    suspend fun searchBadHabit(badHabit:String): SearchBadHabitResource
 
 }

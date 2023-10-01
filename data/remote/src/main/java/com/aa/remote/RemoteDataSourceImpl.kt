@@ -2,10 +2,14 @@ package com.aa.remote
 
 import com.aa.remote.utils.NetworkException
 import com.aa.repository.datasources.RemoteDataSource
+import com.aa.repository.resources.AllBadHabitsResource
 import com.aa.repository.resources.AllENSupportMessagesResource
 import com.aa.repository.resources.AllFoodAdviceResource
+import com.aa.repository.resources.AllSpecialCaseResource
 import com.aa.repository.resources.BabyGenderResource
+import com.aa.repository.resources.BadHabitByIdResource
 import com.aa.repository.resources.ENImageResource
+import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
 import com.aa.repository.resources.NoteResource
@@ -13,6 +17,8 @@ import com.aa.repository.resources.NoteResponceResource
 import com.aa.repository.resources.PregnancyResource
 import com.aa.repository.resources.PregnancyResponseResource
 import com.aa.repository.resources.PregnancyStoreResource
+import com.aa.repository.resources.SearchBadHabitResource
+import com.aa.repository.resources.SearchFoodResource
 import com.aa.repository.resources.SearchedENSupportMessageResource
 import com.aa.repository.resources.SelectedSupportMessageTypeResource
 import com.aa.repository.resources.StoreBabyGenderResource
@@ -118,12 +124,28 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute { tinyStepsService.deletePregnancy(id) }
     }
 
-    override suspend fun getAllBadHabit() {
+    override suspend fun getAllBadHabit(): AllBadHabitsResource {
         return tryToExecute { tinyStepsService.getBadHabit() }
     }
 
-    override suspend fun getAllSpecialCases() {
+    override suspend fun getAllSpecialCases(): AllSpecialCaseResource {
         return tryToExecute { tinyStepsService.getSpecialCases() }
+    }
+
+    override suspend fun getFoodById(id: Int): FoodByIdResource {
+        return tryToExecute { tinyStepsService.getFoodById(id) }
+    }
+
+    override suspend fun searchFood(foodSearch: String): SearchFoodResource {
+        return tryToExecute { tinyStepsService.searchFood(foodSearch) }
+    }
+
+    override suspend fun getAllBadHabitById(id: Int): BadHabitByIdResource {
+        return tryToExecute { tinyStepsService.getBadHabitsById(id) }
+    }
+
+    override suspend fun searchBadHabit(badHabit: String): SearchBadHabitResource {
+        return tryToExecute { tinyStepsService.searchBadHabits(badHabit) }
     }
 
 

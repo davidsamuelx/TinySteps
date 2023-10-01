@@ -4,10 +4,10 @@ import com.aa.models.BadHabitEntity
 import com.aa.repositories.PregnancyRepository
 import javax.inject.Inject
 
-class GetAllBadHabitsUseCase @Inject constructor(
+class SearchBadHabitUseCase @Inject constructor(
     private val pregnancyRepository: PregnancyRepository
 ) {
-    suspend operator fun invoke() : List<BadHabitEntity>  {
-        return pregnancyRepository.getAllBadHabit()
+    suspend operator fun invoke(badHabit: String): List<BadHabitEntity>{
+        return pregnancyRepository.searchBadHabit(badHabit)
     }
 }

@@ -1,10 +1,14 @@
 package com.aa.remote
 
+import com.aa.repository.resources.AllBadHabitsResource
 import com.aa.repository.resources.NoteResource
 import com.aa.repository.resources.AllENSupportMessagesResource
 import com.aa.repository.resources.AllFoodAdviceResource
+import com.aa.repository.resources.AllSpecialCaseResource
 import com.aa.repository.resources.BabyGenderResource
+import com.aa.repository.resources.BadHabitByIdResource
 import com.aa.repository.resources.ENImageResource
+import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
@@ -16,6 +20,8 @@ import com.aa.repository.resources.TodayENSupportMessageResource
 import com.aa.repository.resources.PregnancyResource
 import com.aa.repository.resources.PregnancyResponseResource
 import com.aa.repository.resources.PregnancyStoreResource
+import com.aa.repository.resources.SearchBadHabitResource
+import com.aa.repository.resources.SearchFoodResource
 import com.aa.repository.resources.UpdatePregnancyResource
 import retrofit2.Response
 import retrofit2.http.Body
@@ -26,6 +32,7 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface TinyStepsService {
     @GET("user/getData/Phase01/all-food")
@@ -102,11 +109,21 @@ interface TinyStepsService {
     ): Response<Unit>
 
     @GET("user/getData/Phase01/BadHabit/all")
-    suspend fun getBadHabit(): Response<Unit>
+    suspend fun getBadHabit(): Response<AllBadHabitsResource>
 
     @GET("user/getData/special-cases/phase01")
-    suspend fun getSpecialCases(): Response<Unit>
+    suspend fun getSpecialCases(): Response<AllSpecialCaseResource>
 
+    @GET("user/getData/Phase01/food/getById")
+    suspend fun getFoodById(@Query("id")id: Int):Response<FoodByIdResource>
 
+    @GET("user/getData/Phase01/search-food/{food_search}")
+    suspend fun searchFood(@Path("food_search")foodSearch:String):Response<SearchFoodResource>
+
+    @GET("user/getData/Phase01/BadHabit/getById")
+    suspend fun getBadHabitsById(@Query("id") id:Int):Response<BadHabitByIdResource>
+
+    @GET("user/Pregnancy/Advices/search-badhabits/{bad_habit}")
+    suspend fun searchBadHabits(@Path("bad_habit")badHabit:String):Response<SearchBadHabitResource>
 
 }
