@@ -9,5 +9,5 @@ data class BabyGenderResource(
     @SerializedName("Message")
     val message: String? = null,
     @SerializedName("New Record")
-    val newRecord: NewRecord? = null
+    val babyNewRecord: BabyNewRecord? = null
 )

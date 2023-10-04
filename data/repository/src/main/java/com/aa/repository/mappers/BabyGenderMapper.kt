@@ -16,7 +16,7 @@ internal fun BabyGenderResource.toEntity():BabyGenderEntity{
     return BabyGenderEntity(
         babyGender = kindBaby.orEmpty(),
         message = message.orEmpty(),
-        preId = newRecord?.preId.orZero(),
-        id = newRecord?.id.orZero(),
+        preId = babyNewRecord?.preId.orZero(),
+        id = babyNewRecord?.id.orZero(),
     )
 }
