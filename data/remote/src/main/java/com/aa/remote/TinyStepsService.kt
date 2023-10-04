@@ -56,8 +56,11 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface TinyStepsService {
+
+    //region authentication
     @GET("user/getData/Phase01/all-food")
     suspend fun getFoodAdvices():Response<AllFoodAdviceResource>
+    //endregion
 
     //region phase 02 infants and Toddler
     @GET("user/phase2/guidance-instructions/getAll")
@@ -134,6 +137,7 @@ interface TinyStepsService {
 
     //endregion
 
+    //region pregnancy phase
     @GET("user/Pregnancy/exercises/getAllVideos")
     suspend fun getAllVideos():Response<AllVideosResource>
 
@@ -239,5 +243,7 @@ interface TinyStepsService {
 
     @GET("user/Pregnancy/Advices/search-badhabits/{bad_habit}")
     suspend fun searchBadHabits(@Path("bad_habit")badHabit:String):Response<SearchBadHabitResource>
+
+    //endregion
 
 }

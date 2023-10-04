@@ -53,17 +53,24 @@ import javax.inject.Inject
 class RemoteDataSourceImpl @Inject constructor(
     private val tinyStepsService: TinyStepsService,
 ) : RemoteDataSource {
-    override suspend fun getFoodAdvices(): AllFoodAdviceResource {
-        return tryToExecute { tinyStepsService.getFoodAdvices() }
-    }
 
-    //phase 02 infants and Toddler
+    //region authentication
+    override suspend fun loginRequest(loginResource: LoginResource): LoginResponseResource {
+        return tryToExecute {
+            tinyStepsService.loginRequest(
+                loginResource
+            )
+        }
+    }
+    //endregion
+
+    //region phase 02 infants and Toddler
 
     override suspend fun getGuidanceInstruction(): AllGuidanceInstructionResource {
-        return  tryToExecute { tinyStepsService.getGuidanceAdvice() }
+        return tryToExecute { tinyStepsService.getGuidanceAdvice() }
     }
 
-    override suspend fun selectGuidanceInstruction(id:String): AllGuidanceInstructionSelectResource {
+    override suspend fun selectGuidanceInstruction(id: String): AllGuidanceInstructionSelectResource {
         return tryToExecute { tinyStepsService.selectGuidanceAdvice(id) }
     }
 
@@ -72,7 +79,7 @@ class RemoteDataSourceImpl @Inject constructor(
     }
 
     override suspend fun getInfantsSleep(): InfantsSleepResource {
-        return  tryToExecute { tinyStepsService.getInfantsSleep() }
+        return tryToExecute { tinyStepsService.getInfantsSleep() }
     }
 
     override suspend fun selectInfantsSleep(id: Int): AllInfantsSleepSelectResource {
@@ -85,7 +92,7 @@ class RemoteDataSourceImpl @Inject constructor(
 
 
     override suspend fun getInfantsExcersice(): AllInfantsExcersiceResource {
-    return  tryToExecute { tinyStepsService.getInfantsExcersice() }
+        return tryToExecute { tinyStepsService.getInfantsExcersice() }
     }
 
     override suspend fun searchInfantsExcersice(videoPath: String): AllInfantsExcersiceSearchResource {
@@ -97,14 +104,14 @@ class RemoteDataSourceImpl @Inject constructor(
     }
 
     override suspend fun getInfantsRelation(): AllInfantsRelationResource {
-        return  tryToExecute { tinyStepsService.getInfantsRelation() }
+        return tryToExecute { tinyStepsService.getInfantsRelation() }
     }
 
     override suspend fun getInfantsRelationById(id: Int): AllInfantsRelationByIdResource {
         return tryToExecute { tinyStepsService.getInfantsRelationById(id = id) }
     }
 
-    override suspend fun searchInfantsRelation(searchId:String): AllInfantsRelationResource {
+    override suspend fun searchInfantsRelation(searchId: String): AllInfantsRelationResource {
         return tryToExecute { tinyStepsService.searchInfantsRelation(searchId) }
     }
 
@@ -112,8 +119,8 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute { tinyStepsService.getInfantsBadHabits() }
     }
 
-    override suspend fun getInfantsBadHabitsById(id:Int): AllInfantsBadHabitsByIdResource {
-    return tryToExecute { tinyStepsService.getInfantsBadHabitsById(id = id) }
+    override suspend fun getInfantsBadHabitsById(id: Int): AllInfantsBadHabitsByIdResource {
+        return tryToExecute { tinyStepsService.getInfantsBadHabitsById(id = id) }
     }
 
     override suspend fun searchInfantsBadHabits(badHabit: String): AllInfantsBadHabitsResource {
@@ -122,11 +129,11 @@ class RemoteDataSourceImpl @Inject constructor(
 
 
     override suspend fun getInfantsFood(): AllInfantsFoodResource {
-        return  tryToExecute { tinyStepsService.getInfantsFood() }
+        return tryToExecute { tinyStepsService.getInfantsFood() }
     }
 
     override suspend fun getInfantsFoodById(id: Int): AllInfantsFoodByIdResource {
-        return  tryToExecute { tinyStepsService.getInfantsFoodById(id =id) }
+        return tryToExecute { tinyStepsService.getInfantsFoodById(id = id) }
     }
 
     override suspend fun searchInfantsFood(foodSearch: String): AllInfantsFoodResource {
@@ -139,7 +146,7 @@ class RemoteDataSourceImpl @Inject constructor(
     }
 
     override suspend fun getInfantsSpecialCaseById(id: Int): AllInfantsSpecialCaseByIdResource {
-        return tryToExecute { tinyStepsService.getInfantsSpecialCaseById(id=id) }
+        return tryToExecute { tinyStepsService.getInfantsSpecialCaseById(id = id) }
     }
 
     override suspend fun searchInfantsSpecialCase(specialSearch: String): AllInfantsSpecialCaseResource {
@@ -160,13 +167,9 @@ class RemoteDataSourceImpl @Inject constructor(
 
     //endregion
 
-
-    override suspend fun loginRequest(loginResource: LoginResource): LoginResponseResource {
-        return tryToExecute {
-            tinyStepsService.loginRequest(
-                loginResource
-            )
-        }
+    //region pregnancy phase
+    override suspend fun getFoodAdvices(): AllFoodAdviceResource {
+        return tryToExecute { tinyStepsService.getFoodAdvices() }
     }
 
     override suspend fun storeBabyGender(storeBabyGenderResource: StoreBabyGenderResource): BabyGenderResource {
@@ -185,7 +188,7 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun updateBabyGender(
         id: String,
-        babyGender: String
+        babyGender: String,
     ) {
         return tryToExecute {
             tinyStepsService.updateBabyGender(babyId = id, babyGender = babyGender)
@@ -193,7 +196,7 @@ class RemoteDataSourceImpl @Inject constructor(
     }
 
     override suspend fun addENSupportMessage(
-        selectedSupportMessageTypeResource: SelectedSupportMessageTypeResource
+        selectedSupportMessageTypeResource: SelectedSupportMessageTypeResource,
     ): SupportMessageEnglishResource {
         return tryToExecute {
             tinyStepsService.addSupportMessageEnglish(selectedSupportMessageTypeResource)
@@ -213,9 +216,11 @@ class RemoteDataSourceImpl @Inject constructor(
     }
 
     override suspend fun updateENSupportMessage(id: Int, messageType: String) {
-        return tryToExecute { tinyStepsService.updateENSupportMessage(
-            messageId = id, selectWhenSendSupportMessage = messageType
-        ) }
+        return tryToExecute {
+            tinyStepsService.updateENSupportMessage(
+                messageId = id, selectWhenSendSupportMessage = messageType
+            )
+        }
     }
 
     override suspend fun getImage(): ENImageResource {
@@ -239,10 +244,12 @@ class RemoteDataSourceImpl @Inject constructor(
     }
 
     override suspend fun updatePregnancy(id: Int, startTime: String): UpdatePregnancyResource {
-        return tryToExecute { tinyStepsService.updatePregnancy(
-            userId = id,
-            startDate = startTime
-        ) }
+        return tryToExecute {
+            tinyStepsService.updatePregnancy(
+                userId = id,
+                startDate = startTime
+            )
+        }
     }
 
     override suspend fun deletePregnancy(id: Int) {
@@ -297,6 +304,7 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute { tinyStepsService.searchMusicByType(musicType) }
     }
 
+    //endregion
 
     private suspend fun <T> tryToExecute(func: suspend () -> Response<T>): T {
         val response = func()
