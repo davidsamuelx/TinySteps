@@ -134,6 +134,8 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute { tinyStepsService.searchInfantsProducts(product) }
     }
 
+    //endregion
+
 
     override suspend fun loginRequest(loginResource: LoginResource): LoginResponseResource {
         return tryToExecute {

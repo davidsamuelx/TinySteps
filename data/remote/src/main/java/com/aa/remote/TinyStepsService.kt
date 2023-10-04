@@ -22,7 +22,6 @@ import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
 import retrofit2.Response
 import retrofit2.http.Body
-import retrofit2.http.Field
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -32,7 +31,7 @@ interface TinyStepsService {
     @GET("user/getData/Phase01/all-food")
     suspend fun getFoodAdvices():Response<AllFoodAdviceResource>
 
-    //phase 02 infants and Toddler
+    //region phase 02 infants and Toddler
     @GET("user/phase2/guidance-instructions/getAll")
     suspend fun getGuidanceAdvice():Response<AllGuidanceInstructionResource>
 
@@ -104,6 +103,8 @@ interface TinyStepsService {
 
     @GET("user/phase2/products/search/{product}")
     suspend fun searchInfantsProducts(@Path("product")product:String):Response<AllInfantsProductsResource>
+
+    //endregion
 
     @POST("auth/user/login")
     suspend fun loginRequest(
