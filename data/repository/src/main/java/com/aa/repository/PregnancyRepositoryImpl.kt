@@ -116,19 +116,7 @@ class PregnancyRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getFoodById(id: Int): SearchFoodEntity {
-        return remoteDataSource.getFoodById(id).foodBaby?.toEntity()
-            ?: SearchFoodEntity(
-                detailsOfFood= "",
-                id = 0,
-                imgFood= "",
-                nameFood= "",
-                adviceId = 0,
-                doctorName = "",
-                phoneDoctor = "",
-                profileDoctor = "",
-                nameProblem = "",
-                solveProblem = ""
-            )
+        return remoteDataSource.getFoodById(id).foodBaby.toEntity()
     }
 
     override suspend fun searchFood(foodSearch: String): List<SearchFoodEntity> {
@@ -137,18 +125,7 @@ class PregnancyRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getAllBadHabitById(id: Int): BadHabitEntity {
-        return remoteDataSource.getAllBadHabitById(id).badhabit?.toEntity()
-            ?: BadHabitEntity(
-                details = "",
-                iD = 0,
-                nameBadHabit = "",
-                pathImg = "",
-                adviceId = 0,
-                doctorName = "",
-                phoneDoctor = "",
-                profileDoctor = "",
-                solveProblem = ""
-            )
+        return remoteDataSource.getAllBadHabitById(id).badhabit.toEntity()
     }
 
     override suspend fun searchBadHabit(badHabit: String): List<BadHabitEntity> {
