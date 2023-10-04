@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class SpecialCase(
     @SerializedName("Advices")
-    val advices: AdvicesX? = AdvicesX(),
+    val advices: Advices? = Advices(),
     @SerializedName("Details")
     val details: String? = "",
     @SerializedName("ID")

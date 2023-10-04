@@ -6,6 +6,6 @@ import com.google.gson.annotations.SerializedName
 data class NoteResponceResource(
     @SerializedName("message")
     val message: String? = "",
-    @SerializedName("newRecord")
+    @SerializedName("babyNewRecord")
     val newRecord: NoteRecord? = NoteRecord()
 )

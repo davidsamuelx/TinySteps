@@ -3,7 +3,7 @@ package com.aa.repository.resources
 
 import com.google.gson.annotations.SerializedName
 
-data class LinksX(
+data class LinksResource(
     @SerializedName("delete")
     val delete: String? = null,
     @SerializedName("index")

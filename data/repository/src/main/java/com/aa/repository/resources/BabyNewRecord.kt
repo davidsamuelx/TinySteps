@@ -3,15 +3,15 @@ package com.aa.repository.resources
 
 import com.google.gson.annotations.SerializedName
 
-data class NewRecordX(
+data class BabyNewRecord(
     @SerializedName("created_at")
     val createdAt: String? = null,
     @SerializedName("id")
     val id: Int? = null,
-    @SerializedName("StartDate")
-    val startDate: String? = null,
+    @SerializedName("kindBaby")
+    val kindBaby: String? = null,
+    @SerializedName("pre_id")
+    val preId: Int? = null,
     @SerializedName("updated_at")
-    val updatedAt: String? = null,
-    @SerializedName("user_id")
-    val userId: Int? = null
+    val updatedAt: String? = null
 )

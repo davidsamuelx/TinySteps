@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName
 
 data class UpdatePregnancyResource(
     @SerializedName("Differences")
-    val differences: DifferencesX? = DifferencesX(),
+    val differences: Differences? = Differences(),
     @SerializedName("links")
-    val links: LinksXX? = LinksXX(),
+    val links: LinksResource? = LinksResource(),
     @SerializedName("message")
     val message: String? = "",
     @SerializedName("updatedRecord")

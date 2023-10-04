@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class FoodBaby(
     @SerializedName("Advices")
-    val advices: AdvicesXX? = AdvicesXX(),
+    val advices: Advices? = Advices(),
     @SerializedName("DetailsOfFood")
     val detailsOfFood: String? = "",
     @SerializedName("ID")

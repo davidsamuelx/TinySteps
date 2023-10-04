@@ -7,9 +7,9 @@ data class PregnancyResponseResource(
     @SerializedName("Differences")
     val differences: Differences? = Differences(),
     @SerializedName("links")
-    val links: LinksX? = LinksX(),
+    val links: LinksResource? = LinksResource(),
     @SerializedName("message")
     val message: String? = "",
-    @SerializedName("newRecord")
-    val newRecord: NewRecordX? = NewRecordX()
+    @SerializedName("babyNewRecord")
+    val newRecord: NewRecord? = NewRecord()
 )

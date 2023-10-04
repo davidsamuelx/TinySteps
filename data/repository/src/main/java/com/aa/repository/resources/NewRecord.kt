@@ -8,10 +8,10 @@ data class NewRecord(
     val createdAt: String? = null,
     @SerializedName("id")
     val id: Int? = null,
-    @SerializedName("kindBaby")
-    val kindBaby: String? = null,
-    @SerializedName("pre_id")
-    val preId: Int? = null,
+    @SerializedName("StartDate")
+    val startDate: String? = null,
     @SerializedName("updated_at")
-    val updatedAt: String? = null
+    val updatedAt: String? = null,
+    @SerializedName("user_id")
+    val userId: Int? = null
 )
