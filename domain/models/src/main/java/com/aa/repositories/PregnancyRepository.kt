@@ -13,10 +13,12 @@ import com.aa.models.PregnancyStoreEntity
 import com.aa.models.SearchFoodEntity
 import com.aa.models.SelectedSupportMessageEntity
 import com.aa.models.SpecialCaseEntity
+import com.aa.models.MusicEntity
 import com.aa.models.StoreBabyGenderEntity
 import com.aa.models.SupportMessageEntity
 import com.aa.models.TodayENSupportMessageEntity
 import com.aa.models.UpdatePregnancyEntity
+import com.aa.models.VideosEntity
 
 interface PregnancyRepository {
 
@@ -70,5 +72,17 @@ interface PregnancyRepository {
     suspend fun getAllBadHabitById(id:Int): BadHabitEntity
 
     suspend fun searchBadHabit(badHabit:String): List<BadHabitEntity>
+
+    suspend fun allVideos():List<VideosEntity>
+
+    suspend fun getVideoById(id: Int): VideosEntity
+
+    suspend fun getVideoByName(name: String): List<VideosEntity>
+
+    suspend fun getAllMusics(): List<MusicEntity>
+
+    suspend fun getMusicById(id: Int): MusicEntity
+
+    suspend fun getMusicByType(musicType: String): List<MusicEntity>
 
 }

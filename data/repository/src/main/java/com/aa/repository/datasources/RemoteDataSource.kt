@@ -4,6 +4,8 @@ import com.aa.repository.resources.AllBadHabitsResource
 import com.aa.repository.resources.AllENSupportMessagesResource
 import com.aa.repository.resources.AllFoodAdviceResource
 import com.aa.repository.resources.AllSpecialCaseResource
+import com.aa.repository.resources.AllMusicResource
+import com.aa.repository.resources.AllVideosResource
 import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.BadHabitByIdResource
 import com.aa.repository.resources.ENImageResource
@@ -23,6 +25,8 @@ import com.aa.repository.resources.SelectedSupportMessageTypeResource
 import com.aa.repository.resources.SupportMessageEnglishResource
 import com.aa.repository.resources.TodayENSupportMessageResource
 import com.aa.repository.resources.UpdatePregnancyResource
+import com.aa.repository.resources.MusicResource
+import com.aa.repository.resources.VideoResource
 
 interface RemoteDataSource {
 
@@ -82,4 +86,16 @@ interface RemoteDataSource {
 
     suspend fun searchBadHabit(badHabit:String): SearchBadHabitResource
 
+
+    suspend fun getAllVideos(): AllVideosResource
+
+    suspend fun getVideoById(id: Int): VideoResource
+
+    suspend fun getVideosByName(name: String): AllVideosResource
+
+    suspend fun getAllMusics(): AllMusicResource
+
+    suspend fun getMusicById(id: Int): MusicResource
+
+    suspend fun getMusicByType(musicType: String): AllMusicResource
 }

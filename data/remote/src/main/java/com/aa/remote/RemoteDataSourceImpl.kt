@@ -5,6 +5,8 @@ import com.aa.repository.datasources.RemoteDataSource
 import com.aa.repository.resources.AllBadHabitsResource
 import com.aa.repository.resources.AllENSupportMessagesResource
 import com.aa.repository.resources.AllFoodAdviceResource
+import com.aa.repository.resources.AllMusicResource
+import com.aa.repository.resources.AllVideosResource
 import com.aa.repository.resources.AllSpecialCaseResource
 import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.BadHabitByIdResource
@@ -12,6 +14,7 @@ import com.aa.repository.resources.ENImageResource
 import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
+import com.aa.repository.resources.MusicResource
 import com.aa.repository.resources.NoteResource
 import com.aa.repository.resources.NoteResponceResource
 import com.aa.repository.resources.PregnancyResource
@@ -22,6 +25,7 @@ import com.aa.repository.resources.SearchFoodResource
 import com.aa.repository.resources.SearchedENSupportMessageResource
 import com.aa.repository.resources.SelectedSupportMessageTypeResource
 import com.aa.repository.resources.StoreBabyGenderResource
+import com.aa.repository.resources.VideoResource
 import com.aa.repository.resources.SupportMessageEnglishResource
 import com.aa.repository.resources.TodayENSupportMessageResource
 import com.aa.repository.resources.UpdatePregnancyResource
@@ -146,6 +150,30 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun searchBadHabit(badHabit: String): SearchBadHabitResource {
         return tryToExecute { tinyStepsService.searchBadHabits(badHabit) }
+    }
+
+    override suspend fun getAllVideos(): AllVideosResource {
+        return tryToExecute { tinyStepsService.getAllVideos() }
+    }
+
+    override suspend fun getVideoById(id: Int): VideoResource {
+        return tryToExecute { tinyStepsService.getVideoById(id) }
+    }
+
+    override suspend fun getVideosByName(name: String): AllVideosResource {
+        return tryToExecute { tinyStepsService.searchVideoByName(name) }
+    }
+
+    override suspend fun getAllMusics(): AllMusicResource {
+        return tryToExecute { tinyStepsService.getAllMusics() }
+    }
+
+    override suspend fun getMusicById(id: Int): MusicResource {
+        return tryToExecute { tinyStepsService.getMusicById(id) }
+    }
+
+    override suspend fun getMusicByType(musicType: String): AllMusicResource {
+        return tryToExecute { tinyStepsService.searchMusicByType(musicType) }
     }
 
 

@@ -13,10 +13,12 @@ import com.aa.models.PregnancyStoreEntity
 import com.aa.models.SearchFoodEntity
 import com.aa.models.SelectedSupportMessageEntity
 import com.aa.models.SpecialCaseEntity
+import com.aa.models.MusicEntity
 import com.aa.models.StoreBabyGenderEntity
 import com.aa.models.SupportMessageEntity
 import com.aa.models.TodayENSupportMessageEntity
 import com.aa.models.UpdatePregnancyEntity
+import com.aa.models.VideosEntity
 import com.aa.repositories.PregnancyRepository
 import com.aa.repository.datasources.RemoteDataSource
 import com.aa.repository.mappers.toEntity
@@ -153,4 +155,32 @@ class PregnancyRepositoryImpl @Inject constructor(
         return remoteDataSource.searchBadHabit(badHabit).mapNotNull { it.toEntity() }
     }
 
+
+    override suspend fun allVideos(): List<VideosEntity> {
+        return remoteDataSource.getAllVideos().videoResourceLists
+            ?.mapNotNull { it?.toEntity() } ?: emptyList()
+    }
+
+    override suspend fun getVideoById(id: Int): VideosEntity {
+        return remoteDataSource.getVideoById(id).toEntity()
+    }
+
+    override suspend fun getVideoByName(name: String): List<VideosEntity> {
+        return remoteDataSource.getVideosByName(name).videoResourceLists
+            ?.mapNotNull { it?.toEntity() } ?: emptyList()
+    }
+
+    override suspend fun getAllMusics(): List<MusicEntity> {
+        return remoteDataSource.getAllMusics().musicResourceList
+            ?.mapNotNull { it?.toEntity() } ?: emptyList()
+    }
+
+    override suspend fun getMusicById(id: Int): MusicEntity {
+        return remoteDataSource.getMusicById(id).toEntity()
+    }
+
+    override suspend fun getMusicByType(musicType: String): List<MusicEntity> {
+        return remoteDataSource.getMusicByType(musicType).musicResourceList
+            ?.mapNotNull { it?.toEntity() } ?: emptyList()
+    }
 }
