@@ -3,10 +3,14 @@ package com.aa.remote
 import com.aa.remote.utils.NetworkException
 import com.aa.repository.datasources.RemoteDataSource
 import com.aa.repository.resources.AllFoodAdviceResource
+import com.aa.repository.resources.AllMusicResource
+import com.aa.repository.resources.AllVideosResource
 import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
+import com.aa.repository.resources.MusicResource
 import com.aa.repository.resources.StoreBabyGenderResource
+import com.aa.repository.resources.VideoResource
 import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject
@@ -47,6 +51,30 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute {
             tinyStepsService.updateBabyGender(babyId = id, babyGender = babyGender)
         }
+    }
+
+    override suspend fun getAllVideos(): AllVideosResource {
+        return tryToExecute { tinyStepsService.getAllVideos() }
+    }
+
+    override suspend fun getVideoById(id: Int): VideoResource {
+        return tryToExecute { tinyStepsService.getVideoById(id) }
+    }
+
+    override suspend fun getVideosByName(name: String): AllVideosResource {
+        return tryToExecute { tinyStepsService.searchVideoByName(name) }
+    }
+
+    override suspend fun getAllMusics(): AllMusicResource {
+        return tryToExecute { tinyStepsService.getAllMusics() }
+    }
+
+    override suspend fun getMusicById(id: Int): MusicResource {
+        return tryToExecute { tinyStepsService.getMusicById(id) }
+    }
+
+    override suspend fun getMusicByType(musicType: String): AllMusicResource {
+        return tryToExecute { tinyStepsService.searchMusicByType(musicType) }
     }
 
 
