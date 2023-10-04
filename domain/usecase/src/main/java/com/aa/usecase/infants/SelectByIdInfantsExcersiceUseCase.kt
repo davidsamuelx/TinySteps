@@ -7,7 +7,7 @@ import javax.inject.Inject
 class SelectByIdInfantsExcersiceUseCase @Inject constructor(
     private val infantsRepository: InfantsRepository
 ) {
-    suspend operator fun invoke(id:Int): InfantsExcersiceEntity? {
+    suspend operator fun invoke(id:Int): InfantsExcersiceEntity {
         return infantsRepository.selectByIdExcersie(id)
     }
 }

@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetAllInfantsRelationByIdUseCase @Inject constructor(
     private val infantsRepository: InfantsRepository
 ) {
-    suspend operator fun invoke(id:Int): InfantsRelationEntity? {
+    suspend operator fun invoke(id:Int): InfantsRelationEntity {
         return infantsRepository.infantsRelationById(id)
     }
 }

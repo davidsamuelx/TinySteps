@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetAllInfantsfoodByIdUseCase @Inject constructor(
     private val infantsRepository: InfantsRepository
 ){
-    suspend operator fun invoke(id:Int): InfantsFoodEntity? {
+    suspend operator fun invoke(id:Int): InfantsFoodEntity {
         return infantsRepository.infantsFoodById(id)
     }
 }

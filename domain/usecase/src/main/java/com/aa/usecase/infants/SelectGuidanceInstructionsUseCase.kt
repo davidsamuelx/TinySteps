@@ -7,7 +7,7 @@ import javax.inject.Inject
 class SelectGuidanceInstructionsUseCase @Inject constructor(
     private val infantsRepository: InfantsRepository
 ) {
-    suspend operator fun invoke(id:String): GuidanceInstructionEntity? {
+    suspend operator fun invoke(id:String): GuidanceInstructionEntity {
         return infantsRepository.selectGuidanceInstruction(id)
     }
 }
