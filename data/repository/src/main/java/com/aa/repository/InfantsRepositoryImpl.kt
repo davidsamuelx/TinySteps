@@ -27,8 +27,8 @@ class InfantsRepositoryImpl @Inject constructor(
             ?.mapNotNull { it?.toEntity() }?: emptyList()
     }
 
-    override suspend fun selectGuidanceInstruction(id: String): GuidanceInstructionEntity {
-        TODO("Not yet implemented")
+    override suspend fun selectGuidanceInstruction(id: String): GuidanceInstructionEntity? {
+        return remoteDataSource.selectGuidanceInstruction(id).guidanceInstruction?.toEntity()
     }
 
 
@@ -42,8 +42,8 @@ class InfantsRepositoryImpl @Inject constructor(
             ?.mapNotNull { it?.toEntity() }?: emptyList()
     }
 
-    override suspend fun selectInfantsSleep(id: Int): InfantsSleepEntity {
-        TODO("Not yet implemented")
+    override suspend fun selectInfantsSleep(id: Int): InfantsSleepEntity? {
+    return remoteDataSource.selectInfantsSleep(id).SleepBaby?.toEntity()
     }
 
 
@@ -62,8 +62,8 @@ class InfantsRepositoryImpl @Inject constructor(
             ?.mapNotNull { it?.toEntity() }?: emptyList()
     }
 
-    override suspend fun selectByIdExcersie(id: Int): InfantsExcersiceEntity {
-        TODO("Not yet implemented")
+    override suspend fun selectByIdExcersie(id: Int): InfantsExcersiceEntity? {
+        return remoteDataSource.selectByIdExcersice(id).exercise?.toEntity()
     }
 
 
@@ -72,8 +72,8 @@ class InfantsRepositoryImpl @Inject constructor(
             ?.mapNotNull { it?.toEntity() }?: emptyList()
     }
 
-    override suspend fun infantsRelationById(id: Int): InfantsRelationEntity {
-        TODO("Not yet implemented")
+    override suspend fun infantsRelationById(id: Int): InfantsRelationEntity? {
+        return remoteDataSource.getInfantsRelationById(id).relations?.toEntity()
     }
 
 
@@ -87,8 +87,8 @@ class InfantsRepositoryImpl @Inject constructor(
             ?.mapNotNull { it?.toEntity() }?: emptyList()
     }
 
-    override suspend fun infantsBadHabitsById(id: Int): InfantsBadHabitsEntity {
-        TODO("Not yet implemented")
+    override suspend fun infantsBadHabitsById(id: Int): InfantsBadHabitsEntity? {
+        return remoteDataSource.getInfantsBadHabitsById(id).badhabit?.toEntity()
     }
 
 
@@ -103,8 +103,8 @@ class InfantsRepositoryImpl @Inject constructor(
             ?.mapNotNull { it?.toEntity() }?: emptyList()
     }
 
-    override suspend fun infantsFoodById(id: Int): InfantsFoodEntity {
-        TODO("Not yet implemented")
+    override suspend fun infantsFoodById(id: Int): InfantsFoodEntity? {
+        return remoteDataSource.getInfantsFoodById(id).foodBaby?.toEntity()
     }
 
 
@@ -119,8 +119,8 @@ class InfantsRepositoryImpl @Inject constructor(
             ?.mapNotNull { it?.toEntity() }?: emptyList()
     }
 
-    override suspend fun infantsSpecialCaseById(id: Int): InfantsSpecialCaseEntity {
-        TODO("Not yet implemented")
+    override suspend fun infantsSpecialCaseById(id: Int): InfantsSpecialCaseEntity? {
+            return remoteDataSource.getInfantsSpecialCaseById(id).specialCase?.toEntity()
     }
 
 
@@ -134,8 +134,8 @@ class InfantsRepositoryImpl @Inject constructor(
             ?.mapNotNull { it?.toEntity() }?: emptyList()
     }
 
-    override suspend fun selectInfantsProducts(id: String): InfantsProductsEntity {
-        TODO("Not yet implemented")
+    override suspend fun selectInfantsProducts(id: String): InfantsProductsEntity? {
+        return remoteDataSource.selectInfantsProducts(id).product?.toEntity()
     }
 
 
