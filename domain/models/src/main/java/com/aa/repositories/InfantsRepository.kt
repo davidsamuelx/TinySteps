@@ -1,14 +1,13 @@
 package com.aa.repositories
 
-
-import com.aa.models.GuidanceInstructionEntity
-import com.aa.models.InfantsBadHabitsEntity
-import com.aa.models.InfantsExcersiceEntity
-import com.aa.models.InfantsFoodEntity
-import com.aa.models.InfantsProductsEntity
-import com.aa.models.InfantsRelationEntity
-import com.aa.models.InfantsSleepEntity
-import com.aa.models.InfantsSpecialCaseEntity
+import com.aa.models.infants.GuidanceInstructionEntity
+import com.aa.models.infants.InfantsBadHabitsEntity
+import com.aa.models.infants.InfantsExcersiceEntity
+import com.aa.models.infants.InfantsFoodEntity
+import com.aa.models.infants.InfantsProductsEntity
+import com.aa.models.infants.InfantsRelationEntity
+import com.aa.models.infants.InfantsSleepEntity
+import com.aa.models.infants.InfantsSpecialCaseEntity
 
 interface InfantsRepository {
 

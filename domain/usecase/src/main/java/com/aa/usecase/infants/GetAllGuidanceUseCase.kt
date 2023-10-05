@@ -1,6 +1,6 @@
 package com.aa.usecase.infants
 
-import com.aa.models.GuidanceInstructionEntity
+import com.aa.models.infants.GuidanceInstructionEntity
 import com.aa.repositories.InfantsRepository
 import javax.inject.Inject
 

@@ -1,6 +1,6 @@
 package com.aa.usecase.infants
 
-import com.aa.models.InfantsBadHabitsEntity
+import com.aa.models.infants.InfantsBadHabitsEntity
 import com.aa.repositories.InfantsRepository
 import javax.inject.Inject
 
