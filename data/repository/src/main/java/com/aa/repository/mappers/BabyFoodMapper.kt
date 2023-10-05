@@ -5,17 +5,17 @@ import com.aa.repository.resources.FoodBaby
 import com.aa.repository.utils.orEmpty
 import com.aa.repository.utils.orZero
 
-internal fun FoodBaby.toEntity(): SearchFoodEntity{
+internal fun FoodBaby?.toEntity(): SearchFoodEntity{
     return SearchFoodEntity(
-        detailsOfFood=detailsOfFood.orEmpty(),
-        id = iD.orZero(),
-        imgFood=imgFood.orEmpty(),
-        nameFood=nameFood.orEmpty(),
-        adviceId = advices?.adviceId.orZero(),
-        doctorName = advices?.doctorName.orEmpty(),
-        phoneDoctor = advices?.phoneDoctor.orEmpty(),
-        profileDoctor = advices?.profileDoctor.orEmpty(),
-        nameProblem = advices?.nameProblem.orEmpty(),
-        solveProblem = advices?.solveProblem.orEmpty()
+        detailsOfFood= this?.detailsOfFood.orEmpty(),
+        id = this?.iD.orZero(),
+        imgFood= this?.imgFood.orEmpty(),
+        nameFood= this?.nameFood.orEmpty(),
+        adviceId = this?.advices?.adviceId.orZero(),
+        doctorName = this?.advices?.doctorName.orEmpty(),
+        phoneDoctor = this?.advices?.phoneDoctor.orEmpty(),
+        profileDoctor = this?.advices?.profileDoctor.orEmpty(),
+        nameProblem = this?.advices?.nameProblem.orEmpty(),
+        solveProblem = this?.advices?.solveProblem.orEmpty()
     )
 }
