@@ -1,19 +1,19 @@
 package com.aa.repository.mappers
 
-import com.aa.models.InfantsFoodEntity
+import com.aa.models.infants.InfantsFoodEntity
 import com.aa.repository.resources.Infants.InfantsFoodResource
 import com.aa.repository.utils.orZero
 
-internal fun InfantsFoodResource.toEntity():InfantsFoodEntity{
+internal fun InfantsFoodResource?.toEntity(): InfantsFoodEntity {
     return InfantsFoodEntity(
-        detailsOfFood=detailsOfFood.orEmpty(),
-        iD=iD.orZero(),
-        imgFood=imgFood.orEmpty(),
-        nameFood=nameFood.orEmpty(),
-        adviceId = advices?.adviceId.orZero(),
-        doctorName = advices?.doctorName.orEmpty(),
-        phoneDoctor = advices?.phoneDoctor.orEmpty(),
-        profileDoctor = advices?.profileDoctor.orEmpty(),
-        solveProblem = advices?.solveProblem.orEmpty()
+        detailsOfFood=this?.detailsOfFood.orEmpty(),
+        iD=this?.iD.orZero(),
+        imgFood=this?.imgFood.orEmpty(),
+        nameFood=this?.nameFood.orEmpty(),
+        adviceId = this?.advices?.adviceId.orZero(),
+        doctorName = this?.advices?.doctorName.orEmpty(),
+        phoneDoctor = this?.advices?.phoneDoctor.orEmpty(),
+        profileDoctor = this?.advices?.profileDoctor.orEmpty(),
+        solveProblem = this?.advices?.solveProblem.orEmpty()
     )
 }
