@@ -46,6 +46,15 @@ import com.aa.repository.resources.VideoResource
 import com.aa.repository.resources.SupportMessageEnglishResource
 import com.aa.repository.resources.TodayENSupportMessageResource
 import com.aa.repository.resources.UpdatePregnancyResource
+import com.aa.repository.resources.kids.AllAchievementsResource
+import com.aa.repository.resources.kids.AllAnimalGameResource
+import com.aa.repository.resources.kids.AllEducationGamesResource
+import com.aa.repository.resources.kids.AllStoriesResource
+import com.aa.repository.resources.kids.AnimalGameResource
+import com.aa.repository.resources.kids.ImageDIfferenceGameResource
+import com.aa.repository.resources.kids.LetterResource
+import com.aa.repository.resources.kids.MathLandResource
+import com.aa.repository.resources.kids.PuzzleGameResource
 import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject
@@ -306,17 +315,57 @@ class RemoteDataSourceImpl @Inject constructor(
 
     //endregion
 
+    //region phase 03
+    override suspend fun getMathLandGame(level: String): MathLandResource {
+        return tryToExecute {
+            tinyStepsService.getMathLandGame(level)
+        }
+    }
+
+    override suspend fun getPuzzleGame(level: String): PuzzleGameResource {
+       return tryToExecute { tinyStepsService.getPuzzleGame(level) }
+    }
+
+    override suspend fun getDiffImageGame(): ImageDIfferenceGameResource {
+        return tryToExecute { tinyStepsService.getDiffImageGame() }
+    }
+
+    override suspend fun getAllStories(id: Int?, title: String?): AllStoriesResource {
+       return tryToExecute { tinyStepsService.getAllStories(id, title) }
+    }
+
+    override suspend fun getAllAchievements(): AllAchievementsResource {
+       return tryToExecute { tinyStepsService.getAllAchievements() }
+    }
+
+    override suspend fun getAnimalGame(): AllAnimalGameResource {
+       return tryToExecute { tinyStepsService.getAnimalGame() }
+    }
+
+    override suspend fun getAnimalGameById(id: Int): AnimalGameResource {
+       return tryToExecute { tinyStepsService.getAnimalGameById(id) }
+    }
+
+    override suspend fun getEducationGame(): AllEducationGamesResource {
+        return tryToExecute { tinyStepsService.getEducationGame() }
+    }
+
+    override suspend fun getLetterById(id: Int): LetterResource {
+       return tryToExecute { tinyStepsService.getLetterById(id) }
+    }
+
+    //endregion
     private suspend fun <T> tryToExecute(func: suspend () -> Response<T>): T {
         val response = func()
         if (response.isSuccessful) {
-            return response.body() ?: throw NetworkException.NotFoundException
+            return response.body() ?: throw NetworkException.NotFoundException()
         }
         throw when (response.code()) {
-            404 -> NetworkException.NotFoundException
-            402 -> NetworkException.ApiKeyExpiredException
-            401 -> NetworkException.UnAuthorizedException
-            502 -> NetworkException.NoInternetException
-            500 -> NetworkException.InternalServerError
+            404 -> NetworkException.NotFoundException()
+            402 -> NetworkException.ApiKeyExpiredException()
+            401 -> NetworkException.UnAuthorizedException()
+            502 -> NetworkException.NoInternetException()
+            500 -> NetworkException.InternalServerError()
             else -> IOException()
         }
     }
