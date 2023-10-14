@@ -44,6 +44,15 @@ import com.aa.repository.resources.SearchFoodResource
 import com.aa.repository.resources.UpdatePregnancyResource
 import com.aa.repository.resources.MusicResource
 import com.aa.repository.resources.VideoResource
+import com.aa.repository.resources.kids.AllAchievementsResource
+import com.aa.repository.resources.kids.AllStoriesResource
+import com.aa.repository.resources.kids.AllAnimalGameResource
+import com.aa.repository.resources.kids.AllEducationGamesResource
+import com.aa.repository.resources.kids.AnimalGameResource
+import com.aa.repository.resources.kids.ImageDIfferenceGameResource
+import com.aa.repository.resources.kids.LetterResource
+import com.aa.repository.resources.kids.MathLandResource
+import com.aa.repository.resources.kids.PuzzleGameResource
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -60,6 +69,115 @@ interface TinyStepsService {
     //region authentication
     @GET("user/getData/Phase01/all-food")
     suspend fun getFoodAdvices():Response<AllFoodAdviceResource>
+    //endregion
+
+    //region pregnancy phase
+    @GET("user/Pregnancy/exercises/getAllVideos")
+    suspend fun getAllVideos():Response<AllVideosResource>
+
+    @GET("user/Pregnancy/exercises/getVideo/{id}")
+    suspend fun getVideoById(@Path("id") videoId: Int): Response<VideoResource>
+
+    @GET("user/Pregnancy/exercises/SearchVideo/{searchName}")
+    suspend fun searchVideoByName(@Path("searchName") searchName: String): Response<AllVideosResource>
+
+    @GET("user/Pregnancy/exercises/getAllMusics")
+    suspend fun getAllMusics():Response<AllMusicResource>
+
+    @GET("user/Pregnancy/exercises/getMusic/{id}")
+    suspend fun getMusicById(@Path("id") musicId: Int): Response<MusicResource>
+
+    @GET("user/Pregnancy/exercises/SearchMusic/{musicType}")
+    suspend fun searchMusicByType(@Path("musicType") musicType: String): Response<AllMusicResource>
+
+    @POST("auth/user/login")
+    suspend fun loginRequest(
+        @Body loginResource: LoginResource
+    ):Response<LoginResponseResource>
+
+    @POST("user/Pregnancy/BabyKind/store")
+    suspend fun storeBabyGender(@Body babyGender: StoreBabyGenderResource): Response<BabyGenderResource>
+
+    @DELETE("user/Pregnancy/BabyKind/Delete/{id}")
+    suspend fun deleteBabyGender(@Path("id") babyId: String): Response<Unit>
+
+    @FormUrlEncoded
+    @PUT("user/Pregnancy/BabyKind/Update/{id}")
+    suspend fun updateBabyGender(
+        @Path("id") babyId: String,
+        @Field("kindBaby") babyGender: String
+    ): Response<Unit>
+
+    @POST("user/Pregnancy/SelectWhenSendSupportMessageEnglish/store")
+    suspend fun addSupportMessageEnglish(
+        @Body supportMassageType: SelectedSupportMessageTypeResource
+    ): Response<SupportMessageEnglishResource>
+
+    @GET("user/Pregnancy/SelectWhenSendSupportMessageEnglish/Index")
+    suspend fun getAllENSupportMessage(): Response<AllENSupportMessagesResource>
+
+    @GET("user/Pregnancy/SelectWhenSendSupportMessageEnglish/show/{id}")
+    suspend fun getENSupportMessageById(@Path("id") messageId: Int): Response<SearchedENSupportMessageResource>
+
+    @DELETE("user/Pregnancy/SelectWhenSendSupportMessageEnglish/destroy/{id}")
+    suspend fun deleteENSupportMessage(@Path("id") messageId: Int): Response<Unit>
+
+    @FormUrlEncoded
+    @PUT("user/Pregnancy/SelectWhenSendSupportMessageEnglish/update/{id}")
+    suspend fun updateENSupportMessage(
+        @Path("id") messageId: Int,
+        @Field("SelectWhenSendSupportMessage") selectWhenSendSupportMessage: String
+    ): Response<Unit>
+
+    @GET("user/Pregnancy/DevelopBabyEnglish/Index")
+    suspend fun getENImage(): Response<ENImageResource>
+
+    @GET("user/Pregnancy/SupportMessageEnglish/Index")
+    suspend fun getTodaySupportMessage(): Response<TodayENSupportMessageResource>
+
+    @POST("user/Pregnancy/Note/store")
+    suspend fun addNote(
+        @Body noteResource: NoteResource
+    ): Response<NoteResponceResource>
+
+    @GET("user/Pregnancy/Main")
+    suspend fun getPregnancyData(): Response<PregnancyResource>
+
+    @POST("user/Pregnancy/PregnancyStore")
+    suspend fun addPregnancy(
+        @Body pregnancyStoreResource: PregnancyStoreResource
+    ): Response<PregnancyResponseResource>
+
+    @FormUrlEncoded
+    @PUT("user/Pregnancy/Update/1")
+    suspend fun updatePregnancy(
+        @Path("id") userId: Int,
+        @Field("StartDate") startDate: String
+    ): Response<UpdatePregnancyResource>
+
+    @DELETE("user/Pregnancy/Delete/{id}")
+    suspend fun deletePregnancy(
+        @Path("id") id: Int,
+    ): Response<Unit>
+
+    @GET("user/getData/Phase01/BadHabit/all")
+    suspend fun getBadHabit(): Response<AllBadHabitsResource>
+
+    @GET("user/getData/special-cases/phase01")
+    suspend fun getSpecialCases(): Response<AllSpecialCaseResource>
+
+    @GET("user/getData/Phase01/food/getById")
+    suspend fun getFoodById(@Query("id")id: Int):Response<FoodByIdResource>
+
+    @GET("user/getData/Phase01/search-food/{food_search}")
+    suspend fun searchFood(@Path("food_search")foodSearch:String):Response<SearchFoodResource>
+
+    @GET("user/getData/Phase01/BadHabit/getById")
+    suspend fun getBadHabitsById(@Query("id") id:Int):Response<BadHabitByIdResource>
+
+    @GET("user/Pregnancy/Advices/search-badhabits/{bad_habit}")
+    suspend fun searchBadHabits(@Path("bad_habit")badHabit:String):Response<SearchBadHabitResource>
+
     //endregion
 
     //region phase 02 infants and Toddler
@@ -137,112 +255,33 @@ interface TinyStepsService {
 
     //endregion
 
-    //region pregnancy phase
-    @GET("user/Pregnancy/exercises/getAllVideos")
-    suspend fun getAllVideos():Response<AllVideosResource>
+    //region phase 03
+    @GET("user/Phase03/Getmathland/")
+    suspend fun getMathLandGame(@Query("Levels") levels: String):Response<MathLandResource>
 
-    @GET("user/Pregnancy/exercises/getVideo/{id}")
-    suspend fun getVideoById(@Path("id") videoId: Int): Response<VideoResource>
+    @GET("user/Phase03/Getpuzzle/")
+    suspend fun getPuzzleGame(@Query("Levels") levels: String):Response<PuzzleGameResource>
 
-    @GET("user/Pregnancy/exercises/SearchVideo/{searchName}")
-    suspend fun searchVideoByName(@Path("searchName") searchName: String): Response<AllVideosResource>
+    @GET("user/Phase03/GetAll/diff-images")
+    suspend fun getDiffImageGame():Response<ImageDIfferenceGameResource>
 
-    @GET("user/Pregnancy/exercises/getAllMusics")
-    suspend fun getAllMusics():Response<AllMusicResource>
+    @GET("user/Phase03/story/getall")
+    suspend fun getAllStories(@Query("id") id: Int?,@Query("Title") title: String?):Response<AllStoriesResource>
 
-    @GET("user/Pregnancy/exercises/getMusic/{id}")
-    suspend fun getMusicById(@Path("id") musicId: Int): Response<MusicResource>
+    @GET("user/Phase03/Achievements/GetAll")
+    suspend fun getAllAchievements():Response<AllAchievementsResource>
 
-    @GET("user/Pregnancy/exercises/SearchMusic/{musicType}")
-    suspend fun searchMusicByType(@Path("musicType") musicType: String): Response<AllMusicResource>
+    @GET("user/Phase03/Animal/getAll")
+    suspend fun getAnimalGame():Response<AllAnimalGameResource>
 
-    @POST("auth/user/login")
-    suspend fun loginRequest(
-        @Body loginResource: LoginResource
-    ):Response<LoginResponseResource>
+    @GET("user/Phase03/Animal/get-row-data/{id}")
+    suspend fun getAnimalGameById(@Path("id") id:Int):Response<AnimalGameResource>
 
-    @POST("user/Pregnancy/BabyKind/store")
-    suspend fun storeBabyGender(@Body babyGender: StoreBabyGenderResource): Response<BabyGenderResource>
+    @GET("education/Letters/getAll")
+    suspend fun getEducationGame():Response<AllEducationGamesResource>
 
-    @DELETE("user/Pregnancy/BabyKind/Delete/{id}")
-    suspend fun deleteBabyGender(@Path("id") babyId: String): Response<Unit>
-
-    @FormUrlEncoded
-    @PUT("user/Pregnancy/BabyKind/Update/{id}")
-    suspend fun updateBabyGender(
-        @Path("id") babyId: String,
-        @Field("kindBaby") babyGender: String
-    ): Response<Unit>
-
-    @POST("user/Pregnancy/SelectWhenSendSupportMessageEnglish/store")
-    suspend fun addSupportMessageEnglish(
-        @Body supportMassageType: SelectedSupportMessageTypeResource
-    ): Response<SupportMessageEnglishResource>
-
-    @GET("user/Pregnancy/SelectWhenSendSupportMessageEnglish/Index")
-    suspend fun getAllENSupportMessage(): Response<AllENSupportMessagesResource>
-
-    @GET("user/Pregnancy/SelectWhenSendSupportMessageEnglish/show/{id}")
-    suspend fun getENSupportMessageById(@Path("id") messageId: Int): Response<SearchedENSupportMessageResource>
-
-    @DELETE("user/Pregnancy/SelectWhenSendSupportMessageEnglish/destroy/{id}")
-    suspend fun deleteENSupportMessage(@Path("id") messageId: Int): Response<Unit>
-
-    @FormUrlEncoded
-    @PUT("user/Pregnancy/SelectWhenSendSupportMessageEnglish/update/{id}")
-    suspend fun updateENSupportMessage(
-        @Path("id") messageId: Int,
-        @Field("SelectWhenSendSupportMessage") selectWhenSendSupportMessage: String
-        ): Response<Unit>
-
-    @GET("user/Pregnancy/DevelopBabyEnglish/Index")
-    suspend fun getENImage(): Response<ENImageResource>
-
-    @GET("user/Pregnancy/SupportMessageEnglish/Index")
-    suspend fun getTodaySupportMessage(): Response<TodayENSupportMessageResource>
-
-    @POST("user/Pregnancy/Note/store")
-    suspend fun addNote(
-        @Body noteResource: NoteResource
-    ): Response<NoteResponceResource>
-
-    @GET("user/Pregnancy/Main")
-    suspend fun getPregnancyData(): Response<PregnancyResource>
-
-    @POST("user/Pregnancy/PregnancyStore")
-    suspend fun addPregnancy(
-        @Body pregnancyStoreResource: PregnancyStoreResource
-    ): Response<PregnancyResponseResource>
-
-    @FormUrlEncoded
-    @PUT("user/Pregnancy/Update/1")
-    suspend fun updatePregnancy(
-        @Path("id") userId: Int,
-        @Field("StartDate") startDate: String
-    ): Response<UpdatePregnancyResource>
-
-    @DELETE("user/Pregnancy/Delete/{id}")
-    suspend fun deletePregnancy(
-        @Path("id") id: Int,
-    ): Response<Unit>
-
-    @GET("user/getData/Phase01/BadHabit/all")
-    suspend fun getBadHabit(): Response<AllBadHabitsResource>
-
-    @GET("user/getData/special-cases/phase01")
-    suspend fun getSpecialCases(): Response<AllSpecialCaseResource>
-
-    @GET("user/getData/Phase01/food/getById")
-    suspend fun getFoodById(@Query("id")id: Int):Response<FoodByIdResource>
-
-    @GET("user/getData/Phase01/search-food/{food_search}")
-    suspend fun searchFood(@Path("food_search")foodSearch:String):Response<SearchFoodResource>
-
-    @GET("user/getData/Phase01/BadHabit/getById")
-    suspend fun getBadHabitsById(@Query("id") id:Int):Response<BadHabitByIdResource>
-
-    @GET("user/Pregnancy/Advices/search-badhabits/{bad_habit}")
-    suspend fun searchBadHabits(@Path("bad_habit")badHabit:String):Response<SearchBadHabitResource>
+    @GET("education/letters/ShowLetter/{id}")
+    suspend fun getLetterById(@Path("id") id:Int):Response<LetterResource>
 
     //endregion
 

@@ -1,15 +1,11 @@
 package com.aa.remote.utils
 
-sealed class NetworkException : Exception() {
-
-    object UnAuthorizedException : NetworkException()
-
-    object NoInternetException : NetworkException()
-
-    object InternalServerError : NetworkException()
-
-    object NotFoundException : NetworkException()
-
-    object ApiKeyExpiredException : NetworkException()
-
+sealed class NetworkException(message: String?) : Exception(message) {
+    class NotFoundException : NetworkException("Resource not found")
+    class ApiKeyExpiredException : NetworkException("API key expired")
+    class UnAuthorizedException : NetworkException("Unauthorized")
+    class NoInternetException : NetworkException("No internet connection")
+    class InternalServerError : NetworkException("Internal server error")
 }
+
+

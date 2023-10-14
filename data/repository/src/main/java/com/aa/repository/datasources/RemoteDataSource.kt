@@ -44,12 +44,21 @@ import com.aa.repository.resources.TodayENSupportMessageResource
 import com.aa.repository.resources.UpdatePregnancyResource
 import com.aa.repository.resources.MusicResource
 import com.aa.repository.resources.VideoResource
+import com.aa.repository.resources.kids.AllAchievementsResource
+import com.aa.repository.resources.kids.AllAnimalGameResource
+import com.aa.repository.resources.kids.AllEducationGamesResource
+import com.aa.repository.resources.kids.AllStoriesResource
+import com.aa.repository.resources.kids.AnimalGameResource
+import com.aa.repository.resources.kids.ImageDIfferenceGameResource
+import com.aa.repository.resources.kids.LetterResource
+import com.aa.repository.resources.kids.MathLandResource
+import com.aa.repository.resources.kids.PuzzleGameResource
 
 interface RemoteDataSource {
 
     suspend fun getFoodAdvices(): AllFoodAdviceResource
 
-    //phase 02 infants and Toddler
+    //region phase 02 infants and Toddler
     suspend fun getGuidanceInstruction(): AllGuidanceInstructionResource
     suspend fun selectGuidanceInstruction(id:String):AllGuidanceInstructionSelectResource
     suspend fun searchGuidanceInstruction(id:String): AllGuidanceInstructionResource
@@ -81,11 +90,16 @@ interface RemoteDataSource {
     suspend fun getInfantsProducts():AllInfantsProductsResource
     suspend fun selectInfantsProducts(id: String):AllInfantsProductsSelectResource
     suspend fun searchInfantsProducts(product:String):AllInfantsProductsResource
+ //endregion
 
+    //region authentication
     suspend fun loginRequest(
         loginResource: LoginResource,
     ): LoginResponseResource
 
+    //endregion
+
+    //region pregnancy phase
     suspend fun storeBabyGender(
         storeBabyGenderResource: StoreBabyGenderResource
     ): BabyGenderResource
@@ -149,4 +163,23 @@ interface RemoteDataSource {
     suspend fun getMusicById(id: Int): MusicResource
 
     suspend fun getMusicByType(musicType: String): AllMusicResource
+
+    //endregion
+
+    suspend fun getMathLandGame(level: String): MathLandResource
+
+    suspend fun getPuzzleGame(level: String):PuzzleGameResource
+
+    suspend fun getDiffImageGame(): ImageDIfferenceGameResource
+
+    suspend fun getAllStories(id: Int?,title: String?): AllStoriesResource
+
+    suspend fun getAllAchievements(): AllAchievementsResource
+    suspend fun getAnimalGame(): AllAnimalGameResource
+
+    suspend fun getAnimalGameById(id: Int): AnimalGameResource
+
+    suspend fun getEducationGame(): AllEducationGamesResource
+
+    suspend fun getLetterById(id: Int): LetterResource
 }
