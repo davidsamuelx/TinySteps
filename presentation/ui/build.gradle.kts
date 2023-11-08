@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.aa.ui"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24
@@ -39,6 +39,7 @@ android {
 }
 
 dependencies {
+//    implementation(project(":app"))
     implementation(project(":presentation:viewmodels"))
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
@@ -54,4 +55,7 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation ("androidx.navigation:navigation-compose:2.7.5")
+    implementation ("io.coil-kt:coil-compose:2.0.0")
 }
