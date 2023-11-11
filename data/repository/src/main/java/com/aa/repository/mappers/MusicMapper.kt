@@ -10,5 +10,6 @@ internal fun MusicResource.toEntity(): MusicEntity{
         id = id.orZero(),
         musicUrl = musicPath.orEmpty(),
         musicType = musicType.orEmpty(),
+        imagePath = imgPath.orEmpty(),
     )
 }
