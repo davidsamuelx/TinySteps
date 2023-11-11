@@ -17,13 +17,14 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary =  Color(0xDCFF3A00),
+    primary = Purple80,
     secondary = PurpleGrey80,
     tertiary = Pink80
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary =  Color(0xDCFF3A00),
+    primary = Purple40,
+    onPrimary = Color.White,
     secondary = PurpleGrey40,
     tertiary = Pink40
 
@@ -58,7 +59,7 @@ fun TinyStepsTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = Color.Transparent.toArgb()
+            window.statusBarColor = colorScheme.primary.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }
