@@ -4,7 +4,7 @@ import com.aa.remote.utils.NetworkException
 import com.aa.repository.datasources.RemoteDataSource
 import com.aa.repository.resources.AllBadHabitsResource
 import com.aa.repository.resources.AllENSupportMessagesResource
-import com.aa.repository.resources.AllFoodAdviceResource
+import com.aa.repository.resources.AllMusiceResource
 import com.aa.repository.resources.Infants.AllGuidanceInstructionResource
 import com.aa.repository.resources.Infants.AllGuidanceInstructionSelectResource
 import com.aa.repository.resources.Infants.AllInfantsBadHabitsByIdResource
@@ -22,13 +22,13 @@ import com.aa.repository.resources.Infants.AllInfantsSleepSelectResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseByIdResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseResource
 import com.aa.repository.resources.Infants.InfantsSleepResource
-import com.aa.repository.resources.AllMusicResource
 import com.aa.repository.resources.AllVideosResource
 import com.aa.repository.resources.AllSpecialCaseResource
 import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.BadHabitByIdResource
 import com.aa.repository.resources.ENImageResource
 import com.aa.repository.resources.FoodByIdResource
+import com.aa.repository.resources.FoodResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
 import com.aa.repository.resources.MusicResource
@@ -41,6 +41,7 @@ import com.aa.repository.resources.SearchBadHabitResource
 import com.aa.repository.resources.SearchFoodResource
 import com.aa.repository.resources.SearchedENSupportMessageResource
 import com.aa.repository.resources.SelectedSupportMessageTypeResource
+import com.aa.repository.resources.SleepPositionResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.VideoResource
 import com.aa.repository.resources.SupportMessageEnglishResource
@@ -177,7 +178,7 @@ class RemoteDataSourceImpl @Inject constructor(
     //endregion
 
     //region pregnancy phase
-    override suspend fun getFoodAdvices(): AllFoodAdviceResource {
+    override suspend fun getFoodAdvices(): FoodResource {
         return tryToExecute { tinyStepsService.getFoodAdvices() }
     }
 
@@ -301,7 +302,7 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute { tinyStepsService.searchVideoByName(name) }
     }
 
-    override suspend fun getAllMusics(): AllMusicResource {
+    override suspend fun getAllMusics(): AllMusiceResource {
         return tryToExecute { tinyStepsService.getAllMusics() }
     }
 
@@ -309,8 +310,12 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute { tinyStepsService.getMusicById(id) }
     }
 
-    override suspend fun getMusicByType(musicType: String): AllMusicResource {
+    override suspend fun getMusicByType(musicType: String): AllMusiceResource {
         return tryToExecute { tinyStepsService.searchMusicByType(musicType) }
+    }
+
+    override suspend fun getAllSleepPosition(): SleepPositionResource {
+        return tryToExecute { tinyStepsService.getSleepPositions() }
     }
 
     //endregion

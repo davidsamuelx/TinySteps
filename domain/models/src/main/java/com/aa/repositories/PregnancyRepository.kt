@@ -14,6 +14,7 @@ import com.aa.models.SearchFoodEntity
 import com.aa.models.SelectedSupportMessageEntity
 import com.aa.models.SpecialCaseEntity
 import com.aa.models.MusicEntity
+import com.aa.models.SleepPositionEntity
 import com.aa.models.StoreBabyGenderEntity
 import com.aa.models.SupportMessageEntity
 import com.aa.models.TodayENSupportMessageEntity
@@ -84,5 +85,7 @@ interface PregnancyRepository {
     suspend fun getMusicById(id: Int): MusicEntity
 
     suspend fun getMusicByType(musicType: String): List<MusicEntity>
+
+    suspend fun getAllSleepPosition(): List<SleepPositionEntity>
 
 }

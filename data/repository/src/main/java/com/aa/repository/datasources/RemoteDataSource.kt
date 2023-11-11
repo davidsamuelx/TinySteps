@@ -2,7 +2,7 @@ package com.aa.repository.datasources
 
 import com.aa.repository.resources.AllBadHabitsResource
 import com.aa.repository.resources.AllENSupportMessagesResource
-import com.aa.repository.resources.AllFoodAdviceResource
+import com.aa.repository.resources.AllMusiceResource
 import com.aa.repository.resources.Infants.AllGuidanceInstructionResource
 import com.aa.repository.resources.Infants.AllGuidanceInstructionSelectResource
 import com.aa.repository.resources.Infants.AllInfantsBadHabitsByIdResource
@@ -21,12 +21,12 @@ import com.aa.repository.resources.Infants.AllInfantsSpecialCaseByIdResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseResource
 import com.aa.repository.resources.Infants.InfantsSleepResource
 import com.aa.repository.resources.AllSpecialCaseResource
-import com.aa.repository.resources.AllMusicResource
 import com.aa.repository.resources.AllVideosResource
 import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.BadHabitByIdResource
 import com.aa.repository.resources.ENImageResource
 import com.aa.repository.resources.FoodByIdResource
+import com.aa.repository.resources.FoodResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
@@ -43,6 +43,7 @@ import com.aa.repository.resources.SupportMessageEnglishResource
 import com.aa.repository.resources.TodayENSupportMessageResource
 import com.aa.repository.resources.UpdatePregnancyResource
 import com.aa.repository.resources.MusicResource
+import com.aa.repository.resources.SleepPositionResource
 import com.aa.repository.resources.VideoResource
 import com.aa.repository.resources.kids.AllAchievementsResource
 import com.aa.repository.resources.kids.AllAnimalGameResource
@@ -56,7 +57,7 @@ import com.aa.repository.resources.kids.PuzzleGameResource
 
 interface RemoteDataSource {
 
-    suspend fun getFoodAdvices(): AllFoodAdviceResource
+    suspend fun getFoodAdvices(): FoodResource
 
     //region phase 02 infants and Toddler
     suspend fun getGuidanceInstruction(): AllGuidanceInstructionResource
@@ -158,11 +159,13 @@ interface RemoteDataSource {
 
     suspend fun getVideosByName(name: String): AllVideosResource
 
-    suspend fun getAllMusics(): AllMusicResource
+    suspend fun getAllMusics(): AllMusiceResource
 
     suspend fun getMusicById(id: Int): MusicResource
 
-    suspend fun getMusicByType(musicType: String): AllMusicResource
+    suspend fun getMusicByType(musicType: String): AllMusiceResource
+
+    suspend fun getAllSleepPosition(): SleepPositionResource
 
     //endregion
 

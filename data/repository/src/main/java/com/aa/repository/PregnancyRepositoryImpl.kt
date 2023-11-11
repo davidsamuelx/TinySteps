@@ -14,6 +14,7 @@ import com.aa.models.SearchFoodEntity
 import com.aa.models.SelectedSupportMessageEntity
 import com.aa.models.SpecialCaseEntity
 import com.aa.models.MusicEntity
+import com.aa.models.SleepPositionEntity
 import com.aa.models.StoreBabyGenderEntity
 import com.aa.models.SupportMessageEntity
 import com.aa.models.TodayENSupportMessageEntity
@@ -22,6 +23,7 @@ import com.aa.models.VideosEntity
 import com.aa.repositories.PregnancyRepository
 import com.aa.repository.datasources.RemoteDataSource
 import com.aa.repository.mappers.toEntity
+import com.aa.repository.mappers.toEntity2
 import com.aa.repository.mappers.toResource
 import javax.inject.Inject
 
@@ -30,7 +32,7 @@ class PregnancyRepositoryImpl @Inject constructor(
 ): PregnancyRepository {
     override suspend fun allFoodAdvice(): List<AllFoodAdviceEntity> {
         return remoteDataSource.getFoodAdvices().foodBabies
-            ?.mapNotNull { it?.toEntity() } ?: emptyList()
+            ?.map { it.toEntity2() } ?: emptyList()
     }
 
     override suspend fun storeBabyGender(storeBabyGenderEntity: StoreBabyGenderEntity): BabyGenderEntity {
@@ -148,7 +150,7 @@ class PregnancyRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getAllMusics(): List<MusicEntity> {
-        return remoteDataSource.getAllMusics().musicResourceList
+        return remoteDataSource.getAllMusics().musicList
             ?.mapNotNull { it?.toEntity() } ?: emptyList()
     }
 
@@ -157,7 +159,12 @@ class PregnancyRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getMusicByType(musicType: String): List<MusicEntity> {
-        return remoteDataSource.getMusicByType(musicType).musicResourceList
+        return remoteDataSource.getMusicByType(musicType).musicList
             ?.mapNotNull { it?.toEntity() } ?: emptyList()
+    }
+
+    override suspend fun getAllSleepPosition(): List<SleepPositionEntity> {
+        return remoteDataSource.getAllSleepPosition().responseData
+            ?.map { it.toEntity() } ?: emptyList()
     }
 }
