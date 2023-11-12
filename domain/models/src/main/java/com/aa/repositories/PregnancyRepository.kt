@@ -42,7 +42,7 @@ interface PregnancyRepository {
 
     suspend fun updateEnSupportMessage(messageId: Int, messageType: String)
 
-    suspend fun getImage(): ImageEntity
+    suspend fun getImage(id: Int): ImageEntity
 
     suspend fun getTodaySupportMessage(): TodayENSupportMessageEntity
 

@@ -5,6 +5,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
+import com.aa.ui.navigation.TinyStepsGraph
 import com.aa.ui.theme.TinyStepsTheme
 
 
@@ -15,6 +16,7 @@ fun TinyStepsApp(){
     TinyStepsTheme {
         Scaffold {
             val navController = rememberNavController()
+            TinyStepsGraph(navController = navController)
         }
     }
 }

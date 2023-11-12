@@ -25,8 +25,8 @@ import com.aa.repository.resources.AllSpecialCaseResource
 import com.aa.repository.resources.AllMusicResource
 import com.aa.repository.resources.AllVideosResource
 import com.aa.repository.resources.BabyGenderResource
+import com.aa.repository.resources.BabyImageResource
 import com.aa.repository.resources.BadHabitByIdResource
-import com.aa.repository.resources.ENImageResource
 import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.LoginResource
@@ -129,8 +129,8 @@ interface TinyStepsService {
         @Field("SelectWhenSendSupportMessage") selectWhenSendSupportMessage: String
     ): Response<Unit>
 
-    @GET("user/Pregnancy/DevelopBabyEnglish/Index")
-    suspend fun getENImage(): Response<ENImageResource>
+    @GET("user/Pregnancy/DevelopBaby/getById")
+    suspend fun getBabyImageById(@Query("id") id: Int): Response<BabyImageResource>
 
     @GET("user/Pregnancy/SupportMessageEnglish/Index")
     suspend fun getTodaySupportMessage(): Response<TodayENSupportMessageResource>
