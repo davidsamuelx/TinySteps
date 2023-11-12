@@ -2,7 +2,6 @@ package com.aa.ui.screens.details_screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
@@ -56,19 +56,14 @@ private fun BabyDetailsContent(
                     .background(Color.White)
             ) {
                 BabyDetailsHeader(onBackClick)
-                Spacer(modifier = Modifier.height(32.dp))
                 Image(
                     painter = rememberAsyncImagePainter(model = state.babyImage),
                     contentDescription = "Baby Image",
                     modifier = Modifier
+                        .padding(horizontal = 8.dp)
+                        .clip(RoundedCornerShape(8.dp))
                         .fillMaxWidth()
-                        .height(250.dp)
-                        .border(
-                            width = 1.dp,
-                            color = Color.LightGray,
-                            shape = RoundedCornerShape(8.dp)
-                        )
-                        .padding(1.dp),
+                        .height(250.dp),
                     contentScale = ContentScale.FillBounds,
                 )
 

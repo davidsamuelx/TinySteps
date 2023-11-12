@@ -7,9 +7,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -28,7 +28,7 @@ import com.aa.ui.R
 fun BabyDetailsHeader(
     onBackClicked: () -> Unit
 ) {
-    Row (modifier = Modifier.fillMaxWidth().height(56.dp).padding(horizontal = 16.dp),
+    Row (modifier = Modifier.fillMaxWidth().wrapContentHeight().padding( 16.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         Box(
@@ -41,7 +41,6 @@ fun BabyDetailsHeader(
                     color = Color(0xFFEAECF0),
                     shape = RoundedCornerShape(16.dp)
                 )
-                .padding(16.dp)
 
         ) {
             Icon(
