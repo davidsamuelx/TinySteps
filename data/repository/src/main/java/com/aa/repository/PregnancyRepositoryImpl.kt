@@ -74,8 +74,8 @@ class PregnancyRepositoryImpl @Inject constructor(
         )
     }
 
-    override suspend fun getImage(): ImageEntity {
-        return remoteDataSource.getImage().toEntity()
+    override suspend fun getImage(id: Int): ImageEntity {
+        return remoteDataSource.getImage(id).developmentBaby.toEntity()
     }
 
     override suspend fun getTodaySupportMessage(): TodayENSupportMessageEntity {

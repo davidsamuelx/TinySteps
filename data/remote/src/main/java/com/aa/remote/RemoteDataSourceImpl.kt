@@ -25,8 +25,8 @@ import com.aa.repository.resources.Infants.InfantsSleepResource
 import com.aa.repository.resources.AllVideosResource
 import com.aa.repository.resources.AllSpecialCaseResource
 import com.aa.repository.resources.BabyGenderResource
+import com.aa.repository.resources.BabyImageResource
 import com.aa.repository.resources.BadHabitByIdResource
-import com.aa.repository.resources.ENImageResource
 import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.FoodResource
 import com.aa.repository.resources.LoginResource
@@ -233,8 +233,8 @@ class RemoteDataSourceImpl @Inject constructor(
         }
     }
 
-    override suspend fun getImage(): ENImageResource {
-        return tryToExecute { tinyStepsService.getENImage() }
+    override suspend fun getImage(id: Int): BabyImageResource {
+        return tryToExecute { tinyStepsService.getBabyImageById(id) }
     }
 
     override suspend fun getTodaySupportMessage(): TodayENSupportMessageResource {

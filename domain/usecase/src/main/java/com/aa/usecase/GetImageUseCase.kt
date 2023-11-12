@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetImageUseCase @Inject constructor(
     private val pregnancyRepository: PregnancyRepository
 ) {
-    suspend operator fun invoke (): ImageEntity{
-        return pregnancyRepository.getImage()
+    suspend operator fun invoke (id:Int): ImageEntity{
+        return pregnancyRepository.getImage(id)
     }
 }
