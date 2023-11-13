@@ -2,7 +2,7 @@ package com.aa.repository.datasources
 
 import com.aa.repository.resources.AllBadHabitsResource
 import com.aa.repository.resources.AllENSupportMessagesResource
-import com.aa.repository.resources.AllFoodAdviceResource
+import com.aa.repository.resources.AllMusicResource
 import com.aa.repository.resources.Infants.AllGuidanceInstructionResource
 import com.aa.repository.resources.Infants.AllGuidanceInstructionSelectResource
 import com.aa.repository.resources.Infants.AllInfantsBadHabitsByIdResource
@@ -21,11 +21,11 @@ import com.aa.repository.resources.Infants.AllInfantsSpecialCaseByIdResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseResource
 import com.aa.repository.resources.Infants.InfantsSleepResource
 import com.aa.repository.resources.AllSpecialCaseResource
-import com.aa.repository.resources.AllMusicResource
 import com.aa.repository.resources.AllVideosResource
 import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.BabyImageResource
 import com.aa.repository.resources.BadHabitByIdResource
+import com.aa.repository.resources.FoodBabyResource
 import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.LoginResource
@@ -43,6 +43,8 @@ import com.aa.repository.resources.SupportMessageEnglishResource
 import com.aa.repository.resources.TodayENSupportMessageResource
 import com.aa.repository.resources.UpdatePregnancyResource
 import com.aa.repository.resources.MusicResource
+import com.aa.repository.resources.SignUpResource
+import com.aa.repository.resources.SignUpResponseResource
 import com.aa.repository.resources.VideoResource
 import com.aa.repository.resources.kids.AllAchievementsResource
 import com.aa.repository.resources.kids.AllAnimalGameResource
@@ -56,7 +58,7 @@ import com.aa.repository.resources.kids.PuzzleGameResource
 
 interface RemoteDataSource {
 
-    suspend fun getFoodAdvices(): AllFoodAdviceResource
+    suspend fun getFoodAdvices(): FoodByIdResource
 
     //region phase 02 infants and Toddler
     suspend fun getGuidanceInstruction(): AllGuidanceInstructionResource
@@ -97,6 +99,9 @@ interface RemoteDataSource {
         loginResource: LoginResource,
     ): LoginResponseResource
 
+    suspend fun signupRequest(
+        signUpResource: SignUpResource
+    ):SignUpResponseResource
     //endregion
 
     //region pregnancy phase

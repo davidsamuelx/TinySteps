@@ -22,7 +22,7 @@ import com.aa.models.VideosEntity
 
 interface PregnancyRepository {
 
-    suspend fun allFoodAdvice():List<AllFoodAdviceEntity>
+//    suspend fun allFoodAdvice():List<AllFoodAdviceEntity>
 
     suspend fun storeBabyGender(storeBabyGenderEntity: StoreBabyGenderEntity):BabyGenderEntity
 

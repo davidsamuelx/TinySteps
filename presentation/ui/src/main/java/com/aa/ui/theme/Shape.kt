@@ -1,4 +1,4 @@
-package com.aa.tinysteps.ui.theme
+package com.aa.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Shapes

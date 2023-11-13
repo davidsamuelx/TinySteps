@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Title">Lorem ipsum is placeholder.</string>
+    <string name="subtitleIntroScreen">Lorem ipsum is placeholder text commonly used in the graphic</string>
+    <string name="by_continuing_you_agree_terms_of_services_privacy_policy"><![CDATA["By continuing you agree Terms of Services & Privacy Policy "]]></string>
+    <string name="continue_with_e_mail">Continue with E-mail</string>
+    <string name="i_forgot_my_password">i forgot my password</string>
+    <string name="don_t_have_account_let_s_create">Don’t have account? Let’s create!</string>
+    <string name="next">Next</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
+    <string name="pregnancy_date">PREGNANCY DATE</string>
+</resources>

@@ -43,6 +43,8 @@ import com.aa.repository.resources.SearchBadHabitResource
 import com.aa.repository.resources.SearchFoodResource
 import com.aa.repository.resources.UpdatePregnancyResource
 import com.aa.repository.resources.MusicResource
+import com.aa.repository.resources.SignUpResource
+import com.aa.repository.resources.SignUpResponseResource
 import com.aa.repository.resources.VideoResource
 import com.aa.repository.resources.kids.AllAchievementsResource
 import com.aa.repository.resources.kids.AllStoriesResource
@@ -94,6 +96,11 @@ interface TinyStepsService {
     suspend fun loginRequest(
         @Body loginResource: LoginResource
     ):Response<LoginResponseResource>
+
+    @POST("auth/user/register")
+    suspend fun signupRequest(
+        @Body signUpResource: SignUpResource
+    ):Response<SignUpResponseResource>
 
     @POST("user/Pregnancy/BabyKind/store")
     suspend fun storeBabyGender(@Body babyGender: StoreBabyGenderResource): Response<BabyGenderResource>

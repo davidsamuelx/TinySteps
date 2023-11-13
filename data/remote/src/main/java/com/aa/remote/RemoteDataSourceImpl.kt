@@ -41,6 +41,8 @@ import com.aa.repository.resources.SearchBadHabitResource
 import com.aa.repository.resources.SearchFoodResource
 import com.aa.repository.resources.SearchedENSupportMessageResource
 import com.aa.repository.resources.SelectedSupportMessageTypeResource
+import com.aa.repository.resources.SignUpResource
+import com.aa.repository.resources.SignUpResponseResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.VideoResource
 import com.aa.repository.resources.SupportMessageEnglishResource
@@ -70,6 +72,18 @@ class RemoteDataSourceImpl @Inject constructor(
                 loginResource
             )
         }
+    }
+
+    override suspend fun signupRequest(signUpResource: SignUpResource): SignUpResponseResource {
+        return tryToExecute {
+            tinyStepsService.signupRequest(
+                signUpResource
+            )
+        }
+    }
+
+    override suspend fun getFoodAdvices(): FoodByIdResource {
+        TODO("Not yet implemented")
     }
     //endregion
 
@@ -177,9 +191,9 @@ class RemoteDataSourceImpl @Inject constructor(
     //endregion
 
     //region pregnancy phase
-    override suspend fun getFoodAdvices(): AllFoodAdviceResource {
-        return tryToExecute { tinyStepsService.getFoodAdvices() }
-    }
+//     suspend fun getFoodAdvices(): AllFoodAdviceResource {
+//        return tryToExecute { tinyStepsService.getFoodAdvices() }
+//    }
 
     override suspend fun storeBabyGender(storeBabyGenderResource: StoreBabyGenderResource): BabyGenderResource {
         return tryToExecute {

@@ -6,3 +6,7 @@ data class UserInformation(
     val phases: String ,
     val gender: String ,
 )
+data class Token(
+    val token: String,
+    val expireTime: Long
+)

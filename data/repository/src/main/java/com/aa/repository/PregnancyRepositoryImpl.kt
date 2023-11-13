@@ -28,10 +28,10 @@ import javax.inject.Inject
 class PregnancyRepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
 ): PregnancyRepository {
-    override suspend fun allFoodAdvice(): List<AllFoodAdviceEntity> {
-        return remoteDataSource.getFoodAdvices().foodBabies
-            ?.mapNotNull { it?.toEntity() } ?: emptyList()
-    }
+//    override suspend fun allFoodAdvice(): List<AllFoodAdviceEntity> {
+//        return remoteDataSource.getFoodAdvices().foodBabies
+//            ?.mapNotNull { it?.toEntity() } ?: emptyList()
+//    }
 
     override suspend fun storeBabyGender(storeBabyGenderEntity: StoreBabyGenderEntity): BabyGenderEntity {
         return remoteDataSource.storeBabyGender(storeBabyGenderEntity.toResource()).toEntity()
