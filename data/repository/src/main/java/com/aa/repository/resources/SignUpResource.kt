@@ -5,15 +5,15 @@ import com.google.gson.annotations.SerializedName
 
 data class SignUpResource(
     @SerializedName("AgeBaby")
-    val ageBaby: Int?,
+    val ageBaby: Int? = null,
     @SerializedName("confirm_password")
-    val confirmPassword: String?,
+    val confirmPassword: String? = null,
     @SerializedName("email")
-    val email: String?,
+    val email: String? = null,
     @SerializedName("password")
-    val password: String?,
+    val password: String? = null,
     @SerializedName("StartDate")
-    val startDate: String?,
+    val startDate: String? = null,
     @SerializedName("username")
-    val username: String?
+    val username: String? = null
 )

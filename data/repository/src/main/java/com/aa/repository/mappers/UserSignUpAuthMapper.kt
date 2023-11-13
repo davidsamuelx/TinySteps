@@ -7,7 +7,7 @@ import com.aa.repository.resources.SignUpResponseResource
 import com.aa.repository.utils.orEmpty
 import com.aa.repository.utils.orZero
 
-internal fun UserSignUpAuth.toResource():SignUpResource{
+internal fun UserSignUpAuth.toResource(): SignUpResource {
     return SignUpResource(
         username = name.orEmpty(),
         email = email.orEmpty(),

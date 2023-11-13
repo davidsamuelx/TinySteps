@@ -1,17 +1,13 @@
 package com.aa.viewmodel.signup
 
-import android.net.http.NetworkException
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.aa.base.BaseErrorUiState
 import com.aa.base.BaseViewModel
 import com.aa.models.UserRegisterInformation
 import com.aa.models.UserSignUpAuth
 import com.aa.usecase.SignupUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -59,7 +55,7 @@ class SignUpViewModel@Inject constructor(
     fun signUp(username: String, email: String, password: String, pregnancyDate: String) {
         tryToExecute(
             function = {
-                signUpUseCase(UserSignUpAuth(username, email, password, pregnancyDate, 0, password))
+                signUpUseCase.invoke(UserSignUpAuth(username, email, password, pregnancyDate, 5, password))
             },
             onSuccess = { result ->
                 _signUpResult.value = result

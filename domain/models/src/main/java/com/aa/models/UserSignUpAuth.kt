@@ -7,5 +7,4 @@ data class UserSignUpAuth(
     val pregnancyDate: String,
     val age: Int,
     val confirm: String,
-
 )
