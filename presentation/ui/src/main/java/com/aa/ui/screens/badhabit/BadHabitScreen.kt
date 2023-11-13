@@ -11,8 +11,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.aa.base.viewmodels.cateories.badhabit.BadHabitUIState
-import com.aa.base.viewmodels.cateories.badhabit.BadHabitViewModel
+import com.aa.viewmodels.badhabit.BadHabitUIState
+import com.aa.viewmodels.badhabit.BadHabitViewModel
 import com.aa.ui.screens.search.composable.CustomToolbar
 import com.aa.ui.screens.search.composable.ItemCard
 import com.aa.ui.screens.search.composable.SearchBar

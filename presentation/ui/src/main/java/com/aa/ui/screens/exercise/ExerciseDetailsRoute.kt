@@ -7,7 +7,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.aa.base.viewmodels.cateories.exercise.ExerciseDetailsArgs
+import com.aa.viewmodels.exercise.ExerciseDetailsArgs
 import com.aa.ui.navigation.TinyStepsDestination
 
 private const val ROUTE = TinyStepsDestination.ExerciseDetailsScreen

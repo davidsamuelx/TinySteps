@@ -8,7 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.aa.base.viewmodels.cateories.food.FoodDetailsArgs
+import com.aa.viewmodels.food.FoodDetailsArgs
 import com.aa.ui.navigation.TinyStepsDestination
 
 private const val ROUTE = TinyStepsDestination.FoodDetails

@@ -22,8 +22,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.aa.base.viewmodels.cateories.specialcase.SpecialCaseUIState
-import com.aa.base.viewmodels.cateories.specialcase.SpecialCaseViewModel
+import com.aa.viewmodels.specialcase.SpecialCaseUIState
+import com.aa.viewmodels.specialcase.SpecialCaseViewModel
 import com.aa.ui.screens.search.composable.CustomToolbar
 import com.aa.ui.screens.search.composable.ItemCard
 import com.aa.ui.screens.search.composable.SearchBar

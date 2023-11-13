@@ -22,8 +22,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.aa.base.viewmodels.cateories.food.FoodUIState
-import com.aa.base.viewmodels.cateories.food.FoodViewModel
+import com.aa.viewmodels.food.FoodUIState
+import com.aa.viewmodels.food.FoodViewModel
 import com.aa.ui.screens.search.composable.CustomToolbar
 import com.aa.ui.screens.search.composable.ItemCard
 import com.aa.ui.screens.search.composable.SearchBar

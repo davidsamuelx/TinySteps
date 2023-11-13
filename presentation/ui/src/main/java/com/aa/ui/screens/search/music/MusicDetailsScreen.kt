@@ -6,8 +6,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.aa.base.viewmodels.cateories.music.MusicDetailsUiState
-import com.aa.base.viewmodels.cateories.music.MusicDetailsViewModel
+import com.aa.viewmodels.music.MusicDetailsUiState
+import com.aa.viewmodels.music.MusicDetailsViewModel
 import com.aa.ui.screens.search.composable.MusicPlayer
 import com.aa.ui.screens.search.composable.SongHelper
 

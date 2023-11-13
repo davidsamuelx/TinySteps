@@ -7,8 +7,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.aa.base.viewmodels.cateories.specialcase.SpecialCaseDetailsUiState
-import com.aa.base.viewmodels.cateories.specialcase.SpecialCaseDetailsViewModel
+import com.aa.viewmodels.specialcase.SpecialCaseDetailsUiState
+import com.aa.viewmodels.specialcase.SpecialCaseDetailsViewModel
 import com.aa.ui.screens.details.DetailsContent
 
 @RequiresApi(Build.VERSION_CODES.Q)

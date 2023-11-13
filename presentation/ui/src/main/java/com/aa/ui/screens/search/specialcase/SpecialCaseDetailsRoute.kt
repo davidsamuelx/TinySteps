@@ -7,7 +7,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.aa.base.viewmodels.cateories.specialcase.SpecialCaseDetailsArgs
+import com.aa.viewmodels.specialcase.SpecialCaseDetailsArgs
 import com.aa.ui.navigation.TinyStepsDestination
 
 private const val ROUTE = TinyStepsDestination.SpecialCaseDetailsScreen

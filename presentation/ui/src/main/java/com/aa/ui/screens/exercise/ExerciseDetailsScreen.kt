@@ -5,8 +5,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.aa.base.viewmodels.cateories.exercise.ExerciseDetailsUiState
-import com.aa.base.viewmodels.cateories.exercise.ExerciseDetailsViewModel
+import com.aa.viewmodels.exercise.ExerciseDetailsUiState
+import com.aa.viewmodels.exercise.ExerciseDetailsViewModel
 import com.aa.ui.screens.search.composable.VideoPlayer
 
 @Composable
@@ -26,5 +26,6 @@ fun ExercisesDetailsScreen(
 private fun ExercisesDetailsContent(
     state: ExerciseDetailsUiState
 ){
+    println(state.exercise.videoUrl)
     VideoPlayer(url = state.exercise.videoUrl)
 }

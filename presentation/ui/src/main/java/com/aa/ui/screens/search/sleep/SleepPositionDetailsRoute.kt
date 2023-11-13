@@ -7,7 +7,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.aa.base.viewmodels.cateories.sleepposition.SleepDetailsArgs
+import com.aa.viewmodels.sleepposition.SleepDetailsArgs
 import com.aa.ui.navigation.TinyStepsDestination
 
 private const val ROUTE = TinyStepsDestination.SleepPositionByIdDetailsScreen

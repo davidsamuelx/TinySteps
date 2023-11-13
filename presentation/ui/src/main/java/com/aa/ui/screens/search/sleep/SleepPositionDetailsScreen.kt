@@ -7,8 +7,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.aa.base.viewmodels.cateories.sleepposition.SleepPositionDetailsUiState
-import com.aa.base.viewmodels.cateories.sleepposition.SleepPositionDetailsViewModel
+import com.aa.viewmodels.sleepposition.SleepPositionDetailsUiState
+import com.aa.viewmodels.sleepposition.SleepPositionDetailsViewModel
 import com.aa.ui.screens.details.DetailsContent
 
 @RequiresApi(Build.VERSION_CODES.Q)

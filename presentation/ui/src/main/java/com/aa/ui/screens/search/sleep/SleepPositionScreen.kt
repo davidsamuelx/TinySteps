@@ -22,8 +22,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.aa.base.viewmodels.cateories.sleepposition.SleepPositionUiState
-import com.aa.base.viewmodels.cateories.sleepposition.SleepPositionViewModel
+import com.aa.viewmodels.sleepposition.SleepPositionUiState
+import com.aa.viewmodels.sleepposition.SleepPositionViewModel
 import com.aa.ui.screens.search.composable.CustomToolbar
 import com.aa.ui.screens.search.composable.ItemCard
 import com.aa.ui.screens.search.composable.SearchBar

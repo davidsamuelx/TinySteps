@@ -22,8 +22,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.aa.base.viewmodels.cateories.exercise.ExercisesUiState
-import com.aa.base.viewmodels.cateories.exercise.ExercisesViewModel
+import com.aa.viewmodels.exercise.ExercisesUiState
+import com.aa.viewmodels.exercise.ExercisesViewModel
 import com.aa.ui.screens.search.composable.CustomToolbar
 import com.aa.ui.screens.search.composable.ItemCard
 import com.aa.ui.screens.search.composable.SearchBar
@@ -63,7 +63,7 @@ private fun ExerciseContent(
             horizontalAlignment = Alignment.Start, verticalArrangement = Arrangement.Top
         ) {
 
-            CustomToolbar(navController = navController, title = "Nutrition")
+            CustomToolbar(navController = navController, title = "Exercise")
 
             Spacer(modifier = Modifier.height(12.dp))
 

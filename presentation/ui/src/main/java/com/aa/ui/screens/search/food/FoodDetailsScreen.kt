@@ -7,8 +7,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.aa.base.viewmodels.cateories.food.FoodDetailsUiState
-import com.aa.base.viewmodels.cateories.food.FoodDetailsViewModel
+import com.aa.viewmodels.food.FoodDetailsUiState
+import com.aa.viewmodels.food.FoodDetailsViewModel
 import com.aa.ui.screens.details.DetailsContent
 
 @RequiresApi(Build.VERSION_CODES.Q)
