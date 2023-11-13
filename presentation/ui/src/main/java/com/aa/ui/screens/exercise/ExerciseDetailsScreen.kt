@@ -1,5 +1,6 @@
 package com.aa.ui.screens.exercise
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -26,6 +27,11 @@ fun ExercisesDetailsScreen(
 private fun ExercisesDetailsContent(
     state: ExerciseDetailsUiState
 ){
-    println(state.exercise.videoUrl)
-    VideoPlayer(url = state.exercise.videoUrl)
+    val videoUrl = state.exercise.videoUrl
+    if (videoUrl.isNotEmpty()) {
+        VideoPlayer(url = videoUrl)
+    } else {
+        Log.e("VIDEO_PLAYER", "Video URL is null or empty")
+    }
+
 }
