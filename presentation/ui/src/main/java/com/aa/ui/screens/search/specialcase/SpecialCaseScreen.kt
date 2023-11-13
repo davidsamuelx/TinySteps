@@ -38,7 +38,8 @@ fun SpecialCaseScreen(
 
     SpecialCaseContent(
         state = state,
-        navController = navController
+        navController = navController,
+        onClickCard = navController::navigateToSpecialCaseDetails
     )
 
 }
@@ -48,7 +49,7 @@ fun SpecialCaseScreen(
 private fun SpecialCaseContent(
     state: SpecialCaseUIState,
     onClickSearch: () -> Unit = {},
-    onClickCard: () -> Unit = {},
+    onClickCard: (Int) -> Unit = {},
     navController: NavController,
 ){
     val specialCaseState = rememberLazyListState()
@@ -76,7 +77,7 @@ private fun SpecialCaseContent(
                 itemsIndexed(state.specialCasesList){index, item ->
                     ItemCard(
                         id =item.id,
-                        onClickItem = { /*TODO*/ },
+                        onClickItem = { onClickCard(item.id) },
                         title = item.nameSpecialCase,
                         imageUrl = item.pathImg)
                 }

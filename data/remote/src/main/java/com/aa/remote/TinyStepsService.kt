@@ -26,11 +26,14 @@ import com.aa.repository.resources.AllVideosResource
 import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.BabyImageResource
 import com.aa.repository.resources.BadHabitByIdResource
+import com.aa.repository.resources.ExerciseByIdRecource
+import com.aa.repository.resources.ExercisesRecourse
 import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.FoodResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
+import com.aa.repository.resources.MusicByIdResource
 import com.aa.repository.resources.NoteResponceResource
 import com.aa.repository.resources.SearchedENSupportMessageResource
 import com.aa.repository.resources.SelectedSupportMessageTypeResource
@@ -41,9 +44,10 @@ import com.aa.repository.resources.PregnancyResponseResource
 import com.aa.repository.resources.PregnancyStoreResource
 import com.aa.repository.resources.SearchBadHabitResource
 import com.aa.repository.resources.SearchFoodResource
+import com.aa.repository.resources.SleepByIdResource
 import com.aa.repository.resources.UpdatePregnancyResource
-import com.aa.repository.resources.MusicResource
 import com.aa.repository.resources.SleepPositionResource
+import com.aa.repository.resources.SpecialCaseByIdResource
 import com.aa.repository.resources.VideoResource
 import com.aa.repository.resources.kids.AllAchievementsResource
 import com.aa.repository.resources.kids.AllStoriesResource
@@ -74,10 +78,10 @@ interface TinyStepsService {
 
     //region pregnancy phase
     @GET("user/Pregnancy/exercises/getAllVideos")
-    suspend fun getAllVideos():Response<AllVideosResource>
+    suspend fun getAllVideos():Response<ExercisesRecourse>
 
     @GET("user/Pregnancy/exercises/getVideo/{id}")
-    suspend fun getVideoById(@Path("id") videoId: Int): Response<VideoResource>
+    suspend fun getVideoById(@Path("id") videoId: Int): Response<ExerciseByIdRecource>
 
     @GET("user/Pregnancy/exercises/SearchVideo/{searchName}")
     suspend fun searchVideoByName(@Path("searchName") searchName: String): Response<AllVideosResource>
@@ -86,7 +90,7 @@ interface TinyStepsService {
     suspend fun getAllMusics():Response<AllMusiceResource>
 
     @GET("user/Pregnancy/exercises/getMusic/{id}")
-    suspend fun getMusicById(@Path("id") musicId: Int): Response<MusicResource>
+    suspend fun getMusicById(@Path("id") musicId: Int): Response<MusicByIdResource>
 
     @GET("user/Pregnancy/exercises/SearchMusic/{musicType}")
     suspend fun searchMusicByType(@Path("musicType") musicType: String): Response<AllMusiceResource>
@@ -181,6 +185,16 @@ interface TinyStepsService {
 
     @GET("user/Pregnancy/advice-sleep-positions/GetAll")
     suspend fun getSleepPositions(): Response<SleepPositionResource>
+
+    @GET("user/Pregnancy/advice-sleep-positions/Get/{id}")
+    suspend fun getSleepPositionsById(
+        @Path("id") id: Int
+    ): Response<SleepByIdResource>
+
+    @GET("user/getData/special-cases/phase01/getById")
+    suspend fun getSpecialCaseById(
+        @Query("id") id: Int
+    ):Response<SpecialCaseByIdResource>
 
     //endregion
 

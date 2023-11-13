@@ -14,7 +14,7 @@ fun NavController.navigateToBadHabitScreen(){
     navigate(ROUTE)
 }
 
-fun NavController.backToBadHabitScreen() {
+fun NavController.backToDiscoveryScreen() {
     popBackStack()
 }
 

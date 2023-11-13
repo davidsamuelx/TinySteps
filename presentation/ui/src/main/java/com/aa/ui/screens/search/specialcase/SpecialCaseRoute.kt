@@ -13,3 +13,7 @@ private const val  ROUTE = TinyStepsDestination.SpecialCaseScreen
 fun NavGraphBuilder.specialCaseRoute(navController: NavController){
     composable(ROUTE){ SpecialCaseScreen(navController)}
 }
+
+fun NavController.navigateToSpecialCaseScreen() {
+    navigate(ROUTE)
+}

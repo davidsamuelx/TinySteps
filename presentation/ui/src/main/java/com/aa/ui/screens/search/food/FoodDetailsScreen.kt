@@ -30,10 +30,17 @@ fun FoodDetailsScreen(
 @Composable
 private fun FoodDetailsContent(
     state: FoodDetailsUiState,
-    navController: NavController
+    navController: NavController,
 ){
     DetailsContent(
         navController = navController,
-        imageUrl = ""
+        imageUrl = state.food.imgFood,
+        titleName = state.food.nameFood,
+        details = state.food.detailsOfFood,
+        doctorName = state.food.doctorName,
+        doctorLocation = state.food.doctorLocation,
+        doctorNumber = state.food.phoneDoctor,
+        problemName = state.food.nameProblem,
+        problemSolve = state.food.solveProblem,
     )
 }

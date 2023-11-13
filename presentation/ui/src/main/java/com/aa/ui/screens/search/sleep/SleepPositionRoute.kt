@@ -13,3 +13,7 @@ private const val ROUTE = TinyStepsDestination.SleepScreen
 fun NavGraphBuilder.sleepPositionRoute(navController: NavController){
     composable(ROUTE){ SleepPositionScreen(navController = navController) }
 }
+
+fun NavController.navigateToSleepScreen() {
+    navigate(ROUTE)
+}

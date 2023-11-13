@@ -14,3 +14,7 @@ private const val ROUTE = TinyStepsDestination.MusicScreen
 fun NavGraphBuilder.musicRoute(navController: NavController){
     composable(ROUTE){ MusicScreen(navController = navController) }
 }
+
+fun NavController.navigateToMusicScreen() {
+    navigate(ROUTE)
+}

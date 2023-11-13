@@ -13,3 +13,7 @@ private const val ROUTE = TinyStepsDestination.FoodScreen
 fun NavGraphBuilder.foodRoute(navController: NavController){
     composable(ROUTE){ FoodScreen(navController = navController) }
 }
+
+fun NavController.navigateToFoodScreen() {
+    navigate(ROUTE)
+}

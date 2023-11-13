@@ -40,6 +40,7 @@ fun FoodScreen(
     FoodContent(
         state = state,
         navController = navController,
+        onClickCard = navController::navigateToFoodDetails
     )
 
 }

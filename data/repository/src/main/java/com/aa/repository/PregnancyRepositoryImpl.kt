@@ -15,11 +15,12 @@ import com.aa.models.SelectedSupportMessageEntity
 import com.aa.models.SpecialCaseEntity
 import com.aa.models.MusicEntity
 import com.aa.models.SleepPositionEntity
+import com.aa.models.SpecialCaseByIdEntity
 import com.aa.models.StoreBabyGenderEntity
 import com.aa.models.SupportMessageEntity
 import com.aa.models.TodayENSupportMessageEntity
 import com.aa.models.UpdatePregnancyEntity
-import com.aa.models.VideosEntity
+import com.aa.models.ExerciseEntity
 import com.aa.repositories.PregnancyRepository
 import com.aa.repository.datasources.RemoteDataSource
 import com.aa.repository.mappers.toEntity
@@ -117,7 +118,7 @@ class PregnancyRepositoryImpl @Inject constructor(
             ?.map { it.toEntity() } ?: emptyList()
     }
 
-    override suspend fun getFoodById(id: Int): SearchFoodEntity {
+    override suspend fun getFoodById(id: Int): AllFoodAdviceEntity {
         return remoteDataSource.getFoodById(id).foodBaby.toEntity()
     }
 
@@ -135,16 +136,16 @@ class PregnancyRepositoryImpl @Inject constructor(
     }
 
 
-    override suspend fun allVideos(): List<VideosEntity> {
-        return remoteDataSource.getAllVideos().videoResourceLists
+    override suspend fun allVideos(): List<ExerciseEntity> {
+        return remoteDataSource.getAllVideos().videoList
             ?.mapNotNull { it?.toEntity() } ?: emptyList()
     }
 
-    override suspend fun getVideoById(id: Int): VideosEntity {
-        return remoteDataSource.getVideoById(id).toEntity()
+    override suspend fun getVideoById(id: Int): ExerciseEntity {
+        return remoteDataSource.getVideoById(id).video.toEntity()
     }
 
-    override suspend fun getVideoByName(name: String): List<VideosEntity> {
+    override suspend fun getVideoByName(name: String): List<ExerciseEntity> {
         return remoteDataSource.getVideosByName(name).videoResourceLists
             ?.mapNotNull { it?.toEntity() } ?: emptyList()
     }
@@ -155,7 +156,7 @@ class PregnancyRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getMusicById(id: Int): MusicEntity {
-        return remoteDataSource.getMusicById(id).toEntity()
+        return remoteDataSource.getMusicById(id).music.toEntity()
     }
 
     override suspend fun getMusicByType(musicType: String): List<MusicEntity> {
@@ -166,5 +167,13 @@ class PregnancyRepositoryImpl @Inject constructor(
     override suspend fun getAllSleepPosition(): List<SleepPositionEntity> {
         return remoteDataSource.getAllSleepPosition().responseData
             ?.map { it.toEntity() } ?: emptyList()
+    }
+
+    override suspend fun getSleepPositionById(id: Int): SleepPositionEntity {
+        return remoteDataSource.getSleepPositionById(id).responseData.toEntity()
+    }
+
+    override suspend fun getSpecialCaseById(id: Int): SpecialCaseByIdEntity {
+        return remoteDataSource.getSpecialCaseById(id).specialCase.toEntity()
     }
 }

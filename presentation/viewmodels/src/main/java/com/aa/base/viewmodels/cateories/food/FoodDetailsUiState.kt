@@ -2,7 +2,7 @@ package com.aa.base.viewmodels.cateories.food
 
 import com.aa.base.BaseErrorUiState
 import com.aa.base.BaseUiState
-import com.aa.models.SearchFoodEntity
+import com.aa.models.AllFoodAdviceEntity
 
 data class FoodDetailsUiState(
     val food: FoodItemDetailsUiState = FoodItemDetailsUiState(),
@@ -19,9 +19,10 @@ data class FoodItemDetailsUiState(
     val nameProblem: String = "",
     val phoneDoctor: String = "",
     val solveProblem: String = "",
+    val doctorLocation: String = "",
 )
 
-fun SearchFoodEntity.toUiState() = FoodItemDetailsUiState(
+fun AllFoodAdviceEntity.toDetailsUiState() = FoodItemDetailsUiState(
     adviceId = adviceId ?: 0,
     nameFood = nameFood ?: "",
     imgFood = imgFood ?: "",
@@ -30,5 +31,5 @@ fun SearchFoodEntity.toUiState() = FoodItemDetailsUiState(
     nameProblem = nameProblem ?: "",
     phoneDoctor = phoneDoctor ?: "",
     solveProblem = solveProblem ?: "",
-
+    doctorLocation = doctorLocation,
     )

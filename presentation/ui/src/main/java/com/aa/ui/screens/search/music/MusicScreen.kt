@@ -37,6 +37,7 @@ fun MusicScreen(
     MusicContent(
         state = state,
         navController = navController,
+        onClickCard = navController::navigateToMusicDetails
     )
 
 }
@@ -46,7 +47,7 @@ fun MusicScreen(
 private fun MusicContent(
     state: MusicUiState,
     onClickSearch: () -> Unit = {},
-    onClickCard: () -> Unit = {},
+    onClickCard: (Int) -> Unit = {},
     navController: NavController,
 ){
         Column(
@@ -71,7 +72,7 @@ private fun MusicContent(
                     println(item.id)
                     ItemCard(
                         id = item.id,
-                        onClickItem = {}
+                        onClickItem = onClickCard
                         , title = item.musicType
                         , imageUrl = item.imagePath
                     )

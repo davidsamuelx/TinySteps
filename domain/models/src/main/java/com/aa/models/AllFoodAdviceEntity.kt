@@ -9,4 +9,5 @@ data class AllFoodAdviceEntity(
     val nameProblem: String ,
     val phoneDoctor: String ,
     val solveProblem: String ,
+    val doctorLocation: String,
 )

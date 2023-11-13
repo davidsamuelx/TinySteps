@@ -38,7 +38,8 @@ fun SleepPositionScreen(
 
     SleepPositionContent(
         state = state,
-        navController = navController
+        navController = navController,
+        onClickCard = navController::navigateToSleepDetails
     )
 
 }
@@ -48,7 +49,7 @@ fun SleepPositionScreen(
 private fun SleepPositionContent(
     state: SleepPositionUiState,
     onClickSearch: () -> Unit = {},
-    onClickCard: () -> Unit = {},
+    onClickCard: (Int) -> Unit = {},
     navController: NavController,
 ){
     val sleepPositionState = rememberLazyListState()
@@ -76,7 +77,7 @@ private fun SleepPositionContent(
                 itemsIndexed(state.sleepPositionList){index, item ->
                     ItemCard(
                         id = item.id,
-                        onClickItem = { /*TODO*/ },
+                        onClickItem = { onClickCard(item.id) },
                         title = item.nameOfPosition,
                         imageUrl = item.pathImg)
                 }

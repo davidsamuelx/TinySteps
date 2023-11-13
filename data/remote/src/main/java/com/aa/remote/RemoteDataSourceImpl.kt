@@ -27,11 +27,13 @@ import com.aa.repository.resources.AllSpecialCaseResource
 import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.BabyImageResource
 import com.aa.repository.resources.BadHabitByIdResource
+import com.aa.repository.resources.ExerciseByIdRecource
+import com.aa.repository.resources.ExercisesRecourse
 import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.FoodResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
-import com.aa.repository.resources.MusicResource
+import com.aa.repository.resources.MusicByIdResource
 import com.aa.repository.resources.NoteResource
 import com.aa.repository.resources.NoteResponceResource
 import com.aa.repository.resources.PregnancyResource
@@ -41,7 +43,9 @@ import com.aa.repository.resources.SearchBadHabitResource
 import com.aa.repository.resources.SearchFoodResource
 import com.aa.repository.resources.SearchedENSupportMessageResource
 import com.aa.repository.resources.SelectedSupportMessageTypeResource
+import com.aa.repository.resources.SleepByIdResource
 import com.aa.repository.resources.SleepPositionResource
+import com.aa.repository.resources.SpecialCaseByIdResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.VideoResource
 import com.aa.repository.resources.SupportMessageEnglishResource
@@ -290,11 +294,11 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute { tinyStepsService.searchBadHabits(badHabit) }
     }
 
-    override suspend fun getAllVideos(): AllVideosResource {
+    override suspend fun getAllVideos(): ExercisesRecourse {
         return tryToExecute { tinyStepsService.getAllVideos() }
     }
 
-    override suspend fun getVideoById(id: Int): VideoResource {
+    override suspend fun getVideoById(id: Int): ExerciseByIdRecource {
         return tryToExecute { tinyStepsService.getVideoById(id) }
     }
 
@@ -306,7 +310,7 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute { tinyStepsService.getAllMusics() }
     }
 
-    override suspend fun getMusicById(id: Int): MusicResource {
+    override suspend fun getMusicById(id: Int): MusicByIdResource {
         return tryToExecute { tinyStepsService.getMusicById(id) }
     }
 
@@ -316,6 +320,14 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun getAllSleepPosition(): SleepPositionResource {
         return tryToExecute { tinyStepsService.getSleepPositions() }
+    }
+
+    override suspend fun getSleepPositionById(id: Int): SleepByIdResource {
+        return tryToExecute { tinyStepsService.getSleepPositionsById(id) }
+    }
+
+    override suspend fun getSpecialCaseById(id: Int): SpecialCaseByIdResource {
+        return tryToExecute { tinyStepsService.getSpecialCaseById(id) }
     }
 
     //endregion

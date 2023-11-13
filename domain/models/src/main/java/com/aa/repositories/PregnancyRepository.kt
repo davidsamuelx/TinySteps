@@ -15,11 +15,12 @@ import com.aa.models.SelectedSupportMessageEntity
 import com.aa.models.SpecialCaseEntity
 import com.aa.models.MusicEntity
 import com.aa.models.SleepPositionEntity
+import com.aa.models.SpecialCaseByIdEntity
 import com.aa.models.StoreBabyGenderEntity
 import com.aa.models.SupportMessageEntity
 import com.aa.models.TodayENSupportMessageEntity
 import com.aa.models.UpdatePregnancyEntity
-import com.aa.models.VideosEntity
+import com.aa.models.ExerciseEntity
 
 interface PregnancyRepository {
 
@@ -66,7 +67,7 @@ interface PregnancyRepository {
 
     suspend fun getAllSpecialCases(): List<SpecialCaseEntity>
 
-    suspend fun getFoodById(id:Int): SearchFoodEntity
+    suspend fun getFoodById(id:Int): AllFoodAdviceEntity
 
     suspend fun searchFood(foodSearch:String): List<SearchFoodEntity>
 
@@ -74,11 +75,11 @@ interface PregnancyRepository {
 
     suspend fun searchBadHabit(badHabit:String): List<BadHabitEntity>
 
-    suspend fun allVideos():List<VideosEntity>
+    suspend fun allVideos():List<ExerciseEntity>
 
-    suspend fun getVideoById(id: Int): VideosEntity
+    suspend fun getVideoById(id: Int): ExerciseEntity
 
-    suspend fun getVideoByName(name: String): List<VideosEntity>
+    suspend fun getVideoByName(name: String): List<ExerciseEntity>
 
     suspend fun getAllMusics(): List<MusicEntity>
 
@@ -87,5 +88,9 @@ interface PregnancyRepository {
     suspend fun getMusicByType(musicType: String): List<MusicEntity>
 
     suspend fun getAllSleepPosition(): List<SleepPositionEntity>
+
+    suspend fun getSleepPositionById(id: Int): SleepPositionEntity
+
+    suspend fun getSpecialCaseById(id: Int): SpecialCaseByIdEntity
 
 }

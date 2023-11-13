@@ -16,7 +16,7 @@ private const val  ROUTE = TinyStepsDestination.BadHabitDetailScreen
 @RequiresApi(Build.VERSION_CODES.Q)
 fun NavGraphBuilder.badHabitDetailRoute(navController: NavController){
     composable(
-        "$ROUTE/${BadHabitDetailsArgs.ID_ARG}",
+        "$ROUTE/{${BadHabitDetailsArgs.ID_ARG}}",
         arguments = listOf(
             navArgument(BadHabitDetailsArgs.ID_ARG){
                 type = NavType.IntType

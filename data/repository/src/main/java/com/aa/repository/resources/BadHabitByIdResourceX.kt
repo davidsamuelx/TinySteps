@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 data class BadHabitByIdResource(
     @SerializedName("badhabit")
-    val badhabit: Badhabit? = Badhabit()
+    val badhabit: BadhabitByID? = BadhabitByID()
 )

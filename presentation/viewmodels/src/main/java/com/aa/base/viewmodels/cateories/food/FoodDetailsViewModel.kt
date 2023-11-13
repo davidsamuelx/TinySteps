@@ -1,8 +1,10 @@
 package com.aa.base.viewmodels.cateories.food
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import com.aa.base.BaseErrorUiState
 import com.aa.base.BaseViewModel
+import com.aa.models.AllFoodAdviceEntity
 import com.aa.models.SearchFoodEntity
 import com.aa.usecase.GetFoodByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,11 +32,12 @@ class FoodDetailsViewModel @Inject constructor(
         )
     }
 
-    private fun onGetFoodByIdSuccess(food: SearchFoodEntity){
+    private fun onGetFoodByIdSuccess(food: AllFoodAdviceEntity){
+        Log.d("FoodDetailsViewModel", "onGetFoodByIdSuccess: $food") // Log the data
         _state.update {
             it.copy(
                 isLoading = false,
-                food = food.toUiState()
+                food = food.toDetailsUiState()
             )
         }
     }

@@ -80,7 +80,7 @@ private fun BadHabitContent(
                 itemsIndexed(state.badHabitsList){index, item ->
                     ItemCard(
                         id = item.id,
-                        onClickItem = onClickCard,
+                        onClickItem = { onClickCard(item.adviceId) },
                         title = item.nameBadHabit,
                         imageUrl = item.pathImg)
                 }

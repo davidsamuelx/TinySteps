@@ -16,7 +16,7 @@ private const val ROUTE = TinyStepsDestination.FoodDetails
 @RequiresApi(Build.VERSION_CODES.Q)
 fun NavGraphBuilder.foodDetailsRoute(navController: NavHostController){
     composable(
-        route = "$ROUTE/${FoodDetailsArgs.ID_ARG}",
+        route = "$ROUTE/{${FoodDetailsArgs.ID_ARG}}",
         arguments = listOf(
             navArgument(FoodDetailsArgs.ID_ARG){NavType.IntType}
         )
