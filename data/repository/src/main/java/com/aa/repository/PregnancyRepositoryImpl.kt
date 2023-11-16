@@ -10,7 +10,6 @@ import com.aa.models.NoteEntity
 import com.aa.models.PregnancyEntity
 import com.aa.models.PregnancyResponseEntity
 import com.aa.models.PregnancyStoreEntity
-import com.aa.models.SearchFoodEntity
 import com.aa.models.SelectedSupportMessageEntity
 import com.aa.models.SpecialCaseEntity
 import com.aa.models.MusicEntity
@@ -122,7 +121,7 @@ class PregnancyRepositoryImpl @Inject constructor(
         return remoteDataSource.getFoodById(id).foodBaby.toEntity()
     }
 
-    override suspend fun searchFood(foodSearch: String): List<SearchFoodEntity> {
+    override suspend fun searchFood(foodSearch: String): List<AllFoodAdviceEntity> {
         return remoteDataSource.searchFood(foodSearch).foodBabies
             ?.map { it.toEntity() } ?: emptyList()
     }

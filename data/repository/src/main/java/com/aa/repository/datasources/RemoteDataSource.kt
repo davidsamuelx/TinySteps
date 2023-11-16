@@ -29,6 +29,7 @@ import com.aa.repository.resources.ExerciseByIdRecource
 import com.aa.repository.resources.ExercisesRecourse
 import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.FoodResource
+import com.aa.repository.resources.FoodSearchResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
@@ -39,7 +40,6 @@ import com.aa.repository.resources.PregnancyResource
 import com.aa.repository.resources.PregnancyResponseResource
 import com.aa.repository.resources.PregnancyStoreResource
 import com.aa.repository.resources.SearchBadHabitResource
-import com.aa.repository.resources.SearchFoodResource
 import com.aa.repository.resources.SearchedENSupportMessageResource
 import com.aa.repository.resources.SelectedSupportMessageTypeResource
 import com.aa.repository.resources.SleepByIdResource
@@ -48,7 +48,6 @@ import com.aa.repository.resources.TodayENSupportMessageResource
 import com.aa.repository.resources.UpdatePregnancyResource
 import com.aa.repository.resources.SleepPositionResource
 import com.aa.repository.resources.SpecialCaseByIdResource
-import com.aa.repository.resources.VideoResource
 import com.aa.repository.resources.kids.AllAchievementsResource
 import com.aa.repository.resources.kids.AllAnimalGameResource
 import com.aa.repository.resources.kids.AllEducationGamesResource
@@ -150,7 +149,7 @@ interface RemoteDataSource {
 
     suspend fun getFoodById(id:Int): FoodByIdResource
 
-    suspend fun searchFood(foodSearch:String): SearchFoodResource
+    suspend fun searchFood(foodSearch:String): FoodSearchResource
 
     suspend fun getAllBadHabitById(id:Int): BadHabitByIdResource
 

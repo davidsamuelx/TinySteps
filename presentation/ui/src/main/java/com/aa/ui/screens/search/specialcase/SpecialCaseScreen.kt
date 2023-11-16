@@ -77,6 +77,7 @@ private fun SpecialCaseContent(
                 itemsIndexed(state.specialCasesList){index, item ->
                     ItemCard(
                         id =item.id,
+                        modifier = Modifier,
                         onClickItem = { onClickCard(item.id) },
                         title = item.nameSpecialCase,
                         imageUrl = item.pathImg)

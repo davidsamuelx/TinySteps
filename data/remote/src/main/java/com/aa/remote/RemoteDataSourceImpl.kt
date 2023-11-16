@@ -31,6 +31,7 @@ import com.aa.repository.resources.ExerciseByIdRecource
 import com.aa.repository.resources.ExercisesRecourse
 import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.FoodResource
+import com.aa.repository.resources.FoodSearchResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
 import com.aa.repository.resources.MusicByIdResource
@@ -40,14 +41,12 @@ import com.aa.repository.resources.PregnancyResource
 import com.aa.repository.resources.PregnancyResponseResource
 import com.aa.repository.resources.PregnancyStoreResource
 import com.aa.repository.resources.SearchBadHabitResource
-import com.aa.repository.resources.SearchFoodResource
 import com.aa.repository.resources.SearchedENSupportMessageResource
 import com.aa.repository.resources.SelectedSupportMessageTypeResource
 import com.aa.repository.resources.SleepByIdResource
 import com.aa.repository.resources.SleepPositionResource
 import com.aa.repository.resources.SpecialCaseByIdResource
 import com.aa.repository.resources.StoreBabyGenderResource
-import com.aa.repository.resources.VideoResource
 import com.aa.repository.resources.SupportMessageEnglishResource
 import com.aa.repository.resources.TodayENSupportMessageResource
 import com.aa.repository.resources.UpdatePregnancyResource
@@ -282,7 +281,7 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute { tinyStepsService.getFoodById(id) }
     }
 
-    override suspend fun searchFood(foodSearch: String): SearchFoodResource {
+    override suspend fun searchFood(foodSearch: String): FoodSearchResource {
         return tryToExecute { tinyStepsService.searchFood(foodSearch) }
     }
 

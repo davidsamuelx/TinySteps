@@ -30,6 +30,7 @@ import com.aa.repository.resources.ExerciseByIdRecource
 import com.aa.repository.resources.ExercisesRecourse
 import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.FoodResource
+import com.aa.repository.resources.FoodSearchResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
@@ -43,12 +44,10 @@ import com.aa.repository.resources.PregnancyResource
 import com.aa.repository.resources.PregnancyResponseResource
 import com.aa.repository.resources.PregnancyStoreResource
 import com.aa.repository.resources.SearchBadHabitResource
-import com.aa.repository.resources.SearchFoodResource
 import com.aa.repository.resources.SleepByIdResource
 import com.aa.repository.resources.UpdatePregnancyResource
 import com.aa.repository.resources.SleepPositionResource
 import com.aa.repository.resources.SpecialCaseByIdResource
-import com.aa.repository.resources.VideoResource
 import com.aa.repository.resources.kids.AllAchievementsResource
 import com.aa.repository.resources.kids.AllStoriesResource
 import com.aa.repository.resources.kids.AllAnimalGameResource
@@ -175,7 +174,7 @@ interface TinyStepsService {
     suspend fun getFoodById(@Query("id")id: Int):Response<FoodByIdResource>
 
     @GET("user/getData/Phase01/search-food/{food_search}")
-    suspend fun searchFood(@Path("food_search")foodSearch:String):Response<SearchFoodResource>
+    suspend fun searchFood(@Path("food_search")foodSearch:String):Response<FoodSearchResource>
 
     @GET("user/getData/Phase01/BadHabit/getById")
     suspend fun getBadHabitsById(@Query("id") id:Int):Response<BadHabitByIdResource>

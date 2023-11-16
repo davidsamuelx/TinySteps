@@ -77,6 +77,7 @@ private fun ExerciseContent(
                 itemsIndexed(state.exercisesList){index, item ->
                     ItemCard(
                         id = item.id,
+                        modifier = Modifier,
                         onClickItem = { onClickCard(item.id) },
                         title = item.videoName,
                         imageUrl = item.imageUrl)

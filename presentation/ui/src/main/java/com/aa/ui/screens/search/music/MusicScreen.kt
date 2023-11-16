@@ -72,6 +72,7 @@ private fun MusicContent(
                     println(item.id)
                     ItemCard(
                         id = item.id,
+                        modifier = Modifier,
                         onClickItem = onClickCard
                         , title = item.musicType
                         , imageUrl = item.imagePath

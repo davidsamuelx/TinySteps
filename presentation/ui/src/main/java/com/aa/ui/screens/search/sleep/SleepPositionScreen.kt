@@ -77,6 +77,7 @@ private fun SleepPositionContent(
                 itemsIndexed(state.sleepPositionList){index, item ->
                     ItemCard(
                         id = item.id,
+                        modifier = Modifier,
                         onClickItem = { onClickCard(item.id) },
                         title = item.nameOfPosition,
                         imageUrl = item.pathImg)
