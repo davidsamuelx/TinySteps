@@ -92,4 +92,8 @@ interface PregnancyRepository {
 
     suspend fun getSpecialCaseById(id: Int): SpecialCaseByIdEntity
 
+    suspend fun searchSpecialCase(specialCase: String): List<SpecialCaseEntity>
+
+    suspend fun searchSleepPosition(sleepPosition: String): List<SleepPositionEntity>
+
 }

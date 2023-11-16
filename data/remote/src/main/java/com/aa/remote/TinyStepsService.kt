@@ -22,11 +22,11 @@ import com.aa.repository.resources.Infants.AllInfantsSpecialCaseByIdResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseResource
 import com.aa.repository.resources.Infants.InfantsSleepResource
 import com.aa.repository.resources.AllSpecialCaseResource
-import com.aa.repository.resources.AllVideosResource
 import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.BabyImageResource
 import com.aa.repository.resources.BadHabitByIdResource
 import com.aa.repository.resources.ExerciseByIdRecource
+import com.aa.repository.resources.ExerciseSearchResource
 import com.aa.repository.resources.ExercisesRecourse
 import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.FoodResource
@@ -47,7 +47,9 @@ import com.aa.repository.resources.SearchBadHabitResource
 import com.aa.repository.resources.SleepByIdResource
 import com.aa.repository.resources.UpdatePregnancyResource
 import com.aa.repository.resources.SleepPositionResource
+import com.aa.repository.resources.SleepPositionSearchResource
 import com.aa.repository.resources.SpecialCaseByIdResource
+import com.aa.repository.resources.SpecialCaseSearchResource
 import com.aa.repository.resources.kids.AllAchievementsResource
 import com.aa.repository.resources.kids.AllStoriesResource
 import com.aa.repository.resources.kids.AllAnimalGameResource
@@ -83,7 +85,7 @@ interface TinyStepsService {
     suspend fun getVideoById(@Path("id") videoId: Int): Response<ExerciseByIdRecource>
 
     @GET("user/Pregnancy/exercises/SearchVideo/{searchName}")
-    suspend fun searchVideoByName(@Path("searchName") searchName: String): Response<AllVideosResource>
+    suspend fun searchVideoByName(@Path("searchName") searchName: String): Response<ExerciseSearchResource>
 
     @GET("user/Pregnancy/exercises/getAllMusics")
     suspend fun getAllMusics():Response<AllMusiceResource>
@@ -194,6 +196,13 @@ interface TinyStepsService {
     suspend fun getSpecialCaseById(
         @Query("id") id: Int
     ):Response<SpecialCaseByIdResource>
+
+    @GET("user/getData/special-cases/phase01/search/{special_case}")
+    suspend fun searchSpecialCase(@Path("special_case")specialCase:String):Response<SpecialCaseSearchResource>
+
+    @GET("user/Pregnancy/advice-sleep-positions/search/{sleep_position}")
+    suspend fun searchSleepPositions(@Path("sleep_position")sleepPosition:String): Response<SleepPositionSearchResource>
+
 
     //endregion
 

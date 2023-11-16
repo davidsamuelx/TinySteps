@@ -145,8 +145,8 @@ class PregnancyRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getVideoByName(name: String): List<ExerciseEntity> {
-        return remoteDataSource.getVideosByName(name).videoResourceLists
-            ?.mapNotNull { it?.toEntity() } ?: emptyList()
+        return remoteDataSource.getVideosByName(name)
+            .mapNotNull { it.toEntity() }
     }
 
     override suspend fun getAllMusics(): List<MusicEntity> {
@@ -174,5 +174,15 @@ class PregnancyRepositoryImpl @Inject constructor(
 
     override suspend fun getSpecialCaseById(id: Int): SpecialCaseByIdEntity {
         return remoteDataSource.getSpecialCaseById(id).specialCase.toEntity()
+    }
+
+    override suspend fun searchSpecialCase(specialCase: String): List<SpecialCaseEntity> {
+        return remoteDataSource.searchSpecialCase(specialCase).specialCases
+            ?.map { it.toEntity() } ?: emptyList()
+    }
+
+    override suspend fun searchSleepPosition(sleepPosition: String): List<SleepPositionEntity> {
+        return remoteDataSource.searchSleepPosition(sleepPosition).responseData
+            ?.map { it.toEntity() } ?: emptyList()
     }
 }

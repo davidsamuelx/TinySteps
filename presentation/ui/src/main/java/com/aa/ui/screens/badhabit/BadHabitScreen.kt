@@ -106,7 +106,7 @@ private fun BadHabitContent(
                         ItemCard(
                             id = item.id,
                             modifier = Modifier.padding(horizontal = 16.dp),
-                            onClickItem = { onClickCard(item.adviceId) },
+                            onClickItem = { onClickCard(item.id) },
                             title = item.nameBadHabit,
                             imageUrl = item.pathImg,
                         )
