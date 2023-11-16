@@ -22,6 +22,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aa.ui.screens.discover_screen.composable.DiscoverCard
+import com.aa.ui.screens.navigation_bar.NavItem
+import com.aa.ui.screens.navigation_bar.NavigationBar
 import com.aa.viewmodels.discover_screen.DiscoverScreenUiState
 import com.aa.viewmodels.discover_screen.DiscoverScreenViewModel
 
@@ -58,7 +60,7 @@ private fun DiscoverScreenContent (
         )
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
-            contentPadding = PaddingValues(16.dp),
+            contentPadding = PaddingValues(start = 16.dp, end = 16.dp,top = 16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
@@ -73,7 +75,7 @@ private fun DiscoverScreenContent (
             }
         }
 
-
+        NavigationBar(navController = navController,modifier = Modifier.padding(12.dp), selectedIcon = NavItem.Discover)
     }
 
 }
