@@ -32,6 +32,7 @@ import com.aa.ui.theme.space8
 fun NextButton(
     textButton:String,
     onClickNext:()->Unit,
+    onClickSave:()->Unit
 ){
 
     Card(

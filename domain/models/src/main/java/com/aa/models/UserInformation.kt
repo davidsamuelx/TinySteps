@@ -5,6 +5,8 @@ data class UserInformation(
     val username :String ,
     val phases: String ,
     val gender: String ,
+    val error: String?,
+    val password: List<String?>?
 )
 data class Token(
     val token: String,

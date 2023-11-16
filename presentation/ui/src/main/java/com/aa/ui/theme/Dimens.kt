@@ -72,7 +72,7 @@ val ForgetTextHeight=20.dp
 
 //start region State
 val ShapeStateAppBarWidth344=344.dp
-val ShapeStateHeight=190.dp
+val ShapeStateHeight=180.dp
 val FirstStateNumberHeight=61.dp
 val FirstStateNumberWidth=122.dp
 val SecondStateNumberHeight=98.dp

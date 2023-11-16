@@ -13,4 +13,6 @@
     <string name="name">Name</string>
     <string name="surname">Surname</string>
     <string name="pregnancy_date">PREGNANCY DATE</string>
+    <string name="invalid_email">Invalid email format</string>
+    <string name="invalid_password">Invalid password</string>
 </resources>

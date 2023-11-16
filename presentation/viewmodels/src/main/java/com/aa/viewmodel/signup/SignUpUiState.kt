@@ -10,7 +10,7 @@ data class SignUpUiState(
     val password:String="",
     val pregnancyDate:String="",
 
-    val errorMessage: String? = null, // This is the property we added
+    val errorMessage: String? = null,
     val error: BaseErrorUiState? = null,
     val isValidName: Boolean = false,
     val isValidApiKey: Boolean = false,

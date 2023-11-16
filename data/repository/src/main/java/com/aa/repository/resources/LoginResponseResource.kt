@@ -11,5 +11,10 @@ data class LoginResponseResource(
     @SerializedName("token_type")
     val tokenType: String? = null,
     @SerializedName("user")
-    val user: User? = null
+    val user: User? = null,
+    @SerializedName("error")
+    val error: String?,
+    @SerializedName("password")
+    val password: List<String?>?
+
 )

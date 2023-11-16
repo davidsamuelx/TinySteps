@@ -1,53 +1,32 @@
 package com.aa.ui.screen.composable
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LocalContentColor
-import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.aa.ui.R
-import com.aa.ui.theme.PrimaryHintTextColor
 import com.aa.ui.theme.PrimaryTextColor
 import com.aa.ui.theme.SecondaryTextColor
 import com.aa.ui.theme.TextFieldHugHeight72
 import com.aa.ui.theme.Type
-import com.aa.ui.theme.space0
-import com.aa.ui.theme.space122
 import com.aa.ui.theme.space16
 import com.aa.ui.theme.space160
 import com.aa.ui.theme.space24
-import com.aa.ui.theme.space4
-import com.aa.ui.theme.space62
 import com.aa.ui.theme.space8
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -57,6 +36,8 @@ fun PassCard(
     email:String,
     onTextChanged:(String)->Unit,
     onTextDelete:()->Unit,
+    error: String? = null
+
 
 ) {
     val isTextEmpty = email.isEmpty()
@@ -105,7 +86,15 @@ fun PassCard(
                 }
             }
         }
-
+        if (!error.isNullOrBlank()) {
+            // Display the error message if it exists
+            Log.d("PassCard", "Error: $error")
+            Text(
+                text = error,
+                color = Color.Red,
+                modifier = Modifier.padding(start = space8, bottom = space24)
+            )
+        }
     }
 
 

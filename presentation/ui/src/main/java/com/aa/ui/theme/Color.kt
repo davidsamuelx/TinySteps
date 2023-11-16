@@ -1,5 +1,6 @@
 package com.aa.ui.theme
 
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 
 val Purple80 = Color(0xFFD0BCFF)
@@ -13,6 +14,10 @@ val Pink40 = Color(0xFF7D5260)
 //Start region
 val PrimaryColor= Color(0xFFFF8865)
 val SecondaryColor= Color(0xFFFF3A00)
+val background= Brush.linearGradient(
+    0.0f to PrimaryColor,
+    500.0f to  SecondaryColor,
+)
 //end Region
 
 //start region Text Color

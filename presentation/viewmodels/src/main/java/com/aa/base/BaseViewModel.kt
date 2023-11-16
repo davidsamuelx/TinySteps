@@ -33,4 +33,6 @@ abstract class BaseViewModel<UiState : BaseUiState>(state: UiState) : ViewModel(
             }
         }
     }
+    protected inline fun <reified T : BaseErrorUiState> List<BaseErrorUiState>.firstInstanceOfOrNull() =
+        filterIsInstance<T>().firstOrNull()
 }

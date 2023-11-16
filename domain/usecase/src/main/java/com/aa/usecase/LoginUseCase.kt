@@ -6,25 +6,18 @@ import com.aa.repositories.AuthenticationRepository
 import javax.inject.Inject
 
 class LoginUseCase @Inject constructor(
-  //  private val validateLoginForm: ValidateLoginFormUseCase,
+    private val validateLoginForm: ValidateLoginFormUseCase,
     private val authenticationRepository: AuthenticationRepository,
 
 ) {
 
-    suspend operator fun invoke(
-        userLoginAuth: UserLoginAuth
-    ):UserInformation{
-        return authenticationRepository
-            .loginRequest(userLoginAuth)
+    suspend operator fun invoke(userLoginAuth: UserLoginAuth):UserInformation {
+        val validationResults
+                = validateLoginForm(userLoginAuth.name, userLoginAuth.password)
 
-//        val validationResults
-//                = validateLoginForm(userLoginAuth.name,userLoginAuth.password)
-//
-//        if (validationResults.any { !it.isValid }) {
-//            throw ErrorType.UnAuthorized(validationResults)
-//        }
-//        val user = authenticationRepository.loginRequest(userLoginAuth)
-//        authenticationRepository.saveAuthData(user.token, true)
+
+      return   authenticationRepository.loginRequest(userLoginAuth)
+
 
     }
 

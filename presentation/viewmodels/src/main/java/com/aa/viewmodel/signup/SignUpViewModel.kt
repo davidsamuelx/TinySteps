@@ -1,13 +1,17 @@
 package com.aa.viewmodel.signup
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import android.util.Log
+import androidx.lifecycle.viewModelScope
+import com.aa.base.BaseErrorUiState
 import com.aa.base.BaseViewModel
-import com.aa.models.UserRegisterInformation
 import com.aa.models.UserSignUpAuth
 import com.aa.usecase.SignupUseCase
+import com.aa.viewmodel.signin.LoginUIEffect
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -18,53 +22,18 @@ class SignUpViewModel@Inject constructor(
     :BaseViewModel<SignUpUiState>(SignUpUiState()) {
 
 
-    private val _signUpResult = MutableLiveData<UserRegisterInformation>()
-    val signUpResult: LiveData<UserRegisterInformation> get() = _signUpResult
 
-//
-//    private val _event = MutableSharedFlow<RegisterEvent>()
-//    val event = _event.asSharedFlow()
-//
-//    fun register(userSignUpAuth: UserSignUpAuth){
-//                tryToExecute(
-//                    function =signUpUseCase(userSignUpAuth),
-//                        ::signupSuccess,
-//                        ::signupError
-//                )
-//        }
-//    fun signupSuccess(userRegisterInformation: UserRegisterInformation){
-//        val signup=userRegisterInformation.toSignupUiState()
-//        _state.update { state->
-//            state.copy(
-//                name = signup.name,
-//                password = signup.password,
-//                pregnancyDate = signup.pregnancyDate,
-//                email = signup.email
-//            )
-//        }
-//    }
-//    private fun signupError(error: BaseErrorUiState){
-//        _state.update { state ->
-//            state.copy(
-//                isLoading = false,
-//                error = error
-//            )
-//        }
-//    }
+    private val _effect = MutableSharedFlow<LoginUIEffect>()
+    val effect = _effect.asSharedFlow()
 
     fun signUp(username: String, email: String, password: String, pregnancyDate: String) {
         tryToExecute(
             function = {
                 signUpUseCase.invoke(UserSignUpAuth(username, email, password, pregnancyDate, 5, password))
             },
-            onSuccess = { result ->
-                _signUpResult.value = result
-            },
-            onError = { error ->
-                updateState { currentState ->
-                    currentState.copy(errorMessage = error.errorCode)
-                }
-            }
+             ::onSuccess,
+            ::onError
+
         )
     }
     fun onChangedName(name:String){
@@ -99,12 +68,18 @@ class SignUpViewModel@Inject constructor(
         _state.update { it.copy(pregnancyDate = "") }
     }
 
-//    private fun UserRegisterInformation.toSignupUiState():SignUpUiState{
-//        return SignUpUiState(
-//            email=email,
-//            password = password,
-//            pregnancyDate = startDate,
-//            name = username
-//        )
-//    }
+
+
+
+    private fun onSuccess(unit: Unit) {
+        viewModelScope.launch {_effect.emit(LoginUIEffect.LoginSuccess)  }
+        _state.update { it.copy(isLoading = true) }
+    }
+
+
+    private fun onError(error: BaseErrorUiState) {
+        Log.e("SignInViewModel", "Error: ${error.errorCode}, Message: ${error.errorCode}")
+        viewModelScope.launch {_effect.emit(LoginUIEffect.LoginFailed(error))  }
+        _state.update { it.copy(error = error, isLoading = false) }
+    }
 }

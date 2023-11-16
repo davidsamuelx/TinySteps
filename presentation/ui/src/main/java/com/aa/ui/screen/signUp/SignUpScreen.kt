@@ -1,5 +1,6 @@
 package com.aa.ui.screen.signUp
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -13,15 +14,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.aa.viewmodel.signup.SignUpUiState
-import com.aa.viewmodel.signup.SignUpViewModel
 import com.aa.ui.R
+import com.aa.ui.navigation.TinyStepsDestination
 import com.aa.ui.screen.composable.AppBar
 import com.aa.ui.screen.composable.AuthCard
 import com.aa.ui.screen.composable.HorizontalSpacer
 import com.aa.ui.screen.composable.NextButton
 import com.aa.ui.screen.composable.PassCard
 import com.aa.ui.theme.space24
+import com.aa.viewmodel.signin.LoginUIEffect
+import com.aa.viewmodel.signup.SignUpUiState
+import com.aa.viewmodel.signup.SignUpViewModel
 
 @Composable
 fun SignUpScreen(
@@ -30,6 +33,27 @@ fun SignUpScreen(
 
 ){
     val state by viewModel.state.collectAsState()
+    val effect by viewModel.effect.collectAsState(initial = null)
+    var errorMessage: String? = null
+
+    when(effect){
+        is LoginUIEffect.LoginSuccess -> {
+            navController.navigate(TinyStepsDestination.SignIn)
+        }
+
+        is LoginUIEffect.LoginFailed -> {
+            Log.e(
+                "SignUpScreen",
+                "Error: ${(effect as LoginUIEffect.LoginFailed).errorMessage?.errorCode}"
+            )
+            errorMessage = (effect as LoginUIEffect.LoginFailed).errorMessage?.errorCode
+
+        }
+
+        else -> {}
+    }
+
+
     SignUpContent(
         navController::backToSignInScreen,
         //onClickSave = navController::backToSignInScreen,
@@ -76,6 +100,7 @@ private fun SignUpContent(
             titleAppBar = stringResource(R.string.create_account),
             backPainter = painterResource(id = R.drawable.left_icon)
         )
+
         AuthCard(
             title = stringResource(R.string.name),
         email = state.name,
@@ -112,7 +137,7 @@ private fun SignUpContent(
             NextButton(
                 stringResource(R.string.next),
                 onClickSave,
-
+                onClickSave = {}
             )
     }
 

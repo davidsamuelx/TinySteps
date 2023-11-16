@@ -17,6 +17,7 @@ fun TinyStepsApp(){
         Scaffold {
             val navController = rememberNavController()
             TinyStepsGraph(navController = navController)
+
         }
     }
 }
