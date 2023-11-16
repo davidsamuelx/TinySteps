@@ -9,5 +9,6 @@ data class BadHabitEntity (
     val doctorName: String?,
     val phoneDoctor: String?,
     val profileDoctor: String?,
-    val solveProblem: String?
+    val solveProblem: String?,
+    val doctorLocation: String?,
 )

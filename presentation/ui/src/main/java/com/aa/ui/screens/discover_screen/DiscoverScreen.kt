@@ -17,7 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -32,7 +31,7 @@ fun DiscoverScreen(
     viewModel: DiscoverScreenViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.collectAsState()
-    DiscoverScreenContent(state = state,{})
+    DiscoverScreenContent(state = state,navController = navController)
 
 }
 
@@ -40,7 +39,7 @@ fun DiscoverScreen(
 @Composable
 private fun DiscoverScreenContent (
     state : DiscoverScreenUiState,
-    onDiscoverCardClick: () -> Unit
+    navController: NavController,
 ) {
     Column (
         modifier = Modifier
@@ -68,8 +67,8 @@ private fun DiscoverScreenContent (
                     icon = item.icon,
                     text = item.text,
                     color = item.color,
-                    onCardClick = onDiscoverCardClick
-
+                    navController = navController,
+                    destination = item.destination
                 )
             }
         }
@@ -79,9 +78,3 @@ private fun DiscoverScreenContent (
 
 }
 
-
-@Preview
-@Composable
-fun DiscoverScreenContentPreview() {
-    DiscoverScreenContent(DiscoverScreenUiState()){}
-}

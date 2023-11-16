@@ -91,7 +91,7 @@ val WriteFrameWidth=343.dp
 val WriteFrameHeight=58.dp
 //End chatBot
 
-//start Music
+//start MusicResource
 val MusicPhotoSize=343.dp
 val FramePlaySize=80.dp
 // end region

@@ -13,5 +13,7 @@ data class FoodBaby(
     @SerializedName("ImgFood")
     val imgFood: String? = "",
     @SerializedName("NameFood")
-    val nameFood: String? = ""
+    val nameFood: String? = "",
+    @SerializedName("SpecificFood")
+    val specificFood: String? = ""
 )
