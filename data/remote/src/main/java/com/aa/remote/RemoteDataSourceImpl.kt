@@ -4,6 +4,17 @@ import com.aa.remote.utils.NetworkException
 import com.aa.repository.datasources.RemoteDataSource
 import com.aa.repository.resources.AllBadHabitsResource
 import com.aa.repository.resources.AllENSupportMessagesResource
+import com.aa.repository.resources.AllMusiceResource
+import com.aa.repository.resources.AllSpecialCaseResource
+import com.aa.repository.resources.BabyGenderResource
+import com.aa.repository.resources.BabyImageResource
+import com.aa.repository.resources.BadHabitByIdResource
+import com.aa.repository.resources.ExerciseByIdRecource
+import com.aa.repository.resources.ExerciseSearchResource
+import com.aa.repository.resources.ExercisesRecourse
+import com.aa.repository.resources.FoodByIdResource
+import com.aa.repository.resources.FoodResource
+import com.aa.repository.resources.FoodSearchResource
 import com.aa.repository.resources.Infants.AllGuidanceInstructionResource
 import com.aa.repository.resources.Infants.AllGuidanceInstructionSelectResource
 import com.aa.repository.resources.Infants.AllInfantsBadHabitsByIdResource
@@ -21,29 +32,25 @@ import com.aa.repository.resources.Infants.AllInfantsSleepSelectResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseByIdResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseResource
 import com.aa.repository.resources.Infants.InfantsSleepResource
-import com.aa.repository.resources.AllMusicResource
-import com.aa.repository.resources.AllVideosResource
-import com.aa.repository.resources.AllSpecialCaseResource
-import com.aa.repository.resources.BabyGenderResource
-import com.aa.repository.resources.BabyImageResource
-import com.aa.repository.resources.BadHabitByIdResource
-import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
-import com.aa.repository.resources.MusicResource
+import com.aa.repository.resources.MusicByIdResource
 import com.aa.repository.resources.NoteResource
 import com.aa.repository.resources.NoteResponceResource
 import com.aa.repository.resources.PregnancyResource
 import com.aa.repository.resources.PregnancyResponseResource
 import com.aa.repository.resources.PregnancyStoreResource
 import com.aa.repository.resources.SearchBadHabitResource
-import com.aa.repository.resources.SearchFoodResource
 import com.aa.repository.resources.SearchedENSupportMessageResource
 import com.aa.repository.resources.SelectedSupportMessageTypeResource
 import com.aa.repository.resources.SignUpResource
 import com.aa.repository.resources.SignUpResponseResource
+import com.aa.repository.resources.SleepByIdResource
+import com.aa.repository.resources.SleepPositionResource
+import com.aa.repository.resources.SleepPositionSearchResource
+import com.aa.repository.resources.SpecialCaseByIdResource
+import com.aa.repository.resources.SpecialCaseSearchResource
 import com.aa.repository.resources.StoreBabyGenderResource
-import com.aa.repository.resources.VideoResource
 import com.aa.repository.resources.SupportMessageEnglishResource
 import com.aa.repository.resources.TodayENSupportMessageResource
 import com.aa.repository.resources.UpdatePregnancyResource
@@ -79,10 +86,6 @@ class RemoteDataSourceImpl @Inject constructor(
                 signUpResource
             )
         }
-    }
-
-    override suspend fun getFoodAdvices(): FoodByIdResource {
-        TODO("Not yet implemented")
     }
     //endregion
 
@@ -190,9 +193,9 @@ class RemoteDataSourceImpl @Inject constructor(
     //endregion
 
     //region pregnancy phase
-//     suspend fun getFoodAdvices(): AllFoodAdviceResource {
-//        return tryToExecute { tinyStepsService.getFoodAdvices() }
-//    }
+    override suspend fun getFoodAdvices(): FoodResource {
+        return tryToExecute { tinyStepsService.getFoodAdvices() }
+    }
 
     override suspend fun storeBabyGender(storeBabyGenderResource: StoreBabyGenderResource): BabyGenderResource {
         return tryToExecute {
@@ -290,7 +293,7 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute { tinyStepsService.getFoodById(id) }
     }
 
-    override suspend fun searchFood(foodSearch: String): SearchFoodResource {
+    override suspend fun searchFood(foodSearch: String): FoodSearchResource {
         return tryToExecute { tinyStepsService.searchFood(foodSearch) }
     }
 
@@ -302,28 +305,48 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute { tinyStepsService.searchBadHabits(badHabit) }
     }
 
-    override suspend fun getAllVideos(): AllVideosResource {
+    override suspend fun getAllVideos(): ExercisesRecourse {
         return tryToExecute { tinyStepsService.getAllVideos() }
     }
 
-    override suspend fun getVideoById(id: Int): VideoResource {
+    override suspend fun getVideoById(id: Int): ExerciseByIdRecource {
         return tryToExecute { tinyStepsService.getVideoById(id) }
     }
 
-    override suspend fun getVideosByName(name: String): AllVideosResource {
+    override suspend fun getVideosByName(name: String): ExerciseSearchResource {
         return tryToExecute { tinyStepsService.searchVideoByName(name) }
     }
 
-    override suspend fun getAllMusics(): AllMusicResource {
+    override suspend fun getAllMusics(): AllMusiceResource {
         return tryToExecute { tinyStepsService.getAllMusics() }
     }
 
-    override suspend fun getMusicById(id: Int): MusicResource {
+    override suspend fun getMusicById(id: Int): MusicByIdResource {
         return tryToExecute { tinyStepsService.getMusicById(id) }
     }
 
-    override suspend fun getMusicByType(musicType: String): AllMusicResource {
+    override suspend fun getMusicByType(musicType: String): AllMusiceResource {
         return tryToExecute { tinyStepsService.searchMusicByType(musicType) }
+    }
+
+    override suspend fun getAllSleepPosition(): SleepPositionResource {
+        return tryToExecute { tinyStepsService.getSleepPositions() }
+    }
+
+    override suspend fun getSleepPositionById(id: Int): SleepByIdResource {
+        return tryToExecute { tinyStepsService.getSleepPositionsById(id) }
+    }
+
+    override suspend fun getSpecialCaseById(id: Int): SpecialCaseByIdResource {
+        return tryToExecute { tinyStepsService.getSpecialCaseById(id) }
+    }
+
+    override suspend fun searchSpecialCase(specialCase: String): SpecialCaseSearchResource {
+        return tryToExecute { tinyStepsService.searchSpecialCase(specialCase) }
+    }
+
+    override suspend fun searchSleepPosition(sleepPosition: String): SleepPositionSearchResource {
+        return tryToExecute { tinyStepsService.searchSleepPositions(sleepPosition) }
     }
 
     //endregion

@@ -1,9 +1,18 @@
 package com.aa.remote
 
 import com.aa.repository.resources.AllBadHabitsResource
-import com.aa.repository.resources.NoteResource
 import com.aa.repository.resources.AllENSupportMessagesResource
-import com.aa.repository.resources.AllFoodAdviceResource
+import com.aa.repository.resources.AllMusiceResource
+import com.aa.repository.resources.AllSpecialCaseResource
+import com.aa.repository.resources.BabyGenderResource
+import com.aa.repository.resources.BabyImageResource
+import com.aa.repository.resources.BadHabitByIdResource
+import com.aa.repository.resources.ExerciseByIdRecource
+import com.aa.repository.resources.ExerciseSearchResource
+import com.aa.repository.resources.ExercisesRecourse
+import com.aa.repository.resources.FoodByIdResource
+import com.aa.repository.resources.FoodResource
+import com.aa.repository.resources.FoodSearchResource
 import com.aa.repository.resources.Infants.AllGuidanceInstructionResource
 import com.aa.repository.resources.Infants.AllGuidanceInstructionSelectResource
 import com.aa.repository.resources.Infants.AllInfantsBadHabitsByIdResource
@@ -21,35 +30,32 @@ import com.aa.repository.resources.Infants.AllInfantsSleepSelectResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseByIdResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseResource
 import com.aa.repository.resources.Infants.InfantsSleepResource
-import com.aa.repository.resources.AllSpecialCaseResource
-import com.aa.repository.resources.AllMusicResource
-import com.aa.repository.resources.AllVideosResource
-import com.aa.repository.resources.BabyGenderResource
-import com.aa.repository.resources.BabyImageResource
-import com.aa.repository.resources.BadHabitByIdResource
-import com.aa.repository.resources.FoodByIdResource
-import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
+import com.aa.repository.resources.MusicByIdResource
+import com.aa.repository.resources.NoteResource
 import com.aa.repository.resources.NoteResponceResource
-import com.aa.repository.resources.SearchedENSupportMessageResource
-import com.aa.repository.resources.SelectedSupportMessageTypeResource
-import com.aa.repository.resources.SupportMessageEnglishResource
-import com.aa.repository.resources.TodayENSupportMessageResource
 import com.aa.repository.resources.PregnancyResource
 import com.aa.repository.resources.PregnancyResponseResource
 import com.aa.repository.resources.PregnancyStoreResource
 import com.aa.repository.resources.SearchBadHabitResource
-import com.aa.repository.resources.SearchFoodResource
-import com.aa.repository.resources.UpdatePregnancyResource
-import com.aa.repository.resources.MusicResource
+import com.aa.repository.resources.SearchedENSupportMessageResource
+import com.aa.repository.resources.SelectedSupportMessageTypeResource
 import com.aa.repository.resources.SignUpResource
 import com.aa.repository.resources.SignUpResponseResource
-import com.aa.repository.resources.VideoResource
+import com.aa.repository.resources.SleepByIdResource
+import com.aa.repository.resources.SleepPositionResource
+import com.aa.repository.resources.SleepPositionSearchResource
+import com.aa.repository.resources.SpecialCaseByIdResource
+import com.aa.repository.resources.SpecialCaseSearchResource
+import com.aa.repository.resources.StoreBabyGenderResource
+import com.aa.repository.resources.SupportMessageEnglishResource
+import com.aa.repository.resources.TodayENSupportMessageResource
+import com.aa.repository.resources.UpdatePregnancyResource
 import com.aa.repository.resources.kids.AllAchievementsResource
-import com.aa.repository.resources.kids.AllStoriesResource
 import com.aa.repository.resources.kids.AllAnimalGameResource
 import com.aa.repository.resources.kids.AllEducationGamesResource
+import com.aa.repository.resources.kids.AllStoriesResource
 import com.aa.repository.resources.kids.AnimalGameResource
 import com.aa.repository.resources.kids.ImageDIfferenceGameResource
 import com.aa.repository.resources.kids.LetterResource
@@ -70,27 +76,27 @@ interface TinyStepsService {
 
     //region authentication
     @GET("user/getData/Phase01/all-food")
-    suspend fun getFoodAdvices():Response<AllFoodAdviceResource>
+    suspend fun getFoodAdvices():Response<FoodResource>
     //endregion
 
     //region pregnancy phase
     @GET("user/Pregnancy/exercises/getAllVideos")
-    suspend fun getAllVideos():Response<AllVideosResource>
+    suspend fun getAllVideos():Response<ExercisesRecourse>
 
     @GET("user/Pregnancy/exercises/getVideo/{id}")
-    suspend fun getVideoById(@Path("id") videoId: Int): Response<VideoResource>
+    suspend fun getVideoById(@Path("id") videoId: Int): Response<ExerciseByIdRecource>
 
     @GET("user/Pregnancy/exercises/SearchVideo/{searchName}")
-    suspend fun searchVideoByName(@Path("searchName") searchName: String): Response<AllVideosResource>
+    suspend fun searchVideoByName(@Path("searchName") searchName: String): Response<ExerciseSearchResource>
 
     @GET("user/Pregnancy/exercises/getAllMusics")
-    suspend fun getAllMusics():Response<AllMusicResource>
+    suspend fun getAllMusics():Response<AllMusiceResource>
 
     @GET("user/Pregnancy/exercises/getMusic/{id}")
-    suspend fun getMusicById(@Path("id") musicId: Int): Response<MusicResource>
+    suspend fun getMusicById(@Path("id") musicId: Int): Response<MusicByIdResource>
 
     @GET("user/Pregnancy/exercises/SearchMusic/{musicType}")
-    suspend fun searchMusicByType(@Path("musicType") musicType: String): Response<AllMusicResource>
+    suspend fun searchMusicByType(@Path("musicType") musicType: String): Response<AllMusiceResource>
 
     @POST("auth/user/login")
     suspend fun loginRequest(
@@ -99,7 +105,7 @@ interface TinyStepsService {
 
     @POST("auth/user/register")
     suspend fun signupRequest(
-        @Body signUpResource: SignUpResource
+        @Body loginResource: SignUpResource
     ):Response<SignUpResponseResource>
 
     @POST("user/Pregnancy/BabyKind/store")
@@ -177,13 +183,33 @@ interface TinyStepsService {
     suspend fun getFoodById(@Query("id")id: Int):Response<FoodByIdResource>
 
     @GET("user/getData/Phase01/search-food/{food_search}")
-    suspend fun searchFood(@Path("food_search")foodSearch:String):Response<SearchFoodResource>
+    suspend fun searchFood(@Path("food_search")foodSearch:String):Response<FoodSearchResource>
 
     @GET("user/getData/Phase01/BadHabit/getById")
     suspend fun getBadHabitsById(@Query("id") id:Int):Response<BadHabitByIdResource>
 
     @GET("user/Pregnancy/Advices/search-badhabits/{bad_habit}")
     suspend fun searchBadHabits(@Path("bad_habit")badHabit:String):Response<SearchBadHabitResource>
+
+    @GET("user/Pregnancy/advice-sleep-positions/GetAll")
+    suspend fun getSleepPositions(): Response<SleepPositionResource>
+
+    @GET("user/Pregnancy/advice-sleep-positions/Get/{id}")
+    suspend fun getSleepPositionsById(
+        @Path("id") id: Int
+    ): Response<SleepByIdResource>
+
+    @GET("user/getData/special-cases/phase01/getById")
+    suspend fun getSpecialCaseById(
+        @Query("id") id: Int
+    ):Response<SpecialCaseByIdResource>
+
+    @GET("user/getData/special-cases/phase01/search/{special_case}")
+    suspend fun searchSpecialCase(@Path("special_case")specialCase:String):Response<SpecialCaseSearchResource>
+
+    @GET("user/Pregnancy/advice-sleep-positions/search/{sleep_position}")
+    suspend fun searchSleepPositions(@Path("sleep_position")sleepPosition:String): Response<SleepPositionSearchResource>
+
 
     //endregion
 

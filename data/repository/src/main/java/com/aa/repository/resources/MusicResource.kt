@@ -8,6 +8,8 @@ data class MusicResource(
     val createdAt: String? = null,
     @SerializedName("id")
     val id: Int? = null,
+    @SerializedName("ImgPath")
+    val imgPath: String? = null,
     @SerializedName("music_path")
     val musicPath: String? = null,
     @SerializedName("MusicType")

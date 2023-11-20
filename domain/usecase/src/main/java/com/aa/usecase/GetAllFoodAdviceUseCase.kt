@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetAllFoodAdviceUseCase @Inject constructor(
     private val pregnancyRepository: PregnancyRepository
 ) {
-//    suspend operator fun invoke (): List<AllFoodAdviceEntity> {
-//        return pregnancyRepository.allFoodAdvice().shuffled()
-//    }
+    suspend operator fun invoke (): List<AllFoodAdviceEntity> {
+        return pregnancyRepository.allFoodAdvice().shuffled()
+    }
 }

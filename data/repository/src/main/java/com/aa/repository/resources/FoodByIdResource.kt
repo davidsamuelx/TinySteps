@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 data class FoodByIdResource(
     @SerializedName("FoodBaby")
-    val foodBaby: FoodBaby? = FoodBaby()
+    val foodBaby: FoodBabyById? = FoodBabyById()
 )
