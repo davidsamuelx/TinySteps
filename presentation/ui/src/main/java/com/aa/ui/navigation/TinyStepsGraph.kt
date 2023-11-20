@@ -24,7 +24,7 @@ import com.aa.ui.screens.home_screen.homeScreen
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
 fun TinyStepsGraph(navController: NavHostController){
-    NavHost(navController = navController, startDestination = TinyStepsDestination.ExerciseScreen){
+    NavHost(navController = navController, startDestination = TinyStepsDestination.Home){
         badHabitRoute(navController)
         specialCaseRoute(navController)
         foodRoute(navController)
