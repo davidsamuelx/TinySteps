@@ -10,7 +10,6 @@ import com.aa.models.NoteEntity
 import com.aa.models.PregnancyEntity
 import com.aa.models.PregnancyResponseEntity
 import com.aa.models.PregnancyStoreEntity
-import com.aa.models.SearchFoodEntity
 import com.aa.models.SelectedSupportMessageEntity
 import com.aa.models.SpecialCaseEntity
 import com.aa.models.MusicEntity
@@ -122,7 +121,7 @@ class PregnancyRepositoryImpl @Inject constructor(
         return remoteDataSource.getFoodById(id).foodBaby.toEntity()
     }
 
-    override suspend fun searchFood(foodSearch: String): List<SearchFoodEntity> {
+    override suspend fun searchFood(foodSearch: String): List<AllFoodAdviceEntity> {
         return remoteDataSource.searchFood(foodSearch).foodBabies
             ?.map { it.toEntity() } ?: emptyList()
     }
@@ -146,8 +145,8 @@ class PregnancyRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getVideoByName(name: String): List<ExerciseEntity> {
-        return remoteDataSource.getVideosByName(name).videoResourceLists
-            ?.mapNotNull { it?.toEntity() } ?: emptyList()
+        return remoteDataSource.getVideosByName(name)
+            .mapNotNull { it.toEntity() }
     }
 
     override suspend fun getAllMusics(): List<MusicEntity> {
@@ -175,5 +174,15 @@ class PregnancyRepositoryImpl @Inject constructor(
 
     override suspend fun getSpecialCaseById(id: Int): SpecialCaseByIdEntity {
         return remoteDataSource.getSpecialCaseById(id).specialCase.toEntity()
+    }
+
+    override suspend fun searchSpecialCase(specialCase: String): List<SpecialCaseEntity> {
+        return remoteDataSource.searchSpecialCase(specialCase).specialCases
+            ?.map { it.toEntity() } ?: emptyList()
+    }
+
+    override suspend fun searchSleepPosition(sleepPosition: String): List<SleepPositionEntity> {
+        return remoteDataSource.searchSleepPosition(sleepPosition).responseData
+            ?.map { it.toEntity() } ?: emptyList()
     }
 }

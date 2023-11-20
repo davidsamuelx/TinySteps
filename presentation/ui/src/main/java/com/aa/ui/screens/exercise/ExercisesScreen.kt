@@ -2,13 +2,15 @@ package com.aa.ui.screens.exercise
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -18,6 +20,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -27,6 +30,7 @@ import com.aa.viewmodels.exercise.ExercisesViewModel
 import com.aa.ui.screens.search.composable.CustomToolbar
 import com.aa.ui.screens.search.composable.ItemCard
 import com.aa.ui.screens.search.composable.SearchBar
+import com.aa.viewmodels.exercise.ExercisesItemUiState
 
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
@@ -38,21 +42,28 @@ fun ExercisesScreen(
 
     ExerciseContent(
         state = state ,
+        viewModel = viewModel,
         navController = navController,
         onClickCard = navController::navigateToExerciseDetails
     )
 
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
 private fun ExerciseContent(
     state: ExercisesUiState,
-    onClickSearch: () -> Unit = {},
+    viewModel: ExercisesViewModel,
     onClickCard: (Int) -> Unit = {},
     navController: NavController,
 ){
     val exerciseState = rememberLazyListState()
+
+    val colorStops = arrayOf(
+        0.8f to Color(0xFFF6F9FF),
+        1f to Color.Transparent
+    )
 
     Surface {
         Column(
@@ -65,23 +76,45 @@ private fun ExerciseContent(
 
             CustomToolbar(navController = navController, title = "Exercise")
 
-            Spacer(modifier = Modifier.height(12.dp))
-
-            SearchBar(query =  "" , onQueryChange = {} , onSearchClicked = {})
-
             LazyColumn(
-                contentPadding = PaddingValues(16.dp),
+                contentPadding = PaddingValues(vertical = 16.dp),
                 state = exerciseState,
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ){
+
+                stickyHeader {
+                    Box (
+                        modifier = Modifier
+                            .background(
+                                Brush.verticalGradient(colorStops = colorStops)
+                            )
+                    ){
+                        SearchBar(
+                            query =  state.query,
+                            onQueryChange = viewModel::onQueryChange,
+                            onSearchClicked = viewModel::onExerciseSearchClicked)
+                    }
+                }
+
                 itemsIndexed(state.exercisesList){index, item ->
-                    ItemCard(
-                        id = item.id,
-                        onClickItem = { onClickCard(item.id) },
-                        title = item.videoName,
-                        imageUrl = item.imageUrl)
+                    AnimatedVisibility(
+                        visible = state.query.isEmpty() || itemMatchesQuery(item, state.query)
+                    ) {
+                        ItemCard(
+                            id = item.id,
+                            modifier = Modifier.padding(horizontal = 16.dp),
+                            onClickItem = { onClickCard(item.id) },
+                            title = item.videoName,
+                            imageUrl = item.imageUrl
+                        )
+                    }
                 }
             }
         }
     }
+}
+
+@Composable
+private fun itemMatchesQuery(item: ExercisesItemUiState, query: String): Boolean {
+    return item.videoName.contains(query, ignoreCase = true)
 }

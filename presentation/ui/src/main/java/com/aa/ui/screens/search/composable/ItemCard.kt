@@ -32,12 +32,13 @@ import coil.compose.rememberAsyncImagePainter
 @Composable
 fun ItemCard(
     id: Int,
+    modifier: Modifier,
     onClickItem: (Int) -> Unit,
     title: String,
     imageUrl: String,
 ){
     Card(
-        modifier = Modifier
+        modifier = modifier
             .height(180.dp)
             .clip(shape = RoundedCornerShape(size = 20.dp))
             .border(

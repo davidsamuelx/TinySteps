@@ -10,7 +10,6 @@ import com.aa.models.NoteEntity
 import com.aa.models.PregnancyEntity
 import com.aa.models.PregnancyResponseEntity
 import com.aa.models.PregnancyStoreEntity
-import com.aa.models.SearchFoodEntity
 import com.aa.models.SelectedSupportMessageEntity
 import com.aa.models.SpecialCaseEntity
 import com.aa.models.MusicEntity
@@ -69,7 +68,7 @@ interface PregnancyRepository {
 
     suspend fun getFoodById(id:Int): AllFoodAdviceEntity
 
-    suspend fun searchFood(foodSearch:String): List<SearchFoodEntity>
+    suspend fun searchFood(foodSearch:String): List<AllFoodAdviceEntity>
 
     suspend fun getAllBadHabitById(id:Int): BadHabitEntity
 
@@ -92,5 +91,9 @@ interface PregnancyRepository {
     suspend fun getSleepPositionById(id: Int): SleepPositionEntity
 
     suspend fun getSpecialCaseById(id: Int): SpecialCaseByIdEntity
+
+    suspend fun searchSpecialCase(specialCase: String): List<SpecialCaseEntity>
+
+    suspend fun searchSleepPosition(sleepPosition: String): List<SleepPositionEntity>
 
 }
