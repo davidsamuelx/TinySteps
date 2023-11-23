@@ -1,6 +1,5 @@
 package com.aa.repositories
 
-import com.aa.models.Token
 import com.aa.models.UserInformation
 import com.aa.models.UserLoginAuth
 import com.aa.models.UserRegisterInformation
@@ -25,5 +24,7 @@ interface AuthenticationRepository {
 //    suspend fun getAuthTokenExpireTime(): Long?
 //
 //    suspend fun clearAuthData()
-//    suspend fun isLoggedIn() : Boolean
+
+
+    suspend fun isLoggedIn() : Boolean
 }

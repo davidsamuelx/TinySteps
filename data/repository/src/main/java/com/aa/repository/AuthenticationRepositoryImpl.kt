@@ -27,25 +27,14 @@ class AuthenticationRepositoryImpl @Inject constructor(
         return request
     }
 
-//    override suspend fun saveAuthData(token: String, isLogged: Boolean) {
-//        TODO("Not yet implemented")
-//    }
-//
-//    override suspend fun getAuthToken(): String? {
-//        TODO("Not yet implemented")
-//    }
-//
-//    override suspend fun getAuthTokenExpireTime(): Long? {
-//        TODO("Not yet implemented")
-//    }
-//
-//    override suspend fun clearAuthData() {
-//        TODO("Not yet implemented")
-//    }
-//
-//    override suspend fun isLoggedIn(): Boolean {
-//        TODO("Not yet implemented")
-//    }
+
+
+    override suspend fun isLoggedIn(): Boolean {
+    if (sharedPreferenceDataSource.getUserToken()!=null){
+        return true
+    }
+        return false
+    }
 
 
 }

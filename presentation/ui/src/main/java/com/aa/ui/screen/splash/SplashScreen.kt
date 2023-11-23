@@ -8,25 +8,35 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aa.ui.navigation.TinyStepsDestination
 import com.aa.ui.theme.PrimaryColor
 import com.aa.ui.theme.SecondaryColor
+import com.aa.viewmodel.splash.SplashUiState
+import com.aa.viewmodel.splash.SplashViewModel
 import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(
     navController: NavController,
+    viewModel: SplashViewModel=hiltViewModel()
 ) {
-    SplashContent(navController = navController)
+    val state by viewModel.state.collectAsState()
+    SplashContent(navController = navController,
+                state=state
+        )
 }
 
 @Composable
 private fun SplashContent(
-        navController: NavController
+        navController: NavController,
+        state:SplashUiState
 ) {
     val background= Brush.linearGradient(
         0.0f to PrimaryColor,
@@ -46,7 +56,11 @@ private fun SplashContent(
             )
         )
         delay(3000L)
-        navController.navigate(TinyStepsDestination.IntroScreen)
+        if (state.isLogged){
+            navController.navigate(TinyStepsDestination.Home)
+        }else {
+            navController.navigate(TinyStepsDestination.IntroScreen)
+        }
     }
     Box(
         modifier= Modifier
