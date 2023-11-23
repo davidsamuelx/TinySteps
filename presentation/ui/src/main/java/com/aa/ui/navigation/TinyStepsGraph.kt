@@ -20,11 +20,12 @@ import com.aa.ui.screens.search.specialcase.specialCaseRoute
 import com.aa.ui.screens.details_screen.babyDetailsRoute
 import com.aa.ui.screens.discover_screen.discoverScreen
 import com.aa.ui.screens.home_screen.homeScreen
+import com.aa.ui.screens.infant_home_screen.infantHomeScreen
 
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
 fun TinyStepsGraph(navController: NavHostController){
-    NavHost(navController = navController, startDestination = TinyStepsDestination.Home){
+    NavHost(navController = navController, startDestination = TinyStepsDestination.InfantHomeScreen){
         badHabitRoute(navController)
         specialCaseRoute(navController)
         foodRoute(navController)
@@ -40,6 +41,7 @@ fun TinyStepsGraph(navController: NavHostController){
         babyDetailsRoute(navController)
         discoverScreen(navController)
         homeScreen(navController)
+        infantHomeScreen(navController)
     }
 }
 
@@ -61,4 +63,5 @@ object TinyStepsDestination {
     const val SpecialCaseDetailsScreen = "specialCaseDetailsScreen"
     const val ExerciseScreen = "exerciseScreen"
     const val ExerciseDetailsScreen = "exerciseDetailsScreen"
+    const val InfantHomeScreen = "infantHomeScreen"
 }

@@ -24,14 +24,13 @@ class InfantsRepositoryImpl @Inject constructor(
     }
 
     override suspend fun selectGuidanceInstruction(id: String): GuidanceInstructionEntity {
-        return remoteDataSource.selectGuidanceInstruction(id).guidanceInstruction.toEntity()
+        TODO("Not yet implemented")
     }
-
 
     override suspend fun searchGuidanceInstruction(id: String): List<GuidanceInstructionEntity> {
-        return remoteDataSource.searchGuidanceInstruction(id).guidanceInstruction
-            ?.map { it.toEntity() }?: emptyList()
+        TODO("Not yet implemented")
     }
+
 
     override suspend fun infantsSleep(): List<InfantsSleepEntity> {
         return  remoteDataSource.getInfantsSleep().sleepBabies

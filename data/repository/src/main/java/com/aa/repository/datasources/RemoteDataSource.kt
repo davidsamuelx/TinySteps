@@ -30,6 +30,7 @@ import com.aa.repository.resources.ExercisesRecourse
 import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.FoodResource
 import com.aa.repository.resources.FoodSearchResource
+import com.aa.repository.resources.Infants.GuidanceResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
@@ -65,7 +66,7 @@ interface RemoteDataSource {
     suspend fun getFoodAdvices(): FoodResource
 
     //region phase 02 infants and Toddler
-    suspend fun getGuidanceInstruction(): AllGuidanceInstructionResource
+    suspend fun getGuidanceInstruction(): GuidanceResource
     suspend fun selectGuidanceInstruction(id:String):AllGuidanceInstructionSelectResource
     suspend fun searchGuidanceInstruction(id:String): AllGuidanceInstructionResource
 

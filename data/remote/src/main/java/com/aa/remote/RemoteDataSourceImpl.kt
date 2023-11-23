@@ -32,6 +32,7 @@ import com.aa.repository.resources.ExercisesRecourse
 import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.FoodResource
 import com.aa.repository.resources.FoodSearchResource
+import com.aa.repository.resources.Infants.GuidanceResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
 import com.aa.repository.resources.MusicByIdResource
@@ -81,7 +82,7 @@ class RemoteDataSourceImpl @Inject constructor(
 
     //region phase 02 infants and Toddler
 
-    override suspend fun getGuidanceInstruction(): AllGuidanceInstructionResource {
+    override suspend fun getGuidanceInstruction(): GuidanceResource {
         return tryToExecute { tinyStepsService.getGuidanceAdvice() }
     }
 

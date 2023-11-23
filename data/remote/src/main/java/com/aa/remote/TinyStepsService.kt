@@ -31,6 +31,7 @@ import com.aa.repository.resources.ExercisesRecourse
 import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.FoodResource
 import com.aa.repository.resources.FoodSearchResource
+import com.aa.repository.resources.Infants.GuidanceResource
 import com.aa.repository.resources.StoreBabyGenderResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
@@ -208,7 +209,7 @@ interface TinyStepsService {
 
     //region phase 02 infants and Toddler
     @GET("user/phase2/guidance-instructions/getAll")
-    suspend fun getGuidanceAdvice():Response<AllGuidanceInstructionResource>
+    suspend fun getGuidanceAdvice():Response<GuidanceResource>
 
     @GET("user/phase2/guidance-instructions/Select/{select_id}")
     suspend fun selectGuidanceAdvice(@Path("select_id")selectId:String):Response<AllGuidanceInstructionSelectResource>
