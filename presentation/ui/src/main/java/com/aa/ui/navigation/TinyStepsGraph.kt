@@ -5,8 +5,10 @@ import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.aa.ui.screens.ai_state_screen.aiStateScreen
 import com.aa.ui.screens.badhabit.badHabitDetailRoute
 import com.aa.ui.screens.badhabit.badHabitRoute
+import com.aa.ui.screens.chat_bot_screen.chatBotScreen
 import com.aa.ui.screens.exercise.exerciseDetailsRoute
 import com.aa.ui.screens.exercise.exerciseRoute
 import com.aa.ui.screens.search.food.foodDetailsRoute
@@ -40,6 +42,8 @@ fun TinyStepsGraph(navController: NavHostController){
         babyDetailsRoute(navController)
         discoverScreen(navController)
         homeScreen(navController)
+        aiStateScreen(navController)
+        chatBotScreen(navController)
     }
 }
 
@@ -61,4 +65,6 @@ object TinyStepsDestination {
     const val SpecialCaseDetailsScreen = "specialCaseDetailsScreen"
     const val ExerciseScreen = "exerciseScreen"
     const val ExerciseDetailsScreen = "exerciseDetailsScreen"
+    const val AiStateScreen = "aiStateScreen"
+    const val ChatBotScreen = "chatBotScreen"
 }

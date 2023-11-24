@@ -1,9 +1,12 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
 }
+val API_KEY: String = gradleLocalProperties(rootDir).getProperty("API_KEY")
 
 android {
     namespace = "com.aa.remote"
@@ -23,7 +26,15 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
         }
+        getByName("debug") {
+            buildConfigField("String", "API_KEY", API_KEY)
+        }
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17

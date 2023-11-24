@@ -4,10 +4,12 @@ import com.aa.remote.RemoteDataSourceImpl
 import com.aa.repositories.AuthenticationRepository
 import com.aa.repositories.InfantsRepository
 import com.aa.repositories.KidsRepository
+import com.aa.repositories.OpenAIRepository
 import com.aa.repositories.PregnancyRepository
 import com.aa.repository.AuthenticationRepositoryImpl
 import com.aa.repository.InfantsRepositoryImpl
 import com.aa.repository.KidsRepositoryImpl
+import com.aa.repository.OpenAIRepositoryImpl
 import com.aa.repository.PregnancyRepositoryImpl
 import com.aa.repository.datasources.RemoteDataSource
 import dagger.Binds
@@ -40,5 +42,9 @@ abstract class DataSourcesModule {
     @Binds
     @Singleton
     abstract fun bindKidREpo(kidsRepositoryImpl: KidsRepositoryImpl): KidsRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindOpenAIRepo(openAIRepositoryImpl: OpenAIRepositoryImpl): OpenAIRepository
 
 }
