@@ -1,4 +1,4 @@
-package com.aa.ui.screens.search.specialcase
+package com.aa.ui.screens.infants_search.infants_specialcase
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -28,23 +28,24 @@ import androidx.navigation.NavController
 import com.aa.ui.screens.search.composable.CustomToolbar
 import com.aa.ui.screens.search.composable.ItemCard
 import com.aa.ui.screens.search.composable.SearchBar
-import com.aa.viewmodels.specialcase.SpecialCaseItemUIState
-import com.aa.viewmodels.specialcase.SpecialCaseUIState
-import com.aa.viewmodels.specialcase.SpecialCaseViewModel
+import com.aa.viewmodels.infants_specialcase.InfantsSpecialCaseItemUIState
+import com.aa.viewmodels.infants_specialcase.InfantsSpecialCaseUIState
+import com.aa.viewmodels.infants_specialcase.InfantsSpecialCaseViewModel
+
 
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
-fun SpecialCaseScreen(
+fun InfantsSpecialCaseScreen(
     navController: NavController,
-    viewModel: SpecialCaseViewModel = hiltViewModel(),
+    viewModel: InfantsSpecialCaseViewModel = hiltViewModel(),
 ){
     val state by viewModel.state.collectAsState()
 
-    SpecialCaseContent(
+    InfantsSpecialCaseContent(
         state = state,
         viewModel = viewModel,
         navController = navController,
-        onClickCard = navController::navigateToSpecialCaseDetails
+        onClickCard = navController::navigateToInfantsSpecialCaseDetails
     )
 
 }
@@ -52,9 +53,9 @@ fun SpecialCaseScreen(
 @OptIn(ExperimentalFoundationApi::class)
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
-private fun SpecialCaseContent(
-    state: SpecialCaseUIState,
-    viewModel: SpecialCaseViewModel,
+private fun InfantsSpecialCaseContent(
+    state: InfantsSpecialCaseUIState,
+    viewModel: InfantsSpecialCaseViewModel,
     onClickCard: (Int) -> Unit = {},
     navController: NavController,
 ){
@@ -64,7 +65,6 @@ private fun SpecialCaseContent(
         0.8f to Color(0xFFF6F9FF),
         1f to Color.Transparent
     )
-
     Surface {
         Column(
             modifier = Modifier
@@ -73,7 +73,6 @@ private fun SpecialCaseContent(
 
             horizontalAlignment = Alignment.Start, verticalArrangement = Arrangement.Top
         ) {
-
             CustomToolbar(navController = navController, title = "Special Case")
 
             LazyColumn(
@@ -81,7 +80,6 @@ private fun SpecialCaseContent(
                 state = specialCaseState,
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ){
-
                 stickyHeader {
                     Box (
                         modifier = Modifier
@@ -95,20 +93,20 @@ private fun SpecialCaseContent(
                             onSearchClicked = viewModel::onSpecialCaseSearchClicked)
                     }
                 }
-
                 itemsIndexed(state.specialCasesList){index, item ->
                     AnimatedVisibility(
                         visible = state.query.isEmpty() || itemMatchesQuery(item, state.query),
                     ) {
                         ItemCard(
-                            id = item.id,
+                            id = item.id!!,
                             modifier = Modifier.padding(horizontal = 16.dp),
-                            onClickItem = { onClickCard(item.id) },
-                            title = item.nameSpecialCase,
-                            imageUrl = item.pathImg
-                        )   
+                            onClickItem = { onClickCard(item.id!!) },
+                            title = item.nameSpecialCase!!,
+                            imageUrl = item.pathImg!!
+                        )
                     }
                 }
+
             }
         }
     }
@@ -116,6 +114,6 @@ private fun SpecialCaseContent(
 
 
 @Composable
-private fun itemMatchesQuery(item: SpecialCaseItemUIState, query: String): Boolean {
-    return item.nameSpecialCase.contains(query, ignoreCase = true)
+private fun itemMatchesQuery(item: InfantsSpecialCaseItemUIState, query: String): Boolean {
+    return item.nameSpecialCase!!.contains(query, ignoreCase = true)
 }

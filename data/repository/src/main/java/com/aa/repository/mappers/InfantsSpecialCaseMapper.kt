@@ -14,6 +14,7 @@ internal fun InfantsSpecialCaseResource?.toEntity(): InfantsSpecialCaseEntity {
         doctorName = this?.advices?.doctorName.orEmpty(),
         phoneDoctor = this?.advices?.phoneDoctor.orEmpty(),
         profileDoctor = this?.advices?.profileDoctor.orEmpty(),
-        solveProblem = this?.advices?.solveProblem.orEmpty()
+        solveProblem = this?.advices?.solveProblem.orEmpty(),
+        doctorLocation = this?.advices?.doctorLocation.orEmpty()
     )
 }
