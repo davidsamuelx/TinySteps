@@ -5,21 +5,21 @@ import com.aa.models.AllFoodAdviceEntity
 import com.aa.models.AllSupportMessagesEntity
 import com.aa.models.BabyGenderEntity
 import com.aa.models.BadHabitEntity
+import com.aa.models.ExerciseEntity
 import com.aa.models.ImageEntity
+import com.aa.models.MusicEntity
 import com.aa.models.NoteEntity
 import com.aa.models.PregnancyEntity
 import com.aa.models.PregnancyResponseEntity
 import com.aa.models.PregnancyStoreEntity
 import com.aa.models.SelectedSupportMessageEntity
-import com.aa.models.SpecialCaseEntity
-import com.aa.models.MusicEntity
 import com.aa.models.SleepPositionEntity
 import com.aa.models.SpecialCaseByIdEntity
+import com.aa.models.SpecialCaseEntity
 import com.aa.models.StoreBabyGenderEntity
 import com.aa.models.SupportMessageEntity
 import com.aa.models.TodayENSupportMessageEntity
 import com.aa.models.UpdatePregnancyEntity
-import com.aa.models.ExerciseEntity
 
 interface PregnancyRepository {
 

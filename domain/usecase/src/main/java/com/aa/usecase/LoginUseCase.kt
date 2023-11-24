@@ -6,11 +6,19 @@ import com.aa.repositories.AuthenticationRepository
 import javax.inject.Inject
 
 class LoginUseCase @Inject constructor(
-    private val authenticationRepository: AuthenticationRepository
+    private val validateLoginForm: ValidateLoginFormUseCase,
+    private val authenticationRepository: AuthenticationRepository,
+
 ) {
-    suspend operator fun invoke(
-        userLoginAuth: UserLoginAuth
-    ): UserInformation{
-        return authenticationRepository.loginRequest(userLoginAuth)
+
+    suspend operator fun invoke(userLoginAuth: UserLoginAuth):UserInformation {
+        val validationResults
+                = validateLoginForm(userLoginAuth.name, userLoginAuth.password)
+
+
+      return   authenticationRepository.loginRequest(userLoginAuth)
+
+
     }
+
 }

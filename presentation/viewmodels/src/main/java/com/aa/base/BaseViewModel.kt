@@ -13,6 +13,11 @@ abstract class BaseViewModel<UiState : BaseUiState>(state: UiState) : ViewModel(
     protected val _state = MutableStateFlow(state)
     val state = _state.asStateFlow()
 
+
+    protected fun updateState(update: (currentState: UiState) -> UiState) {
+        _state.value = update(_state.value)
+    }
+
     fun <T> tryToExecute(
         function: suspend () -> T,
         onSuccess: (T) -> Unit,
@@ -28,4 +33,6 @@ abstract class BaseViewModel<UiState : BaseUiState>(state: UiState) : ViewModel(
             }
         }
     }
+    protected inline fun <reified T : BaseErrorUiState> List<BaseErrorUiState>.firstInstanceOfOrNull() =
+        filterIsInstance<T>().firstOrNull()
 }

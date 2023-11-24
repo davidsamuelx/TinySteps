@@ -27,6 +27,4 @@ class AuthInterceptor @Inject constructor(
         .maxAge(1, TimeUnit.HOURS)
         .build()
 
-
-
 }

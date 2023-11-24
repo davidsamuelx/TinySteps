@@ -14,4 +14,8 @@ class SharedPrefImpl @Inject constructor(
         }
     }
 
+    override fun getUserToken(): String? {
+        return sharedPreferences.getString("token",null)
+    }
+
 }

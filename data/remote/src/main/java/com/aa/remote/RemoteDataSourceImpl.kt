@@ -5,6 +5,16 @@ import com.aa.repository.datasources.RemoteDataSource
 import com.aa.repository.resources.AllBadHabitsResource
 import com.aa.repository.resources.AllENSupportMessagesResource
 import com.aa.repository.resources.AllMusiceResource
+import com.aa.repository.resources.AllSpecialCaseResource
+import com.aa.repository.resources.BabyGenderResource
+import com.aa.repository.resources.BabyImageResource
+import com.aa.repository.resources.BadHabitByIdResource
+import com.aa.repository.resources.ExerciseByIdRecource
+import com.aa.repository.resources.ExerciseSearchResource
+import com.aa.repository.resources.ExercisesRecourse
+import com.aa.repository.resources.FoodByIdResource
+import com.aa.repository.resources.FoodResource
+import com.aa.repository.resources.FoodSearchResource
 import com.aa.repository.resources.Infants.AllGuidanceInstructionResource
 import com.aa.repository.resources.Infants.AllGuidanceInstructionSelectResource
 import com.aa.repository.resources.Infants.AllInfantsBadHabitsByIdResource
@@ -22,16 +32,6 @@ import com.aa.repository.resources.Infants.AllInfantsSleepSelectResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseByIdResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseResource
 import com.aa.repository.resources.Infants.InfantsSleepResource
-import com.aa.repository.resources.AllSpecialCaseResource
-import com.aa.repository.resources.BabyGenderResource
-import com.aa.repository.resources.BabyImageResource
-import com.aa.repository.resources.BadHabitByIdResource
-import com.aa.repository.resources.ExerciseByIdRecource
-import com.aa.repository.resources.ExerciseSearchResource
-import com.aa.repository.resources.ExercisesRecourse
-import com.aa.repository.resources.FoodByIdResource
-import com.aa.repository.resources.FoodResource
-import com.aa.repository.resources.FoodSearchResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
 import com.aa.repository.resources.MusicByIdResource
@@ -43,6 +43,8 @@ import com.aa.repository.resources.PregnancyStoreResource
 import com.aa.repository.resources.SearchBadHabitResource
 import com.aa.repository.resources.SearchedENSupportMessageResource
 import com.aa.repository.resources.SelectedSupportMessageTypeResource
+import com.aa.repository.resources.SignUpResource
+import com.aa.repository.resources.SignUpResponseResource
 import com.aa.repository.resources.SleepByIdResource
 import com.aa.repository.resources.SleepPositionResource
 import com.aa.repository.resources.SleepPositionSearchResource
@@ -77,6 +79,14 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute {
             tinyStepsService.loginRequest(
                 loginResource
+            )
+        }
+    }
+
+    override suspend fun signupRequest(signUpResource: SignUpResource): SignUpResponseResource {
+        return tryToExecute {
+            tinyStepsService.signupRequest(
+                signUpResource
             )
         }
     }
