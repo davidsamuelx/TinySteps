@@ -25,8 +25,9 @@ import androidx.compose.ui.unit.sp
 import com.aa.ui.R
 
 @Composable
-fun BabyDetailsHeader(
-    onBackClicked: () -> Unit
+fun CustomHeader(
+    onBackClicked: () -> Unit,
+    text : String
 ) {
     Row (modifier = Modifier.fillMaxWidth().wrapContentHeight().padding( 16.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -55,7 +56,7 @@ fun BabyDetailsHeader(
 
         }
         Text(
-            text = "Baby Info", style = TextStyle(
+            text = text, style = TextStyle(
                 fontSize = 24.sp,
                 lineHeight = 32.sp,
                 fontWeight = FontWeight(700),

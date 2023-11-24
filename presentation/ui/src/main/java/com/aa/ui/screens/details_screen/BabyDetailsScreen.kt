@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
-import com.aa.ui.screens.details_screen.composables.BabyDetailsHeader
+import com.aa.ui.screens.details_screen.composables.CustomHeader
 import com.aa.ui.screens.home_screen.backToHomeScreen
 import com.aa.viewmodels.baby_details_screen.BabyDetailsScreenViewModel
 import com.aa.viewmodels.baby_details_screen.BabyDetailsUiState
@@ -55,7 +55,7 @@ private fun BabyDetailsContent(
                     .fillMaxSize()
                     .background(Color.White)
             ) {
-                BabyDetailsHeader(onBackClick)
+                CustomHeader(onBackClick,"Baby Info")
                 Image(
                     painter = rememberAsyncImagePainter(model = state.babyImage),
                     contentDescription = "Baby Image",

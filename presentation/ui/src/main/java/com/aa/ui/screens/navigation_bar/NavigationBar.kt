@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.aa.ui.R
+import com.aa.ui.screens.ai_state_screen.navigateToAiStateScreen
 import com.aa.ui.screens.discover_screen.navigateToDiscoverScreen
 import com.aa.ui.screens.home_screen.navigateToHomeScreen
 
@@ -40,7 +41,9 @@ fun NavigationBar(
         onDiscoverClick = {
             navController.navigateToDiscoverScreen()
         },
-        onChatBotClick = {},
+        onChatBotClick = {
+                         navController.navigateToAiStateScreen()
+        },
         onProfileClick = {},
         modifier = modifier,
         selectedIcon = selectedIcon

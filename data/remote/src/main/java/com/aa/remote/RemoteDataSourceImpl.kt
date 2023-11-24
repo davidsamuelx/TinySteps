@@ -63,12 +63,15 @@ import com.aa.repository.resources.kids.ImageDIfferenceGameResource
 import com.aa.repository.resources.kids.LetterResource
 import com.aa.repository.resources.kids.MathLandResource
 import com.aa.repository.resources.kids.PuzzleGameResource
+import com.aa.repository.resources.open_ai.OpenAIRequestResource
+import com.aa.repository.resources.open_ai.OpenAIResponseResource
 import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject
 
 class RemoteDataSourceImpl @Inject constructor(
     private val tinyStepsService: TinyStepsService,
+    private val openAIService: OpenAIService
 ) : RemoteDataSource {
 
     //region authentication
@@ -188,6 +191,12 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun searchInfantsProducts(product: String): AllInfantsProductsResource {
         return tryToExecute { tinyStepsService.searchInfantsProducts(product) }
+    }
+
+    override suspend fun getOpenAIResponse(
+        openAIRequest: OpenAIRequestResource,
+    ): OpenAIResponseResource {
+        return tryToExecute { openAIService.getOpenAiResponse( openAIRequest)}
     }
 
     //endregion

@@ -11,8 +11,10 @@ import com.aa.ui.screen.signUp.signUp
 import com.aa.ui.screen.signinscreen.signIn
 import com.aa.ui.screen.splash.SplashScreen
 import com.aa.ui.screen.statescreen.state
+import com.aa.ui.screens.ai_state_screen.aiStateScreen
 import com.aa.ui.screens.badhabit.badHabitDetailRoute
 import com.aa.ui.screens.badhabit.badHabitRoute
+import com.aa.ui.screens.chat_bot_screen.chatBotScreen
 import com.aa.ui.screens.details_screen.babyDetailsRoute
 import com.aa.ui.screens.discover_screen.discoverScreen
 import com.aa.ui.screens.exercise.exerciseDetailsRoute
@@ -54,8 +56,9 @@ fun TinyStepsGraph(navController: NavHostController) {
         babyDetailsRoute(navController)
         discoverScreen(navController)
         homeScreen(navController)
-
-}
+        aiStateScreen(navController)
+        chatBotScreen(navController)
+    }
 }
 
 object TinyStepsDestination {
@@ -80,4 +83,6 @@ object TinyStepsDestination {
     const val SpecialCaseDetailsScreen = "specialCaseDetailsScreen"
     const val ExerciseScreen = "exerciseScreen"
     const val ExerciseDetailsScreen = "exerciseDetailsScreen"
+    const val AiStateScreen = "aiStateScreen"
+    const val ChatBotScreen = "chatBotScreen"
 }
