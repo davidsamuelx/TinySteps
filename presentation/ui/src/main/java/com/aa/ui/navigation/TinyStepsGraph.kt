@@ -13,8 +13,10 @@ import com.aa.ui.screens.exercise.exerciseDetailsRoute
 import com.aa.ui.screens.exercise.exerciseRoute
 import com.aa.ui.screens.home_screen.homeScreen
 import com.aa.ui.screens.infant_home_screen.infantHomeScreen
-import com.aa.ui.screens.infants_search.infantFoodDetailsRoute
-import com.aa.ui.screens.infants_search.infantsFoodRoute
+import com.aa.ui.screens.infants_badhabits.infantsBadHabitDetailRoute
+import com.aa.ui.screens.infants_badhabits.infantsBadHabitRoute
+import com.aa.ui.screens.infants_search.food.infantFoodDetailsRoute
+import com.aa.ui.screens.infants_search.food.infantsFoodRoute
 import com.aa.ui.screens.search.food.foodDetailsRoute
 import com.aa.ui.screens.search.food.foodRoute
 import com.aa.ui.screens.search.music.musicDetailsRoute
@@ -46,6 +48,8 @@ fun TinyStepsGraph(navController: NavHostController){
         infantHomeScreen(navController)
         infantsFoodRoute(navController)
         infantFoodDetailsRoute(navController)
+        infantsBadHabitRoute(navController)
+        infantsBadHabitDetailRoute(navController)
 
     }
 }
@@ -71,5 +75,6 @@ object TinyStepsDestination {
     const val InfantHomeScreen = "infantHomeScreen"
     const val InfantFoodScreen = "infantsFoodScreen"
     const val InfantsFoodDetails = "infantsFoodDetailsScreen"
-
+    const val InfantsBadHabitScreen = "infantsBadHabitScreen"
+    const val InfantsBadHabitDetailScreen = "infantsBadHabitDetailsScreen"
 }
