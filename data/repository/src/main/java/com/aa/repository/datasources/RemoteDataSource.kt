@@ -59,44 +59,50 @@ import com.aa.repository.resources.kids.ImageDIfferenceGameResource
 import com.aa.repository.resources.kids.LetterResource
 import com.aa.repository.resources.kids.MathLandResource
 import com.aa.repository.resources.kids.PuzzleGameResource
+import com.aa.repository.resources.open_ai.OpenAIRequestResource
+import com.aa.repository.resources.open_ai.OpenAIResponseResource
 
 interface RemoteDataSource {
+
+    suspend fun getOpenAIResponse(
+        openAIRequest: OpenAIRequestResource,
+    ): OpenAIResponseResource
 
     suspend fun getFoodAdvices(): FoodResource
 
     //region phase 02 infants and Toddler
     suspend fun getGuidanceInstruction(): AllGuidanceInstructionResource
-    suspend fun selectGuidanceInstruction(id:String):AllGuidanceInstructionSelectResource
-    suspend fun searchGuidanceInstruction(id:String): AllGuidanceInstructionResource
+    suspend fun selectGuidanceInstruction(id: String): AllGuidanceInstructionSelectResource
+    suspend fun searchGuidanceInstruction(id: String): AllGuidanceInstructionResource
 
     suspend fun getInfantsSleep(): InfantsSleepResource
-    suspend fun selectInfantsSleep(id: Int):AllInfantsSleepSelectResource
-    suspend fun searchInfantsSleep(id:String): InfantsSleepResource
+    suspend fun selectInfantsSleep(id: Int): AllInfantsSleepSelectResource
+    suspend fun searchInfantsSleep(id: String): InfantsSleepResource
 
     suspend fun getInfantsExcersice(): AllInfantsExcersiceResource
-    suspend fun searchInfantsExcersice(videoPath:String):AllInfantsExcersiceSearchResource
-    suspend fun selectByIdExcersice(id:Int):AllInfantsExcersiceSelectByIdResource
+    suspend fun searchInfantsExcersice(videoPath: String): AllInfantsExcersiceSearchResource
+    suspend fun selectByIdExcersice(id: Int): AllInfantsExcersiceSelectByIdResource
 
     suspend fun getInfantsRelation(): AllInfantsRelationResource
-    suspend fun getInfantsRelationById(id:Int):AllInfantsRelationByIdResource
-    suspend fun searchInfantsRelation(searchId:String):AllInfantsRelationResource
+    suspend fun getInfantsRelationById(id: Int): AllInfantsRelationByIdResource
+    suspend fun searchInfantsRelation(searchId: String): AllInfantsRelationResource
 
     suspend fun getInfantsBadHabits(): AllInfantsBadHabitsResource
-    suspend fun getInfantsBadHabitsById(id:Int): AllInfantsBadHabitsByIdResource
-    suspend fun searchInfantsBadHabits(badHabit:String): AllInfantsBadHabitsResource
+    suspend fun getInfantsBadHabitsById(id: Int): AllInfantsBadHabitsByIdResource
+    suspend fun searchInfantsBadHabits(badHabit: String): AllInfantsBadHabitsResource
 
     suspend fun getInfantsFood(): AllInfantsFoodResource
-    suspend fun getInfantsFoodById(id:Int): AllInfantsFoodByIdResource
-    suspend fun searchInfantsFood(foodSearch:String): AllInfantsFoodResource
+    suspend fun getInfantsFoodById(id: Int): AllInfantsFoodByIdResource
+    suspend fun searchInfantsFood(foodSearch: String): AllInfantsFoodResource
 
     suspend fun getInfantsSpecialCase(): AllInfantsSpecialCaseResource
     suspend fun getInfantsSpecialCaseById(id: Int): AllInfantsSpecialCaseByIdResource
-    suspend fun searchInfantsSpecialCase(specialSearch:String): AllInfantsSpecialCaseResource
+    suspend fun searchInfantsSpecialCase(specialSearch: String): AllInfantsSpecialCaseResource
 
-    suspend fun getInfantsProducts():AllInfantsProductsResource
-    suspend fun selectInfantsProducts(id: String):AllInfantsProductsSelectResource
-    suspend fun searchInfantsProducts(product:String):AllInfantsProductsResource
- //endregion
+    suspend fun getInfantsProducts(): AllInfantsProductsResource
+    suspend fun selectInfantsProducts(id: String): AllInfantsProductsSelectResource
+    suspend fun searchInfantsProducts(product: String): AllInfantsProductsResource
+    //endregion
 
     //region authentication
     suspend fun loginRequest(
@@ -107,7 +113,7 @@ interface RemoteDataSource {
 
     //region pregnancy phase
     suspend fun storeBabyGender(
-        storeBabyGenderResource: StoreBabyGenderResource
+        storeBabyGenderResource: StoreBabyGenderResource,
     ): BabyGenderResource
 
     suspend fun deleteBabyGender(id: String)
@@ -115,7 +121,7 @@ interface RemoteDataSource {
     suspend fun updateBabyGender(id: String, babyGender: String)
 
     suspend fun addENSupportMessage(
-        selectedSupportMessageTypeResource: SelectedSupportMessageTypeResource
+        selectedSupportMessageTypeResource: SelectedSupportMessageTypeResource,
     ): SupportMessageEnglishResource
 
     suspend fun getAllENSupportMessages(): AllENSupportMessagesResource
@@ -132,16 +138,16 @@ interface RemoteDataSource {
 
     suspend fun addNote(noteResource: NoteResource): NoteResponceResource
 
-    suspend fun getPregnancyData():PregnancyResource
+    suspend fun getPregnancyData(): PregnancyResource
 
     suspend fun addPregnancy(
-        pregnancyStoreResource: PregnancyStoreResource
+        pregnancyStoreResource: PregnancyStoreResource,
     ): PregnancyResponseResource
 
     suspend fun updatePregnancy(
         id: Int,
-        startTime: String
-    ):UpdatePregnancyResource
+        startTime: String,
+    ): UpdatePregnancyResource
 
     suspend fun deletePregnancy(id: Int)
 
@@ -149,13 +155,13 @@ interface RemoteDataSource {
 
     suspend fun getAllSpecialCases(): AllSpecialCaseResource
 
-    suspend fun getFoodById(id:Int): FoodByIdResource
+    suspend fun getFoodById(id: Int): FoodByIdResource
 
-    suspend fun searchFood(foodSearch:String): FoodSearchResource
+    suspend fun searchFood(foodSearch: String): FoodSearchResource
 
-    suspend fun getAllBadHabitById(id:Int): BadHabitByIdResource
+    suspend fun getAllBadHabitById(id: Int): BadHabitByIdResource
 
-    suspend fun searchBadHabit(badHabit:String): SearchBadHabitResource
+    suspend fun searchBadHabit(badHabit: String): SearchBadHabitResource
 
 
     suspend fun getAllVideos(): ExercisesRecourse
@@ -176,19 +182,19 @@ interface RemoteDataSource {
 
     suspend fun getSpecialCaseById(id: Int): SpecialCaseByIdResource
 
-    suspend fun searchSpecialCase(specialCase:String): SpecialCaseSearchResource
+    suspend fun searchSpecialCase(specialCase: String): SpecialCaseSearchResource
 
-    suspend fun searchSleepPosition(sleepPosition:String): SleepPositionSearchResource
+    suspend fun searchSleepPosition(sleepPosition: String): SleepPositionSearchResource
 
     //endregion
 
     suspend fun getMathLandGame(level: String): MathLandResource
 
-    suspend fun getPuzzleGame(level: String):PuzzleGameResource
+    suspend fun getPuzzleGame(level: String): PuzzleGameResource
 
     suspend fun getDiffImageGame(): ImageDIfferenceGameResource
 
-    suspend fun getAllStories(id: Int?,title: String?): AllStoriesResource
+    suspend fun getAllStories(id: Int?, title: String?): AllStoriesResource
 
     suspend fun getAllAchievements(): AllAchievementsResource
     suspend fun getAnimalGame(): AllAnimalGameResource
