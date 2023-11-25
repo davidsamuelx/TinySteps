@@ -53,7 +53,7 @@ fun DetailsContent(
             horizontalAlignment = Alignment.Start, verticalArrangement = Arrangement.Top
         ) {
 
-            CustomToolbar(navController = navController, title = "")
+           CustomToolbar(navController = navController, title = "")
 
             Column(
                 modifier = Modifier

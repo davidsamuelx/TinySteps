@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aa.ui.screens.details.DetailsContent
+import com.aa.ui.screens.search.composable.CustomToolbar
 import com.aa.viewmodels.infants_sleep_position.InfantsSleepDetailsUiState
 import com.aa.viewmodels.infants_sleep_position.InfantsSleepHoursDetailsViewModel
 
@@ -33,6 +34,8 @@ private fun  InfantsSleepDetailsContent(
     state: InfantsSleepDetailsUiState,
     navController: NavController
 ){
+
+    CustomToolbar(navController = navController, title = state.infantsSleep.doctorName!!)
     DetailsContent(
         navController = navController,
         imageUrl = state.infantsSleep.pathImg!!,

@@ -94,7 +94,7 @@ private fun InfantsSleepContent(
                             id = item.id!!,
                             modifier = Modifier.padding(horizontal = 16.dp),
                             onClickItem = { onClickCard(item.id!!) },
-                            title = item.recommendedSleepHours!!,
+                            title = "recommended For Age : ${item.age!!}",
                             imageUrl = item.pathImg!!
                         )
                     }
@@ -106,5 +106,5 @@ private fun InfantsSleepContent(
 }
 @Composable
 private fun itemMatchesQuery(item: InfantsSleepPositionItemUiState, query: String): Boolean {
-    return item.recommendedSleepHours!!.contains(query, ignoreCase = true)
+    return item.age!!.contains(query, ignoreCase = true)
 }

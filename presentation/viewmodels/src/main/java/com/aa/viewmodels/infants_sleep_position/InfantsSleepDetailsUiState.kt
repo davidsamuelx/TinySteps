@@ -19,7 +19,8 @@ data class InfantsSleepDetailItemUiState(
     val doctorName: String? = "",
     val phoneDoctor: String? = "",
     val profileDoctor: String? = "",
-    val doctorLocation: String? = ""
+    val doctorLocation: String? = "",
+    val age: String? = ""
 )
 
 fun InfantsSleepEntity.toDetailUiState() = InfantsSleepDetailItemUiState(
@@ -31,5 +32,6 @@ fun InfantsSleepEntity.toDetailUiState() = InfantsSleepDetailItemUiState(
     doctorName = doctorName ,
     phoneDoctor = phoneDoctor,
     profileDoctor = profileDoctor ,
-    doctorLocation = profileLocation
+    doctorLocation = profileLocation,
+    age = age
 )

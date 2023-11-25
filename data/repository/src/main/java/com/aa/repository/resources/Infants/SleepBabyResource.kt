@@ -15,5 +15,7 @@ data class SleepBabyResource(
     @SerializedName("recommendedSleepHours")
     val recommendedSleepHours: String?,
     @SerializedName("PathImg")
-    val pathImg:String?
+    val pathImg:String?,
+    @SerializedName("age")
+    val age:String?
 )

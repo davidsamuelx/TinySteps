@@ -14,7 +14,8 @@ internal fun SleepBabyResource?.toEntity(): InfantsSleepEntity {
         phoneDoctor =this?.advices?.phoneDoctor.orEmpty(),
         profileDoctor = this?.advices?.profileDoctor.orEmpty(),
         profileLocation = this?.advices?.doctorLocation.orEmpty(),
-        pathImg = this?.pathImg.orEmpty()
+        pathImg = this?.pathImg.orEmpty(),
+        age=this?.age.orEmpty()
     )
 
 }
