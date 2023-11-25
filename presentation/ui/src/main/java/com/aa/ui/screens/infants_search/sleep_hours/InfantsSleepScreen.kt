@@ -27,7 +27,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aa.ui.screens.search.composable.CustomToolbar
 import com.aa.ui.screens.search.composable.ItemCard
-import com.aa.ui.screens.search.composable.SearchBar
 import com.aa.viewmodels.infants_sleep_position.InfantsSleepPositionItemUiState
 import com.aa.viewmodels.infants_sleep_position.InfantsSleepUiState
 import com.aa.viewmodels.infants_sleep_position.InfantsSleepViewModel
@@ -85,10 +84,6 @@ private fun InfantsSleepContent(
                                 Brush.verticalGradient(colorStops = colorStops)
                             )
                     ){
-                        SearchBar(
-                            query =  state.query,
-                            onQueryChange = viewModel::onQueryChange,
-                            onSearchClicked = viewModel::onSleepHoursSearchClicked)
                     }
                 }
                 itemsIndexed(state.sleepHoursList) { index, item ->
