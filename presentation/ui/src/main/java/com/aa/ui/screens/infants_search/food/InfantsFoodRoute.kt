@@ -17,6 +17,6 @@ fun NavGraphBuilder.infantsFoodRoute(navController: NavController){
 fun NavController.navigateToFoodScreen() {
     navigate(ROUTE)
 }
-fun NavController.backToHomeScreen() {
+fun NavController.backToDiscoverScreen() {
     popBackStack()
 }

@@ -7,6 +7,8 @@ data class InfantsSleepEntity(
     val adviceId: Int?,
     val doctorName: String?,
     val phoneDoctor: String?,
-    val profileDoctor: String?
+    val profileDoctor: String?,
+    val profileLocation:String?,
+    val pathImg:String?
 
-    )
+)

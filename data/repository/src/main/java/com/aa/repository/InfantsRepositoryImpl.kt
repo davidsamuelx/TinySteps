@@ -130,7 +130,7 @@ class InfantsRepositoryImpl @Inject constructor(
     }
 
     override suspend fun selectInfantsProducts(id: String): InfantsProductsEntity{
-        return remoteDataSource.selectInfantsProducts(id).product.toEntity()
+        return remoteDataSource.selectInfantsProducts(id).products.toEntity()
     }
 
 

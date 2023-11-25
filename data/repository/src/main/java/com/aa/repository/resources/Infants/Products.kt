@@ -3,19 +3,17 @@ package com.aa.repository.resources.Infants
 
 import com.google.gson.annotations.SerializedName
 
-data class InfantsProductsResource(
+data class Products(
     @SerializedName("Advices")
-    val advices: Advices?= Advices(),
-    @SerializedName("Details_AR")
-    val detailsAR: String?="",
+    val advices: Advices?,
     @SerializedName("Details_EN")
-    val detailsEN: String?="",
+    val detailsEN: String?,
     @SerializedName("ID")
-    val iD: Int?=0,
+    val iD: Int?,
     @SerializedName("NameProduct_AR")
-    val nameProductAR: String?="",
+    val nameProductAR: String?,
     @SerializedName("NameProduct_EN")
-    val nameProductEN: String?="",
+    val nameProductEN: String?,
     @SerializedName("Path_img")
-    val pathImg: String?=""
+    val pathImg: String?
 )

@@ -19,6 +19,10 @@ import com.aa.ui.screens.infants_search.food.infantFoodDetailsRoute
 import com.aa.ui.screens.infants_search.food.infantsFoodRoute
 import com.aa.ui.screens.infants_search.infants_specialcase.infantsSpecialCaseDetailsRoute
 import com.aa.ui.screens.infants_search.infants_specialcase.infantsSpecialCaseRoute
+import com.aa.ui.screens.infants_search.products.infantProductsDetailsRoute
+import com.aa.ui.screens.infants_search.products.infantsProductsRoute
+import com.aa.ui.screens.infants_search.sleep_hours.infantsSleepDetailRoute
+import com.aa.ui.screens.infants_search.sleep_hours.infantsSleepRoute
 import com.aa.ui.screens.search.food.foodDetailsRoute
 import com.aa.ui.screens.search.food.foodRoute
 import com.aa.ui.screens.search.music.musicDetailsRoute
@@ -54,6 +58,10 @@ fun TinyStepsGraph(navController: NavHostController){
         infantsBadHabitDetailRoute(navController)
         infantsSpecialCaseRoute(navController)
         infantsSpecialCaseDetailsRoute(navController)
+        infantsProductsRoute(navController)
+        infantProductsDetailsRoute(navController)
+        infantsSleepRoute(navController)
+        infantsSleepDetailRoute(navController)
     }
 }
 
@@ -82,5 +90,8 @@ object TinyStepsDestination {
     const val InfantsBadHabitDetailScreen = "infantsBadHabitDetailsScreen"
     const val InfantsSpecialCaseScreen = "infantsSpecialCaseScreen"
     const val InfantsSpecialCaseDetailsScreen = "infantsSpecialCaseDetailsScreen"
-
+    const val InfantsProductsScreen = "infantsProductsScreen"
+    const val InfantsProductsDetailsScreen = "infantsProductsDetailsScreen"
+    const val InfantsSleepScreen = "infantsSleepScreen"
+    const val InfantsSleepDetailsScreen = "infantsSleepDetailsScreen"
 }

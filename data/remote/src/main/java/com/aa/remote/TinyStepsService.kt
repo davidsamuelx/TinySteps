@@ -1,26 +1,8 @@
 package com.aa.remote
 
 import com.aa.repository.resources.AllBadHabitsResource
-import com.aa.repository.resources.NoteResource
 import com.aa.repository.resources.AllENSupportMessagesResource
 import com.aa.repository.resources.AllMusiceResource
-import com.aa.repository.resources.Infants.AllGuidanceInstructionResource
-import com.aa.repository.resources.Infants.AllGuidanceInstructionSelectResource
-import com.aa.repository.resources.Infants.AllInfantsBadHabitsByIdResource
-import com.aa.repository.resources.Infants.AllInfantsBadHabitsResource
-import com.aa.repository.resources.Infants.AllInfantsExcersiceResource
-import com.aa.repository.resources.Infants.AllInfantsExcersiceSearchResource
-import com.aa.repository.resources.Infants.AllInfantsExcersiceSelectByIdResource
-import com.aa.repository.resources.Infants.AllInfantsFoodByIdResource
-import com.aa.repository.resources.Infants.AllInfantsFoodResource
-import com.aa.repository.resources.Infants.AllInfantsProductsResource
-import com.aa.repository.resources.Infants.AllInfantsProductsSelectResource
-import com.aa.repository.resources.Infants.AllInfantsRelationByIdResource
-import com.aa.repository.resources.Infants.AllInfantsRelationResource
-import com.aa.repository.resources.Infants.AllInfantsSleepSelectResource
-import com.aa.repository.resources.Infants.AllInfantsSpecialCaseByIdResource
-import com.aa.repository.resources.Infants.AllInfantsSpecialCaseResource
-import com.aa.repository.resources.Infants.InfantsSleepResource
 import com.aa.repository.resources.AllSpecialCaseResource
 import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.BabyImageResource
@@ -31,30 +13,48 @@ import com.aa.repository.resources.ExercisesRecourse
 import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.FoodResource
 import com.aa.repository.resources.FoodSearchResource
+import com.aa.repository.resources.Infants.AllGuidanceInstructionResource
+import com.aa.repository.resources.Infants.AllGuidanceInstructionSelectResource
+import com.aa.repository.resources.Infants.AllInfantsBadHabitsByIdResource
+import com.aa.repository.resources.Infants.AllInfantsBadHabitsResource
+import com.aa.repository.resources.Infants.AllInfantsExcersiceResource
+import com.aa.repository.resources.Infants.AllInfantsExcersiceSearchResource
+import com.aa.repository.resources.Infants.AllInfantsExcersiceSelectByIdResource
+import com.aa.repository.resources.Infants.AllInfantsFoodByIdResource
+import com.aa.repository.resources.Infants.AllInfantsFoodResource
+import com.aa.repository.resources.Infants.AllInfantsProductsResource
+import com.aa.repository.resources.Infants.AllInfantsRelationByIdResource
+import com.aa.repository.resources.Infants.AllInfantsRelationResource
+import com.aa.repository.resources.Infants.AllInfantsSleepSelectResource
+import com.aa.repository.resources.Infants.AllInfantsSpecialCaseByIdResource
+import com.aa.repository.resources.Infants.AllInfantsSpecialCaseResource
 import com.aa.repository.resources.Infants.GuidanceResource
-import com.aa.repository.resources.StoreBabyGenderResource
+import com.aa.repository.resources.Infants.InfantsSleepResource
+import com.aa.repository.resources.Infants.ProductByIdResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
 import com.aa.repository.resources.MusicByIdResource
+import com.aa.repository.resources.NoteResource
 import com.aa.repository.resources.NoteResponceResource
-import com.aa.repository.resources.SearchedENSupportMessageResource
-import com.aa.repository.resources.SelectedSupportMessageTypeResource
-import com.aa.repository.resources.SupportMessageEnglishResource
-import com.aa.repository.resources.TodayENSupportMessageResource
 import com.aa.repository.resources.PregnancyResource
 import com.aa.repository.resources.PregnancyResponseResource
 import com.aa.repository.resources.PregnancyStoreResource
 import com.aa.repository.resources.SearchBadHabitResource
+import com.aa.repository.resources.SearchedENSupportMessageResource
+import com.aa.repository.resources.SelectedSupportMessageTypeResource
 import com.aa.repository.resources.SleepByIdResource
-import com.aa.repository.resources.UpdatePregnancyResource
 import com.aa.repository.resources.SleepPositionResource
 import com.aa.repository.resources.SleepPositionSearchResource
 import com.aa.repository.resources.SpecialCaseByIdResource
 import com.aa.repository.resources.SpecialCaseSearchResource
+import com.aa.repository.resources.StoreBabyGenderResource
+import com.aa.repository.resources.SupportMessageEnglishResource
+import com.aa.repository.resources.TodayENSupportMessageResource
+import com.aa.repository.resources.UpdatePregnancyResource
 import com.aa.repository.resources.kids.AllAchievementsResource
-import com.aa.repository.resources.kids.AllStoriesResource
 import com.aa.repository.resources.kids.AllAnimalGameResource
 import com.aa.repository.resources.kids.AllEducationGamesResource
+import com.aa.repository.resources.kids.AllStoriesResource
 import com.aa.repository.resources.kids.AnimalGameResource
 import com.aa.repository.resources.kids.ImageDIfferenceGameResource
 import com.aa.repository.resources.kids.LetterResource
@@ -275,7 +275,7 @@ interface TinyStepsService {
     suspend fun getInfantsProducts():Response<AllInfantsProductsResource>
 
     @GET("user/phase2/products/select")
-    suspend fun selectInfantsProducts(@Query("id")id:String):Response<AllInfantsProductsSelectResource>
+    suspend fun selectInfantsProducts(@Query("id")id:String):Response<ProductByIdResource>
 
     @GET("user/phase2/products/search/{product}")
     suspend fun searchInfantsProducts(@Path("product")product:String):Response<AllInfantsProductsResource>

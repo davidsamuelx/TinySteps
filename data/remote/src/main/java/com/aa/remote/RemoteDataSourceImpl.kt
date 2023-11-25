@@ -5,23 +5,6 @@ import com.aa.repository.datasources.RemoteDataSource
 import com.aa.repository.resources.AllBadHabitsResource
 import com.aa.repository.resources.AllENSupportMessagesResource
 import com.aa.repository.resources.AllMusiceResource
-import com.aa.repository.resources.Infants.AllGuidanceInstructionResource
-import com.aa.repository.resources.Infants.AllGuidanceInstructionSelectResource
-import com.aa.repository.resources.Infants.AllInfantsBadHabitsByIdResource
-import com.aa.repository.resources.Infants.AllInfantsBadHabitsResource
-import com.aa.repository.resources.Infants.AllInfantsExcersiceResource
-import com.aa.repository.resources.Infants.AllInfantsExcersiceSearchResource
-import com.aa.repository.resources.Infants.AllInfantsExcersiceSelectByIdResource
-import com.aa.repository.resources.Infants.AllInfantsFoodByIdResource
-import com.aa.repository.resources.Infants.AllInfantsFoodResource
-import com.aa.repository.resources.Infants.AllInfantsProductsResource
-import com.aa.repository.resources.Infants.AllInfantsProductsSelectResource
-import com.aa.repository.resources.Infants.AllInfantsRelationByIdResource
-import com.aa.repository.resources.Infants.AllInfantsRelationResource
-import com.aa.repository.resources.Infants.AllInfantsSleepSelectResource
-import com.aa.repository.resources.Infants.AllInfantsSpecialCaseByIdResource
-import com.aa.repository.resources.Infants.AllInfantsSpecialCaseResource
-import com.aa.repository.resources.Infants.InfantsSleepResource
 import com.aa.repository.resources.AllSpecialCaseResource
 import com.aa.repository.resources.BabyGenderResource
 import com.aa.repository.resources.BabyImageResource
@@ -32,7 +15,24 @@ import com.aa.repository.resources.ExercisesRecourse
 import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.FoodResource
 import com.aa.repository.resources.FoodSearchResource
+import com.aa.repository.resources.Infants.AllGuidanceInstructionResource
+import com.aa.repository.resources.Infants.AllGuidanceInstructionSelectResource
+import com.aa.repository.resources.Infants.AllInfantsBadHabitsByIdResource
+import com.aa.repository.resources.Infants.AllInfantsBadHabitsResource
+import com.aa.repository.resources.Infants.AllInfantsExcersiceResource
+import com.aa.repository.resources.Infants.AllInfantsExcersiceSearchResource
+import com.aa.repository.resources.Infants.AllInfantsExcersiceSelectByIdResource
+import com.aa.repository.resources.Infants.AllInfantsFoodByIdResource
+import com.aa.repository.resources.Infants.AllInfantsFoodResource
+import com.aa.repository.resources.Infants.AllInfantsProductsResource
+import com.aa.repository.resources.Infants.AllInfantsRelationByIdResource
+import com.aa.repository.resources.Infants.AllInfantsRelationResource
+import com.aa.repository.resources.Infants.AllInfantsSleepSelectResource
+import com.aa.repository.resources.Infants.AllInfantsSpecialCaseByIdResource
+import com.aa.repository.resources.Infants.AllInfantsSpecialCaseResource
 import com.aa.repository.resources.Infants.GuidanceResource
+import com.aa.repository.resources.Infants.InfantsSleepResource
+import com.aa.repository.resources.Infants.ProductByIdResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
 import com.aa.repository.resources.MusicByIdResource
@@ -173,7 +173,7 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute { tinyStepsService.getInfantsProducts() }
     }
 
-    override suspend fun selectInfantsProducts(id: String): AllInfantsProductsSelectResource {
+    override suspend fun selectInfantsProducts(id: String): ProductByIdResource {
         return tryToExecute { tinyStepsService.selectInfantsProducts(id) }
     }
 

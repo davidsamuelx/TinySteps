@@ -1,7 +1,6 @@
 package com.aa.repository.resources.Infants
 
 
-import com.aa.repository.resources.Infants.Advices
 import com.google.gson.annotations.SerializedName
 
 data class SleepBabyResource(
@@ -14,5 +13,7 @@ data class SleepBabyResource(
     @SerializedName("ID")
     val iD: Int?,
     @SerializedName("recommendedSleepHours")
-    val recommendedSleepHours: String?
+    val recommendedSleepHours: String?,
+    @SerializedName("PathImg")
+    val pathImg:String?
 )
