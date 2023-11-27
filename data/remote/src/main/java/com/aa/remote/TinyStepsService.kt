@@ -42,6 +42,10 @@ import com.aa.repository.resources.PregnancyStoreResource
 import com.aa.repository.resources.SearchBadHabitResource
 import com.aa.repository.resources.SearchedENSupportMessageResource
 import com.aa.repository.resources.SelectedSupportMessageTypeResource
+import com.aa.repository.resources.SearchedENSupportMessageResource
+import com.aa.repository.resources.SelectedSupportMessageTypeResource
+import com.aa.repository.resources.SignUpResource
+import com.aa.repository.resources.SignUpResponseResource
 import com.aa.repository.resources.SleepByIdResource
 import com.aa.repository.resources.SleepPositionResource
 import com.aa.repository.resources.SleepPositionSearchResource
@@ -101,6 +105,11 @@ interface TinyStepsService {
     suspend fun loginRequest(
         @Body loginResource: LoginResource
     ):Response<LoginResponseResource>
+
+    @POST("auth/user/register")
+    suspend fun signupRequest(
+        @Body loginResource: SignUpResource
+    ):Response<SignUpResponseResource>
 
     @POST("user/Pregnancy/BabyKind/store")
     suspend fun storeBabyGender(@Body babyGender: StoreBabyGenderResource): Response<BabyGenderResource>

@@ -2,6 +2,8 @@ package com.aa.repository
 
 import com.aa.models.UserInformation
 import com.aa.models.UserLoginAuth
+import com.aa.models.UserRegisterInformation
+import com.aa.models.UserSignUpAuth
 import com.aa.repositories.AuthenticationRepository
 import com.aa.repository.datasources.RemoteDataSource
 import com.aa.repository.datasources.SharedPreferenceDataSource
@@ -18,4 +20,21 @@ class AuthenticationRepositoryImpl @Inject constructor(
         sharedPreferenceDataSource.saveUserToken(request.token)
          return request
     }
+
+    override suspend fun signupRequest(userSignUpAuth: UserSignUpAuth): UserRegisterInformation {
+        val request=remoteDataSource.signupRequest(userSignUpAuth.toResource()).toEntity()
+        sharedPreferenceDataSource.saveUserToken(request.username)
+        return request
+    }
+
+
+
+    override suspend fun isLoggedIn(): Boolean {
+    if (sharedPreferenceDataSource.getUserToken()!=null){
+        return true
+    }
+        return false
+    }
+
+
 }
