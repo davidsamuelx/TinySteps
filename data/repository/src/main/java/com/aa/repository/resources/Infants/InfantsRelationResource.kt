@@ -1,10 +1,11 @@
 package com.aa.repository.resources.Infants
 
 
-import com.aa.repository.resources.Infants.Advices
 import com.google.gson.annotations.SerializedName
 
 data class InfantsRelationResource(
+    @SerializedName("Id")
+    val id: Int?,
     @SerializedName("Advice")
     val advice: String?,
     @SerializedName("Advices")

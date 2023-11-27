@@ -58,7 +58,7 @@ fun HomePager(
     ) { pageIndex ->
             Card(
                 modifier = Modifier
-                    .aspectRatio(18f / 9f)
+                    .aspectRatio(16.5f / 9f)
                     .clip(RoundedCornerShape(24.dp))
                     .graphicsLayer {
                         val pageOffset =

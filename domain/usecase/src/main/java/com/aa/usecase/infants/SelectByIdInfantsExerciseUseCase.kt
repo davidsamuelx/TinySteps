@@ -1,13 +1,13 @@
 package com.aa.usecase.infants
 
-import com.aa.models.infants.InfantsExcersiceEntity
+import com.aa.models.infants.InfantsExerciseEntity
 import com.aa.repositories.InfantsRepository
 import javax.inject.Inject
 
-class SelectByIdInfantsExcersiceUseCase @Inject constructor(
+class SelectByIdInfantsExerciseUseCase @Inject constructor(
     private val infantsRepository: InfantsRepository
 ) {
-    suspend operator fun invoke(id:Int): InfantsExcersiceEntity {
+    suspend operator fun invoke(id:Int): InfantsExerciseEntity {
         return infantsRepository.selectByIdExcersie(id)
     }
 }

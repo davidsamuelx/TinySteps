@@ -12,6 +12,10 @@ import com.aa.ui.screens.discover_screen.discoverScreen
 import com.aa.ui.screens.exercise.exerciseDetailsRoute
 import com.aa.ui.screens.exercise.exerciseRoute
 import com.aa.ui.screens.home_screen.homeScreen
+import com.aa.ui.screens.infant_discover_screen.infantDiscoverRoute
+import com.aa.ui.screens.infant_exercise.infantExerciseDetailsRoute
+import com.aa.ui.screens.infant_exercise.infantExerciseRoute
+import com.aa.ui.screens.infant_home_screen.guidanceDetailsRoute
 import com.aa.ui.screens.infant_home_screen.infantHomeScreen
 import com.aa.ui.screens.infants_badhabits.infantsBadHabitDetailRoute
 import com.aa.ui.screens.infants_badhabits.infantsBadHabitRoute
@@ -23,6 +27,7 @@ import com.aa.ui.screens.infants_search.products.infantProductsDetailsRoute
 import com.aa.ui.screens.infants_search.products.infantsProductsRoute
 import com.aa.ui.screens.infants_search.sleep_hours.infantsSleepDetailRoute
 import com.aa.ui.screens.infants_search.sleep_hours.infantsSleepRoute
+import com.aa.ui.screens.relation_screen.relationDetailsRoute
 import com.aa.ui.screens.search.food.foodDetailsRoute
 import com.aa.ui.screens.search.food.foodRoute
 import com.aa.ui.screens.search.music.musicDetailsRoute
@@ -35,7 +40,7 @@ import com.aa.ui.screens.search.specialcase.specialCaseRoute
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
 fun TinyStepsGraph(navController: NavHostController){
-    NavHost(navController = navController, startDestination = TinyStepsDestination.Home){
+    NavHost(navController = navController, startDestination = TinyStepsDestination.InfantHomeScreen){
         badHabitRoute(navController)
         specialCaseRoute(navController)
         foodRoute(navController)
@@ -58,10 +63,15 @@ fun TinyStepsGraph(navController: NavHostController){
         infantsBadHabitDetailRoute(navController)
         infantsSpecialCaseRoute(navController)
         infantsSpecialCaseDetailsRoute(navController)
+        guidanceDetailsRoute(navController)
+        infantExerciseRoute(navController)
+        infantExerciseDetailsRoute(navController)
         infantsProductsRoute(navController)
         infantProductsDetailsRoute(navController)
         infantsSleepRoute(navController)
         infantsSleepDetailRoute(navController)
+        infantDiscoverRoute(navController)
+        relationDetailsRoute(navController)
     }
 }
 
@@ -94,4 +104,9 @@ object TinyStepsDestination {
     const val InfantsProductsDetailsScreen = "infantsProductsDetailsScreen"
     const val InfantsSleepScreen = "infantsSleepScreen"
     const val InfantsSleepDetailsScreen = "infantsSleepDetailsScreen"
+    const val GuidanceDetailsScreen = "guidanceDetailsScreen"
+    const val InfantExerciseScreen = "infantsExerciseScreen"
+    const val InfantExerciseDetailsScreen = "infantsExerciseDetailsScreen"
+    const val InfantDiscoverScreen = "infantsDiscoverScreen"
+    const val RelationDetailsScreen = "relationDetailsScreen"
 }

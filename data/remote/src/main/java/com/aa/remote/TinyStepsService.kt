@@ -14,12 +14,8 @@ import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.FoodResource
 import com.aa.repository.resources.FoodSearchResource
 import com.aa.repository.resources.Infants.AllGuidanceInstructionResource
-import com.aa.repository.resources.Infants.AllGuidanceInstructionSelectResource
 import com.aa.repository.resources.Infants.AllInfantsBadHabitsByIdResource
 import com.aa.repository.resources.Infants.AllInfantsBadHabitsResource
-import com.aa.repository.resources.Infants.AllInfantsExcersiceResource
-import com.aa.repository.resources.Infants.AllInfantsExcersiceSearchResource
-import com.aa.repository.resources.Infants.AllInfantsExcersiceSelectByIdResource
 import com.aa.repository.resources.Infants.AllInfantsFoodByIdResource
 import com.aa.repository.resources.Infants.AllInfantsFoodResource
 import com.aa.repository.resources.Infants.AllInfantsProductsResource
@@ -28,8 +24,12 @@ import com.aa.repository.resources.Infants.AllInfantsRelationResource
 import com.aa.repository.resources.Infants.AllInfantsSleepSelectResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseByIdResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseResource
-import com.aa.repository.resources.Infants.GuidanceResource
 import com.aa.repository.resources.Infants.InfantsSleepResource
+import com.aa.repository.resources.Infants.GuidanceDetailsResource
+import com.aa.repository.resources.Infants.GuidanceResource
+import com.aa.repository.resources.Infants.InfantExerciseByIdResource
+import com.aa.repository.resources.Infants.InfantsExercisesSearchResource
+import com.aa.repository.resources.Infants.infantsExercisesResource
 import com.aa.repository.resources.Infants.ProductByIdResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
@@ -212,7 +212,7 @@ interface TinyStepsService {
     suspend fun getGuidanceAdvice():Response<GuidanceResource>
 
     @GET("user/phase2/guidance-instructions/Select/{select_id}")
-    suspend fun selectGuidanceAdvice(@Path("select_id")selectId:String):Response<AllGuidanceInstructionSelectResource>
+    suspend fun selectGuidanceAdvice(@Path("select_id")selectId:Int):Response<GuidanceDetailsResource>
 
     @GET("user/phase2/guidance-instructions/search/{search_id}")
     suspend fun searchGuidanceAdvice(@Path("search_id") searchId:String):Response<AllGuidanceInstructionResource>
@@ -227,13 +227,13 @@ interface TinyStepsService {
     suspend fun searchInfantsSleep(@Path("search_id") searchId:String):Response<InfantsSleepResource>
 
     @GET("user/phase2/exercises/Index")
-    suspend fun getInfantsExcersice():Response<AllInfantsExcersiceResource>
+    suspend fun getInfantsExcersice():Response<infantsExercisesResource>
 
     @GET("user/phase2/exercises/searchVideo/{video_path}")
-    suspend fun searchInfantsExcersice(@Path("video_path") videoPath:String):Response<AllInfantsExcersiceSearchResource>
+    suspend fun searchInfantsExcersice(@Path("video_path") videoPath:String):Response<InfantsExercisesSearchResource>
 
     @GET("user/phase2/exercises/getById/{select_id}")
-    suspend fun selectByIdInfantsExcersie(@Path("select_id")selectId:Int):Response<AllInfantsExcersiceSelectByIdResource>
+    suspend fun selectByIdInfantsExcersie(@Path("select_id")selectId:Int):Response<InfantExerciseByIdResource>
 
     @GET("user/phase2/Relation/all")
     suspend fun getInfantsRelation():Response<AllInfantsRelationResource>

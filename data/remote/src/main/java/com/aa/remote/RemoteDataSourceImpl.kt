@@ -16,12 +16,8 @@ import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.FoodResource
 import com.aa.repository.resources.FoodSearchResource
 import com.aa.repository.resources.Infants.AllGuidanceInstructionResource
-import com.aa.repository.resources.Infants.AllGuidanceInstructionSelectResource
 import com.aa.repository.resources.Infants.AllInfantsBadHabitsByIdResource
 import com.aa.repository.resources.Infants.AllInfantsBadHabitsResource
-import com.aa.repository.resources.Infants.AllInfantsExcersiceResource
-import com.aa.repository.resources.Infants.AllInfantsExcersiceSearchResource
-import com.aa.repository.resources.Infants.AllInfantsExcersiceSelectByIdResource
 import com.aa.repository.resources.Infants.AllInfantsFoodByIdResource
 import com.aa.repository.resources.Infants.AllInfantsFoodResource
 import com.aa.repository.resources.Infants.AllInfantsProductsResource
@@ -30,9 +26,13 @@ import com.aa.repository.resources.Infants.AllInfantsRelationResource
 import com.aa.repository.resources.Infants.AllInfantsSleepSelectResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseByIdResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseResource
+import com.aa.repository.resources.Infants.GuidanceDetailsResource
 import com.aa.repository.resources.Infants.GuidanceResource
 import com.aa.repository.resources.Infants.InfantsSleepResource
 import com.aa.repository.resources.Infants.ProductByIdResource
+import com.aa.repository.resources.Infants.InfantExerciseByIdResource
+import com.aa.repository.resources.Infants.InfantsExercisesSearchResource
+import com.aa.repository.resources.Infants.infantsExercisesResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
 import com.aa.repository.resources.MusicByIdResource
@@ -86,7 +86,7 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute { tinyStepsService.getGuidanceAdvice() }
     }
 
-    override suspend fun selectGuidanceInstruction(id: String): AllGuidanceInstructionSelectResource {
+    override suspend fun selectGuidanceInstruction(id: Int): GuidanceDetailsResource {
         return tryToExecute { tinyStepsService.selectGuidanceAdvice(id) }
     }
 
@@ -107,15 +107,15 @@ class RemoteDataSourceImpl @Inject constructor(
     }
 
 
-    override suspend fun getInfantsExcersice(): AllInfantsExcersiceResource {
+    override suspend fun getInfantsExercise(): infantsExercisesResource {
         return tryToExecute { tinyStepsService.getInfantsExcersice() }
     }
 
-    override suspend fun searchInfantsExcersice(videoPath: String): AllInfantsExcersiceSearchResource {
+    override suspend fun searchInfantsExercise(videoPath: String): InfantsExercisesSearchResource {
         return tryToExecute { tinyStepsService.searchInfantsExcersice(videoPath) }
     }
 
-    override suspend fun selectByIdExcersice(id: Int): AllInfantsExcersiceSelectByIdResource {
+    override suspend fun selectByIdExercise(id: Int): InfantExerciseByIdResource {
         return tryToExecute { tinyStepsService.selectByIdInfantsExcersie(id) }
     }
 

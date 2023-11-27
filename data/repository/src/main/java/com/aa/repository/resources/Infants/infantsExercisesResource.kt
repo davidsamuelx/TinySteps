@@ -3,7 +3,7 @@ package com.aa.repository.resources.Infants
 
 import com.google.gson.annotations.SerializedName
 
-data class AllInfantsExcersiceResource(
+data class infantsExercisesResource(
     @SerializedName("exercises")
-    val exercises: List<InfantsExerciseResource?>?
+    val exercises: List<Exercise?>? = null
 )
