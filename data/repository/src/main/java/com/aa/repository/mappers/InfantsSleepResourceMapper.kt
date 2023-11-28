@@ -12,7 +12,10 @@ internal fun SleepBabyResource?.toEntity(): InfantsSleepEntity {
         adviceId = this?.advices?.adviceId.orZero(),
         doctorName = this?.advices?.doctorName.orEmpty(),
         phoneDoctor =this?.advices?.phoneDoctor.orEmpty(),
-        profileDoctor = this?.advices?.profileDoctor.orEmpty()
+        profileDoctor = this?.advices?.profileDoctor.orEmpty(),
+        profileLocation = this?.advices?.doctorLocation.orEmpty(),
+        pathImg = this?.pathImg.orEmpty(),
+        age=this?.age.orEmpty()
     )
 
 }

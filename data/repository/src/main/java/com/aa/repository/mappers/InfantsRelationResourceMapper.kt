@@ -11,6 +11,7 @@ internal fun InfantsRelationResource?.toEntity(): InfantsRelationEntity {
         adviceId = this?.advices?.adviceId.orZero(),
         doctorName = this?.advices?.doctorName.orEmpty(),
         phoneDoctor = this?.advices?.phoneDoctor.orEmpty(),
-        profileDoctor = this?.advices?.profileDoctor.orEmpty()
+        doctorLocation = this?.advices?.doctorLocation.orEmpty(),
+        id = this?.id.orZero()
     )
 }

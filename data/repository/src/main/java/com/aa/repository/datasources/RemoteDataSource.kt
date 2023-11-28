@@ -14,22 +14,23 @@ import com.aa.repository.resources.FoodByIdResource
 import com.aa.repository.resources.FoodResource
 import com.aa.repository.resources.FoodSearchResource
 import com.aa.repository.resources.Infants.AllGuidanceInstructionResource
-import com.aa.repository.resources.Infants.AllGuidanceInstructionSelectResource
 import com.aa.repository.resources.Infants.AllInfantsBadHabitsByIdResource
 import com.aa.repository.resources.Infants.AllInfantsBadHabitsResource
-import com.aa.repository.resources.Infants.AllInfantsExcersiceResource
-import com.aa.repository.resources.Infants.AllInfantsExcersiceSearchResource
-import com.aa.repository.resources.Infants.AllInfantsExcersiceSelectByIdResource
 import com.aa.repository.resources.Infants.AllInfantsFoodByIdResource
 import com.aa.repository.resources.Infants.AllInfantsFoodResource
 import com.aa.repository.resources.Infants.AllInfantsProductsResource
-import com.aa.repository.resources.Infants.AllInfantsProductsSelectResource
 import com.aa.repository.resources.Infants.AllInfantsRelationByIdResource
 import com.aa.repository.resources.Infants.AllInfantsRelationResource
 import com.aa.repository.resources.Infants.AllInfantsSleepSelectResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseByIdResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseResource
 import com.aa.repository.resources.Infants.InfantsSleepResource
+import com.aa.repository.resources.Infants.GuidanceDetailsResource
+import com.aa.repository.resources.Infants.GuidanceResource
+import com.aa.repository.resources.Infants.ProductByIdResource
+import com.aa.repository.resources.Infants.InfantExerciseByIdResource
+import com.aa.repository.resources.Infants.InfantsExercisesSearchResource
+import com.aa.repository.resources.Infants.infantsExercisesResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
 import com.aa.repository.resources.MusicByIdResource
@@ -73,17 +74,17 @@ interface RemoteDataSource {
     suspend fun getFoodAdvices(): FoodResource
 
     //region phase 02 infants and Toddler
-    suspend fun getGuidanceInstruction(): AllGuidanceInstructionResource
-    suspend fun selectGuidanceInstruction(id: String): AllGuidanceInstructionSelectResource
-    suspend fun searchGuidanceInstruction(id: String): AllGuidanceInstructionResource
+    suspend fun getGuidanceInstruction(): GuidanceResource
+    suspend fun selectGuidanceInstruction(id:Int):GuidanceDetailsResource
+    suspend fun searchGuidanceInstruction(id:String): AllGuidanceInstructionResource
 
     suspend fun getInfantsSleep(): InfantsSleepResource
     suspend fun selectInfantsSleep(id: Int): AllInfantsSleepSelectResource
     suspend fun searchInfantsSleep(id: String): InfantsSleepResource
 
-    suspend fun getInfantsExcersice(): AllInfantsExcersiceResource
-    suspend fun searchInfantsExcersice(videoPath: String): AllInfantsExcersiceSearchResource
-    suspend fun selectByIdExcersice(id: Int): AllInfantsExcersiceSelectByIdResource
+    suspend fun getInfantsExercise(): infantsExercisesResource
+    suspend fun searchInfantsExercise(videoPath:String):InfantsExercisesSearchResource
+    suspend fun selectByIdExercise(id:Int):InfantExerciseByIdResource
 
     suspend fun getInfantsRelation(): AllInfantsRelationResource
     suspend fun getInfantsRelationById(id: Int): AllInfantsRelationByIdResource
@@ -101,10 +102,10 @@ interface RemoteDataSource {
     suspend fun getInfantsSpecialCaseById(id: Int): AllInfantsSpecialCaseByIdResource
     suspend fun searchInfantsSpecialCase(specialSearch: String): AllInfantsSpecialCaseResource
 
-    suspend fun getInfantsProducts(): AllInfantsProductsResource
-    suspend fun selectInfantsProducts(id: String): AllInfantsProductsSelectResource
-    suspend fun searchInfantsProducts(product: String): AllInfantsProductsResource
-    //endregion
+    suspend fun getInfantsProducts():AllInfantsProductsResource
+    suspend fun selectInfantsProducts(id: String): ProductByIdResource
+    suspend fun searchInfantsProducts(product:String):AllInfantsProductsResource
+ //endregion
 
     //region authentication
     suspend fun loginRequest(

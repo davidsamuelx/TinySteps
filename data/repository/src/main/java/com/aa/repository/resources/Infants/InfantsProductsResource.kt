@@ -5,17 +5,17 @@ import com.google.gson.annotations.SerializedName
 
 data class InfantsProductsResource(
     @SerializedName("Advices")
-    val advices: Advices?,
+    val advices: Advices?= Advices(),
     @SerializedName("Details_AR")
-    val detailsAR: String?,
+    val detailsAR: String?="",
     @SerializedName("Details_EN")
-    val detailsEN: String?,
+    val detailsEN: String?="",
     @SerializedName("ID")
-    val iD: Int?,
+    val iD: Int?=0,
     @SerializedName("NameProduct_AR")
-    val nameProductAR: String?,
+    val nameProductAR: String?="",
     @SerializedName("NameProduct_EN")
-    val nameProductEN: String?,
+    val nameProductEN: String?="",
     @SerializedName("Path_img")
-    val pathImg: String?
+    val pathImg: String?=""
 )

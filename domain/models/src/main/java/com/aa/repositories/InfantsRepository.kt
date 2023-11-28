@@ -2,7 +2,7 @@ package com.aa.repositories
 
 import com.aa.models.infants.GuidanceInstructionEntity
 import com.aa.models.infants.InfantsBadHabitsEntity
-import com.aa.models.infants.InfantsExcersiceEntity
+import com.aa.models.infants.InfantsExerciseEntity
 import com.aa.models.infants.InfantsFoodEntity
 import com.aa.models.infants.InfantsProductsEntity
 import com.aa.models.infants.InfantsRelationEntity
@@ -13,7 +13,7 @@ interface InfantsRepository {
 
     suspend fun guidanceInstruction(): List<GuidanceInstructionEntity>
 
-    suspend fun selectGuidanceInstruction(id: String): GuidanceInstructionEntity
+    suspend fun selectGuidanceInstruction(id: Int): GuidanceInstructionEntity
 
     suspend fun searchGuidanceInstruction(id: String): List<GuidanceInstructionEntity>
 
@@ -23,11 +23,11 @@ interface InfantsRepository {
 
     suspend fun searchInfantsSleep(id: String): List<InfantsSleepEntity>
 
-    suspend fun infantsExcersice(): List<InfantsExcersiceEntity>
+    suspend fun infantsExcersice(): List<InfantsExerciseEntity>
 
-    suspend fun searchInfantsExcersice(videoPath: String): List<InfantsExcersiceEntity>
+    suspend fun searchInfantsExcersice(videoPath: String): List<InfantsExerciseEntity>
 
-    suspend fun selectByIdExcersie(id: Int): InfantsExcersiceEntity
+    suspend fun selectByIdExcersie(id: Int): InfantsExerciseEntity
 
     suspend fun infantsRelation(): List<InfantsRelationEntity>
 
