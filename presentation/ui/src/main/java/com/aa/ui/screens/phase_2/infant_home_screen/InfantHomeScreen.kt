@@ -75,7 +75,7 @@ private fun InfantHomeContent(
             .background(Color(0xFFF6F9FF))
     ){
         Column( modifier = Modifier
-            .padding(bottom = 48.dp)
+            .padding(bottom = 64.dp)
         ) {
             HomeHeader()
             LazyColumn(
