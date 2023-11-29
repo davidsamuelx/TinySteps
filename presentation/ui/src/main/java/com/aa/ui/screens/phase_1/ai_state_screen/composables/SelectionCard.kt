@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -33,7 +34,7 @@ fun SelectionCard(
 ) {
     Box(
         modifier = modifier
-            .size(344.dp, 180.dp)
+            .fillMaxWidth().height(180.dp)
             .background(
                 Brush.horizontalGradient(listOf(Color(0Xffff8865), Color(0Xffff3a00))),
                 shape = RoundedCornerShape(16.dp)

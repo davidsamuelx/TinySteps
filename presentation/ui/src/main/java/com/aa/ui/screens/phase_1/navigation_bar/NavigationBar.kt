@@ -68,7 +68,7 @@ private fun NavigationBarContent(
     var item by remember { mutableStateOf(selectedIcon) }
 
     Row(
-        horizontalArrangement = Arrangement.Center,
+        horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
             .fillMaxWidth()
@@ -90,7 +90,6 @@ private fun NavigationBarContent(
             },
             isSelected = item == NavItem.Home
         )
-        Spacer(modifier = Modifier.width(40.dp))
         NavigationBarItem(
             iconRes = R.drawable.discover24,
             contentDescription = "discover",
@@ -100,7 +99,6 @@ private fun NavigationBarContent(
             },
             isSelected = item == NavItem.Discover
         )
-        Spacer(modifier = Modifier.width(36.dp))
         Box(
             modifier = Modifier
                 .size(48.dp)
@@ -113,8 +111,6 @@ private fun NavigationBarContent(
                     ambientColor = Color(0x0F232C5D)
                 )
         )
-        Spacer(modifier = Modifier.width(36.dp))
-
         NavigationBarItem(
             iconRes = R.drawable.message_bot,
             contentDescription = "chat bot",
@@ -124,9 +120,7 @@ private fun NavigationBarContent(
             },
             isSelected = item == NavItem.ChatBot
         )
-
-        Spacer(modifier = Modifier.width(40.dp))
-
+        
         NavigationBarItem(
             iconRes = R.drawable.profile_button,
             contentDescription = "profile",
@@ -165,7 +159,6 @@ enum class NavItem {
     Discover,
     ChatBot,
     Profile,
-    State
 }
 
 @Preview
