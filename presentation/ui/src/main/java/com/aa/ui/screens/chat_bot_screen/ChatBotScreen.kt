@@ -23,11 +23,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.aa.ui.screens.ai_state_screen.backToAiStateScreen
 import com.aa.ui.screens.chat_bot_screen.composables.AskItem
 import com.aa.ui.screens.chat_bot_screen.composables.ChatTextField
 import com.aa.ui.screens.chat_bot_screen.composables.ResponseItem
-import com.aa.ui.screens.details_screen.composables.CustomHeader
+import com.aa.ui.screens.phase_1.ai_state_screen.backToAiStateScreen
+import com.aa.ui.screens.phase_1.details_screen.composables.CustomHeader
 import com.aa.viewmodels.chat_bot_screen.ChatBotUiState
 import com.aa.viewmodels.chat_bot_screen.ChatBotViewModel
 
