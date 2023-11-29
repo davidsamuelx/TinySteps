@@ -2,22 +2,27 @@ package com.aa.ui.screens.phase_1.details_screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
+import com.aa.ui.R
 import com.aa.ui.screens.phase_1.details_screen.composables.CustomHeader
 import com.aa.ui.screens.phase_1.home_screen.backToHomeScreen
 import com.aa.viewmodels.baby_details_screen.BabyDetailsScreenViewModel
@@ -48,7 +54,11 @@ private fun BabyDetailsContent(
     state: BabyDetailsUiState,
     onBackClick : () -> Unit
 ) {
-    LazyColumn() {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+    ) {
         item {
             Column(
                 modifier = Modifier
@@ -56,8 +66,21 @@ private fun BabyDetailsContent(
                     .background(Color.White)
             ) {
                 CustomHeader(onBackClick,"Baby Info")
+                    Box(modifier = Modifier.align(Alignment.CenterHorizontally)) {
+                        if (state.isLoading) {
+                            CircularProgressIndicator(
+                                color = Color(0xFFFF3A00),
+                                modifier = Modifier
+                                    .align(Alignment.Center)
+                                    .size(28.dp)
+                            )
+                        }
+                    }
                 Image(
-                    painter = rememberAsyncImagePainter(model = state.babyImage),
+                    painter = rememberAsyncImagePainter(
+                        model = state.babyImage,
+                        placeholder = painterResource(id = R.drawable.placeholde_image)
+                    ),
                     contentDescription = "Baby Image",
                     modifier = Modifier
                         .padding(horizontal = 8.dp)

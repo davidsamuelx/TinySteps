@@ -3,9 +3,7 @@ package com.aa.ui.screens.phase_1.ai_state_screen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -44,33 +42,24 @@ fun AiStateScreen(
             ),
             modifier = Modifier.padding(16.dp)
         )
-        Spacer(modifier = Modifier.height(16.dp))
         SelectionCard(
             iconRes = R.drawable.diagnosis_bot,
             numberRes = R.drawable.number_1,
             text = "Diagnosis",
-            modifier = Modifier.align(Alignment.CenterHorizontally)
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(16.dp)
 
         )
-        Spacer(modifier = Modifier.height(16.dp))
         SelectionCard(
             iconRes = R.drawable.chat_bot,
             numberRes = R.drawable.number_2,
             text = "Chat",
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-                .clickable{navController.navigateToChatBotScreen()}
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .clickable { navController.navigateToChatBotScreen() }
         )
-
-//        Box (modifier = Modifier.fillMaxHeight()) {
-//            NavigationBar(
-//                navController = navController,
-//                modifier = Modifier
-//                    .align(Alignment.BottomCenter)
-//                    .padding(12.dp),
-//                selectedIcon = NavItem.ChatBot
-//            )
-//        }
-
 
 
     }

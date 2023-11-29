@@ -165,7 +165,6 @@ enum class NavItemInfants {
     Discover,
     ChatBot,
     Profile,
-    State
 }
 
 @Preview
