@@ -56,7 +56,10 @@ fun GuidanceCard(
                 .fillMaxSize()
         ) {
            Image(
-               painter = rememberAsyncImagePainter(image),
+               painter = rememberAsyncImagePainter(
+                   model=image,
+                   placeholder = painterResource(id = R.drawable.placeholde_image)
+                   ),
                contentDescription = "",
                contentScale = ContentScale.Crop,
                modifier = Modifier

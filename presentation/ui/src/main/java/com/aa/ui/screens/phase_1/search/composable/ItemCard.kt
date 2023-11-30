@@ -22,11 +22,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
+import com.aa.ui.R
 
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
@@ -55,7 +57,10 @@ fun ItemCard(
             contentAlignment = Alignment.BottomStart
         ) {
             Image(
-                painter = rememberAsyncImagePainter(imageUrl) ,
+                painter = rememberAsyncImagePainter(
+                    model=imageUrl,
+                    placeholder = painterResource(id = R.drawable.placeholde_image)
+                    ) ,
                 contentDescription = null,
                 contentScale = ContentScale.FillBounds,
                 modifier = Modifier
