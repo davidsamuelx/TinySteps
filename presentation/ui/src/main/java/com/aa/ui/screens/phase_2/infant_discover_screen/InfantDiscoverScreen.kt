@@ -2,10 +2,13 @@ package com.aa.ui.screens.phase_2.infant_discover_screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -13,6 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -41,7 +45,11 @@ fun InfantDiscoverScreen(
 private fun InfantDiscoverContent(
     state: InfantDiscoverUiState,
     navController: NavController,
-){
+){ Box(
+    modifier = Modifier
+        .fillMaxSize()
+        .background(Color.White)
+) {
     Column (
         modifier = Modifier
             .fillMaxSize()
@@ -58,8 +66,12 @@ private fun InfantDiscoverContent(
             modifier = Modifier.padding(start = 16.dp, bottom = 8.dp, top = 16.dp)
         )
         LazyVerticalGrid(
+            modifier = Modifier
+            .wrapContentSize()
+            .background(Color.White)
+            .padding(16.dp),
             columns = GridCells.Fixed(2),
-            contentPadding = PaddingValues(start = 16.dp, end = 16.dp,top = 16.dp),
+            contentPadding = PaddingValues(0.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
@@ -72,8 +84,18 @@ private fun InfantDiscoverContent(
                     destination = item.destination
                 )
             }
-        }
+            item {
+                Box (modifier = Modifier.size(48.dp)){
 
-        NavigationBarInfants(navController = navController,modifier = Modifier.padding(12.dp), selectedIcon = NavItemInfants.Discover)
+                }
+            }
+        }
+    }
+
+        NavigationBarInfants(
+            navController = navController,
+            modifier = Modifier.padding(16.dp)
+                .align(Alignment.BottomCenter),
+            selectedIcon = NavItemInfants.Discover)
     }
 }
