@@ -13,8 +13,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -54,6 +56,7 @@ private fun ChatBotScreenContent(
     onSendMessageClicked: () -> Unit,
     onBackClicked: () -> Unit
 ) {
+    val lazyListState = rememberLazyListState()
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -64,9 +67,10 @@ private fun ChatBotScreenContent(
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(1f),  // Take up all available space
+                .weight(1f),
             contentPadding = PaddingValues(8.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
+            state = lazyListState
         ) {
             items(state.messages.size) { index ->
                 val message = state.messages[index]
@@ -77,6 +81,12 @@ private fun ChatBotScreenContent(
                 }
             }
             Log.i("ejaekae", state.messages.toString())
+        }
+
+        LaunchedEffect(key1 = state.messages.size) {
+            if (state.messages.isNotEmpty()) {
+                lazyListState.scrollToItem(state.messages.size - 1)
+            }
         }
 
         Box(modifier = Modifier.align(Alignment.CenterHorizontally)) {
