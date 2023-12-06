@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.aa.ui.screens.phase_1.composable.ItemLoadingScreen
 import com.aa.ui.screens.phase_1.search.composable.CustomToolbar
 import com.aa.ui.screens.phase_1.search.composable.ItemCard
 import com.aa.viewmodels.infants_sleep_position.InfantsSleepPositionItemUiState
@@ -72,35 +73,45 @@ private fun InfantsSleepContent(
         ) {
             CustomToolbar(navController = navController, title = "Sleep Hours")
 
-            LazyColumn(
-                contentPadding = PaddingValues(vertical = 16.dp),
-                state = sleepHoursState,
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ){
-                stickyHeader {
-                    Box (
-                        modifier = Modifier
-                            .background(
-                                Brush.verticalGradient(colorStops = colorStops)
-                            )
-                    ){
-                    }
-                }
-                itemsIndexed(state.sleepHoursList) { index, item ->
-                    AnimatedVisibility(
-                        visible = state.query.isEmpty() || itemMatchesQuery(item, state.query),
-                    ) {
-                        ItemCard(
-                            id = item.id!!,
-                            modifier = Modifier.padding(horizontal = 16.dp),
-                            onClickItem = { onClickCard(item.id!!) },
-                            title = "recommended For Age : ${item.age!!}",
-                            imageUrl = item.pathImg!!
-                        )
-                    }
-                }
+            if (state.isLoading){
+                ItemLoadingScreen(
+                    query =  state.query,
+                    onQueryChange = viewModel::onQueryChange,
+                    onSearchClicked = viewModel::onSleepHoursSearchClicked)
 
+            }else{
+                LazyColumn(
+                    contentPadding = PaddingValues(vertical = 16.dp),
+                    state = sleepHoursState,
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ){
+                    stickyHeader {
+                        Box (
+                            modifier = Modifier
+                                .background(
+                                    Brush.verticalGradient(colorStops = colorStops)
+                                )
+                        ){
+                        }
+                    }
+                    itemsIndexed(state.sleepHoursList) { index, item ->
+                        AnimatedVisibility(
+                            visible = state.query.isEmpty() || itemMatchesQuery(item, state.query),
+                        ) {
+                            ItemCard(
+                                id = item.id!!,
+                                modifier = Modifier.padding(horizontal = 16.dp),
+                                onClickItem = { onClickCard(item.id!!) },
+                                title = "recommended For Age : ${item.age!!}",
+                                imageUrl = item.pathImg!!
+                            )
+                        }
+                    }
+
+                }
             }
+
+
         }
     }
 }

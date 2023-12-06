@@ -17,7 +17,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -31,7 +30,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.aa.ui.R
-import com.aa.ui.screens.phase_1.composable.ShimmerDiscover
 
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
@@ -41,17 +39,8 @@ fun ItemCard(
     onClickItem: (Int) -> Unit,
     title: String,
     imageUrl: String,
-    isLoading:Boolean
 ){
-//    var  isLoadings by remember{
-//        mutableStateOf(true)
-//    }
-    LaunchedEffect(key1 = false ){
 
-        !isLoading
-    }
-    ShimmerDiscover(isLoading =isLoading,
-        contextAfterLoading ={
             Card(
                 modifier = modifier
                     .height(180.dp)
@@ -102,8 +91,7 @@ fun ItemCard(
                     )
                 }
             }
-        }
-    )
+
 
 }
 

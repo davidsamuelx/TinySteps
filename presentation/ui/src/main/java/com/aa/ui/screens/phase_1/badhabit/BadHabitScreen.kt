@@ -4,33 +4,34 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
-import com.aa.viewmodels.badhabit.BadHabitUIState
-import com.aa.viewmodels.badhabit.BadHabitViewModel
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import com.aa.ui.screens.phase_1.composable.ItemLoadingScreen
 import com.aa.ui.screens.phase_1.search.composable.CustomToolbar
 import com.aa.ui.screens.phase_1.search.composable.ItemCard
 import com.aa.ui.screens.phase_1.search.composable.SearchBar
 import com.aa.viewmodels.badhabit.BadHabitItemUIState
+import com.aa.viewmodels.badhabit.BadHabitUIState
+import com.aa.viewmodels.badhabit.BadHabitViewModel
 
 
 
@@ -78,41 +79,49 @@ private fun BadHabitContent(
         ) {
 
             CustomToolbar(navController = navController, title = "Bad Habit")
+                if (state.isLoading){
+                    ItemLoadingScreen(
+                        query =  state.query,
+                        onQueryChange = viewModel::onQueryChange,
+                        onSearchClicked = viewModel::onBadHabitSearchClicked)
 
-            LazyColumn(
-                contentPadding = PaddingValues(vertical = 16.dp),
-                state = badHabitState,
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ){
-
-                stickyHeader {
-                    Box (
-                        modifier = Modifier
-                            .background(
-                                Brush.verticalGradient(colorStops = colorStops)
-                            )
+                }else{
+                    LazyColumn(
+                        contentPadding = PaddingValues(vertical = 16.dp),
+                        state = badHabitState,
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
                     ){
-                        SearchBar(
-                            query =  state.query,
-                            onQueryChange = viewModel::onQueryChange,
-                            onSearchClicked = viewModel::onBadHabitSearchClicked)
+
+                        stickyHeader {
+                            Box (
+                                modifier = Modifier
+                                    .background(
+                                        Brush.verticalGradient(colorStops = colorStops)
+                                    )
+                            ){
+                                SearchBar(
+                                    query =  state.query,
+                                    onQueryChange = viewModel::onQueryChange,
+                                    onSearchClicked = viewModel::onBadHabitSearchClicked)
+                            }
+                        }
+
+                        itemsIndexed(state.badHabitsList){index, item ->
+                            AnimatedVisibility(
+                                visible = state.query.isEmpty() || itemMatchesQuery(item, state.query),
+                            ) {
+                                ItemCard(
+                                    id = item.id,
+                                    modifier = Modifier.padding(horizontal = 16.dp),
+                                    onClickItem = { onClickCard(item.id) },
+                                    title = item.nameBadHabit,
+                                    imageUrl = item.pathImg,
+                                )
+                            }
+                        }
                     }
                 }
 
-                itemsIndexed(state.badHabitsList){index, item ->
-                    AnimatedVisibility(
-                        visible = state.query.isEmpty() || itemMatchesQuery(item, state.query),
-                    ) {
-                        ItemCard(
-                            id = item.id,
-                            modifier = Modifier.padding(horizontal = 16.dp),
-                            onClickItem = { onClickCard(item.id) },
-                            title = item.nameBadHabit,
-                            imageUrl = item.pathImg,
-                        )
-                    }
-                }
-            }
         }
     }
 }

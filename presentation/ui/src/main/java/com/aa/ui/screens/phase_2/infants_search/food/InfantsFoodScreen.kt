@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.aa.ui.screens.phase_1.composable.ItemLoadingScreen
 import com.aa.ui.screens.phase_1.search.composable.CustomToolbar
 import com.aa.ui.screens.phase_1.search.composable.ItemCard
 import com.aa.ui.screens.phase_1.search.composable.SearchBar
@@ -73,38 +74,48 @@ private fun InfantsFoodContent(
             ) {
                 CustomToolbar(navController = navController, title = "Nutrition")
 
-                LazyColumn(
-                    contentPadding = PaddingValues(vertical = 16.dp),
-                    state = foodState,
-                    verticalArrangement = Arrangement.spacedBy(12.dp)
-                ){
-                    stickyHeader {
-                        Box (
-                            modifier = Modifier
-                                .background(
-                                    Brush.verticalGradient(colorStops = colorStops)
-                                )
-                        ){
-                            SearchBar(
-                                query =  state.query,
-                                onQueryChange = viewModel::onQueryChange,
-                                onSearchClicked = viewModel::onSearchClicked)
+                if (state.isLoading){
+                    ItemLoadingScreen(
+                        query =  state.query,
+                        onQueryChange = viewModel::onQueryChange,
+                        onSearchClicked = viewModel::onSearchClicked)
+
+                }else{
+                    LazyColumn(
+                        contentPadding = PaddingValues(vertical = 16.dp),
+                        state = foodState,
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                    ){
+                        stickyHeader {
+                            Box (
+                                modifier = Modifier
+                                    .background(
+                                        Brush.verticalGradient(colorStops = colorStops)
+                                    )
+                            ){
+                                SearchBar(
+                                    query =  state.query,
+                                    onQueryChange = viewModel::onQueryChange,
+                                    onSearchClicked = viewModel::onSearchClicked)
+                            }
                         }
-                    }
-                    itemsIndexed(state.foodUIState){index, item ->
-                        AnimatedVisibility(
-                            visible = state.query.isEmpty() || itemMatchesQuery(item, state.query),
-                        ) {
-                            ItemCard(
-                                id = item.adviceId,
-                                onClickItem = { onClickCard(item.adviceId) },
-                                title = item.nameFood,
-                                imageUrl = item.imgFood,
-                                modifier = Modifier.padding(horizontal = 16.dp)
-                            )
+                        itemsIndexed(state.foodUIState){index, item ->
+                            AnimatedVisibility(
+                                visible = state.query.isEmpty() || itemMatchesQuery(item, state.query),
+                            ) {
+                                ItemCard(
+                                    id = item.adviceId,
+                                    onClickItem = { onClickCard(item.adviceId) },
+                                    title = item.nameFood,
+                                    imageUrl = item.imgFood,
+                                    modifier = Modifier.padding(horizontal = 16.dp)
+                                )
+                            }
                         }
                     }
                 }
+
+
             }
         }
 }

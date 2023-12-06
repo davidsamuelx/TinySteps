@@ -25,12 +25,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.aa.ui.screens.phase_1.composable.ItemLoadingScreen
 import com.aa.ui.screens.phase_1.search.composable.CustomToolbar
 import com.aa.ui.screens.phase_1.search.composable.ItemCard
 import com.aa.ui.screens.phase_1.search.composable.SearchBar
+import com.aa.viewmodels.sleepposition.SleepPositionItemUiState
 import com.aa.viewmodels.sleepposition.SleepPositionUiState
 import com.aa.viewmodels.sleepposition.SleepPositionViewModel
-import com.aa.viewmodels.sleepposition.SleepPositionItemUiState
 
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
@@ -76,40 +77,49 @@ private fun SleepPositionContent(
 
             CustomToolbar(navController = navController, title = "Sleep Position")
 
-            LazyColumn(
-                contentPadding = PaddingValues(vertical = 16.dp),
-                state = sleepPositionState,
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ){
+            if(state.isLoading){
+                ItemLoadingScreen(
+                    query =  state.query,
+                    onQueryChange = viewModel::onQueryChange,
+                    onSearchClicked = viewModel::onSleepPositionSearchClicked)
 
-                stickyHeader {
-                    Box (
-                        modifier = Modifier
-                            .background(
-                                Brush.verticalGradient(colorStops = colorStops)
+            }else {
+                LazyColumn(
+                    contentPadding = PaddingValues(vertical = 16.dp),
+                    state = sleepPositionState,
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ){
+
+                    stickyHeader {
+                        Box (
+                            modifier = Modifier
+                                .background(
+                                    Brush.verticalGradient(colorStops = colorStops)
+                                )
+                        ){
+                            SearchBar(
+                                query =  state.query,
+                                onQueryChange = viewModel::onQueryChange,
+                                onSearchClicked = viewModel::onSleepPositionSearchClicked)
+                        }
+                    }
+
+                    itemsIndexed(state.sleepPositionList) { index, item ->
+                        AnimatedVisibility(
+                            visible = state.query.isEmpty() || itemMatchesQuery(item, state.query),
+                        ) {
+                            ItemCard(
+                                id = item.id,
+                                modifier = Modifier.padding(horizontal = 16.dp),
+                                onClickItem = { onClickCard(item.id) },
+                                title = item.nameOfPosition,
+                                imageUrl = item.pathImg
                             )
-                    ){
-                        SearchBar(
-                            query =  state.query,
-                            onQueryChange = viewModel::onQueryChange,
-                            onSearchClicked = viewModel::onSleepPositionSearchClicked)
+                        }
                     }
                 }
-
-                itemsIndexed(state.sleepPositionList) { index, item ->
-                    AnimatedVisibility(
-                        visible = state.query.isEmpty() || itemMatchesQuery(item, state.query),
-                    ) {
-                    ItemCard(
-                        id = item.id,
-                        modifier = Modifier.padding(horizontal = 16.dp),
-                        onClickItem = { onClickCard(item.id) },
-                        title = item.nameOfPosition,
-                        imageUrl = item.pathImg
-                    )
-                }
-                }
             }
+
         }
     }
 }
