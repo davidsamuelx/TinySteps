@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.aa.ui.screens.phase_1.composable.ItemLoadingScreen
 import com.aa.ui.screens.phase_1.search.composable.CustomToolbar
 import com.aa.ui.screens.phase_1.search.composable.ItemCard
 import com.aa.ui.screens.phase_1.search.composable.SearchBar
@@ -37,7 +38,7 @@ import com.aa.viewmodels.infant_exercise.InfantExercisesItemUiState
 fun InfantExerciseScreen(
     navController: NavController,
     viewModel: InfantExerciseViewModel = hiltViewModel()
-){
+) {
     val state by viewModel.state.collectAsState()
 
     InfantExerciseContent(
@@ -57,7 +58,7 @@ private fun InfantExerciseContent(
     viewModel: InfantExerciseViewModel,
     onClickCard: (Int) -> Unit = {},
     navController: NavController,
-){
+) {
     val exerciseState = rememberLazyListState()
 
     val colorStops = arrayOf(
@@ -75,38 +76,47 @@ private fun InfantExerciseContent(
         ) {
 
             CustomToolbar(navController = navController, title = "Exercise")
+            if (state.isLoading) {
+                ItemLoadingScreen(
+                    query = state.query,
+                    onQueryChange = viewModel::onQueryChange,
+                    onSearchClicked = viewModel::onInfantExerciseSearchClicked
+                )
 
-            LazyColumn(
-                contentPadding = PaddingValues(vertical = 16.dp),
-                state = exerciseState,
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ){
+            } else {
+                LazyColumn(
+                    contentPadding = PaddingValues(vertical = 16.dp),
+                    state = exerciseState,
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
 
-                stickyHeader {
-                    Box (
-                        modifier = Modifier
-                            .background(
-                                Brush.verticalGradient(colorStops = colorStops)
+                    stickyHeader {
+                        Box(
+                            modifier = Modifier
+                                .background(
+                                    Brush.verticalGradient(colorStops = colorStops)
+                                )
+                        ) {
+                            SearchBar(
+                                query = state.query,
+                                onQueryChange = viewModel::onQueryChange,
+                                onSearchClicked = viewModel::onInfantExerciseSearchClicked
                             )
-                    ){
-                        SearchBar(
-                            query =  state.query,
-                            onQueryChange = viewModel::onQueryChange,
-                            onSearchClicked = viewModel::onInfantExerciseSearchClicked)
+                        }
                     }
-                }
 
-                itemsIndexed(state.exercisesList){index, item ->
-                    AnimatedVisibility(
-                        visible = state.query.isEmpty() || itemMatchesQuery(item, state.query)
-                    ) {
-                        ItemCard(
-                            id = item.id,
-                            modifier = Modifier.padding(horizontal = 16.dp),
-                            onClickItem = { onClickCard(item.id) },
-                            title = item.videoName,
-                            imageUrl = item.imageUrl
-                        )
+                    itemsIndexed(state.exercisesList) { index, item ->
+                        AnimatedVisibility(
+                            visible = state.query.isEmpty() || itemMatchesQuery(item, state.query)
+                        ) {
+                            ItemCard(
+                                id = item.id,
+                                modifier = Modifier.padding(horizontal = 16.dp),
+                                onClickItem = { onClickCard(item.id) },
+                                title = item.videoName,
+                                imageUrl = item.imageUrl,
+                            )
+                        }
                     }
                 }
             }

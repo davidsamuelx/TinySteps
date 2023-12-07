@@ -6,7 +6,7 @@ import com.aa.models.ExerciseEntity
 
 data class ExerciseDetailsUiState(
     val exercise: ExerciseDetailsItemUiState = ExerciseDetailsItemUiState(),
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val error: BaseErrorUiState? = null
 ): BaseUiState
 

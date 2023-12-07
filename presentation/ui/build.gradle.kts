@@ -62,4 +62,5 @@ dependencies {
     implementation("com.google.android.exoplayer:exoplayer-core:2.19.0")
     implementation("com.google.android.exoplayer:exoplayer-dash:2.19.0")
     implementation("com.google.android.exoplayer:exoplayer-ui:2.19.0")
+    implementation ("com.airbnb.android:lottie-compose:6.0.1")
 }

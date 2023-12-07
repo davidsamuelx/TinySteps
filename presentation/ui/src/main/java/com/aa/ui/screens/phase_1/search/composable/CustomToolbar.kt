@@ -3,6 +3,7 @@ package com.aa.ui.screens.phase_1.search.composable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -47,7 +48,7 @@ fun CustomToolbar(
                 )
             )
         },
-        modifier = Modifier.background(Color(0xFFFFFFFF)),
+        modifier = Modifier.background(Color(0xFFFFFFFF)).wrapContentSize(),
         navigationIcon = {
             IconButton(
                 modifier = Modifier

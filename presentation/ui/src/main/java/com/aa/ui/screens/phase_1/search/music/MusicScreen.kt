@@ -1,5 +1,6 @@
 package com.aa.ui.screens.phase_1.search.music
 
+import android.annotation.SuppressLint
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.animation.AnimatedVisibility
@@ -36,7 +37,7 @@ import com.aa.viewmodels.music.MusicViewModel
 fun MusicScreen(
     navController: NavController,
     viewModel: MusicViewModel = hiltViewModel(),
-){
+) {
     val state by viewModel.state.collectAsState()
 
     MusicContent(
@@ -48,6 +49,7 @@ fun MusicScreen(
 
 }
 
+@SuppressLint("SuspiciousIndentation")
 @OptIn(ExperimentalFoundationApi::class)
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
@@ -56,7 +58,7 @@ private fun MusicContent(
     viewModel: MusicViewModel,
     onClickCard: (Int) -> Unit = {},
     navController: NavController,
-){
+) {
 
     val colorStops = arrayOf(
         0.8f to Color(0xFFF6F9FF),
@@ -75,7 +77,7 @@ private fun MusicContent(
                     ItemLoadingScreen(
                         query = state.query,
                         onQueryChange =viewModel::onQueryChange ) {
-                        
+
                     }
                 }else{
                     LazyColumn(

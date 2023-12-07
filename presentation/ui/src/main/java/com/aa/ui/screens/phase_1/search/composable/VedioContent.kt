@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,25 +26,27 @@ import com.google.android.exoplayer2.ui.PlayerView
 @Composable
 fun VideoPlayer(
     url: String,
-){
+) {
     val context = LocalContext.current
 
     Surface {
-        Column (
+        Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color(0xFFF6F9FF)),
 
-            horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Top
-        ){
-            val exoPlayer = remember(context){
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top
+        ) {
+            val exoPlayer = remember(context) {
                 SimpleExoPlayer.Builder(context).build().apply {
                     val dataSourceFactory = DefaultDataSourceFactory(
                         context, Util.getUserAgent(context, context.packageName)
                     )
 
                     val mediaItem = MediaItem.fromUri(url)
-                    val source = ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(mediaItem)
+                    val source = ProgressiveMediaSource.Factory(dataSourceFactory)
+                        .createMediaSource(mediaItem)
 
                     this.prepare(source)
                 }
@@ -51,18 +54,34 @@ fun VideoPlayer(
             }
 
 
+            DisposableEffect(Unit) {
+                onDispose {
+                    exoPlayer.pause()
+                    exoPlayer.release()
+                }
+            }
 
-            AndroidView(
-                factory = { context ->
-                    PlayerView(context).apply {
-                        player = exoPlayer
-                    }
-                },
-                modifier = Modifier.fillMaxSize()
-            )
-            Log.d("VideoPlayer", "Video URL: $url")
+            Surface {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color(0xFFF6F9FF)),
+
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Top
+                ) {
+                    AndroidView(
+                        factory = { context ->
+                            PlayerView(context).apply {
+                                player = exoPlayer
+                            }
+                        },
+                        modifier = Modifier.fillMaxSize()
+                    )
+                    Log.d("VideoPlayer", "Video URL: $url")
+                }
+            }
         }
     }
-
-
 }
+

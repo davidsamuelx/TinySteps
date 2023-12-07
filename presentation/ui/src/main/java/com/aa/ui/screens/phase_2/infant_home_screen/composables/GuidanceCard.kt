@@ -57,7 +57,7 @@ fun GuidanceCard(
         ) {
            Image(
                painter = rememberAsyncImagePainter(
-                   model=image,
+                   model=image.ifEmpty { R.drawable.placeholde_image },
                    placeholder = painterResource(id = R.drawable.placeholde_image)
                    ),
                contentDescription = "",

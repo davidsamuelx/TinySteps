@@ -61,7 +61,7 @@ fun ItemCard(
                 ) {
                     Image(
                         painter = rememberAsyncImagePainter(
-                            model=imageUrl,
+                            model=imageUrl.ifEmpty { R.drawable.placeholde_image },
                             placeholder = painterResource(id = R.drawable.placeholde_image)
                         ) ,
                         contentDescription = null,

@@ -48,7 +48,7 @@ import com.aa.ui.screens.phase_2.relation_screen.relationDetailsRoute
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
 fun TinyStepsGraph(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = TinyStepsDestination.SplashScreen) {
+    NavHost(navController = navController, startDestination = TinyStepsDestination.Home) {
         composable(TinyStepsDestination.SplashScreen) { SplashScreen(navController = navController) }
         introScreen(navController)
         signIn(navController)

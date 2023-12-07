@@ -6,6 +6,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.aa.ui.screens.composable.Loading
 import com.aa.ui.screens.phase_1.search.composable.VideoPlayer
 import com.aa.viewmodels.exercise.ExerciseDetailsUiState
 import com.aa.viewmodels.exercise.ExerciseDetailsViewModel
@@ -17,6 +18,8 @@ fun ExercisesDetailsScreen(
 ){
     val state by viewModel.state.collectAsState()
 
+
+
     ExercisesDetailsContent(
         state = state
     )
@@ -27,6 +30,9 @@ fun ExercisesDetailsScreen(
 private fun ExercisesDetailsContent(
     state: ExerciseDetailsUiState
 ){
+    if (state.isLoading){
+        Loading()
+    }
     val videoUrl = state.exercise.videoUrl
     if (videoUrl.isNotEmpty()) {
         VideoPlayer(url = videoUrl)

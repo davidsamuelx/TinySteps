@@ -7,7 +7,7 @@ import com.aa.models.infants.InfantsExerciseEntity
 data class InfantExerciseUiState(
     val exercisesList: List<InfantExercisesItemUiState> = emptyList(),
     val query: String = "",
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val error: BaseErrorUiState? = null
 ): BaseUiState
 
