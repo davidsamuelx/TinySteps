@@ -8,7 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aa.ui.screens.phase_1.details.DetailsContent
-import com.aa.ui.screens.phase_1.search.composable.CustomToolbar
+import com.aa.ui.screens.phase_1.details.DetailsLoadingScreen
 import com.aa.viewmodels.infants_sleep_position.InfantsSleepDetailsUiState
 import com.aa.viewmodels.infants_sleep_position.InfantsSleepHoursDetailsViewModel
 
@@ -34,17 +34,23 @@ private fun  InfantsSleepDetailsContent(
     state: InfantsSleepDetailsUiState,
     navController: NavController
 ){
+    if (state.isLoading){
 
-    CustomToolbar(navController = navController, title = state.infantsSleep.doctorName!!)
-    DetailsContent(
-        navController = navController,
-        imageUrl = state.infantsSleep.pathImg!!,
-        titleName = state.infantsSleep.recommendedSleepHours!!,
-        details = state.infantsSleep.details!!,
-        doctorName = state.infantsSleep.doctorName!!,
-        doctorLocation = state.infantsSleep.doctorLocation!!,
-        doctorNumber = state.infantsSleep.phoneDoctor!!,
-        problemName = "",
-        problemSolve = "",
-    )
+        DetailsLoadingScreen(navController = navController)
+
+    }else{
+        DetailsContent(
+            navController = navController,
+            imageUrl = state.infantsSleep.pathImg!!,
+            titleName = state.infantsSleep.recommendedSleepHours!!,
+            details = state.infantsSleep.details!!,
+            doctorName = state.infantsSleep.doctorName!!,
+            doctorLocation = state.infantsSleep.doctorLocation!!,
+            doctorNumber = state.infantsSleep.phoneDoctor!!,
+            problemName = "",
+            problemSolve = "",
+        )
+    }
+
+
 }

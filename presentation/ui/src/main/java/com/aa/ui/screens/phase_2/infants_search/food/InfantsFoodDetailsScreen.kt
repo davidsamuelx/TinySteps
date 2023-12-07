@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aa.ui.screens.phase_1.details.DetailsContent
+import com.aa.ui.screens.phase_1.details.DetailsLoadingScreen
 import com.aa.viewmodels.infants_food.InfantsFoodDetailsUiState
 import com.aa.viewmodels.infants_food.InfantsFoodDetailsViewModel
 
@@ -32,15 +33,23 @@ private fun InfantsFoodDetailsContent(
     state: InfantsFoodDetailsUiState,
     navController: NavController,
 ){
-    DetailsContent(
-        navController = navController,
-        imageUrl = state.food.imgFood,
-        titleName = state.food.nameFood,
-        details = state.food.detailsOfFood,
-        doctorName = state.food.doctorName,
-        doctorLocation = state.food.doctorLocation,
-        doctorNumber = state.food.phoneDoctor,
-        problemName = state.food.nameProblem,
-        problemSolve = state.food.solveProblem,
-    )
+    if(state.isLoading){
+
+        DetailsLoadingScreen(navController = navController)
+
+    }else{
+
+        DetailsContent(
+            navController = navController,
+            imageUrl = state.food.imgFood,
+            titleName = state.food.nameFood,
+            details = state.food.detailsOfFood,
+            doctorName = state.food.doctorName,
+            doctorLocation = state.food.doctorLocation,
+            doctorNumber = state.food.phoneDoctor,
+            problemName = state.food.nameProblem,
+            problemSolve = state.food.solveProblem,
+        )
+    }
+
 }

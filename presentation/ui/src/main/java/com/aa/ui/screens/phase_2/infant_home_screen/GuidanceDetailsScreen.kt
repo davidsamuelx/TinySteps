@@ -6,6 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aa.ui.screens.phase_1.details.DetailsContent
+import com.aa.ui.screens.phase_1.details.DetailsLoadingScreen
 import com.aa.viewmodels.guidance_details.GuidanceDetailsUiState
 import com.aa.viewmodels.guidance_details.GuidanceDetailsViewModel
 
@@ -27,15 +28,24 @@ private fun GuidanceDetailsContent(
     state: GuidanceDetailsUiState,
     navController: NavController,
 ){
-    DetailsContent(
-        navController = navController,
-        imageUrl = state.guidance.guidanceImg,
-        titleName = state.guidance.guidanceTitle,
-        details = state.guidance.guidanceDetails,
-        doctorName = state.guidance.doctorName,
-        doctorLocation = state.guidance.doctorLocation,
-        doctorNumber = state.guidance.phoneDoctor,
-        problemName = "",
-        problemSolve = ""
-    )
+    if (state.isLoading){
+        
+        DetailsLoadingScreen(navController = navController)
+        
+    }else{
+        
+        DetailsContent(
+            navController = navController,
+            imageUrl = state.guidance.guidanceImg,
+            titleName = state.guidance.guidanceTitle,
+            details = state.guidance.guidanceDetails,
+            doctorName = state.guidance.doctorName,
+            doctorLocation = state.guidance.doctorLocation,
+            doctorNumber = state.guidance.phoneDoctor,
+            problemName = "",
+            problemSolve = ""
+        )
+        
+    }
+  
 }

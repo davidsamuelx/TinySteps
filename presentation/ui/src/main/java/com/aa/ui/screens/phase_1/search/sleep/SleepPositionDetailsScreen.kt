@@ -7,9 +7,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.aa.ui.screens.phase_1.details.DetailsContent
+import com.aa.ui.screens.phase_1.details.DetailsLoadingScreen
 import com.aa.viewmodels.sleepposition.SleepPositionDetailsUiState
 import com.aa.viewmodels.sleepposition.SleepPositionDetailsViewModel
-import com.aa.ui.screens.phase_1.details.DetailsContent
 
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
@@ -32,15 +33,22 @@ private fun SleepDetailsContent(
     state: SleepPositionDetailsUiState,
     navController: NavController
 ){
-    DetailsContent(
-        navController = navController,
-        imageUrl = state.sleepPosition.pathImg,
-        titleName = state.sleepPosition.nameOfPosition,
-        details = state.sleepPosition.detailsOfPosition,
-        doctorName = state.sleepPosition.doctorName,
-        doctorLocation = state.sleepPosition.doctorLocation,
-        doctorNumber = state.sleepPosition.phoneDoctor,
-        problemName = "",
-        problemSolve = "",
-    )
+    if(state.isLoading){
+
+        DetailsLoadingScreen(navController = navController)
+
+    }else{
+        DetailsContent(
+            navController = navController,
+            imageUrl = state.sleepPosition.pathImg,
+            titleName = state.sleepPosition.nameOfPosition,
+            details = state.sleepPosition.detailsOfPosition,
+            doctorName = state.sleepPosition.doctorName,
+            doctorLocation = state.sleepPosition.doctorLocation,
+            doctorNumber = state.sleepPosition.phoneDoctor,
+            problemName = "",
+            problemSolve = "",
+        )
+    }
+
 }

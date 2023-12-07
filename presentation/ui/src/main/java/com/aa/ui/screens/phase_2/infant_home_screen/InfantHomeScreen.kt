@@ -78,82 +78,94 @@ private fun InfantHomeContent(
             .padding(bottom = 64.dp)
         ) {
             HomeHeader()
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.White)
-            ) {
-                item {
-                    Spacer(modifier = Modifier.padding(vertical = 8.dp))
 
-                    HomePager(state = state, pagerState = pagerState)
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color.White)
+                ) {
+                    item {
+                        Spacer(modifier = Modifier.padding(vertical = 8.dp))
 
-                    Spacer(modifier = Modifier.padding(vertical = 12.dp))
+                        HomePager(state = state, pagerState = pagerState)
 
-                    Text(
-                        text = "Relation",
-                        modifier = Modifier
-                            .padding(horizontal = 24.dp),
-                        style = TextStyle(
-                            fontSize = 18.sp,
-                            lineHeight = 20.sp,
-                            fontWeight = FontWeight(500),
-                            color = Color(0xFF040415),
-                        )
-                    )
+                        Spacer(modifier = Modifier.padding(vertical = 12.dp))
 
-                    Spacer(modifier = Modifier.padding(vertical = 4.dp))
 
-                    LazyRow(
-                        contentPadding = PaddingValues(horizontal = 24.dp),
-                        state = relationState,
-                        horizontalArrangement = Arrangement.spacedBy(12.dp)
-                    ) {
-                        itemsIndexed(state.relationList) { index, item ->
-                            RelationCard(
-                                text = item.text,
-                                title = item.title,
-                                onCardClick = { onRelationClick(item.id) },
-                                id = item.id
+                        if (state.isLoading){
+                            InfantsHomeLoadingScreen()
+                        }else{
+                            Text(
+                                text = "Relation",
+                                modifier = Modifier
+                                    .padding(horizontal = 24.dp),
+                                style = TextStyle(
+                                    fontSize = 18.sp,
+                                    lineHeight = 20.sp,
+                                    fontWeight = FontWeight(500),
+                                    color = Color(0xFF040415),
+                                )
                             )
+
+                            Spacer(modifier = Modifier.padding(vertical = 4.dp))
+                            LazyRow(
+                                contentPadding = PaddingValues(horizontal = 24.dp),
+                                state = relationState,
+                                horizontalArrangement = Arrangement.spacedBy(12.dp)
+                            ) {
+                                itemsIndexed(state.relationList) { index, item ->
+                                    RelationCard(
+                                        text = item.text,
+                                        title = item.title,
+                                        onCardClick = { onRelationClick(item.id) },
+                                        id = item.id
+                                    )
+                                }
+                            }
                         }
-                    }
 
-                    Spacer(modifier = Modifier.padding(vertical = 12.dp))
 
-                    Text(
-                        text = "Guidance",
-                        modifier = Modifier
-                            .padding(horizontal = 24.dp),
-                        style = TextStyle(
-                            fontSize = 18.sp,
-                            lineHeight = 20.sp,
-                            fontWeight = FontWeight(500),
-                            color = Color(0xFF040415),
-                        )
-                    )
-                    Spacer(modifier = Modifier.padding(vertical = 4.dp))
+                        Spacer(modifier = Modifier.padding(vertical = 12.dp))
 
-                    LazyRow(
-                        contentPadding = PaddingValues(horizontal = 24.dp),
-                        state = guidanceState,
-                        horizontalArrangement = Arrangement.spacedBy(12.dp)
-                    ) {
-                        itemsIndexed(state.guidanceList) { index, item ->
-                            GuidanceCard(
-                                image = item.image,
-                                text = item.guidanceTitle,
-                                onCardClick = { onCardClick(item.id) },
-                                id = item.id
+                        if (state.isLoading){
+                            InfantsHomeLoadingScreen()
+                        }else{
+                            Text(
+                                text = "Guidance",
+                                modifier = Modifier
+                                    .padding(horizontal = 24.dp),
+                                style = TextStyle(
+                                    fontSize = 18.sp,
+                                    lineHeight = 20.sp,
+                                    fontWeight = FontWeight(500),
+                                    color = Color(0xFF040415),
+                                )
                             )
+                           Spacer(modifier = Modifier.padding(vertical = 4.dp))
+                            LazyRow(
+                                contentPadding = PaddingValues(horizontal = 24.dp),
+                                state = guidanceState,
+                                horizontalArrangement = Arrangement.spacedBy(12.dp)
+                            ) {
+                                itemsIndexed(state.guidanceList) { index, item ->
+                                    GuidanceCard(
+                                        image = item.image,
+                                        text = item.guidanceTitle,
+                                        onCardClick = { onCardClick(item.id) },
+                                        id = item.id
+                                    )
+                                }
+                            }
                         }
+
+
+
                     }
-
-
                 }
             }
 
-        }
+
+
         NavigationBarInfants(
             navController = navController,
             modifier = Modifier

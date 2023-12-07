@@ -7,7 +7,7 @@ import com.aa.models.infants.InfantsRelationEntity
 import com.aa.viewmodels.R
 
 data class HomeInfantUiState(
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val error: BaseErrorUiState? = null,
     val guidanceList: List<GuidanceUiItem> = emptyList(),
     val relationList: List<RelationUiItem> = emptyList(),

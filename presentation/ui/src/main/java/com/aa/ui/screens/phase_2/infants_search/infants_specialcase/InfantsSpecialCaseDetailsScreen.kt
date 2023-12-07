@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aa.ui.screens.phase_1.details.DetailsContent
+import com.aa.ui.screens.phase_1.details.DetailsLoadingScreen
 import com.aa.viewmodels.infants_specialcase.InfantsSpecialCaseDetailsUiState
 import com.aa.viewmodels.infants_specialcase.InfantsSpecialCaseDetailsViewModel
 
@@ -32,15 +33,23 @@ private fun SpecialCaseDetailsContent(
     state: InfantsSpecialCaseDetailsUiState,
     navController: NavController,
 ){
-    DetailsContent(
-        navController = navController,
-        imageUrl = state.specialCase.pathImg!!,
-        titleName = state.specialCase.nameSpecialCase!!,
-        details = state.specialCase.details!!,
-        doctorName = state.specialCase.doctorName!!,
-        doctorLocation = state.specialCase.doctorLocation!!,
-        doctorNumber = state.specialCase.phoneDoctor!!,
-        problemName = state.specialCase.nameSpecialCase!!,
-        problemSolve = state.specialCase.solveProblem!!,
-    )
+    if (state.isLoading){
+
+        DetailsLoadingScreen(navController = navController)
+
+    }else{
+
+        DetailsContent(
+            navController = navController,
+            imageUrl = state.specialCase.pathImg!!,
+            titleName = state.specialCase.nameSpecialCase!!,
+            details = state.specialCase.details!!,
+            doctorName = state.specialCase.doctorName!!,
+            doctorLocation = state.specialCase.doctorLocation!!,
+            doctorNumber = state.specialCase.phoneDoctor!!,
+            problemName = state.specialCase.nameSpecialCase!!,
+            problemSolve = state.specialCase.solveProblem!!,
+        )
+    }
+
 }

@@ -7,7 +7,7 @@ import com.aa.models.infants.InfantsFoodEntity
 data class InfantsFoodUIState(
     val foodUIState: List<InfantsFoodItemUIState> = emptyList(),
     val query: String = "",
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val error: BaseErrorUiState? = null
 ): BaseUiState
 

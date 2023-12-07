@@ -6,7 +6,7 @@ import com.aa.models.AllFoodAdviceEntity
 
 data class FoodDetailsUiState(
     val food: FoodItemDetailsUiState = FoodItemDetailsUiState(),
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val error: BaseErrorUiState? = null
 ):BaseUiState
 

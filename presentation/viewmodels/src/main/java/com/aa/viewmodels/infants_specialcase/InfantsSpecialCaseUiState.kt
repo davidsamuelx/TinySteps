@@ -7,7 +7,7 @@ import com.aa.models.infants.InfantsSpecialCaseEntity
 data class InfantsSpecialCaseUIState(
     val specialCasesList: List<InfantsSpecialCaseItemUIState> = emptyList(),
     val query: String = "",
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val error: BaseErrorUiState? = null
 ): BaseUiState
 

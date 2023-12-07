@@ -6,7 +6,7 @@ import com.aa.models.infants.InfantsSpecialCaseEntity
 
 data class InfantsSpecialCaseDetailsUiState(
     val specialCase: InfantsSpecialCaseDetailsItemUiState = InfantsSpecialCaseDetailsItemUiState(),
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val error: BaseErrorUiState? = null
 ): BaseUiState
 

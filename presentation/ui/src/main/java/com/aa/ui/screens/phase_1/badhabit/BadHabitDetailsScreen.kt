@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aa.ui.screens.phase_1.details.DetailsContent
+import com.aa.ui.screens.phase_1.details.DetailsLoadingScreen
 import com.aa.viewmodels.badhabit.BadHabitDetailsUiState
 import com.aa.viewmodels.badhabit.BadHabitDetailsViewModel
 
@@ -32,6 +33,9 @@ private fun BadHabitDetailsContent(
     state: BadHabitDetailsUiState,
     navController: NavController,
 ){
+    if(state.isLoading){
+        DetailsLoadingScreen(navController = navController)
+    }else{
     DetailsContent(
         navController = navController,
         imageUrl = state.badHabit.pathImg,
@@ -43,4 +47,5 @@ private fun BadHabitDetailsContent(
         problemName = state.badHabit.nameBadHabit,
         problemSolve = state.badHabit.solveProblem,
     )
+}
 }

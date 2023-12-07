@@ -44,7 +44,6 @@ fun RelationDetails(
     doctorNumber: String,
 ){
     val scrollState = rememberScrollState()
-
     Surface {
 
         Column(

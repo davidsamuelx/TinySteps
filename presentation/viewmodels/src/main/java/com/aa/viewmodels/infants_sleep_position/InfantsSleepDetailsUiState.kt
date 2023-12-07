@@ -6,7 +6,7 @@ import com.aa.models.infants.InfantsSleepEntity
 
 data class InfantsSleepDetailsUiState(
     val infantsSleep: InfantsSleepDetailItemUiState = InfantsSleepDetailItemUiState(),
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val error: BaseErrorUiState? = null
 ): BaseUiState
 

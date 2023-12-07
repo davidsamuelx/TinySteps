@@ -6,7 +6,7 @@ import com.aa.models.SleepPositionEntity
 
 data class SleepPositionDetailsUiState(
     val sleepPosition: SleepPositionDetailItemUiState = SleepPositionDetailItemUiState(),
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val error: BaseErrorUiState? = null
 ): BaseUiState
 

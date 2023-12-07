@@ -5,6 +5,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.aa.ui.screens.phase_1.details.DetailsLoadingScreen
 import com.aa.ui.screens.phase_2.relation_screen.composable.RelationDetails
 import com.aa.viewmodels.relation_details.RelationDetailsUiState
 import com.aa.viewmodels.relation_details.RelationDetailsViewModel
@@ -27,12 +28,19 @@ fun RelationDetailsContent(
     navController: NavController,
     state: RelationDetailsUiState
     ) {
-    RelationDetails(
-        navController = navController,
-        titleName = state.relation.relationTitle,
-        details = state.relation.relationDetails,
-        doctorName = state.relation.doctorName,
-        doctorLocation = state.relation.doctorLocation,
-        doctorNumber = state.relation.phoneDoctor
-    )
+    if (state.isLoading){
+
+        DetailsLoadingScreen(navController = navController)
+
+    }else{
+        RelationDetails(
+            navController = navController,
+            titleName = state.relation.relationTitle,
+            details = state.relation.relationDetails,
+            doctorName = state.relation.doctorName,
+            doctorLocation = state.relation.doctorLocation,
+            doctorNumber = state.relation.phoneDoctor
+        )
+    }
+
 }

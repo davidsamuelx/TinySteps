@@ -6,7 +6,7 @@ import com.aa.models.MusicEntity
 
 data class MusicDetailsUiState(
     val music: MusicDetailsItemUiState = MusicDetailsItemUiState(),
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val error: BaseErrorUiState? = null
 ): BaseUiState
 

@@ -16,7 +16,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -77,71 +76,68 @@ private fun HomeContent(
         Column( modifier = Modifier.padding(bottom = 48.dp)) {
 
             HomeHeader()
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.White)
-                    .padding(12.dp)
-            ) {
-                item {
-                    Box(modifier = Modifier.align(Alignment.CenterHorizontally)) {
-                        if (state.isLoading) {
-                            CircularProgressIndicator(
-                                color = Color(0xFFFF3A00),
-                                modifier = Modifier
-                                    .align(Alignment.BottomCenter)
-                                    .size(28.dp)
-                            )
-                        }
-                        Box {
-                            Column {
-                                LazyRow(
-                                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                                    contentPadding = PaddingValues(vertical = 12.dp)
-                                ) {
-                                    items(state.calender) { index ->
-                                        val isClicked = index == selectedCalendarItem
-                                        CalendarItem(number = index, isClicked = isClicked) {
-                                            onCalendarItemSelected(it - 1)
-                                        }
-                                    }
-                                }
-                                Card(
-                                    modifier = Modifier
-                                        .size(344.dp, 368.dp)
-                                        .align(Alignment.CenterHorizontally)
-                                        .clickable { onDetailsCard(state.weekId - 1) },
-                                ) {
-                                    Image(
-                                        painter = rememberAsyncImagePainter(
-                                            model = state.babyImage,
-                                            placeholder = painterResource(id = R.drawable.placeholde_image)
-                                        ),
-                                        contentDescription = "babyImage",
-                                        contentScale = ContentScale.FillBounds,
-                                        modifier = Modifier.fillMaxSize(),
-                                    )
-                                }
 
-                                Spacer(modifier = Modifier.height(12.dp))
+           if (state.isLoading){
+                HomeLoadingScreen()
+           }else{
+               LazyColumn(
+                   modifier = Modifier
+                       .fillMaxSize()
+                       .background(Color.White)
+                       .padding(12.dp)
+               ) {
+                   item {
+                       Box(modifier = Modifier.align(Alignment.CenterHorizontally)) {
+                           Box {
+                               Column {
+                                   LazyRow(
+                                       horizontalArrangement = Arrangement.spacedBy(8.dp),
+                                       contentPadding = PaddingValues(vertical = 12.dp)
+                                   ) {
+                                       items(state.calender) { index ->
+                                           val isClicked = index == selectedCalendarItem
+                                           CalendarItem(number = index, isClicked = isClicked) {
+                                               onCalendarItemSelected(it - 1)
+                                           }
+                                       }
+                                   }
+                                   Card(
+                                       modifier = Modifier
+                                           .size(344.dp, 368.dp)
+                                           .align(Alignment.CenterHorizontally)
+                                           .clickable { onDetailsCard(state.weekId - 1) },
+                                   ) {
+                                       Image(
+                                           painter = rememberAsyncImagePainter(
+                                               model = state.babyImage,
+                                               placeholder = painterResource(id = R.drawable.placeholde_image)
+                                           ),
+                                           contentDescription = "babyImage",
+                                           contentScale = ContentScale.FillBounds,
+                                           modifier = Modifier.fillMaxSize(),
+                                       )
+                                   }
 
-                                BabyInfoCard(
-                                    state = state,
-                                    modifier = Modifier.align(Alignment.CenterHorizontally),
-                                    onButtonClicked = { onDetailsCard(state.weekId - 1) }
-                                )
+                                   Spacer(modifier = Modifier.height(12.dp))
 
-                                Spacer(modifier = Modifier.height(16.dp))
+                                   BabyInfoCard(
+                                       state = state,
+                                       modifier = Modifier.align(Alignment.CenterHorizontally),
+                                       onButtonClicked = { onDetailsCard(state.weekId - 1) }
+                                   )
 
-                                PregnancyProgressBar()
+                                   Spacer(modifier = Modifier.height(16.dp))
 
-                                Spacer(modifier = Modifier.height(24.dp))
+                                   PregnancyProgressBar()
 
-                            }
-                        }
-                    }
-                }
-            }
+                                   Spacer(modifier = Modifier.height(24.dp))
+
+                               }
+                           }
+                       }
+                   }
+               }
+           }
         }
         NavigationBar(
             navController = navController,

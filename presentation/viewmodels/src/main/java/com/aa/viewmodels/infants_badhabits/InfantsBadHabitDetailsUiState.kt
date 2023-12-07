@@ -6,7 +6,7 @@ import com.aa.models.infants.InfantsBadHabitsEntity
 
 data class InfantsBadHabitDetailsUiState(
     val badHabit: InfantsBadHabitItemDetailsUIState = InfantsBadHabitItemDetailsUIState(),
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val error: BaseErrorUiState? = null
 ): BaseUiState
 

@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aa.ui.screens.phase_1.details.DetailsContent
+import com.aa.ui.screens.phase_1.details.DetailsLoadingScreen
 import com.aa.viewmodels.infants_badhabits.InfantsBadHabitDetailsUiState
 import com.aa.viewmodels.infants_badhabits.InfantsBadhabitsDetailsViewModel
 
@@ -32,15 +33,20 @@ private fun InfantsBadHabitDetailsContent(
     state: InfantsBadHabitDetailsUiState,
     navController: NavController,
 ){
-    DetailsContent(
-        navController = navController,
-        imageUrl = state.badHabit.pathImg,
-        titleName = state.badHabit.nameBadHabit,
-        details = state.badHabit.details,
-        doctorName = state.badHabit.doctorName,
-        doctorLocation = state.badHabit.doctorLocation,
-        doctorNumber = state.badHabit.phoneDoctor,
-        problemName = state.badHabit.nameBadHabit,
-        problemSolve = state.badHabit.solveProblem,
-    )
+    if (state.isLoading){
+        DetailsLoadingScreen(navController = navController)
+    }else{
+        DetailsContent(
+            navController = navController,
+            imageUrl = state.badHabit.pathImg,
+            titleName = state.badHabit.nameBadHabit,
+            details = state.badHabit.details,
+            doctorName = state.badHabit.doctorName,
+            doctorLocation = state.badHabit.doctorLocation,
+            doctorNumber = state.badHabit.phoneDoctor,
+            problemName = state.badHabit.nameBadHabit,
+            problemSolve = state.badHabit.solveProblem,
+        )
+    }
+
 }

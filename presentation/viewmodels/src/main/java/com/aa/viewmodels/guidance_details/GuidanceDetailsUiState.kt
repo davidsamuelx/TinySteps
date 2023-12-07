@@ -6,7 +6,7 @@ import com.aa.models.infants.GuidanceInstructionEntity
 
 data class GuidanceDetailsUiState(
     val guidance: GuidanceDetailsItemUiState = GuidanceDetailsItemUiState(),
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val error: BaseErrorUiState? = null
 ): BaseUiState
 

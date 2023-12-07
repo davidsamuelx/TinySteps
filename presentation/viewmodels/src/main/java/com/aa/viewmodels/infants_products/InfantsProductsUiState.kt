@@ -7,7 +7,7 @@ import com.aa.models.infants.InfantsProductsEntity
 data class InfantsProductsUiState(
     val infantsProductsList:List<InfantsProductsItemUiState> = emptyList(),
     val query: String = "",
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val error: BaseErrorUiState? = null
 ):BaseUiState
 data class  InfantsProductsItemUiState(

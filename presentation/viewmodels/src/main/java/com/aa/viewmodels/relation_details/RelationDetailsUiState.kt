@@ -6,7 +6,7 @@ import com.aa.models.infants.InfantsRelationEntity
 
 data class RelationDetailsUiState(
     val relation: RelationDetailsItemUiState = RelationDetailsItemUiState(),
-    val isLoading: Boolean = false,
+    val isLoading: Boolean = true,
     val error: BaseErrorUiState? = null
 ) : BaseUiState
 

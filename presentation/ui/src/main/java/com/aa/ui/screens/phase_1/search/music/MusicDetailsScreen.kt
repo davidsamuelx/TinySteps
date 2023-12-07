@@ -25,7 +25,7 @@ fun MusicDetailsScreen(
     }
 
     MusicDetailsContent(
-        state = state
+        state = state,
     )
 
 }
@@ -33,11 +33,18 @@ fun MusicDetailsScreen(
 
 @Composable
 private fun MusicDetailsContent(
-    state: MusicDetailsUiState
+    state: MusicDetailsUiState,
 ){
-    MusicPlayer(
-        url = state.music.musicUrl,
-        imageUrl = state.music.imagePath,
-        songName = state.music.musicType
-    )
+    if(state.isLoading){
+
+       MusicLoadingScreen()
+
+    }else{
+        MusicPlayer(
+            url = state.music.musicUrl,
+            imageUrl = state.music.imagePath,
+            songName = state.music.musicType
+        )
+    }
+
 }
