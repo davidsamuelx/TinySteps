@@ -1,4 +1,4 @@
-package com.aa.viewmodel.splash
+package com.aa.viewmodels.splash
 
 import com.aa.base.BaseUiState
 
