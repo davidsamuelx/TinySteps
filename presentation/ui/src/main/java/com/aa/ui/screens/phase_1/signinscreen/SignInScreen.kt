@@ -35,9 +35,9 @@ import com.aa.ui.theme.SecondHintTextColor
 import com.aa.ui.theme.space24
 import com.aa.ui.theme.space48
 import com.aa.ui.theme.space62
-import com.aa.viewmodel.signin.LoginUIEffect
-import com.aa.viewmodel.signin.SignInUiState
-import com.aa.viewmodel.signin.SignInViewModel
+import com.aa.viewmodels.signin.LoginUIEffect
+import com.aa.viewmodels.signin.SignInUiState
+import com.aa.viewmodels.signin.SignInViewModel
 
 @Composable
 fun  SignInScreen(

@@ -1,4 +1,4 @@
-package com.aa.viewmodel.signin
+package com.aa.viewmodels.signin
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
