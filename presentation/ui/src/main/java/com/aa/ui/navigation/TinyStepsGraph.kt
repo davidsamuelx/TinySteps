@@ -44,11 +44,13 @@ import com.aa.ui.screens.phase_2.infants_search.products.infantsProductsRoute
 import com.aa.ui.screens.phase_2.infants_search.sleep_hours.infantsSleepDetailRoute
 import com.aa.ui.screens.phase_2.infants_search.sleep_hours.infantsSleepRoute
 import com.aa.ui.screens.phase_2.relation_screen.relationDetailsRoute
+import com.aa.ui.screens.phase_3.animal_sound_screen.animalSoundScreen
+import com.aa.ui.screens.phase_3.math_land_screen.mathLandRoute
 
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
 fun TinyStepsGraph(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = TinyStepsDestination.SplashScreen) {
+    NavHost(navController = navController, startDestination = TinyStepsDestination.MathLandScreen) {
         composable(TinyStepsDestination.SplashScreen) { SplashScreen(navController = navController) }
         introScreen(navController)
         signIn(navController)
@@ -90,6 +92,8 @@ fun TinyStepsGraph(navController: NavHostController) {
         relationDetailsRoute(navController)
         aiStateScreen(navController)
         chatBotScreen(navController)
+        animalSoundScreen(navController)
+        mathLandRoute(navController)
     }
 }
 
@@ -134,4 +138,6 @@ object TinyStepsDestination {
     const val InfantExerciseDetailsScreen = "infantsExerciseDetailsScreen"
     const val InfantDiscoverScreen = "infantsDiscoverScreen"
     const val RelationDetailsScreen = "relationDetailsScreen"
+    const val AnimalSoundScreen = "animalSoundScreen"
+    const val MathLandScreen = "mathLandScreen"
 }
