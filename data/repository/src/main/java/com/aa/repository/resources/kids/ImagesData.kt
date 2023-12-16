@@ -11,5 +11,7 @@ data class ImagesData(
     @SerializedName("letter")
     val letter: String? = null,
     @SerializedName("sound")
-    val sound: String? = null
+    val sound: String? = null,
+    @SerializedName("Levels")
+    val levels:String?=null
 )
