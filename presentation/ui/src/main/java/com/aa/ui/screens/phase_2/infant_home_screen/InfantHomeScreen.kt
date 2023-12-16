@@ -107,7 +107,7 @@ private fun InfantHomeContent(
                     LazyRow(
                         contentPadding = PaddingValues(horizontal = 24.dp),
                         state = relationState,
-                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
                     ) {
                         itemsIndexed(state.relationList) { index, item ->
                             RelationCard(

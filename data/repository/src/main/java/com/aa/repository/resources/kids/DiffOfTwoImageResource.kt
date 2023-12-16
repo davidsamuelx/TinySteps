@@ -19,5 +19,13 @@ data class DiffOfTwoImageResource(
     @SerializedName("PhaseThree_id")
     val phaseThreeId: Any? = null,
     @SerializedName("updated_at")
-    val updatedAt: String? = null
+    val updatedAt: String? = null,
+    @SerializedName("chooseOne")
+    val chooseOne:Int?=null,
+    @SerializedName("chooseTwo")
+    val chooseTwo:Int?=null,
+    @SerializedName("chooseThree")
+    val chooseThree:Int?=null,
+    @SerializedName("chooseOne")
+    val chooseFour:Int?=null,
 )
