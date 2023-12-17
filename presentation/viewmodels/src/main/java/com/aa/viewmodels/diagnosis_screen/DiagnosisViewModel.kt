@@ -3,6 +3,7 @@ package com.aa.viewmodels.diagnosis_screen
 import com.aa.base.BaseErrorUiState
 import com.aa.base.BaseViewModel
 import com.aa.models.DiagnosisEntity
+import com.aa.usecase.diagnosis.AutoCompleteSymptomUseCase
 import com.aa.usecase.diagnosis.GetDiagnosisUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
@@ -10,45 +11,51 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DiagnosisViewModel @Inject constructor(
-    private val getDiagnosisUseCase: GetDiagnosisUseCase
+    private val getDiagnosisUseCase: GetDiagnosisUseCase,
+    private val autoCompleteSymptomUseCase: AutoCompleteSymptomUseCase
 ) : BaseViewModel<DiagnosisUiState>(DiagnosisUiState()) {
 
     fun onFirstSymptomChange(query: CharSequence) {
+        val autoCompleteQuery = autoCompleteSymptomUseCase(query.toString())
         _state.update {
             it.copy(
-                firstSymptom = query.toString(),
+                firstSymptom = autoCompleteQuery,
             )
         }
     }
 
     fun onSecondSymptomChange(query: CharSequence) {
+        val autoCompleteQuery = autoCompleteSymptomUseCase(query.toString())
         _state.update {
             it.copy(
-                secondSymptom = query.toString(),
+                secondSymptom = autoCompleteQuery,
             )
         }
     }
 
     fun onThirdSymptomChange(query: CharSequence) {
+        val autoCompleteQuery = autoCompleteSymptomUseCase(query.toString())
         _state.update {
             it.copy(
-                thirdSymptom = query.toString(),
+                thirdSymptom = autoCompleteQuery,
             )
         }
     }
 
     fun onFourthSymptomChange(query: CharSequence) {
+        val autoCompleteQuery = autoCompleteSymptomUseCase(query.toString())
         _state.update {
             it.copy(
-                fourthSymptom = query.toString(),
+                fourthSymptom = autoCompleteQuery,
             )
         }
     }
 
     fun onFifthSymptomChange(query: CharSequence) {
+        val autoCompleteQuery = autoCompleteSymptomUseCase(query.toString())
         _state.update {
             it.copy(
-                fifthSymptom = query.toString(),
+                fifthSymptom = autoCompleteQuery,
             )
         }
     }
