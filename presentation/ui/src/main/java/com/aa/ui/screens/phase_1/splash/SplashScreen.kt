@@ -18,14 +18,14 @@ import androidx.navigation.NavController
 import com.aa.ui.navigation.TinyStepsDestination
 import com.aa.ui.theme.PrimaryColor
 import com.aa.ui.theme.SecondaryColor
-import com.aa.viewmodel.splash.SplashUiState
-import com.aa.viewmodel.splash.SplashViewModel
+import com.aa.viewmodels.splash.SplashUiState
+import com.aa.viewmodels.splash.SplashViewModel
 import kotlinx.coroutines.delay
 
 @Composable
 fun SplashScreen(
     navController: NavController,
-    viewModel: SplashViewModel=hiltViewModel()
+    viewModel: SplashViewModel =hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
     SplashContent(navController = navController,
@@ -36,7 +36,7 @@ fun SplashScreen(
 @Composable
 private fun SplashContent(
         navController: NavController,
-        state:SplashUiState
+        state: SplashUiState
 ) {
     val background= Brush.linearGradient(
         0.0f to PrimaryColor,

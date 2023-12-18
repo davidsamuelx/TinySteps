@@ -1,4 +1,4 @@
-package com.aa.viewmodel.signin
+package com.aa.viewmodels.signin
 
 import com.aa.base.BaseErrorUiState
 import com.aa.base.BaseUiState

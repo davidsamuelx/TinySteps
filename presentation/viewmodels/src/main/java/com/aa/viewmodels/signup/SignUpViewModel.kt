@@ -1,4 +1,4 @@
-package com.aa.viewmodel.signup
+package com.aa.viewmodels.signup
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
@@ -6,7 +6,7 @@ import com.aa.base.BaseErrorUiState
 import com.aa.base.BaseViewModel
 import com.aa.models.UserSignUpAuth
 import com.aa.usecase.SignupUseCase
-import com.aa.viewmodel.signin.LoginUIEffect
+import com.aa.viewmodels.signin.LoginUIEffect
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow

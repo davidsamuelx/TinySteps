@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.aa.ui.screens.phase_1.IntroScreen.introScreen
 import com.aa.ui.screens.chat_bot_screen.chatBotScreen
+import com.aa.ui.screens.diagnosis_screen.diagnosisScreen
 import com.aa.ui.screens.phase_1.ai_state_screen.aiStateScreen
 import com.aa.ui.screens.phase_1.badhabit.badHabitDetailRoute
 import com.aa.ui.screens.phase_1.badhabit.badHabitRoute
@@ -90,6 +91,7 @@ fun TinyStepsGraph(navController: NavHostController) {
         relationDetailsRoute(navController)
         aiStateScreen(navController)
         chatBotScreen(navController)
+        diagnosisScreen(navController)
     }
 }
 
@@ -134,4 +136,5 @@ object TinyStepsDestination {
     const val InfantExerciseDetailsScreen = "infantsExerciseDetailsScreen"
     const val InfantDiscoverScreen = "infantsDiscoverScreen"
     const val RelationDetailsScreen = "relationDetailsScreen"
+    const val DiagnosisScreen = "diagnosisScreen"
 }

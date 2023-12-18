@@ -1,4 +1,4 @@
-package com.aa.viewmodel.signup
+package com.aa.viewmodels.signup
 
 import com.aa.base.BaseErrorUiState
 import com.aa.base.BaseUiState
