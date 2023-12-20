@@ -26,6 +26,6 @@ data class DiffOfTwoImageResource(
     val chooseTwo:Int?=null,
     @SerializedName("chooseThree")
     val chooseThree:Int?=null,
-    @SerializedName("chooseOne")
+    @SerializedName("chooseFour")
     val chooseFour:Int?=null,
 )

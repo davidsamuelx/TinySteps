@@ -15,4 +15,8 @@
     <string name="pregnancy_date">PREGNANCY DATE</string>
     <string name="invalid_email">Invalid email format</string>
     <string name="invalid_password">Invalid password</string>
+    <string name="how_many_differences">"How many differences ? "</string>
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
 </resources>

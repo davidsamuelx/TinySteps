@@ -11,7 +11,7 @@ private const val ROUTE = TinyStepsDestination.DiffOfImageScreen
 
 @RequiresApi(Build.VERSION_CODES.Q)
 fun NavGraphBuilder.diffOfTwoImage(navController: NavController){
-    composable(ROUTE){ DifferenceOfImage(navController = navController) }
+    composable(ROUTE){ DifferenceOfImageScreen(navController = navController) }
 }
 
 fun NavController.navigateToDiffOfImageScreen() {

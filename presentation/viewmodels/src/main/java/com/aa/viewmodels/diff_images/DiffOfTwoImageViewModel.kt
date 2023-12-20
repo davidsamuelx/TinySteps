@@ -1,6 +1,5 @@
 package com.aa.viewmodels.diff_images
 
-import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import com.aa.base.BaseErrorUiState
 import com.aa.base.BaseViewModel
@@ -36,7 +35,6 @@ class DiffOfTwoImageViewModel @Inject constructor(
     }
 
     private fun onGetDiffImages(diffImages:List<DiffImageGameEntity>){
-        Log.d("DiffIm", "onGetDiffImages: $diffImages") // Log the data
             _state.update {
                 it.copy(
                     isLoading = false,
@@ -56,6 +54,7 @@ class DiffOfTwoImageViewModel @Inject constructor(
                 if(currentItemIndex<state.value.diffOfTwoImage.size-1){
                     currentItemIndex++
                     _state.update { it.copy(isAnswerSelected = true, isCorrectAnswerSelected = false) }
+                    refreshData()
                 }else{
                     _state.update { it.copy(isAnswerSelected = true) }
                 }
@@ -63,6 +62,10 @@ class DiffOfTwoImageViewModel @Inject constructor(
         }else{
             _state.update { it.copy(isAnswerSelected = true) }
         }
+    }
+    private fun refreshData() {
+        getDiffTwoImage()
+        _state.update { it.copy(isAnswerSelected = false) }
     }
 
     private fun onError(errorUIState: BaseErrorUiState){
