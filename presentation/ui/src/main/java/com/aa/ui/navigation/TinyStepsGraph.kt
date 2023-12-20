@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.aa.ui.screens.chat_bot_screen.chatBotScreen
+import com.aa.ui.screens.diagnosis_screen.diagnosisScreen
 import com.aa.ui.screens.phase_1.IntroScreen.introScreen
 import com.aa.ui.screens.phase_1.ai_state_screen.aiStateScreen
 import com.aa.ui.screens.phase_1.badhabit.badHabitDetailRoute
@@ -48,7 +49,7 @@ import com.aa.ui.screens.phase_2.relation_screen.relationDetailsRoute
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
 fun TinyStepsGraph(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = TinyStepsDestination.EducationScreen) {
+    NavHost(navController = navController, startDestination = TinyStepsDestination.SplashScreen) {
         composable(TinyStepsDestination.SplashScreen) { SplashScreen(navController = navController) }
         introScreen(navController)
         signIn(navController)
@@ -95,6 +96,7 @@ fun TinyStepsGraph(navController: NavHostController) {
         diffOfTwoImage(navController)
         animalSoundScreen(navController)
         mathLandRoute(navController)
+        diagnosisScreen(navController)
     }
 }
 
@@ -144,5 +146,5 @@ object TinyStepsDestination {
     const val EducationScreen = "EducationScreen"
     const val EducationScreenDetails= "EducationScreenDetails"
     const val DiffOfImageScreen="DiffOfImageScreen"
-
+    const val DiagnosisScreen = "diagnosisScreen"
 }
