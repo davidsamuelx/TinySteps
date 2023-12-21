@@ -24,12 +24,12 @@ import com.aa.repository.resources.Infants.AllInfantsRelationResource
 import com.aa.repository.resources.Infants.AllInfantsSleepSelectResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseByIdResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseResource
-import com.aa.repository.resources.Infants.InfantsSleepResource
 import com.aa.repository.resources.Infants.GuidanceDetailsResource
 import com.aa.repository.resources.Infants.GuidanceResource
-import com.aa.repository.resources.Infants.ProductByIdResource
 import com.aa.repository.resources.Infants.InfantExerciseByIdResource
 import com.aa.repository.resources.Infants.InfantsExercisesSearchResource
+import com.aa.repository.resources.Infants.InfantsSleepResource
+import com.aa.repository.resources.Infants.ProductByIdResource
 import com.aa.repository.resources.Infants.infantsExercisesResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
@@ -59,9 +59,13 @@ import com.aa.repository.resources.kids.AllEducationGamesResource
 import com.aa.repository.resources.kids.AllStoriesResource
 import com.aa.repository.resources.kids.AnimalGameResource
 import com.aa.repository.resources.kids.ImageDIfferenceGameResource
+import com.aa.repository.resources.kids.KidsBadHabitsResource
+import com.aa.repository.resources.kids.KidsFood
+import com.aa.repository.resources.kids.KidsSelectFood
 import com.aa.repository.resources.kids.LetterResource
 import com.aa.repository.resources.kids.MathLandResource
 import com.aa.repository.resources.kids.PuzzleGameResource
+import com.aa.repository.resources.kids.SelectKidsBadHabitsRsource
 import com.aa.repository.resources.open_ai.OpenAIRequestResource
 import com.aa.repository.resources.open_ai.OpenAIResponseResource
 
@@ -210,4 +214,16 @@ interface RemoteDataSource {
     suspend fun getEducationGame(): AllEducationGamesResource
 
     suspend fun getLetterById(id: Int): LetterResource
+
+    suspend fun getKidsFood():KidsFood
+
+    suspend fun getKidsSelectFood(id:Int):KidsSelectFood
+
+    suspend fun getKidsSearchFood(food:String):KidsFood
+
+    suspend fun getKidsBadHabits():KidsBadHabitsResource
+
+    suspend fun selectKidsBadHabits(id:Int):SelectKidsBadHabitsRsource
+
+    suspend fun searchKidsBadHabits(badHabits:String):KidsBadHabitsResource
 }

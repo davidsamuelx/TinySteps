@@ -24,13 +24,13 @@ import com.aa.repository.resources.Infants.AllInfantsRelationResource
 import com.aa.repository.resources.Infants.AllInfantsSleepSelectResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseByIdResource
 import com.aa.repository.resources.Infants.AllInfantsSpecialCaseResource
-import com.aa.repository.resources.Infants.InfantsSleepResource
 import com.aa.repository.resources.Infants.GuidanceDetailsResource
 import com.aa.repository.resources.Infants.GuidanceResource
 import com.aa.repository.resources.Infants.InfantExerciseByIdResource
 import com.aa.repository.resources.Infants.InfantsExercisesSearchResource
-import com.aa.repository.resources.Infants.infantsExercisesResource
+import com.aa.repository.resources.Infants.InfantsSleepResource
 import com.aa.repository.resources.Infants.ProductByIdResource
+import com.aa.repository.resources.Infants.infantsExercisesResource
 import com.aa.repository.resources.LoginResource
 import com.aa.repository.resources.LoginResponseResource
 import com.aa.repository.resources.MusicByIdResource
@@ -59,9 +59,13 @@ import com.aa.repository.resources.kids.AllEducationGamesResource
 import com.aa.repository.resources.kids.AllStoriesResource
 import com.aa.repository.resources.kids.AnimalGameResource
 import com.aa.repository.resources.kids.ImageDIfferenceGameResource
+import com.aa.repository.resources.kids.KidsBadHabitsResource
+import com.aa.repository.resources.kids.KidsFood
+import com.aa.repository.resources.kids.KidsSelectFood
 import com.aa.repository.resources.kids.LetterResource
 import com.aa.repository.resources.kids.MathLandResource
 import com.aa.repository.resources.kids.PuzzleGameResource
+import com.aa.repository.resources.kids.SelectKidsBadHabitsRsource
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -316,6 +320,24 @@ interface TinyStepsService {
 
     @GET("education/letters/ShowLetter/{id}")
     suspend fun getLetterById(@Path("id") id:Int):Response<LetterResource>
+
+    @GET("user/getData/Phase03/all-food")
+    suspend fun getAllKidsFood():Response<KidsFood>
+
+    @GET("user/getData/Phase03/food")
+    suspend fun selectKidsFood(@Query("id")id:Int?):Response<KidsSelectFood>
+
+    @GET("user/getData/Phase03/search-food")
+    suspend fun searchKidsFood(@Query("search")search:String):Response<KidsFood>
+
+    @GET("user/getData/Phase03/BadHabit/all")
+    suspend fun getKidsBadHabits():Response<KidsBadHabitsResource>
+
+    @GET("user/getData/Phase03/BadHabit/Select")
+    suspend fun selectKidsBadHabit(@Query("id")id:Int?):Response<SelectKidsBadHabitsRsource>
+
+    @GET("user/getData/Phase03/BadHabit/search")
+    suspend fun searchKidsBadHabit(@Query("search")search:String):Response<KidsBadHabitsResource>
 
     //endregion
 
