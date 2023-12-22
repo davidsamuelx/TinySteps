@@ -9,6 +9,6 @@ class DiffImageGameUseCase @Inject constructor(
 ) {
 
     suspend operator fun invoke(): List<DiffImageGameEntity> {
-        return kidsRepository.getDiffImageGame()
+        return kidsRepository.getDiffImageGame().shuffled()
     }
 }

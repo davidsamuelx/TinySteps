@@ -10,6 +10,10 @@ internal fun DiffOfTwoImageResource?.toEntity():DiffImageGameEntity{
         howManyDifference = this?.howManyDifference.orZero(),
         id = this?.id.orZero(),
         pathImgOne = this?.pathImgOne.orEmpty(),
-        pathImgTwo = this?.pathImgTwo.orEmpty()
+        pathImgTwo = this?.pathImgTwo.orEmpty(),
+        chooseOne=this?.chooseOne.orZero(),
+        chooseTwo=this?.chooseTwo.orZero(),
+        chooseThree=this?.chooseThree.orZero(),
+        chooseFour=this?.chooseFour.orZero()
     )
 }

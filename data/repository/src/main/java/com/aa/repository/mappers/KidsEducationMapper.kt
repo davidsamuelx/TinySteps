@@ -10,6 +10,7 @@ internal fun ImagesData?.toEntity():EducationGameEntity{
         id = this?.id.orZero(),
         image = this?.image.orEmpty(),
         letter = this?.letter.orEmpty(),
-        sound = this?.sound.orEmpty()
+        sound = this?.sound.orEmpty(),
+        level = this?.levels.orEmpty()
     )
 }

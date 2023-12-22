@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.aa.ui.R
 import com.aa.ui.screens.chat_bot_screen.navigateToChatBotScreen
+import com.aa.ui.screens.diagnosis_screen.navigateToDiagnosisScreen
 import com.aa.ui.screens.phase_1.ai_state_screen.composables.SelectionCard
 
 
@@ -49,6 +50,7 @@ fun AiStateScreen(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(16.dp)
+                .clickable { navController.navigateToDiagnosisScreen() }
 
         )
         SelectionCard(

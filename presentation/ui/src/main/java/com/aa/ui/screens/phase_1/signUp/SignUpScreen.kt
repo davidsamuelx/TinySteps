@@ -22,9 +22,9 @@ import com.aa.ui.screens.phase_1.composable.HorizontalSpacer
 import com.aa.ui.screens.phase_1.composable.NextButton
 import com.aa.ui.screens.phase_1.composable.PassCard
 import com.aa.ui.theme.space24
-import com.aa.viewmodel.signin.LoginUIEffect
-import com.aa.viewmodel.signup.SignUpUiState
-import com.aa.viewmodel.signup.SignUpViewModel
+import com.aa.viewmodels.signin.LoginUIEffect
+import com.aa.viewmodels.signup.SignUpUiState
+import com.aa.viewmodels.signup.SignUpViewModel
 
 @Composable
 fun SignUpScreen(

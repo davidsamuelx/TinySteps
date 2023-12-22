@@ -1,8 +1,12 @@
 package com.aa.ui.screens.phase_1.search.composable
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.media.MediaPlayer
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Build
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -36,6 +40,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -56,17 +61,32 @@ fun MusicPlayer(
 ){
     val url = url
 
-    var isPlaying by remember { mutableStateOf(false) }
+    val context = LocalContext.current
+
+    var isPlaying by remember { mutableStateOf(SongHelper.isPlaying) }
 
     var progress by remember { mutableStateOf(0f) }
 
     val onPlayPauseClick: () -> Unit = {
-        if (isPlaying) {
-            SongHelper.pauseStream()
+        if (SongHelper.isNetworkAvailable(context)) {
+            if (SongHelper.mediaPlayer == null) {
+                SongHelper.playStream(url)
+            } else if (isPlaying) {
+                SongHelper.pauseStream()
+            } else {
+                if (SongHelper.getCurrentPosition() == SongHelper.getDuration()) {
+                    SongHelper.seekTo(0) // Reset the play position to the beginning
+                }
+                SongHelper.playStream(url)
+            }
+            isPlaying = !isPlaying
         } else {
-            SongHelper.playStream(url)
+            if (isPlaying) {
+                SongHelper.pauseStream()
+                isPlaying = false
+            }
+            Toast.makeText(context, "Internet is not available", Toast.LENGTH_SHORT).show()
         }
-        isPlaying = !isPlaying
     }
 
     LaunchedEffect(Unit) {
@@ -77,6 +97,13 @@ fun MusicPlayer(
                 0f
             }
             delay(1000)
+        }
+    }
+
+    LaunchedEffect(SongHelper.mediaPlayer) {
+        SongHelper.mediaPlayer?.setOnCompletionListener {
+            isPlaying = false
+            progress = 0f
         }
     }
 
@@ -201,8 +228,10 @@ private fun MusicPreview() {
 
 class SongHelper{
     companion object{
-        private var mediaPlayer: MediaPlayer? = null
+        var mediaPlayer: MediaPlayer? = null
         private var currentPosition = 0
+        var isPlaying = false
+        private var isPrepared = false
 
         fun playStream(url: String){
             mediaPlayer?.let {
@@ -219,13 +248,23 @@ class SongHelper{
             mediaPlayer?.setOnPreparedListener{ mediaPlayer ->
                 mediaPlayer.seekTo(currentPosition)
                 mediaPlayer.start()
+                isPlaying = true
+                isPrepared = true
+            }
+            mediaPlayer?.setOnCompletionListener {
+                mediaPlayer?.reset()
+                currentPosition = 0
+                isPlaying = false
+                isPrepared = false
             }
         }
+
 
         fun pauseStream(){
             mediaPlayer?.let{
                 currentPosition = it.currentPosition
                 it.pause()
+                isPlaying = false
             }
         }
 
@@ -242,16 +281,34 @@ class SongHelper{
             currentPosition = 0
         }
 
+
         fun getDuration(): Int {
-            return mediaPlayer?.duration ?: 0
+            return if (isPrepared) mediaPlayer?.duration ?: 0 else 0
         }
 
         fun getCurrentPosition(): Int {
-            return mediaPlayer?.currentPosition ?: 0
+            return if (isPrepared) mediaPlayer?.currentPosition ?: 0 else 0
         }
 
         fun seekTo(position: Int) {
             mediaPlayer?.seekTo(position)
+        }
+
+        fun isNetworkAvailable(context: Context): Boolean {
+            val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                val network = connectivityManager.activeNetwork ?: return false
+                val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+                return when {
+                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+                    else -> false
+                }
+            } else {
+                val networkInfo = connectivityManager.activeNetworkInfo ?: return false
+                return networkInfo.isConnected
+            }
         }
 
     }
