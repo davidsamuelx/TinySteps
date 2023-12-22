@@ -46,7 +46,7 @@ import com.aa.ui.screens.phase_2.infants_search.sleep_hours.infantsSleepDetailRo
 import com.aa.ui.screens.phase_2.infants_search.sleep_hours.infantsSleepRoute
 import com.aa.ui.screens.phase_2.relation_screen.relationDetailsRoute
 import com.aa.ui.screens.phase_3.animal_sound_screen.animalSoundScreen
-import com.aa.ui.screens.phase_3.stories_screen.storiesRoute
+import com.aa.ui.screens.phase_3.home_screen.homeKidsRoute
 import com.aa.ui.screens.phase_3.badHabits.kidsBadHabitDetailRoute
 import com.aa.ui.screens.phase_3.badHabits.kidsBadHabitRoute
 import com.aa.ui.screens.phase_3.difference_game.diffOfTwoImage
@@ -62,7 +62,7 @@ import com.aa.ui.screens.phase_3.specialcase.kidsSpecialCaseRoute
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
 fun TinyStepsGraph(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = TinyStepsDestination.StoriesScreen) {
+    NavHost(navController = navController, startDestination = TinyStepsDestination.SplashScreen) {
         composable(TinyStepsDestination.SplashScreen) { SplashScreen(navController = navController) }
         introScreen(navController)
         signIn(navController)
@@ -104,7 +104,7 @@ fun TinyStepsGraph(navController: NavHostController) {
         relationDetailsRoute(navController)
         aiStateScreen(navController)
         chatBotScreen(navController)
-        storiesRoute(navController)
+        homeKidsRoute(navController)
         educationRoute(navController)
         educationDetailsRoute(navController)
         diffOfTwoImage(navController)
@@ -162,7 +162,7 @@ object TinyStepsDestination {
     const val InfantExerciseDetailsScreen = "infantsExerciseDetailsScreen"
     const val InfantDiscoverScreen = "infantsDiscoverScreen"
     const val RelationDetailsScreen = "relationDetailsScreen"
-    const val StoriesScreen = "storiesScreen"
+    const val HomeKidsScreen = "homeKidsScreen"
     const val AnimalSoundScreen = "animalSoundScreen"
     const val MathLandScreen = "mathLandScreen"
     const val EducationScreen = "educationScreen"

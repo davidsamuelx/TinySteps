@@ -1,4 +1,4 @@
-package com.aa.ui.screens.phase_2.navigation_bar
+package com.aa.ui.screens.phase_3.navigation_bar
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -26,22 +26,21 @@ import androidx.navigation.NavController
 import com.aa.ui.R
 import com.aa.ui.screens.phase_1.ai_state_screen.navigateToAiStateScreen
 import com.aa.ui.screens.phase_1.statescreen.navigateToStateScreen
-import com.aa.ui.screens.phase_2.infant_discover_screen.navigateToInfantDiscoverScreen
-import com.aa.ui.screens.phase_2.infant_home_screen.navigateToInfantHomeScreen
-import com.aa.ui.screens.phase_3.navigation_bar.NavItemKids
+import com.aa.ui.screens.phase_3.kids_discover_screen.navigateToKidsDiscoverScreen
+import com.aa.ui.screens.phase_3.home_screen.navigateToHomeKidsScreen
 
 @Composable
-fun NavigationBarInfants(
+fun NavigationBarKids(
     navController: NavController,
     modifier: Modifier = Modifier,
     selectedIcon: NavItemKids = NavItemKids.Home
 ) {
-    NavigationBarContent(
+    NavigationBarKidsContent(
         onHomeClick = {
-            navController.navigateToInfantHomeScreen()
+            navController.navigateToHomeKidsScreen()
         },
         onDiscoverClick = {
-            navController.navigateToInfantDiscoverScreen()
+            navController.navigateToKidsDiscoverScreen()
         },
         onChatBotClick = {
                          navController.navigateToAiStateScreen()
@@ -56,7 +55,7 @@ fun NavigationBarInfants(
 }
 
 @Composable
-private fun NavigationBarContent(
+private fun NavigationBarKidsContent(
     modifier: Modifier = Modifier,
     onHomeClick: () -> Unit = {},
     onDiscoverClick: () -> Unit = {},
@@ -161,7 +160,7 @@ private fun NavigationBarKidsItem(
     }
 }
 
-enum class NavItemInfants {
+enum class NavItemKids {
     Home,
     Discover,
     ChatBot,
@@ -170,6 +169,6 @@ enum class NavItemInfants {
 
 @Preview
 @Composable
-fun NavigationBarPreview() {
-    NavigationBarContent()
+fun NavigationBarKisPreview() {
+    NavigationBarKidsContent()
 }

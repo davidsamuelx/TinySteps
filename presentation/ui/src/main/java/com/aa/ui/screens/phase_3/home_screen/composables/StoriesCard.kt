@@ -1,4 +1,4 @@
-package com.aa.ui.screens.phase_3.stories_screen.composables
+package com.aa.ui.screens.phase_3.home_screen.composables
 
 import android.os.Build
 import androidx.annotation.RequiresApi

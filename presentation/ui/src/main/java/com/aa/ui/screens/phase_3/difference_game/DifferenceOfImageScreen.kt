@@ -25,7 +25,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aa.ui.R
 import com.aa.ui.screens.phase_1.composable.VerticalSpacer
-import com.aa.ui.screens.phase_1.navigation_bar.NavigationBar
 import com.aa.ui.screens.phase_1.search.composable.CustomToolbar
 import com.aa.ui.screens.phase_3.composable.ImageCard
 import com.aa.ui.screens.phase_3.difference_game.composable.ChoiceBox
@@ -127,12 +126,6 @@ private fun DifferenceOfImageContent(
                 }
 
             }
-                NavigationBar(
-                    navController = navController,
-                    modifier = Modifier
-                        .align(Alignment.BottomCenter)
-                        .padding(12.dp),
-                )
 
         }
         }

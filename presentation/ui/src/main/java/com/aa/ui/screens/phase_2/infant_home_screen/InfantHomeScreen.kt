@@ -32,7 +32,7 @@ import com.aa.ui.screens.phase_1.home_screen.composables.HomeHeader
 import com.aa.ui.screens.phase_2.infant_home_screen.composables.GuidanceCard
 import com.aa.ui.screens.phase_2.infant_home_screen.composables.HomePager
 import com.aa.ui.screens.phase_2.infant_home_screen.composables.RelationCard
-import com.aa.ui.screens.phase_2.navigation_bar.NavItemInfants
+import com.aa.ui.screens.phase_3.navigation_bar.NavItemKids
 import com.aa.ui.screens.phase_2.navigation_bar.NavigationBarInfants
 import com.aa.ui.screens.phase_2.relation_screen.navigateToRelationDetails
 import com.aa.viewmodels.infant_home_screen.HomeInfantUiState
@@ -159,7 +159,7 @@ private fun InfantHomeContent(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(12.dp),
-            selectedIcon = NavItemInfants.Home
+            selectedIcon = NavItemKids.Home
         )
 
     }

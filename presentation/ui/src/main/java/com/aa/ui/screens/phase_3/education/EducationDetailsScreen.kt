@@ -35,7 +35,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.aa.ui.R
-import com.aa.ui.screens.phase_1.navigation_bar.NavigationBar
 import com.aa.ui.screens.phase_1.search.composable.CustomToolbar
 import com.aa.ui.screens.phase_3.animal_sound_screen.composables.GamesPlayer
 import com.aa.ui.screens.phase_3.animal_sound_screen.composables.GamesSongHelper
@@ -127,12 +126,6 @@ fun EducationDetailsContent(
 
                 }
             }
-            NavigationBar(
-                navController = navController,
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .padding(12.dp),
-            )
         }
     }
 

@@ -9,9 +9,9 @@ import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 @HiltViewModel
-class StoriesViewModel @Inject constructor(
+class HomeKidsViewModel @Inject constructor(
     private val getAllStoriesUseCase: AllStoriesUseCase
-) : BaseViewModel<StoriesUiState>(StoriesUiState()) {
+) : BaseViewModel<HomeKidsUiState>(HomeKidsUiState()) {
 
     init {
         getAllStories()

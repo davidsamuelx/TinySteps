@@ -4,7 +4,7 @@ import com.aa.base.BaseErrorUiState
 import com.aa.base.BaseUiState
 import com.aa.models.kids.AllStoriesEntity
 
-data class StoriesUiState(
+data class HomeKidsUiState(
     val storiesList: List<StoriesItemUiState> = emptyList(),
     val isLoading: Boolean = false,
     val error: BaseErrorUiState? = null

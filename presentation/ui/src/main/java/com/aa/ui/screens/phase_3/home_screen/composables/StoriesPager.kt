@@ -1,4 +1,4 @@
-package com.aa.ui.screens.phase_3.stories_screen.composables
+package com.aa.ui.screens.phase_3.home_screen.composables
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -36,7 +36,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
-import com.aa.viewmodels.phase_3.stories_screen.StoriesUiState
+import com.aa.viewmodels.phase_3.stories_screen.HomeKidsUiState
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
@@ -47,7 +47,7 @@ import kotlin.math.absoluteValue
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun StoriesPager(
-    state: StoriesUiState,
+    state: HomeKidsUiState,
     pagerState: PagerState,
 ) {
     val width = 8.dp

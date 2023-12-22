@@ -26,8 +26,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aa.ui.screens.phase_1.discover_screen.composable.DiscoverCard
-import com.aa.ui.screens.phase_2.navigation_bar.NavItemInfants
-import com.aa.ui.screens.phase_2.navigation_bar.NavigationBarInfants
+import com.aa.ui.screens.phase_3.navigation_bar.NavItemKids
+import com.aa.ui.screens.phase_3.navigation_bar.NavigationBarKids
 import com.aa.viewmodels.phase_3.kids_discover.KidsDiscoverUiState
 import com.aa.viewmodels.phase_3.kids_discover.KidsDiscoverViewModel
 
@@ -95,10 +95,10 @@ private fun KidsDiscoverContent(
                 }
             }
         }
-        NavigationBarInfants(
+        NavigationBarKids(
             navController = navController,
             modifier = Modifier.padding(16.dp)
                 .align(Alignment.BottomCenter),
-            selectedIcon = NavItemInfants.Discover)
+            selectedIcon = NavItemKids.Discover)
     }
 }
