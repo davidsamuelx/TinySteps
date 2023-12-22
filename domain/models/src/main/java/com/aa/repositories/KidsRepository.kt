@@ -17,7 +17,7 @@ interface KidsRepository {
 
     suspend fun getDiffImageGame(): List<DiffImageGameEntity>
 
-    suspend fun getAllStories(id: Int?,title: String?): List<AllStoriesEntity>
+    suspend fun getAllStories(): List<AllStoriesEntity>
 
     suspend fun getAllAchievements(): List<AchievementsEntity>
 

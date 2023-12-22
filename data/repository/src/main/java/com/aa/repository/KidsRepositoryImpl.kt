@@ -29,8 +29,8 @@ class KidsRepositoryImpl @Inject constructor(
             ?: emptyList()
     }
 
-    override suspend fun getAllStories(id: Int?, title: String?): List<AllStoriesEntity> {
-        return remoteDataSource.getAllStories(id, title).storyphase3?.mapNotNull { it.toEntity() } ?: emptyList()
+    override suspend fun getAllStories(): List<AllStoriesEntity> {
+        return remoteDataSource.getAllStories().storyphase3?.mapNotNull { it.toEntity() } ?: emptyList()
     }
 
     override suspend fun getAllAchievements(): List<AchievementsEntity> {

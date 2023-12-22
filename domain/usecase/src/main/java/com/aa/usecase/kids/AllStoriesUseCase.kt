@@ -8,7 +8,7 @@ class AllStoriesUseCase @Inject constructor(
     private val kidsRepository: KidsRepository
 ) {
 
-    suspend operator fun invoke(id: Int?,title: String?):List<AllStoriesEntity>{
-        return kidsRepository.getAllStories(id, title)
+    suspend operator fun invoke():List<AllStoriesEntity>{
+        return kidsRepository.getAllStories()
     }
 }

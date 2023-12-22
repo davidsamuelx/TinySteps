@@ -376,8 +376,8 @@ class RemoteDataSourceImpl @Inject constructor(
         return tryToExecute { tinyStepsService.getDiffImageGame() }
     }
 
-    override suspend fun getAllStories(id: Int?, title: String?): AllStoriesResource {
-       return tryToExecute { tinyStepsService.getAllStories(id, title) }
+    override suspend fun getAllStories(): AllStoriesResource {
+       return tryToExecute { tinyStepsService.getAllStories() }
     }
 
     override suspend fun getAllAchievements(): AllAchievementsResource {
