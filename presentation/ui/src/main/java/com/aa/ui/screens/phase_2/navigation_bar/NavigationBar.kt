@@ -28,13 +28,12 @@ import com.aa.ui.screens.phase_1.ai_state_screen.navigateToAiStateScreen
 import com.aa.ui.screens.phase_1.statescreen.navigateToStateScreen
 import com.aa.ui.screens.phase_2.infant_discover_screen.navigateToInfantDiscoverScreen
 import com.aa.ui.screens.phase_2.infant_home_screen.navigateToInfantHomeScreen
-import com.aa.ui.screens.phase_3.navigation_bar.NavItemKids
 
 @Composable
 fun NavigationBarInfants(
     navController: NavController,
     modifier: Modifier = Modifier,
-    selectedIcon: NavItemKids = NavItemKids.Home
+    selectedIcon: NavItemInfants = NavItemInfants.Home
 ) {
     NavigationBarContent(
         onHomeClick = {
@@ -63,13 +62,12 @@ private fun NavigationBarContent(
     onChatBotClick: () -> Unit = {},
     onProfileClick: () -> Unit = {},
     onStateClick : () -> Unit = {},
-    selectedIcon : NavItemKids = NavItemKids.Home
+    selectedIcon : NavItemInfants = NavItemInfants.Home
 ) {
-    // State to keep track of the selected icon
     var item by remember { mutableStateOf(selectedIcon) }
 
     Row(
-        horizontalArrangement = Arrangement.Center,
+        horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
             .fillMaxWidth()
@@ -87,21 +85,19 @@ private fun NavigationBarContent(
             contentDescription = "home",
             onClick = {
                 onHomeClick()
-                item = NavItemKids.Home
+                item = NavItemInfants.Home
             },
-            isSelected = item == NavItemKids.Home
+            isSelected = item == NavItemInfants.Home
         )
-        Spacer(modifier = Modifier.width(40.dp))
         NavigationBarKidsItem(
             iconRes = R.drawable.discover24,
             contentDescription = "discover",
             onClick = {
                 onDiscoverClick()
-                item = NavItemKids.Discover
+                item = NavItemInfants.Discover
             },
-            isSelected = item == NavItemKids.Discover
+            isSelected = item == NavItemInfants.Discover
         )
-        Spacer(modifier = Modifier.width(36.dp))
         Box(
             modifier = Modifier
                 .size(48.dp)
@@ -114,28 +110,24 @@ private fun NavigationBarContent(
                     ambientColor = Color(0x0F232C5D)
                 )
         )
-        Spacer(modifier = Modifier.width(36.dp))
-
         NavigationBarKidsItem(
             iconRes = R.drawable.message_bot,
             contentDescription = "chat bot",
             onClick = {
                 onChatBotClick()
-                item = NavItemKids.ChatBot
+                item = NavItemInfants.ChatBot
             },
-            isSelected = item == NavItemKids.ChatBot
+            isSelected = item == NavItemInfants.ChatBot
         )
-
-        Spacer(modifier = Modifier.width(40.dp))
 
         NavigationBarKidsItem(
             iconRes = R.drawable.profile_button,
             contentDescription = "profile",
             onClick = {
                 onProfileClick()
-                item = NavItemKids.Profile
+                item = NavItemInfants.Profile
             },
-            isSelected = item == NavItemKids.Profile
+            isSelected = item == NavItemInfants.Profile
         )
     }
 }

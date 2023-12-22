@@ -64,11 +64,10 @@ private fun NavigationBarKidsContent(
     onStateClick : () -> Unit = {},
     selectedIcon : NavItemKids = NavItemKids.Home
 ) {
-    // State to keep track of the selected icon
     var item by remember { mutableStateOf(selectedIcon) }
 
     Row(
-        horizontalArrangement = Arrangement.Center,
+        horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier
             .fillMaxWidth()
@@ -90,7 +89,6 @@ private fun NavigationBarKidsContent(
             },
             isSelected = item == NavItemKids.Home
         )
-        Spacer(modifier = Modifier.width(40.dp))
         NavigationBarKidsItem(
             iconRes = R.drawable.discover24,
             contentDescription = "discover",
@@ -100,7 +98,6 @@ private fun NavigationBarKidsContent(
             },
             isSelected = item == NavItemKids.Discover
         )
-        Spacer(modifier = Modifier.width(36.dp))
         Box(
             modifier = Modifier
                 .size(48.dp)
@@ -113,8 +110,6 @@ private fun NavigationBarKidsContent(
                     ambientColor = Color(0x0F232C5D)
                 )
         )
-        Spacer(modifier = Modifier.width(36.dp))
-
         NavigationBarKidsItem(
             iconRes = R.drawable.message_bot,
             contentDescription = "chat bot",
@@ -124,8 +119,6 @@ private fun NavigationBarKidsContent(
             },
             isSelected = item == NavItemKids.ChatBot
         )
-
-        Spacer(modifier = Modifier.width(40.dp))
 
         NavigationBarKidsItem(
             iconRes = R.drawable.profile_button,

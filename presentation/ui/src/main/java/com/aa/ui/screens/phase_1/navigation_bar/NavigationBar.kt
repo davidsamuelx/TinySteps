@@ -64,7 +64,6 @@ private fun NavigationBarContent(
     onStateClick : () -> Unit = {},
     selectedIcon : NavItem = NavItem.Home
 ) {
-    // State to keep track of the selected icon
     var item by remember { mutableStateOf(selectedIcon) }
 
     Row(
