@@ -306,7 +306,7 @@ interface TinyStepsService {
     suspend fun getDiffImageGame():Response<ImageDIfferenceGameResource>
 
     @GET("user/Phase03/story/getall")
-    suspend fun getAllStories(@Query("id") id: Int?,@Query("Title") title: String?):Response<AllStoriesResource>
+    suspend fun getAllStories():Response<AllStoriesResource>
 
     @GET("user/Phase03/Achievements/GetAll")
     suspend fun getAllAchievements():Response<AllAchievementsResource>

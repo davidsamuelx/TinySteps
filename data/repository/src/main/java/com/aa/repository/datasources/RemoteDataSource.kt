@@ -206,7 +206,7 @@ interface RemoteDataSource {
 
     suspend fun getDiffImageGame(): ImageDIfferenceGameResource
 
-    suspend fun getAllStories(id: Int?, title: String?): AllStoriesResource
+    suspend fun getAllStories(): AllStoriesResource
 
     suspend fun getAllAchievements(): AllAchievementsResource
     suspend fun getAnimalGame(): AllAnimalGameResource

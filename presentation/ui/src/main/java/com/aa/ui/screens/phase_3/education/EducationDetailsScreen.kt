@@ -37,10 +37,11 @@ import coil.compose.rememberAsyncImagePainter
 import com.aa.ui.R
 import com.aa.ui.screens.phase_1.navigation_bar.NavigationBar
 import com.aa.ui.screens.phase_1.search.composable.CustomToolbar
-import com.aa.ui.screens.phase_3.kids_games.animal_sound_screen.composables.GamesPlayer
-import com.aa.ui.screens.phase_3.kids_games.animal_sound_screen.composables.GamesSongHelper
-import com.aa.viewmodels.phase_3.education.EducationDetailsUiState
-import com.aa.viewmodels.phase_3.education.EducationDetailsViewModel
+import com.aa.ui.screens.phase_3.animal_sound_screen.composables.GamesPlayer
+import com.aa.ui.screens.phase_3.animal_sound_screen.composables.GamesSongHelper
+import com.aa.viewmodels.education.EducationDetailsUiState
+import com.aa.viewmodels.education.EducationDetailsViewModel
+
 
 @Composable
 fun EducationDetailsScreen(
