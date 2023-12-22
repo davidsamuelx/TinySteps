@@ -61,20 +61,7 @@ private fun StoriesContent(
         ) {
             HomeHeader()
 
-            Spacer(modifier = Modifier.height(24.dp))
-
-            Text(
-                text = "Stories",
-                style = TextStyle(
-                    fontSize = 18.sp,
-                    lineHeight = 20.sp,
-                    fontWeight = FontWeight(500),
-                    color = Color(0xFF040415),
-                ),
-                modifier = Modifier.padding(start = 24.dp)
-            )
-
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(4.dp))
 
             StoriesPager(pagerState = pagerState , state = state)
         }

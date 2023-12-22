@@ -74,8 +74,8 @@ fun StoriesPager(
             CompositionLocalProvider (LocalOverscrollConfiguration provides null){
             HorizontalPager(
                 state = pagerState,
-                pageSpacing = 16.dp,
-                contentPadding = PaddingValues(horizontal = 24.dp),
+                pageSpacing = 8.dp,
+                contentPadding = PaddingValues(horizontal = 12.dp),
                 beyondBoundsPageCount = 2,
             ) { page ->
                 state.storiesList.getOrNull(

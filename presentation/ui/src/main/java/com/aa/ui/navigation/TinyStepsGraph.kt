@@ -45,17 +45,17 @@ import com.aa.ui.screens.phase_2.infants_search.products.infantsProductsRoute
 import com.aa.ui.screens.phase_2.infants_search.sleep_hours.infantsSleepDetailRoute
 import com.aa.ui.screens.phase_2.infants_search.sleep_hours.infantsSleepRoute
 import com.aa.ui.screens.phase_2.relation_screen.relationDetailsRoute
+import com.aa.ui.screens.phase_3.animal_sound_screen.animalSoundScreen
 import com.aa.ui.screens.phase_3.stories_screen.storiesRoute
 import com.aa.ui.screens.phase_3.badHabits.kidsBadHabitDetailRoute
 import com.aa.ui.screens.phase_3.badHabits.kidsBadHabitRoute
+import com.aa.ui.screens.phase_3.difference_game.diffOfTwoImage
 import com.aa.ui.screens.phase_3.education.educationDetailsRoute
 import com.aa.ui.screens.phase_3.education.educationRoute
 import com.aa.ui.screens.phase_3.food.kidsFoodDetailsRoute
 import com.aa.ui.screens.phase_3.food.kidsFoodRoute
 import com.aa.ui.screens.phase_3.kids_discover_screen.kidsDiscoverRoute
-import com.aa.ui.screens.phase_3.kids_games.animal_sound_screen.animalSoundScreen
-import com.aa.ui.screens.phase_3.kids_games.difference_game.diffOfTwoImage
-import com.aa.ui.screens.phase_3.kids_games.math_land_screen.mathLandRoute
+import com.aa.ui.screens.phase_3.math_land_screen.mathLandRoute
 import com.aa.ui.screens.phase_3.specialcase.kidsSpecialCaseDetailsRoute
 import com.aa.ui.screens.phase_3.specialcase.kidsSpecialCaseRoute
 

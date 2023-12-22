@@ -47,13 +47,14 @@ fun StoriesCard(
                 color = Color(0xFFDCE4E6),
                 shape = RoundedCornerShape(size = 8.dp)
             )
-            .padding(vertical = 8.dp, horizontal = 12.dp),
+            .padding(bottom = 8.dp),
     ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(208.dp)
+                .height(302.dp)
                 .background(Color.White)
+                .padding(horizontal = 4.dp)
         ) {
 
             AndroidView(
@@ -76,9 +77,9 @@ fun StoriesCard(
                 fontWeight = FontWeight(500),
                 color = Color(0xFFF15223),
                 ),
-            maxLines = 3,
+            maxLines = 1,
             overflow = TextOverflow.Ellipsis,
-            modifier = Modifier.background(Color.White).padding(vertical = 16.dp)
+            modifier = Modifier.background(Color.White).padding(vertical = 16.dp, horizontal = 12.dp)
         )
 
 
