@@ -7,6 +7,7 @@ import com.aa.models.kids.DiffImageGameEntity
 import com.aa.models.kids.EducationGameEntity
 import com.aa.models.kids.KidsBadHabitEntity
 import com.aa.models.kids.KidsFoodEntity
+import com.aa.models.kids.KidsSpecialCaseEntity
 import com.aa.models.kids.LetterEntity
 import com.aa.models.kids.MathLandEntity
 import com.aa.models.kids.PuzzleGameEntity
@@ -82,4 +83,20 @@ class KidsRepositoryImpl @Inject constructor(
         return remoteDataSource.searchKidsBadHabits(badHabits).badhabits
             ?.map { it.toEntity() }?: emptyList()
     }
+
+    override suspend fun getAllKidsSpecialCase(): List<KidsSpecialCaseEntity> {
+        return remoteDataSource.getKidsSpecialCase().specialCases
+            ?.map { it.toEntity() }?: emptyList()
+    }
+
+    override suspend fun selectKidsSpecialCase(id: Int): KidsSpecialCaseEntity {
+        return remoteDataSource.selectKidsSpecialCase(id).specialCase.toEntity()
+    }
+
+    override suspend fun searchKidsSpecialCase(specialCase: String): List<KidsSpecialCaseEntity> {
+        return remoteDataSource.searchKidsSpecialCase(specialCase).specialCases
+            ?.map { it.toEntity() }?: emptyList()
+    }
+
+
 }

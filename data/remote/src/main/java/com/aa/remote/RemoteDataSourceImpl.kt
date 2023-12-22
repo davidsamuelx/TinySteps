@@ -64,10 +64,12 @@ import com.aa.repository.resources.kids.ImageDIfferenceGameResource
 import com.aa.repository.resources.kids.KidsBadHabitsResource
 import com.aa.repository.resources.kids.KidsFood
 import com.aa.repository.resources.kids.KidsSelectFood
+import com.aa.repository.resources.kids.KidsSpecialCaseResource
 import com.aa.repository.resources.kids.LetterResource
 import com.aa.repository.resources.kids.MathLandResource
 import com.aa.repository.resources.kids.PuzzleGameResource
 import com.aa.repository.resources.kids.SelectKidsBadHabitsRsource
+import com.aa.repository.resources.kids.SelectSpecialCaseResource
 import com.aa.repository.resources.open_ai.OpenAIRequestResource
 import com.aa.repository.resources.open_ai.OpenAIResponseResource
 import retrofit2.Response
@@ -426,6 +428,18 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun searchKidsBadHabits(badHabits: String): KidsBadHabitsResource {
         return tryToExecute { tinyStepsService.searchKidsBadHabit(badHabits) }
+    }
+
+    override suspend fun getKidsSpecialCase(): KidsSpecialCaseResource {
+        return tryToExecute { tinyStepsService.getKidsSpecialCase()}
+    }
+
+    override suspend fun selectKidsSpecialCase(id: Int): SelectSpecialCaseResource {
+        return tryToExecute { tinyStepsService.selectKidsSpecialCase(id) }
+    }
+
+    override suspend fun searchKidsSpecialCase(specialCase: String): KidsSpecialCaseResource {
+        return tryToExecute { tinyStepsService.searchKidsSpecialCase(specialCase) }
     }
 
     //endregion

@@ -62,10 +62,12 @@ import com.aa.repository.resources.kids.ImageDIfferenceGameResource
 import com.aa.repository.resources.kids.KidsBadHabitsResource
 import com.aa.repository.resources.kids.KidsFood
 import com.aa.repository.resources.kids.KidsSelectFood
+import com.aa.repository.resources.kids.KidsSpecialCaseResource
 import com.aa.repository.resources.kids.LetterResource
 import com.aa.repository.resources.kids.MathLandResource
 import com.aa.repository.resources.kids.PuzzleGameResource
 import com.aa.repository.resources.kids.SelectKidsBadHabitsRsource
+import com.aa.repository.resources.kids.SelectSpecialCaseResource
 import com.aa.repository.resources.open_ai.OpenAIRequestResource
 import com.aa.repository.resources.open_ai.OpenAIResponseResource
 
@@ -226,4 +228,10 @@ interface RemoteDataSource {
     suspend fun selectKidsBadHabits(id:Int):SelectKidsBadHabitsRsource
 
     suspend fun searchKidsBadHabits(badHabits:String):KidsBadHabitsResource
+
+    suspend fun getKidsSpecialCase():KidsSpecialCaseResource
+
+    suspend fun selectKidsSpecialCase(id:Int):SelectSpecialCaseResource
+
+    suspend fun searchKidsSpecialCase(specialCase:String):KidsSpecialCaseResource
 }

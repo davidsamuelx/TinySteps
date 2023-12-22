@@ -62,10 +62,12 @@ import com.aa.repository.resources.kids.ImageDIfferenceGameResource
 import com.aa.repository.resources.kids.KidsBadHabitsResource
 import com.aa.repository.resources.kids.KidsFood
 import com.aa.repository.resources.kids.KidsSelectFood
+import com.aa.repository.resources.kids.KidsSpecialCaseResource
 import com.aa.repository.resources.kids.LetterResource
 import com.aa.repository.resources.kids.MathLandResource
 import com.aa.repository.resources.kids.PuzzleGameResource
 import com.aa.repository.resources.kids.SelectKidsBadHabitsRsource
+import com.aa.repository.resources.kids.SelectSpecialCaseResource
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -338,6 +340,16 @@ interface TinyStepsService {
 
     @GET("user/getData/Phase03/BadHabit/search")
     suspend fun searchKidsBadHabit(@Query("search")search:String):Response<KidsBadHabitsResource>
+
+    @GET("user/getData/special-cases/phase03/getall")
+    suspend fun  getKidsSpecialCase():Response<KidsSpecialCaseResource>
+
+    @GET("user/getData/special-cases/phase03/select")
+    suspend fun  selectKidsSpecialCase(@Query("id")id:Int):Response<SelectSpecialCaseResource>
+
+    @GET("user/getData/special-cases/phase03/search")
+    suspend fun searchKidsSpecialCase(@Query("search")search:String):Response<KidsSpecialCaseResource>
+
 
     //endregion
 
