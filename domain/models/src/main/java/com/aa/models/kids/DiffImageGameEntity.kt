@@ -5,4 +5,9 @@ data class DiffImageGameEntity(
     val id: Int,
     val pathImgOne: String,
     val pathImgTwo: String,
-)
+    val chooseOne:Int,
+    val chooseTwo:Int,
+    val chooseThree:Int,
+    val chooseFour:Int,
+
+    )

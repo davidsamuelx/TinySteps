@@ -1,5 +1,6 @@
 package com.aa.ui.screens.phase_1.search.music
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
@@ -35,9 +36,14 @@ fun MusicDetailsScreen(
 private fun MusicDetailsContent(
     state: MusicDetailsUiState
 ){
-    MusicPlayer(
-        url = state.music.musicUrl,
-        imageUrl = state.music.imagePath,
-        songName = state.music.musicType
-    )
+    val musicUrl = state.music.musicUrl
+    if (musicUrl.isNotEmpty()) {
+        MusicPlayer(
+            url = state.music.musicUrl,
+            imageUrl = state.music.imagePath,
+            songName = state.music.musicType
+        )
+    }else{
+        Log.e("MUSIC_PLAYER", "Music URL is null or empty")
+    }
 }

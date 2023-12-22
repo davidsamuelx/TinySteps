@@ -5,4 +5,5 @@ data class EducationGameEntity(
     val image: String,
     val letter: String,
     val sound: String,
+    val level:String
 )

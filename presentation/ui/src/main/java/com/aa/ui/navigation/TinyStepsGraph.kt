@@ -6,9 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.aa.ui.screens.phase_1.IntroScreen.introScreen
 import com.aa.ui.screens.chat_bot_screen.chatBotScreen
 import com.aa.ui.screens.diagnosis_screen.diagnosisScreen
+import com.aa.ui.screens.phase_1.IntroScreen.introScreen
 import com.aa.ui.screens.phase_1.ai_state_screen.aiStateScreen
 import com.aa.ui.screens.phase_1.badhabit.badHabitDetailRoute
 import com.aa.ui.screens.phase_1.badhabit.badHabitRoute
@@ -45,11 +45,23 @@ import com.aa.ui.screens.phase_2.infants_search.products.infantsProductsRoute
 import com.aa.ui.screens.phase_2.infants_search.sleep_hours.infantsSleepDetailRoute
 import com.aa.ui.screens.phase_2.infants_search.sleep_hours.infantsSleepRoute
 import com.aa.ui.screens.phase_2.relation_screen.relationDetailsRoute
+import com.aa.ui.screens.phase_3.badHabits.kidsBadHabitDetailRoute
+import com.aa.ui.screens.phase_3.badHabits.kidsBadHabitRoute
+import com.aa.ui.screens.phase_3.education.educationDetailsRoute
+import com.aa.ui.screens.phase_3.education.educationRoute
+import com.aa.ui.screens.phase_3.food.kidsFoodDetailsRoute
+import com.aa.ui.screens.phase_3.food.kidsFoodRoute
+import com.aa.ui.screens.phase_3.kids_discover_screen.kidsDiscoverRoute
+import com.aa.ui.screens.phase_3.kids_games.animal_sound_screen.animalSoundScreen
+import com.aa.ui.screens.phase_3.kids_games.difference_game.diffOfTwoImage
+import com.aa.ui.screens.phase_3.kids_games.math_land_screen.mathLandRoute
+import com.aa.ui.screens.phase_3.specialcase.kidsSpecialCaseDetailsRoute
+import com.aa.ui.screens.phase_3.specialcase.kidsSpecialCaseRoute
 
 @RequiresApi(Build.VERSION_CODES.Q)
 @Composable
 fun TinyStepsGraph(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = TinyStepsDestination.SplashScreen) {
+    NavHost(navController = navController, startDestination = TinyStepsDestination.KidsDiscoverScreen) {
         composable(TinyStepsDestination.SplashScreen) { SplashScreen(navController = navController) }
         introScreen(navController)
         signIn(navController)
@@ -91,7 +103,19 @@ fun TinyStepsGraph(navController: NavHostController) {
         relationDetailsRoute(navController)
         aiStateScreen(navController)
         chatBotScreen(navController)
+        educationRoute(navController)
+        educationDetailsRoute(navController)
+        diffOfTwoImage(navController)
+        animalSoundScreen(navController)
+        mathLandRoute(navController)
         diagnosisScreen(navController)
+        kidsDiscoverRoute(navController)
+        kidsFoodRoute(navController)
+        kidsFoodDetailsRoute(navController)
+        kidsBadHabitRoute(navController)
+        kidsBadHabitDetailRoute(navController)
+        kidsSpecialCaseRoute(navController)
+        kidsSpecialCaseDetailsRoute(navController)
     }
 }
 
@@ -136,5 +160,19 @@ object TinyStepsDestination {
     const val InfantExerciseDetailsScreen = "infantsExerciseDetailsScreen"
     const val InfantDiscoverScreen = "infantsDiscoverScreen"
     const val RelationDetailsScreen = "relationDetailsScreen"
+    const val AnimalSoundScreen = "animalSoundScreen"
+    const val MathLandScreen = "mathLandScreen"
+    const val EducationScreen = "educationScreen"
+    const val EducationScreenDetails= "educationScreenDetails"
+    const val DiffOfImageScreen="diffOfImageScreen"
     const val DiagnosisScreen = "diagnosisScreen"
+    const val KidsDiscoverScreen = "kidsDiscoverScreen"
+    const val KidsFoodScreen = "kidsFoodScreen"
+    const val KidsFoodDetailsScreen = "kidsFoodDetailsScreen"
+    const val KidsBadHabitsScreen= "kidsBadHabitsScreen"
+    const val KidsBadHabitsDetailsScreen="kidsBadHabitsDetailsScreen"
+    const val KidsSpecialCaseScreen = "kidsSpecialCaseScreen"
+    const val KidsSpecialCaseDetailsScreen="kidsSpecialCaseDetailsScreen"
+
+
 }

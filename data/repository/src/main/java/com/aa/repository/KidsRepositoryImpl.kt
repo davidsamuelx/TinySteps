@@ -5,6 +5,9 @@ import com.aa.models.kids.AllStoriesEntity
 import com.aa.models.kids.AnimalGameEntity
 import com.aa.models.kids.DiffImageGameEntity
 import com.aa.models.kids.EducationGameEntity
+import com.aa.models.kids.KidsBadHabitEntity
+import com.aa.models.kids.KidsFoodEntity
+import com.aa.models.kids.KidsSpecialCaseEntity
 import com.aa.models.kids.LetterEntity
 import com.aa.models.kids.MathLandEntity
 import com.aa.models.kids.PuzzleGameEntity
@@ -52,4 +55,48 @@ class KidsRepositoryImpl @Inject constructor(
     override suspend fun getLetterById(id: Int): LetterEntity {
         return remoteDataSource.getLetterById(id).letter.toEntity()
     }
+
+    override suspend fun getAllKidsFood(): List<KidsFoodEntity> {
+        return remoteDataSource.getKidsFood().foodBabies
+            ?.map { it.toEntity()  }?: emptyList()
+    }
+
+    override suspend fun selectKidsFood(id: Int): KidsFoodEntity {
+        return remoteDataSource.getKidsSelectFood(id).foodBaby.toEntity()
+    }
+
+    override suspend fun searchKidsFood(food: String): List<KidsFoodEntity> {
+        return remoteDataSource.getKidsSearchFood(food).foodBabies
+            ?.map { it.toEntity() }?: emptyList()
+    }
+
+    override suspend fun getAllKidsBadHabits(): List<KidsBadHabitEntity> {
+        return remoteDataSource.getKidsBadHabits().badhabits
+            ?.map { it.toEntity() }?: emptyList()
+    }
+
+    override suspend fun selectKidsBadHabits(id: Int): KidsBadHabitEntity {
+        return remoteDataSource.selectKidsBadHabits(id).badhabit.toEntity()
+    }
+
+    override suspend fun searchKidsBadHabits(badHabits: String): List<KidsBadHabitEntity> {
+        return remoteDataSource.searchKidsBadHabits(badHabits).badhabits
+            ?.map { it.toEntity() }?: emptyList()
+    }
+
+    override suspend fun getAllKidsSpecialCase(): List<KidsSpecialCaseEntity> {
+        return remoteDataSource.getKidsSpecialCase().specialCases
+            ?.map { it.toEntity() }?: emptyList()
+    }
+
+    override suspend fun selectKidsSpecialCase(id: Int): KidsSpecialCaseEntity {
+        return remoteDataSource.selectKidsSpecialCase(id).specialCase.toEntity()
+    }
+
+    override suspend fun searchKidsSpecialCase(specialCase: String): List<KidsSpecialCaseEntity> {
+        return remoteDataSource.searchKidsSpecialCase(specialCase).specialCases
+            ?.map { it.toEntity() }?: emptyList()
+    }
+
+
 }
