@@ -63,7 +63,7 @@ fun MusicPlayer(
 
     val context = LocalContext.current
 
-    var isPlaying by remember { mutableStateOf(SongHelper.isPlaying) }
+    var isPlaying by remember { SongHelper.isPlaying }
 
     var progress by remember { mutableStateOf(0f) }
 
@@ -230,7 +230,7 @@ class SongHelper{
     companion object{
         var mediaPlayer: MediaPlayer? = null
         private var currentPosition = 0
-        var isPlaying = false
+        var isPlaying = mutableStateOf(false)
         private var isPrepared = false
 
         fun playStream(url: String){
@@ -248,13 +248,13 @@ class SongHelper{
             mediaPlayer?.setOnPreparedListener{ mediaPlayer ->
                 mediaPlayer.seekTo(currentPosition)
                 mediaPlayer.start()
-                isPlaying = true
+                isPlaying.value = true
                 isPrepared = true
             }
             mediaPlayer?.setOnCompletionListener {
                 mediaPlayer?.reset()
                 currentPosition = 0
-                isPlaying = false
+                isPlaying.value = false
                 isPrepared = false
             }
         }
@@ -264,7 +264,7 @@ class SongHelper{
             mediaPlayer?.let{
                 currentPosition = it.currentPosition
                 it.pause()
-                isPlaying = false
+                isPlaying.value = false
             }
         }
 

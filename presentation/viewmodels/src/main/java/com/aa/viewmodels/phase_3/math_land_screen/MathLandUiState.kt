@@ -12,7 +12,7 @@ data class MathLandUiState(
     val isCorrectAnswerSelected: Boolean = false,
     val isAnswerSelected: Boolean = false,
     val isGameFinish: Boolean = false,
-    val selectedLevel: String = "Easy",
+    val selectedLevel: String = "easy",
 
 ): BaseUiState
 

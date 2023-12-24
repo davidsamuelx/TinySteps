@@ -30,6 +30,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.aa.ui.screens.phase_1.search.composable.CustomToolbar
 import com.aa.ui.screens.phase_3.animal_sound_screen.composables.GamesPlayer
+import com.aa.ui.screens.phase_3.animal_sound_screen.composables.GamesSongHelper
+import com.aa.ui.screens.phase_3.animal_sound_screen.composables.GamesSongHelper.Companion.isPlaying
 import com.aa.ui.screens.phase_3.math_land_screen.composables.AnswerCard
 import com.aa.ui.screens.phase_3.math_land_screen.composables.LevelDifficultyItem
 import com.aa.viewmodels.phase_3.math_land_screen.MathLandUiState
@@ -59,6 +61,11 @@ private fun MathLandContent(
 ) {
     val context = LocalContext.current
     val mathLandListChanged = viewModel.mathLandListChanged.value
+
+    val onLevelSwitch: () -> Unit = {
+        GamesSongHelper.stopStream()
+        isPlaying.value = false
+    }
 
     if (viewModel.currentItemIndex < state.mathLandList.size) {
         val item = state.mathLandList[viewModel.currentItemIndex]
@@ -108,6 +115,7 @@ private fun MathLandContent(
                                 isAnyCardClicked.value = false
                                 viewModel.getMathLand(selectedLevel)
                                 viewModel.updateSelectedLevel(selectedLevel)
+                                onLevelSwitch()
                             }
                         )
                     }
