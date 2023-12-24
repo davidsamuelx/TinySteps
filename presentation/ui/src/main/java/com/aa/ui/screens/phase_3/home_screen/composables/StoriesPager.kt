@@ -74,6 +74,8 @@ fun StoriesPager(
             CompositionLocalProvider (LocalOverscrollConfiguration provides null){
             HorizontalPager(
                 state = pagerState,
+                modifier = Modifier
+                    .weight(0.96f),
                 pageSpacing = 8.dp,
                 contentPadding = PaddingValues(horizontal = 12.dp),
                 beyondBoundsPageCount = 2,
@@ -151,6 +153,7 @@ fun StoriesPager(
             Row(
                 Modifier
                     .fillMaxWidth()
+                    .weight(0.04f)
                     .padding(end = 70.dp),
                 horizontalArrangement = Arrangement.Center
             ) {

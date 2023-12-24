@@ -55,7 +55,7 @@ fun GamesPlayer(
 
     val context = LocalContext.current
 
-    var isPlaying by remember { mutableStateOf(GamesSongHelper.isPlaying) }
+    var isPlaying by remember { GamesSongHelper.isPlaying }
 
     var progress by remember { mutableStateOf(0f) }
 
@@ -188,7 +188,7 @@ class GamesSongHelper{
     companion object{
         var mediaPlayer: MediaPlayer? = null
         private var currentPosition = 0
-        var isPlaying = false
+        var isPlaying = mutableStateOf(false)
 
         fun updateProgress(): Float {
             return if (getDuration() > 0) {
@@ -214,12 +214,12 @@ class GamesSongHelper{
             mediaPlayer?.setOnPreparedListener{ mediaPlayer ->
                 mediaPlayer.seekTo(currentPosition)
                 mediaPlayer.start()
-                isPlaying = true
+                isPlaying.value = true
             }
             mediaPlayer?.setOnCompletionListener {
                 mediaPlayer?.reset()
                 currentPosition = 0
-                isPlaying = false
+                isPlaying.value = false
             }
         }
 
@@ -227,7 +227,7 @@ class GamesSongHelper{
             mediaPlayer?.let{
                 currentPosition = it.currentPosition
                 it.pause()
-                isPlaying = false
+                isPlaying.value = false
             }
         }
 

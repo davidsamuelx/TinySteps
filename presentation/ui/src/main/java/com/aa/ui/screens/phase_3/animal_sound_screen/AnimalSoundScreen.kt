@@ -54,7 +54,7 @@ private fun AnimalSoundContent(
 
     val onImageSwitch: () -> Unit = {
         GamesSongHelper.stopStream()
-        isPlaying = false
+        isPlaying.value = false
     }
 
 

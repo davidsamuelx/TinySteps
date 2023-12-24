@@ -62,7 +62,7 @@ private fun KidsHomeContent(
         ) {
             HomeHeader()
 
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             StoriesPager(pagerState = pagerState , state = state)
         }
